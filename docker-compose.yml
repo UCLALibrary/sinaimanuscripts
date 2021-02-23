@@ -1,1 +1,48 @@
-docker-compose-standalone.yml
+version: '3.6'
+
+services:
+  sinai:
+    build: .
+    command: 'sh start-sinai.sh'
+    depends_on:
+      - db
+      - solr
+    env_file:
+      - ./default.env
+      - ./docker.env
+    ports:
+      - '127.0.0.1:3004:3000'
+    volumes:
+      - .:/sinai
+      - bundle_dir:/usr/local/bundle
+      - node_modules:/sinai/node_modules
+      - public_uv:/sinai/public/uv
+      - tmp:/sinai/tmp
+    working_dir: /sinai
+
+  db:
+    image: mysql:5.6
+    volumes:
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - mysql_data:/var/lib/mysql
+    ports:
+      - '127.0.0.1:3306:3306'
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+
+  solr:
+    image: uclalibrary/solr-ursus:2020-07-22
+    ports:
+      - '127.0.0.1:8983:8983'
+
+  solr_test:
+    image: uclalibrary/solr-ursus:2020-07-22
+    ports:
+      - '127.0.0.1:8985:8983'
+
+volumes:
+  bundle_dir:
+  mysql_data:
+  node_modules:
+  public_uv:
+  tmp:

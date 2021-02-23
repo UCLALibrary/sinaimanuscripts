@@ -1,3 +1,3 @@
-CREATE USER 'ursus'@'%' IDENTIFIED BY 'ursus';
-GRANT ALL PRIVILEGES ON *.* TO 'ursus'@'%';
+CREATE USER 'sinai'@'%' IDENTIFIED BY 'sinai';
+GRANT ALL PRIVILEGES ON *.* TO 'sinai'@'%';
 FLUSH PRIVILEGES;

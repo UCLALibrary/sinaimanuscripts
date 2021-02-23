@@ -26,8 +26,8 @@ COPY ./yarn.lock ./yarn.lock
 COPY ./config/uv ./config/uv
 RUN yarn install --frozen-lockfile
 
-# Add ursus
-COPY / /ursus
-CMD ["sh", "./start-ursus.sh"]
+# Add sinaimanuscripts site
+COPY / /sinai
+CMD ["sh", "./start-sinai.sh"]
 
 EXPOSE 3000
