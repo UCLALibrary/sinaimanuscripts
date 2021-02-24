@@ -15,8 +15,6 @@ cache:
   directories:
     # we also need to cache folder with Cypress binary
     - ~/.cache
-install:
-  - cd e2e && npm ci && cd .. && pwd
 services:
   - docker
 env:
@@ -24,13 +22,21 @@ env:
 #     - JENKINS_HOST=jenkins-devsupport.library.ucla.edu
 #     - JENKINS_USER="${TRAVIS_JENKINS_USER}"
 #     - JENKINS_API_CALLISTO="${TRAVIS_JENKINS_API_CALLISTO}"
-script:
+before_install:
   - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USER" --password-stdin
+install:
+  - docker-compose pull
+  - docker-compose build
+  - cd e2e && npm ci && cd .. && pwd
+before_script:
   - docker-compose up --detach db
-  - docker-compose run web bundle exec rails db:setup
   - docker-compose run sinai bundle exec rails db:setup
   - docker-compose up --detach
-  - docker-compose run sinai sh start-ci.sh
+script:
+  - docker-compose run sinai bundle exec rubocop
+  - docker-compose run sinai bundle exec erblint --lint-all
+  - docker-compose run sinai yarn run lint
+  - docker-compose run sinai bundle exec rspec spec
   - cd e2e && sh start-e2e.sh
 notifications:
   email: false

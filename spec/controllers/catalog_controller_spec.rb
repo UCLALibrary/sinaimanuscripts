@@ -32,7 +32,7 @@ RSpec.describe CatalogController, type: :controller do
       end
     end
 
-    xcontext 'in the sinai site' do
+    context 'in the sinai site' do
       before do
         allow(Flipflop).to receive(:sinai?).and_return(true)
       end
@@ -45,11 +45,15 @@ RSpec.describe CatalogController, type: :controller do
       end
 
       let(:expected_facets) do
-        ['genre',
-         'place_of_origin',
-         'year_isim',
-         'human_readable_language',
-         'support']
+        ["generic_type",
+         "genre",
+         "human_readable_language",
+         "human_readable_resource_type",
+         "location",
+         "member_of_collections",
+         "named_subject",
+         "subject",
+         "year_isim"]
       end
 
       it 'has exactly expected facets' do
