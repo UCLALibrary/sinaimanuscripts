@@ -21,50 +21,38 @@ services:
   - docker
 env:
   global:
-    - COMPOSE_FILE=docker-compose-ci.yml
-    - JENKINS_HOST=jenkins-devsupport.library.ucla.edu
-    - JENKINS_USER="${TRAVIS_JENKINS_USER}"
-    - JENKINS_API_CALLISTO="${TRAVIS_JENKINS_API_CALLISTO}"
-    - JENKINS_API_URSUS="${TRAVIS_JENKINS_API_URSUS}"
+#     - JENKINS_HOST=jenkins-devsupport.library.ucla.edu
+#     - JENKINS_USER="${TRAVIS_JENKINS_USER}"
+#     - JENKINS_API_CALLISTO="${TRAVIS_JENKINS_API_CALLISTO}"
 script:
   - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USER" --password-stdin
   - docker-compose up --detach db
   - docker-compose run web bundle exec rails db:setup
   - docker-compose run sinai bundle exec rails db:setup
   - docker-compose up --detach
-  - docker-compose run web sh start-ci.sh
+  - docker-compose run sinai sh start-ci.sh
   - cd e2e && sh start-e2e.sh
 notifications:
   email: false
-after_success:
-  - |
-    # A canary to allow verification that our firewall allows Travis in
-    curl https://api.ipify.org; echo
-    if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then
-      BASE_URL="https://$JENKINS_USER@$JENKINS_HOST"
-      BASE_QUERY="buildWithParameters?GIT_BRANCH=$TRAVIS_BRANCH&cause=Travis+Build"
+# after_success:
+#   - |
+#     # A canary to allow verification that our firewall allows Travis in
+#     curl https://api.ipify.org; echo
+#     if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then
+#       BASE_URL="https://$JENKINS_USER@$JENKINS_HOST"
+#       BASE_QUERY="buildWithParameters?GIT_BRANCH=$TRAVIS_BRANCH&cause=Travis+Build"
 
-      JOB=job/DeploySinaiManuscripts
-      HOST=t-w-sinaimanuscripts01.library.ucla.edu
-      API="$JENKINS_API_CALLISTO"
-      curl "$BASE_URL/$JOB/$BASE_QUERY&DEPLOY_HOST=$HOST&token=$API"
+#       JOB=job/DeploySinaiManuscripts
+#       HOST=t-w-sinaimanuscripts01.library.ucla.edu
+#       API="$JENKINS_API_CALLISTO"
+#       curl "$BASE_URL/$JOB/$BASE_QUERY&DEPLOY_HOST=$HOST&token=$API"
+#     fi
+#     if [[ $TRAVIS_TAG != "" ]]; then
+#       BASE_URL="https://$JENKINS_USER@$JENKINS_HOST"
+#       BASE_QUERY="buildWithParameters?GIT_BRANCH=$TRAVIS_TAG&cause=Travis+Build+With+Tag"
 
-      JOB=job/DeployUrsus
-      HOST=t-w-ursus01.library.ucla.edu
-      API="$JENKINS_API_URSUS"
-      curl "$BASE_URL/$JOB/$BASE_QUERY&DEPLOY_HOST=$HOST&token=$API"
-    fi
-    if [[ $TRAVIS_TAG != "" ]]; then
-      BASE_URL="https://$JENKINS_USER@$JENKINS_HOST"
-      BASE_QUERY="buildWithParameters?GIT_BRANCH=$TRAVIS_TAG&cause=Travis+Build+With+Tag"
-
-      JOB=job/DeploySinaiManuscripts
-      HOST=s-w-sinaimanuscripts01.library.ucla.edu
-      API="$JENKINS_API_CALLISTO"
-      curl "$BASE_URL/$JOB/$BASE_QUERY&DEPLOY_HOST=$HOST&token=$API"
-
-      JOB=job/DeployUrsus
-      HOST=s-w-ursus01.library.ucla.edu
-      API="$JENKINS_API_URSUS"
-      curl "$BASE_URL/$JOB/$BASE_QUERY&DEPLOY_HOST=$HOST&token=$API"
-    fi
+#       JOB=job/DeploySinaiManuscripts
+#       HOST=s-w-sinaimanuscripts01.library.ucla.edu
+#       API="$JENKINS_API_CALLISTO"
+#       curl "$BASE_URL/$JOB/$BASE_QUERY&DEPLOY_HOST=$HOST&token=$API"
+#     fi
