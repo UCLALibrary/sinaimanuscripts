@@ -1,0 +1,29 @@
+name: Build Docker Image
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    - name: Start docker-compose services
+      run: docker-compose up --detach
+    - name: Initialize DB
+      run: docker-compose run sinai bundle exec rails db:setup
+    - name: Install cypress & requirements
+      run: cd e2e && npm ci
+    - name: Where am I?
+      run: pwd
+    - uses: cypress-io/github-action@v2
+      with:
+        working-directory: e2e
