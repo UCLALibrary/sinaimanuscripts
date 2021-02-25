@@ -27,7 +27,7 @@ COPY ./config/uv ./config/uv
 RUN yarn install --frozen-lockfile
 
 # Add sinaimanuscripts site
-COPY / /sinai
+# COPY / /sinai
 CMD ["sh", "./start-sinai.sh"]
 
 EXPOSE 3000
