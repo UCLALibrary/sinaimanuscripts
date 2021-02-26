@@ -1,4 +1,4 @@
-name: Build Docker Image
+name: Run CI Suite
 
 on:
   push:
@@ -14,16 +14,21 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    - name: Login to DockerHub
+      uses: docker/login-action@v1 
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Start docker-compose services
       run: docker-compose up --detach
     - name: Initialize DB
       run: docker-compose run sinai bundle exec rails db:setup
-    - name: Install cypress & requirements
-      run: cd e2e && npm ci
-    - name: Where am I?
-      run: pwd
+#     - name: Install cypress & requirements
+#       run: cd e2e && npm ci
+    - name: Docker ps
+      run: docker-compose ps
     - uses: cypress-io/github-action@v2
       with:
         working-directory: e2e
+    - name: Stop docker services
+      run: docker-compose down
