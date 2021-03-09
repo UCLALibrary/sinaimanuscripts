@@ -25,19 +25,19 @@ services:
       - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
       - mysql_data:/var/lib/mysql
     ports:
-      - '127.0.0.1:3306:3306'  # disabled to avoid conflict w/ Ursus
+      - '127.0.0.1:3306:3306'
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
 
   solr:
-    image: uclalibrary/solr-ursus:2020-07-22
+    image: uclalibrary/solr-ursus:2021-03-01
     ports:
-      - '127.0.0.1:8983:8983'  # disabled to avoid conflict w/ Ursus
+      - '127.0.0.1:8983:8983'
 
   solr_test:
-    image: uclalibrary/solr-ursus:2020-07-22
+    image: uclalibrary/solr-ursus:2021-03-01
     ports:
-      - '127.0.0.1:8985:8983'  # disabled to avoid conflict w/ Ursus
+      - '127.0.0.1:8985:8983'
 
 volumes:
   bundle_dir:
