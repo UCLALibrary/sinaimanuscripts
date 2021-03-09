@@ -28,7 +28,7 @@ jobs:
       id: docker_meta
       uses: crazy-max/ghaction-docker-meta@9ae6899cfa6d691ad29d6fc0a228f276a16f5d44
       with:
-        images: uclalibrary/ursus
+        images: uclalibrary/sinaimanuscripts
         tag-semver: |
           {{version}}
           {{major}}.{{minor}}
