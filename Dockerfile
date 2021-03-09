@@ -20,14 +20,14 @@ COPY Gemfile ./Gemfile
 COPY Gemfile.lock ./Gemfile.lock
 RUN bundle install
 
-# Install node packages
-COPY ./package.json ./package.json
-COPY ./yarn.lock ./yarn.lock
-COPY ./config/uv ./config/uv
-RUN yarn install --frozen-lockfile
+# node stuff is currently dev only
+# # Install node packages
+# COPY ./package.json ./package.json
+# COPY ./yarn.lock ./yarn.lock
+# RUN yarn install --frozen-lockfile
 
-# Add ursus
-COPY / /ursus
-CMD ["sh", "./start-ursus.sh"]
+# Add sinaimanuscripts site
+# COPY / /sinai
+CMD ["sh", "./start-sinai.sh"]
 
 EXPOSE 3000
