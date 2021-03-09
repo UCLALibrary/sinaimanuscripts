@@ -29,6 +29,6 @@ Flipflop.configure do
           description: "Load IIIF manifests from the external manifest-store service when possible."
 
   feature :sinai,
-          default: false,
+          default: true,
           description: "Use styling and auth for Sinai Manuscripts site"
 end
