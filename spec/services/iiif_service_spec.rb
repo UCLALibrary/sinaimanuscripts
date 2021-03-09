@@ -54,28 +54,10 @@ RSpec.describe IiifService do
 
     let(:request) { instance_double('ActionDispatch::Request', base_url: 'http://test.url') }
 
-    context 'by default' do
-      it 'links to universal viewer' do
-        allow(Flipflop).to receive(:sinai?).and_return(false)
+    it 'links to mirador' do
+      allow(Flipflop).to receive(:sinai?).and_return(true)
 
-        expect(service.src(request, solr_document)).to eq 'https://t-w-dl-viewer01.library.ucla.edu/uv.html#?manifest=https%3A%2F%2Fmanifest.store%2Fark%253A%252Fabc%252F123%2Fmanifest'
-      end
-    end
-
-    context 'when the sinai feature flag is set' do
-      it 'links to mirador' do
-        allow(Flipflop).to receive(:sinai?).and_return(true)
-
-        expect(service.src(request, solr_document)).to eq 'http://test.url/mirador.html#?manifest=https%3A%2F%2Fmanifest.store%2Fark%253A%252Fabc%252F123%2Fmanifest'
-      end
-    end
-
-    context 'when the link parameter "cv" exists' do
-      it 'links to the corresponding Work page in the universal viewer' do
-        allow(request).to receive(:query_parameters).and_return('cv' => 7)
-
-        expect(service.src(request, solr_document_with_cv)).to eq 'https://t-w-dl-viewer01.library.ucla.edu/uv.html#?cv=7&manifest=https%3A%2F%2Fmanifest.store%2Fark%253A%252Fabc%252F123%2Fmanifest'
-      end
+      expect(service.src(request, solr_document)).to eq 'http://test.url/mirador.html#?manifest=https%3A%2F%2Fmanifest.store%2Fark%253A%252Fabc%252F123%2Fmanifest'
     end
   end
 end

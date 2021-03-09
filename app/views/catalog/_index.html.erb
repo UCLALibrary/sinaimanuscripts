@@ -61,15 +61,12 @@
 
     <% else %>
       <%# Sinai LOGGED IN %>
-      <%# link the header to the work by the ark %>
-      <% the_ark = CGI.escape document['ark_ssi'] %>
-
       <div class='metadata-wrapper-index--sinai'>
 
         <header class='header-index--sinai'>
           <%# link the header to the work by the ark %>
           <a href='#' data-toggle='modal' data-target='#exampleModalCenter'>
-            <%= link_to (render 'catalog/index_header_sinai', document: document), "/catalog/#{the_ark}" %>
+            <%= link_to_document(document, render('catalog/index_header_sinai', document: document)) %>
           </a>
         </header>
 

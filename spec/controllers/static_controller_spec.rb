@@ -5,35 +5,35 @@ require 'rails_helper'
 
 RSpec.describe StaticController, type: :controller do
   describe 'the static pages are successfully served' do
-    context 'GET #ursus_copyright' do
+    context 'GET #sinai_terms_of_use' do
       it "returns http success" do
-        get :ursus_copyright
+        get :sinai_terms_of_use
         expect(response).to have_http_status(:success)
-        expect(response).to render_template(:ursus_copyright)
+        expect(response).to render_template(:sinai_terms_of_use)
       end
     end
 
-    context 'GET #ursus_privacy' do
+    context 'GET #sinai_contact' do
       it "returns http success" do
-        get :ursus_privacy
+        get :sinai_contact
         expect(response).to have_http_status(:success)
-        expect(response).to render_template(:ursus_privacy)
+        expect(response).to render_template(:sinai_contact)
       end
     end
 
-    context 'GET #ursus_contact' do
+    context 'GET #sinai_about' do
       it "returns http success" do
-        get :ursus_contact
+        get :sinai_about
         expect(response).to have_http_status(:success)
-        expect(response).to render_template(:ursus_contact)
+        expect(response).to render_template(:sinai_about)
       end
     end
 
-    context 'GET #version' do
+    context 'GET #sinai_manuscript_descriptions' do
       it "returns http success" do
-        get :version
+        get :sinai_manuscript_descriptions
         expect(response).to have_http_status(:success)
-        expect(response).to render_template(:version)
+        expect(response).to render_template(:sinai_manuscript_descriptions)
       end
     end
   end
