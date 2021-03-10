@@ -48,12 +48,11 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
-    - uses: actions/setup-node@46071b5c7a2e0c34e49c3cb8a0e792e86e18d5ea
-    - run: yarn install --frozen-lockfile
-    - name: Start docker services
-      run: docker-compose up --detach db solr_test
-    - name: Initialize DB
-      run: docker-compose run sinai bundle exec rails db:setup
+    - name: Start and Initialize Docker services
+      run: |
+        docker-compose run sinai bundle install
+        docker-compose up --detach db solr_test
+        docker-compose run sinai bundle exec rails db:setup
     - name: run rspec
       run: docker-compose run sinai bundle exec rspec spec
     - name: Stop docker services
@@ -68,12 +67,12 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
-    - name: Start database # start first to give it time to run init script
-      run: docker-compose up --detach db
-    - name: Start docker services
-      run: docker-compose up --detach
-    - name: Initialize DBs
-      run: docker-compose run sinai bundle exec rails db:setup
+    - name: Start and Initialize Docker services
+      run: |
+        docker-compose run sinai bundle install
+        docker-compose up --detach
+        docker-compose run sinai bundle exec rails db:setup
+        docker-compose ps
     - uses: cypress-io/github-action@224f894ce0b082eba28a3a4562f630c54a17b432
       with:
         command-prefix: 'percy exec -- npx'
