@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  before_action :display_banner?, :sinai_authn_check, :add_legacy_views, :cors_preflight_check, :check_blank_search
+  before_action :display_banner?, :sinai_authn_check, :add_legacy_views, :cors_preflight_check
   after_action :cors_set_access_control_headers
 
   def add_legacy_views
@@ -95,11 +95,6 @@ class ApplicationController < ActionController::Base
     cipher.key = ENV['CIPHER_KEY']
     cipher.iv = cipher_iv
     cipher.update("Authenticated #{Time.zone.today}") + cipher.final
-  end
-
-  def check_blank_search
-    params[:sort] = 'score desc' if params[:q] != ''
-    params[:sort] = 'shelfmark_alpha_numeric_ssort asc' if params[:q] == ''
   end
 
   helper Openseadragon::OpenseadragonHelper
