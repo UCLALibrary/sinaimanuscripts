@@ -16,7 +16,7 @@ In 1984 to mark its 50th Anniversary, the UCLA Alumni Association commissioned "
 ---
 
 [![Apache 2.0 License](http://img.shields.io/badge/APACHE2-license-blue.svg)](./LICENSE)
-[![Coverage Status](https://cove:3003ralls.io/repos/github/UCLALibrary/sinaimanuscripts/badge.svg?branch=ci%2Fadd-coveralls)](https://coveralls.io/github/UCLALibrary/sinaimanuscripts?branch=ci%2Fadd-coveralls)
+[![Coverage Status](https://coveralls.io/repos/github/UCLALibrary/sinaimanuscripts/badge.svg?branch=ci%2Fadd-coveralls)](https://coveralls.io/github/UCLALibrary/sinaimanuscripts?branch=ci%2Fadd-coveralls)
 [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/UCLA-Library-Software-Development/sinaimanuscripts)
 
 ---
