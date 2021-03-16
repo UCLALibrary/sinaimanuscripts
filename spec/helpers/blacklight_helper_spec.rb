@@ -81,4 +81,17 @@ RSpec.describe BlacklightHelper, type: :helper do
       end
     end
   end
+
+  describe 'render_other_versions_link' do
+    context 'renders other_versions' do
+      let(:document) do
+        SolrDocument.new(
+          'other_versions_tesim' => ["https://www.test"]
+        )
+      end
+      it 'displays a linked href value' do
+        expect(render_other_versions_link).to eq '<a href="https://www.test">https://www.test</a> <br>'
+      end
+    end
+  end
 end
