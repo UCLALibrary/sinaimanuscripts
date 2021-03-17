@@ -42,4 +42,11 @@ describe('Sinai Search', () => {
     cy.get('.search-count__heading').contains('Catalog Results');
     cy.percySnapshot();
   });
+
+  it('Search Defaults to Shelfmark', () => {
+    cy.get('.search-widget__dropdown', { timeout: 100000 }).contains('Sort by Shelfmark (A-Z)');
+    cy.get('[id=q]').type('sinai syriac 100');
+    cy.get('.search-widget__dropdown').contains('Relevance');
+    cy.percySnapshot();
+  });
 });

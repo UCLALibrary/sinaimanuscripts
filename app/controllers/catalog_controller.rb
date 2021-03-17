@@ -12,7 +12,6 @@ class CatalogController < ApplicationController
 
   # Apply the blacklight-access_controls
   before_action :enforce_show_permissions, only: :show
-  before_action :set_default_sort
 
   include BlacklightHelper
 
@@ -486,9 +485,5 @@ class CatalogController < ApplicationController
 
   def oai_provider
     @oai_provider ||= Ucla::Oai::SolrDocumentProvider.new(self, oai_config)
-  end
-
-  def set_default_sort
-    params[:sort] ||= 'shelfmark_alpha_numeric_ssort asc' if params[:q].to_s.empty?
   end
 end
