@@ -44,7 +44,7 @@ describe('Sinai Search', () => {
   });
 
   it('Search Sort', () => {
-    cy.get('[id=q]').type('');
+    cy.get('[id=search]').click();
     cy.get('.search-widget__dropdown').contains('Sort by Shelfmark (A-Z)');
   });
 });
