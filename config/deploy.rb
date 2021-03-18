@@ -3,7 +3,7 @@
 lock "~> 3.11.0"
 
 set :application, "ursus"
-set :repo_url, "https://github.com/UCLALibrary/ursus.git"
+set :repo_url, "https://github.com/UCLALibrary/sinaimanuscripts.git"
 
 set :deploy_to, '/opt/ursus'
 set :rails_env, 'production'
