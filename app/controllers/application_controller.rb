@@ -60,8 +60,11 @@ class ApplicationController < ActionController::Base
     cookies[:banner_display_option] = "banner_off"
   end
 
+  
   def set_default_sort
+    # set default sort to order by shelfmark for an empty search
     params[:sort] ||= 'shelfmark_alpha_numeric_ssort asc' if params[:q].to_s.empty? && params[:f].to_s.empty?
+    # change sort to relevance if the search is no longer empty
     params[:sort] = 'score desc' if params[:sort] == 'shelfmark_alpha_numeric_ssort asc' && (!params[:f].to_s.empty? || !params[:q].to_s.empty?)
   end
 

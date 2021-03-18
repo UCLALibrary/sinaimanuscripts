@@ -43,7 +43,7 @@ describe('Sinai Search', () => {
     cy.percySnapshot();
   });
 
-  it('Search Defaults to Shelfmark', () => {
+  it('Search Sort', () => {
     cy.get('.search-widget__dropdown', { timeout: 100000 }).contains('Sort by Shelfmark (A-Z)');
     cy.get('[id=q]').type('sinai syriac 100');
     cy.get('.search-widget__dropdown').contains('Relevance');
