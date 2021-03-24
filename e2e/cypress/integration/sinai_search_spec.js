@@ -46,5 +46,7 @@ describe('Sinai Search', () => {
   it('Search Sort', () => {
     cy.get('[id=search]').click();
     cy.get('.search-widget__dropdown').contains('Sort by Shelfmark (A-Z)');
+    cy.get('[id=q]').type('sinai');
+    cy.get('.search-widget__dropdown').contains('Relevance');
   });
 });

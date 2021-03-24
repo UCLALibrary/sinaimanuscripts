@@ -61,8 +61,8 @@ class ApplicationController < ActionController::Base
   end
 
   def set_default_sort
-    # set default sort to order by shelfmark for an empty search
-    params[:sort] ||= 'shelfmark_alpha_numeric_ssort asc' if params[:q].to_s.empty? && params[:f].to_s.empty?
+    # set sort to be relevance if search is not empty
+    params[:sort] ||= 'score desc' if !params[:q].to_s.empty? || !params[:f].to_s.empty?
   end
 
   def sinai_authenticated?
