@@ -22,10 +22,6 @@ RSpec.describe Sinai::ReferencesMetadataPresenter do
       it 'returns the References Key' do
         expect(config['references_tesim'].to_s).to eq('References')
       end
-
-      it 'returns the Other version(s) Key' do
-        expect(config['other_versions_tesim'].to_s).to eq('Other version(s)')
-      end
     end
 
     describe "#references_terms terms" do
@@ -33,14 +29,16 @@ RSpec.describe Sinai::ReferencesMetadataPresenter do
       let(:missing) { presenter_object_missing_items.references_terms.keys.length }
 
       it "returns existing keys" do
-        expect(all).to eq 2
+        expect(all).to eq 1
         expect(config.length).to eq all
       end
 
-      it "is missing elements" do
-        expect(all - missing).to_not eq 0
-        expect(config.length - missing).to_not eq 0
-      end
+      # There is only one element in the yaml right now
+
+      # it "is missing elements" do
+      #   expect(all - missing).to_not eq 0
+      #   expect(config.length - missing).to_not eq 0
+      # end
     end
   end
 end
