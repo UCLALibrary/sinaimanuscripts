@@ -22,7 +22,6 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
 gem 'httparty'
 gem 'jquery-rails', '~> 4.4', '>= 4.4.0'
 gem 'loofah', '>= 2.4.0'
-gem 'mimemagic', '~> 0.4.0'
 gem 'mysql2', '~> 0.5'
 gem 'pkg-config', '~> 1.1'
 gem 'puma', '~> 5.2' # app server
