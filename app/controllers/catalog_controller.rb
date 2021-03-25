@@ -214,6 +214,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'creator_tesim', label: 'Creator', link_to_facet: 'creator_sim'
 
     # IF SINAI ?
+    config.add_show_field 'contributor_tesim', label: 'Contributor'
     config.add_show_field 'explicit_tesim', label: 'Explicit'
     config.add_show_field 'incipit_tesim', label: 'Incipit'
     config.add_show_field 'inscription_tesim', label: 'Inscription'
@@ -302,7 +303,6 @@ class CatalogController < ApplicationController
     # 'IIIF Range'
 
     # NOT USING
-    config.add_show_field 'contributor_tesim', label: 'Contributor'
     config.add_show_field 'dlcs_collection_name_tesim' unless Flipflop.sinai?
     config.add_show_field 'identifier_tesim', label: 'Identifier'
     # 'Citation'
