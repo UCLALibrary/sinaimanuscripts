@@ -5,35 +5,43 @@ require 'rails_helper'
 
 RSpec.describe StaticController, type: :controller do
   describe 'the static pages are successfully served' do
-    context 'GET #sinai_terms_of_use' do
+    context 'GET #terms_of_use' do
       it "returns http success" do
-        get :sinai_terms_of_use
+        get :terms_of_use
         expect(response).to have_http_status(:success)
-        expect(response).to render_template(:sinai_terms_of_use)
+        expect(response).to render_template(:terms_of_use)
       end
     end
 
-    context 'GET #sinai_contact' do
+    context 'GET #contact' do
       it "returns http success" do
-        get :sinai_contact
+        get :contact
         expect(response).to have_http_status(:success)
-        expect(response).to render_template(:sinai_contact)
+        expect(response).to render_template(:contact)
       end
     end
 
-    context 'GET #sinai_about' do
-      it "returns http success" do
-        get :sinai_about
+    context 'GET #contributors_credits' do
+      xit "returns http success" do
+        get :contributors_credits
         expect(response).to have_http_status(:success)
-        expect(response).to render_template(:sinai_about)
+        expect(response).to render_template(:contributors_credits)
       end
     end
 
-    context 'GET #sinai_manuscript_descriptions' do
+    context 'GET #about' do
       it "returns http success" do
-        get :sinai_manuscript_descriptions
+        get :about
         expect(response).to have_http_status(:success)
-        expect(response).to render_template(:sinai_manuscript_descriptions)
+        expect(response).to render_template(:about)
+      end
+    end
+
+    context 'GET #manuscript_descriptions' do
+      it "returns http success" do
+        get :manuscript_descriptions
+        expect(response).to have_http_status(:success)
+        expect(response).to render_template(:manuscript_descriptions)
       end
     end
   end
