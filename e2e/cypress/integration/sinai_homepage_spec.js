@@ -19,8 +19,8 @@ describe('Sinai Homepage', () => {
   it('About Link', () => {
     cy.visit(Cypress.env('SINAI_BASE_URL'));
     cy.contains('a', 'About');
-    cy.get('[href="/sinai_about"]').click({ force: true });
-    cy.url().should('include', '/sinai_about');
+    cy.get('[href="/about"]').click({ force: true });
+    cy.url().should('include', '/about');
   });
 
   // Can't test login link because we bypass auth in the test server
@@ -31,8 +31,8 @@ describe('Sinai Homepage', () => {
 
   // Static pages
   it('About Page', () => {
-    cy.visit(Cypress.env('SINAI_BASE_URL') + '/sinai_about');
-    cy.url().should('include', '/sinai_about');
+    cy.visit(Cypress.env('SINAI_BASE_URL') + '/about');
+    cy.url().should('include', '/about');
     cy.contains('h1', 'About the Project');
     cy.percySnapshot();
   });

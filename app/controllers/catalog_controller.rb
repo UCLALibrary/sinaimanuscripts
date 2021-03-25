@@ -401,12 +401,14 @@ class CatalogController < ApplicationController
     # and whether the sort is ascending or descending
     # (it must be asc or desc except in the relevancy case)
     # label is key, solr field is value
+
     config.add_sort_field 'score desc', label: 'Relevance'
 
     # config.add_sort_field 'sort_title_ssort asc', label: 'Title (A-Z)'
     # config.add_sort_field 'sort_title_ssort desc', label: 'Title (Z-A)'
     if Flipflop.sinai?
-      config.add_sort_field 'shelfmark_alpha_numeric_ssort asc', label: 'Shelfmark (A-Z)'
+      # set shelfmark A-Z as default so empty searches are ordered by Shelfmark
+      config.add_sort_field 'shelfmark_alpha_numeric_ssort asc', label: 'Shelfmark (A-Z)', default: true
       config.add_sort_field 'shelfmark_alpha_numeric_ssort desc', label: 'Shelfmark (Z-A)'
       #  config.add_sort_field 'sort_year_isi desc', label: 'Year (newest)'
       #  config.add_sort_field 'sort_year_isi asc', label: 'Year (oldest)'

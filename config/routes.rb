@@ -4,18 +4,13 @@ Rails.application.routes.draw do
 
   mount Flipflop::Engine => "/flipflop"
 
-  # Ursus static pages
-  get '/ursus_about', to: 'static#ursus_about'
-  get '/ursus_contact', to: 'static#ursus_contact'
-  get '/copyright_and_collections', to: 'static#ursus_copyright'
-  get '/privacy_policy', to: 'static#ursus_privacy'
-
   # Sinai static pages
   get '/login', to: 'login#new', as: 'login'
-  get '/sinai_about', to: 'static#sinai_about'
-  get '/sinai_contact', to: 'static#sinai_contact'
-  get '/manuscript_descriptions', to: 'static#sinai_manuscript_descriptions'
-  get '/terms-of-use', to: 'static#sinai_terms_of_use'
+  get '/about', to: 'static#about'
+  get '/contact', to: 'static#contact'
+  get '/contributors_credits', to: 'static#contributors_credits'
+  get '/manuscript_descriptions', to: 'static#manuscript_descriptions'
+  get '/terms-of-use', to: 'static#terms_of_use'
 
   # Canon Law
   get '/canonlaw', to: 'canon_law#index'
