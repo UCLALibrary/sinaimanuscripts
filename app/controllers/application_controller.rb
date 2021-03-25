@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  before_action :display_banner?, :sinai_authn_check, :add_legacy_views, :cors_preflight_check
+  before_action :display_banner?, :sinai_authn_check, :add_legacy_views, :cors_preflight_check, :set_default_sort
   after_action :cors_set_access_control_headers
 
   def add_legacy_views
@@ -58,6 +58,11 @@ class ApplicationController < ActionController::Base
 
   def set_banner_cookie
     cookies[:banner_display_option] = "banner_off"
+  end
+
+  def set_default_sort
+    # set sort to be relevance if search is not empty
+    params[:sort] ||= 'score desc' if !params[:q].to_s.empty? || !params[:f].to_s.empty?
   end
 
   def sinai_authenticated?

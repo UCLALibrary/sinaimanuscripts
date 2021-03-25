@@ -42,6 +42,7 @@ Metrics/ClassLength:
   Enabled: true
   Exclude:
     - app/controllers/catalog_controller.rb
+    - app/controllers/application_controller.rb
     - app/importers/californica_mapper.rb
 
 Metrics/CyclomaticComplexity:
