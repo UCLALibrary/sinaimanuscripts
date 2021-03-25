@@ -62,7 +62,7 @@ class ApplicationController < ActionController::Base
 
   def set_default_sort
     # set sort to be relevance if keyword search is not empty
-    params[:sort] ||= 'score desc' if !params[:q].to_s.empty?
+    params[:sort] ||= 'score desc' unless params[:q].to_s.empty?
   end
 
   def sinai_authenticated?
