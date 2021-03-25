@@ -4,6 +4,7 @@ require 'rails_helper'
 RSpec.describe Sinai::ReferencesMetadataPresenter do
   let(:solr_doc) do
     {
+      'contributor_tesim' => 'Contributor',
       'references_tesim' => 'References',
       'other_versions_tesim' => 'Other version(s)'
     }
@@ -29,16 +30,14 @@ RSpec.describe Sinai::ReferencesMetadataPresenter do
       let(:missing) { presenter_object_missing_items.references_terms.keys.length }
 
       it "returns existing keys" do
-        expect(all).to eq 1
+        expect(all).to eq 2
         expect(config.length).to eq all
       end
 
-      # There is only one element in the yaml right now
-
-      # it "is missing elements" do
-      #   expect(all - missing).to_not eq 0
-      #   expect(config.length - missing).to_not eq 0
-      # end
+      it "is missing elements" do
+        expect(all - missing).to_not eq 0
+        expect(config.length - missing).to_not eq 0
+      end
     end
   end
 end
