@@ -4,7 +4,7 @@ require 'rails_helper'
 RSpec.describe Sinai::ReferencesMetadataPresenter do
   let(:solr_doc) do
     {
-      'contributor_tesim' => 'Contributor',
+      'contributor_tesim' => 'Contributors',
       'references_tesim' => 'References',
       'other_versions_tesim' => 'Other version(s)'
     }

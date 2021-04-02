@@ -214,7 +214,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'creator_tesim', label: 'Creator', link_to_facet: 'creator_sim'
 
     # IF SINAI ?
-    config.add_show_field 'contributor_tesim', label: 'Contributor'
+    config.add_show_field 'contributor_tesim', label: 'Contributors'
     config.add_show_field 'explicit_tesim', label: 'Explicit'
     config.add_show_field 'incipit_tesim', label: 'Incipit'
     config.add_show_field 'inscription_tesim', label: 'Inscription'
