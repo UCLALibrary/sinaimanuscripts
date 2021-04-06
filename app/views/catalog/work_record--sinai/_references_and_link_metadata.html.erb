@@ -1,7 +1,7 @@
 <% doc_presenter = show_presenter(document) %>
 <% references = Sinai::ReferencesMetadataPresenter.new(document: doc_presenter.fields_to_render).references_terms %>
 
-<% if (references.length > 0) || (@document[:other_versions_tesim].length > 0) %>
+<% if (references.length > 0) || (@document[:other_versions_tesim].to_a.length > 0) %>
 
   <input type="radio" name="tabs" id="tabfive">
   <label for="tabfive">References</label>
@@ -22,7 +22,7 @@
     <% end %>
 
     <%# other_versions_tesim %>
-    <% if @document[:other_versions_tesim] %>
+    <% if @document[:other_versions_tesim].to_a.length > 0 %>
       <div class="metadata-block--sinai">
         <span class="metadata-block_title--sinai">
           <%= 'Other version(s)' %>

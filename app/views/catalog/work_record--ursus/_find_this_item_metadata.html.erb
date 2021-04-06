@@ -22,19 +22,7 @@
         </dt>
       <% end %>
       <%= render_opac_link %>
-
-      <!-- iiif drag and drop logo -->
-      <% if !Flipflop.sinai? %>
-        <dt class='metadata-block__label-key'>Manifest url</dt>
-        <dd class='metadata-block__label-value'>
-          <a href="<%= @document[:iiif_manifest_url_ssi] %>" target="_blank"><%= image_tag('iiif-logo.png', alt: 'IIIF Manifest') %></a>
-        </dd>
-      <% end %>
-
-      <!-- other versions -->
-      <% if Flipflop.sinai? %>
-        <%= render 'otherversion' %>
-      <% end %>
+      <%= render 'otherversion' %>
     </dl>
     <hr>
     <% if Flipflop.sinai? %>

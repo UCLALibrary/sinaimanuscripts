@@ -1,7 +1,7 @@
 <% doc_presenter = show_presenter(document) %>
 <% access_condition = Ursus::AccessConditionMetadataPresenter.new(document: doc_presenter.fields_to_render).access_condition_terms %>
 
-<% if access_condition.length > 0 %>
+<% if access_condition.to_a.length > 0 %>
   <div class='metadata-block'>
     <h4 class='metadata-block__title'>Access Condition</h4>
     <dl class='metadata-block__group'>
@@ -24,11 +24,7 @@
       <%= render 'license' %>
     </dl>
 
-  <% if Flipflop.sinai? %>
     <hr class='divider'>
-  <% else %>
-    <hr class='divider divider--white'>
-  <% end %>
 
   </div>
 <% end %>
