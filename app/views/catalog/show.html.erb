@@ -1,4 +1,4 @@
-<% if @document[:has_model_ssim][0] == 'Collection' %>
+<% if @document[:has_model_ssim].to_a[0] == 'Collection' %>
 <%
 @page_title = if Flipflop.sinai?
                 t('blacklight.search.show.title', document_title: document_show_html_title, application_name: sinai_application_name).html_safe

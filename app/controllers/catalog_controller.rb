@@ -473,7 +473,7 @@ class CatalogController < ApplicationController
       format.json
       additional_export_formats(@document, format)
     end
-    if @document[:has_model_ssim][0] == 'Collection'
+    if @document[:has_model_ssim].to_a[0] == 'Collection'
       facet_member_of_collections = blacklight_config.facet_fields['member_of_collections_ssim']
       if facet_member_of_collections
         @response_collection = search_service.facet_field_response(facet_member_of_collections.key, "f.member_of_collections_ssim.facet.contains" => @document[:title_tesim][0])
