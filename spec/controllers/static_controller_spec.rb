@@ -22,7 +22,7 @@ RSpec.describe StaticController, type: :controller do
     end
 
     context 'GET #contributors_credits' do
-      xit "returns http success" do
+      it "returns http success" do
         get :contributors_credits
         expect(response).to have_http_status(:success)
         expect(response).to render_template(:contributors_credits)

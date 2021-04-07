@@ -41,6 +41,16 @@
   }
 }
 
+.static-page__subsubtitle--sinai {
+  text-transform: uppercase;
+  font-size: $text-18;
+  font-weight: $font-light;
+
+  @media (max-width: 767px) {
+    font-size: $text-16;
+  }
+}
+
 .static-page__subtitle--sinai-about {
   @extend .col-lg-4;
 }
@@ -68,6 +78,16 @@
     &:nth-child(even) {
       margin-top: 1.5rem;
     }
+  }
+}
+
+.static-page__credits {
+  a {
+    color: $ucla-darker-blue;
+  }
+
+  a:hover {
+    font-weight: $font-medium;
   }
 }
 
