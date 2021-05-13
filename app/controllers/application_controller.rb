@@ -85,7 +85,7 @@ class ApplicationController < ActionController::Base
   def set_auth_cookies
     cookies[:sinai_authenticated] = {
       value: create_encrypted_string.unpack('H*')[0].upcase,
-      expires: Time.zone.now + 25.years,
+      expires: Time.zone.now + 1.mins,
       domain: ENV['DOMAIN']
     }
     cookies[:initialization_vector] = {
