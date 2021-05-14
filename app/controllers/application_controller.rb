@@ -90,7 +90,7 @@ class ApplicationController < ActionController::Base
     }
     cookies[:initialization_vector] = {
       value: cipher_iv.unpack('H*')[0].upcase,
-      expires: Time.zone.now +3.days,
+      expires: Time.zone.now + 3.days,
       domain: ENV['DOMAIN']
     }
   end
