@@ -11,23 +11,28 @@ jobs:
     name: Deploy to server
     runs-on: ubuntu-latest
     steps:
-      - name: Set target to dev
-        if: ${{ github.ref == 'refs/heads/dev' || startsWith(github.ref, '/ref/heads/dev-') }}
+      - name: Set target to stage for new version tag
+        if: ${{ startsWith(github.ref, 'refs/tags/v') }}
         run: |
-          echo "DEPLOY_HOST=d-w-sinaimanuscripts01.library.ucla.edu" >> $GITHUB_ENV
-          echo "GIT_BRANCH=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+          echo "DEPLOY_HOST=s-w-sinaimanuscripts01.library.ucla.edu" >> $GITHUB_ENV
+          echo "GIT_BRANCH=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
 
-      - name: Set target to test
+      - name: Set target to test for updated main branch
         if: ${{ github.ref == 'refs/heads/main' }}
         run: |
           echo "DEPLOY_HOST=t-w-sinaimanuscripts01.library.ucla.edu" >> $GITHUB_ENV
           echo "GIT_BRANCH=main" >> $GITHUB_ENV
 
-      - name: Set target to stage
-        if: ${{ startsWith(github.ref, 'refs/tags/v') }}
+      - name: Set target to dev
+        if: ${{ github.ref == 'refs/heads/dev' || startsWith(github.ref, '/ref/heads/dev-') }}
         run: |
-          echo "DEPLOY_HOST=s-w-sinaimanuscripts01.library.ucla.edu" >> $GITHUB_ENV
-          echo "GIT_BRANCH=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+          echo $GIT_BRANCH
+          echo ${{env.GIT_BRANCH}}
+          echo ${{!env.GIT_BRANCH}}
+          echo ${{!!env.GIT_BRANCH}}
+          echo "DEPLOY_HOST=d-w-sinaimanuscripts01.library.ucla.edu" >> $GITHUB_ENV
+          echo "GIT_BRANCH=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+
 
       - name: Trigger Jenkins deploy
         if: ${{ env.DEPLOY_HOST != '' }}
