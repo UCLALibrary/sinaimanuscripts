@@ -1,6 +1,6 @@
 <!-- SINAI -->
 <% if Flipflop.sinai? %>
-<% if !cookies[:sinai_authenticated_3day] %>
+<% if !cookies[:sinai_authenticated] %>
 <%
       cookies[:requested_path] = request.original_url
       login_service = LoginService.new
