@@ -8,6 +8,8 @@ class StaticController < ApplicationController
 
   def manuscript_descriptions; end
 
+  def references; end
+
   def terms_of_use; end
 
   def version; end
