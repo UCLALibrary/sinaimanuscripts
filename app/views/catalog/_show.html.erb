@@ -7,7 +7,9 @@
 
     <%# ---------- IIIF & Tooltip ------------ %>
     <div class='si-link-iiif'>
-      <div class='iiif-tooltip--sinai' data-toggle="tooltip" data-placement="bottom" data-html="true" title="IIIF Manifest URL"><%= link_to image_tag('iiif-logo.png', alt: 'IIIF Manifest'), target: "_blank", @document[:iiif_manifest_url_ssi], class: 'si-link-iiif' %></div>
+        <%#= link_to image_tag("linkedin.svg"), "http://www.linkedin.com/in/myprofile",  :target => "_blank"%>
+        <%= link_to image_tag('iiif-logo.png'), @document[:iiif_manifest_url_ssi], target: '_blank', alt: 'IIIF Manifest', class: 'si-link-iiif' %>
+      </div>
     </div>
   </div>
 
