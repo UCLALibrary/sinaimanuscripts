@@ -251,7 +251,7 @@ class CatalogController < ApplicationController
     if Flipflop.sinai?
       config.add_show_field 'keywords_tesim', label: 'Keywords', link_to_facet: 'keywords_sim', separator_options: {}
     end
-    config.add_show_field 'form_ssi', label: 'Form', link_to_facet: 'form_sim'
+    config.add_show_field 'form_tesim', label: 'Form', link_to_facet: 'form_sim'
     config.add_show_field 'genre_tesim', label: 'Genre', link_to_facet: 'genre_sim'
     config.add_show_field 'support_tesim', label: 'Support', link_to_facet: 'support_sim'
     config.add_show_field 'features_tesim', label: 'Features', link_to_facet: 'features_sim'

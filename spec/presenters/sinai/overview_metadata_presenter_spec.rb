@@ -7,7 +7,7 @@ RSpec.describe Sinai::OverviewMetadataPresenter do
       'place_of_origin_tesim' => 'Place of origin',
       'date_created_tesim' => 'Date created',
       'extent_tesim' => 'Extent',
-      'form_ssi' => 'Form',
+      'form_tesim' => 'Form',
       'human_readable_language_tesim' => 'Language',
       'writing_system_tesim' => 'Writing system',
       'script_tesim' => 'Script',
@@ -21,7 +21,7 @@ RSpec.describe Sinai::OverviewMetadataPresenter do
       'place_of_origin_tesim' => 'Place of origin',
       'date_created_tesim' => 'Date created',
       'extent_tesim' => 'Extent',
-      'form_ssi' => 'Form',
+      'form_tesim' => 'Form',
       'human_readable_language_tesim' => 'Language'
     }
   end
@@ -44,7 +44,7 @@ RSpec.describe Sinai::OverviewMetadataPresenter do
       end
 
       it 'returns the Form Key' do
-        expect(config['form_ssi'].to_s).to eq('Form')
+        expect(config['form_tesim'].to_s).to eq('Form')
       end
 
       it 'returns the Language Key' do

@@ -4,7 +4,7 @@
 place_of_origin_tesim: 'Place of origin'
 date_created_tesim: 'Date created'
 extent_tesim: 'Extent'
-form_ssi: 'Form'
+form_tesim: 'Form'
 human_readable_language_tesim: 'Language'
 writing_system_tesim: 'Writing system'
 script_tesim: 'Script'
