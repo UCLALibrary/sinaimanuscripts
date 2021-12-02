@@ -40,7 +40,7 @@ RSpec.describe Sinai::OverviewMetadataPresenter do
       end
 
       it 'returns the Extent Key' do
-        expect(config['extent_tesim'].to_s).to eq('Extent')
+        expect(config['format_extent_tesim'].to_s).to eq('Extent')
       end
 
       it 'returns the Form Key' do
