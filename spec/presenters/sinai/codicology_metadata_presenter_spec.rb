@@ -4,7 +4,7 @@ require 'rails_helper'
 RSpec.describe Sinai::CodicologyMetadataPresenter do
   let(:solr_doc) do
     {
-      'extent_tesim' => 'Extent',
+      'format_extent_tesim' => 'Extent',
       'collation_tesim' => 'Collation',
       'form_tesim' => 'Form',
       'support_tesim' => 'Support',
