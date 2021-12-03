@@ -4,7 +4,7 @@ require 'rails_helper'
 RSpec.describe Sinai::CodicologyMetadataPresenter do
   let(:solr_doc) do
     {
-      'extent_tesim' => 'Extent',
+      'format_extent_tesim' => 'Extent',
       'collation_tesim' => 'Collation',
       'form_tesim' => 'Form',
       'support_tesim' => 'Support',
@@ -20,7 +20,7 @@ RSpec.describe Sinai::CodicologyMetadataPresenter do
   end
   let(:solr_doc_missing_items) do
     {
-      'extent_tesim' => 'Extent',
+      'format_extent_tesim' => 'Extent',
       'collation_tesim' => 'Collation',
       'form_sim' => 'Form',
       'support_tesim' => 'Support',
@@ -35,7 +35,7 @@ RSpec.describe Sinai::CodicologyMetadataPresenter do
   context 'with a solr document containing codicology metadata' do
     describe '#terms' do
       it 'returns the Extent Key' do
-        expect(config['extent_tesim'].to_s).to eq('Extent')
+        expect(config['format_extent_tesim'].to_s).to eq('Extent')
       end
 
       it 'returns the Collation Key' do

@@ -236,6 +236,7 @@ class CatalogController < ApplicationController
     # 'Book format'
     config.add_show_field 'medium_tesim', label: 'Medium'
     config.add_show_field 'extent_tesim', label: 'Extent'
+    config.add_show_field 'format_extent_tesim', label: 'Extent'
     config.add_show_field 'dimensions_tesim', label: 'Dimensions'
     config.add_show_field 'page_layout_ssim', label: 'Page layout'
     config.add_show_field 'binding_note_ssi', label: 'Binding note'
