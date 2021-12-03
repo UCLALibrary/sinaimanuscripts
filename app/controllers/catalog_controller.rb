@@ -105,17 +105,17 @@ class CatalogController < ApplicationController
     # The ordering of the field names is the order of the display
 
     # SINAI
-      config.add_facet_field 'genre_sim', sort: 'index'
-      config.add_facet_field 'place_of_origin_sim', sort: 'index', label: 'Place of origin'
-      config.add_facet_field 'year_isim', range: true
-      config.add_facet_field 'human_readable_language_sim', sort: 'index'
-      config.add_facet_field 'writing_system_sim', sort: 'index', label: 'Writing system'
-      config.add_facet_field 'script_sim', sort: 'index', label: 'Script'
-      config.add_facet_field 'features_sim', sort: 'index', label: 'Features'
-      config.add_facet_field 'support_sim', sort: 'index', label: 'Support'
-      config.add_facet_field 'form_sim', sort: 'index', label: 'Form'
-      config.add_facet_field 'names_sim', sort: 'index', label: 'Names'
-      config.add_facet_field 'collection_ssi', sort: 'index', label: 'Collection'
+    config.add_facet_field 'genre_sim', sort: 'index'
+    config.add_facet_field 'place_of_origin_sim', sort: 'index', label: 'Place of origin'
+    config.add_facet_field 'year_isim', range: true
+    config.add_facet_field 'human_readable_language_sim', sort: 'index'
+    config.add_facet_field 'writing_system_sim', sort: 'index', label: 'Writing system'
+    config.add_facet_field 'script_sim', sort: 'index', label: 'Script'
+    config.add_facet_field 'features_sim', sort: 'index', label: 'Features'
+    config.add_facet_field 'support_sim', sort: 'index', label: 'Support'
+    config.add_facet_field 'form_sim', sort: 'index', label: 'Form'
+    config.add_facet_field 'names_sim', sort: 'index', label: 'Names'
+    config.add_facet_field 'collection_ssi', sort: 'index', label: 'Collection'
 
     # The generic_type isn't displayed on the facet list
     # It's used to give a label to the filter that comes from the user profile
@@ -133,14 +133,14 @@ class CatalogController < ApplicationController
     # solr fields to be displayed in the index search results / list view
     # The config.add_index_field ::Solrizer.solr_name('title',  :stored_searchable), label: 'Title', itemprop: 'name', if: false
 
-      config.add_index_field 'header_index_sim', label: 'Header'
-      # Title descriptive_title_tesim & uniform_title_tesim
-      config.add_index_field 'descriptive_title_tesim'
-      config.add_index_field 'uniform_title_tesim', link_to_facet: 'uniform_title_sim'
-      config.add_index_field 'date_created_tesim', label: 'Date'
-      config.add_index_field 'human_readable_language_tesim', label: 'Language'
-      config.add_index_field 'collection_ssi'
-      config.add_index_field 'name_fields_index_tesim', label: 'Name', link_to_facet: 'names_sim'
+    config.add_index_field 'header_index_sim', label: 'Header'
+    # Title descriptive_title_tesim & uniform_title_tesim
+    config.add_index_field 'descriptive_title_tesim'
+    config.add_index_field 'uniform_title_tesim', link_to_facet: 'uniform_title_sim'
+    config.add_index_field 'date_created_tesim', label: 'Date'
+    config.add_index_field 'human_readable_language_tesim', label: 'Language'
+    config.add_index_field 'collection_ssi'
+    config.add_index_field 'name_fields_index_tesim', label: 'Name', link_to_facet: 'names_sim'
 
     # ------------------------------------------------------
     # SHOW PAGE / ITEM PAGE / Individual Work (Universal Viewer Page)
@@ -227,8 +227,9 @@ class CatalogController < ApplicationController
     config.add_show_field 'hand_note_tesim', limit: 7, label: 'Hand note' # 'Writing and hands'
 
     config.add_show_field 'human_readable_resource_type_tesim', label: 'Resource type', link_to_facet: 'human_readable_resource_type_sim'
+
     # Keywords
-      config.add_show_field 'keywords_tesim', label: 'Keywords', link_to_facet: 'keywords_sim', separator_options: {}
+    config.add_show_field 'keywords_tesim', label: 'Keywords', link_to_facet: 'keywords_sim', separator_options: {}
     config.add_show_field 'form_tesim', label: 'Form', link_to_facet: 'form_sim'
     config.add_show_field 'genre_tesim', label: 'Genre', link_to_facet: 'genre_sim'
     config.add_show_field 'support_tesim', label: 'Support', link_to_facet: 'support_sim'
@@ -334,7 +335,6 @@ class CatalogController < ApplicationController
           pf: ''
         }
       end
-
     end
 
     # SINAI
@@ -383,11 +383,11 @@ class CatalogController < ApplicationController
     # config.add_sort_field 'sort_title_ssort asc', label: 'Title (A-Z)'
     # config.add_sort_field 'sort_title_ssort desc', label: 'Title (Z-A)'
 
-      # set shelfmark A-Z as default so empty searches are ordered by Shelfmark
-      config.add_sort_field 'shelfmark_alpha_numeric_ssort asc', label: 'Shelfmark (A-Z)', default: true
-      config.add_sort_field 'shelfmark_alpha_numeric_ssort desc', label: 'Shelfmark (Z-A)'
-      #  config.add_sort_field 'sort_year_isi desc', label: 'Year (newest)'
-      #  config.add_sort_field 'sort_year_isi asc', label: 'Year (oldest)'
+    # set shelfmark A-Z as default so empty searches are ordered by Shelfmark
+    config.add_sort_field 'shelfmark_alpha_numeric_ssort asc', label: 'Shelfmark (A-Z)', default: true
+    config.add_sort_field 'shelfmark_alpha_numeric_ssort desc', label: 'Shelfmark (Z-A)'
+    # config.add_sort_field 'sort_year_isi desc', label: 'Year (newest)'
+    # config.add_sort_field 'sort_year_isi asc', label: 'Year (oldest)'
 
     config.add_sort_field 'date_dtsort desc', label: 'Date (newest)'
     config.add_sort_field 'date_dtsort asc', label: 'Date (oldest)'

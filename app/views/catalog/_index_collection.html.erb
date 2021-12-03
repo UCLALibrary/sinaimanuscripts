@@ -1,10 +1,11 @@
-<% if document[:collection_ssi] %>
-  <% collection = document[:collection_ssi] %>
-   <% collection.each_with_index do |field, index| %>
-      <% if index == 0 %>
-        <%= field %>&nbsp;|
-      <% else %>
-        <%= field %>
-      <% end %>
+<% doc_presenter = index_presenter(document) %>
+<% sinai_index_collection = Ursus::SinaiIndexCollectionPresenter.new(document: doc_presenter.fields_to_render).sinai_index_collection_terms %>
+
+<% if sinai_index_collection.length > 0 %>
+  <% sinai_index_collection.each do |field_name, field| -%>
+    <!-- VALUE -->
+    <div class='metadata-value-index--sinai'>
+      <%= doc_presenter.field_value field %>
+    </div>
   <% end %>
 <% end %>
