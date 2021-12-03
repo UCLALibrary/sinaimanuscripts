@@ -41,6 +41,7 @@ Ursus can be locally run in two ways:
 The file `docker-compose-standalone.yml` includes a setup with a clone of the ursus-stage and sinai-stage solr indexes, so you do not need to run californica and manually ingest material (in fact, californica should #not# be running to avoid port conflicts.)
 
 #### 1. Clone the repo from GitHub
+```
 :3003
 cd ursus
 ```
