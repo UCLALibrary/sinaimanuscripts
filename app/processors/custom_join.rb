@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-# Joins values using configured value or linebreak
+# Joins values using configured value, linebreak, or delimiter
 class CustomJoin < Blacklight::Rendering::AbstractStep
   include ActionView::Helpers::TextHelper
 
