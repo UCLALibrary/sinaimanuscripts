@@ -186,7 +186,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'shelfmark_ssi', label: 'Shelfmark' # Sinai only
     config.add_show_field 'descriptive_title_tesim', label: 'Descriptive title' # Sinai only
     config.add_show_field 'associated_name_tesim', label: 'Associated name', link_to_facet: 'associated_name_sim' # Sinai only
-    config.add_show_field 'references_tesim', label: 'References' # Sinai only
+    config.add_show_field 'references_tesim', label: 'References', break_options: {} # Sinai only
     config.add_show_field 'title_tesim', label: 'Title'
     config.add_show_field 'alternative_title_tesim', label: 'Alternative title'
     config.add_show_field 'uniform_title_tesim', label: 'Uniform title', link_to_facet: 'uniform_title_sim'
@@ -214,7 +214,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'creator_tesim', label: 'Creator', link_to_facet: 'creator_sim'
 
     # IF SINAI ?
-    config.add_show_field 'contributor_tesim', label: 'Contributors'
+    config.add_show_field 'contributor_tesim', label: 'Contributors', break_options: {}
     config.add_show_field 'explicit_tesim', label: 'Explicit'
     config.add_show_field 'incipit_tesim', label: 'Incipit'
     config.add_show_field 'inscription_tesim', label: 'Inscription'

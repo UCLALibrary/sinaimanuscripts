@@ -6,8 +6,11 @@ class CustomJoin < Blacklight::Rendering::AbstractStep
   def render
     if config.separator_options
       next_step(values.map { |x| html_escape(x) })
+    elsif config.break_options
+      joiner = (config.join_with || '<br>'.html_safe)
+      next_step(safe_join(values, joiner))
     else
-      joiner = Flipflop.sinai? ? (config.join_with || '&nbsp;|&nbsp;'.html_safe) : (config.join_with || '<br>'.html_safe)
+      joiner = config.join_with || '&nbsp;|&nbsp;'.html_safe
       next_step(safe_join(values, joiner))
     end
   end
