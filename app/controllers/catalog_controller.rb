@@ -175,7 +175,7 @@ class CatalogController < ApplicationController
     # and in Californica add :facetable to its predicate in app/models/ucla_metadata.rb
     # https://docs.google.com/spreadsheets/d/1Ult1ZpMuyKd92lZ5ODmBA6c7hO1pZGjXHTzN0_BOjeA/edit#gid=0
     #
-    # Line breaks (separator_options: BREAKS) are set globally in two files:
+    # Line breaks and delimiters (separator_options: {}, and break_options: {} ) are set globally in two files:
     #   config/initializers/blacklight.rb
     #   app/processors/custom_join.rb
     #
