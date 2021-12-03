@@ -1,0 +1,10 @@
+<% if document[:collection_ssi] %>
+  <% collection = document[:collection_ssi] %>
+   <% collection.each_with_index do |field, index| %>
+      <% if index == 0 %>
+        <%= field %>&nbsp;|
+      <% else %>
+        <%= field %>
+      <% end %>
+  <% end %>
+<% end %>

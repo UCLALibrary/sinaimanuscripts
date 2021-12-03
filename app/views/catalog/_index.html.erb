@@ -86,6 +86,11 @@
             <%= image_tag('sinai-icons/people-icon.svg', class: 'icon-people-index--sinai') %><%= name_field %>
           </div><%# metadata-block-index--sinai %>
         <% end %>
+        <%# COLLECTION %>
+
+        <%#= document.collection_ssi %>
+        <%= render 'catalog/index_collection', document: document %>
+        HELLO Jen
       </div><%# metadata-wrapper-index--sinai %>
     </div><%# document__list-item-wrapper--sinai %>
   <% end %><%# if Flipflop.sinai? %>

@@ -115,7 +115,7 @@ class CatalogController < ApplicationController
       config.add_facet_field 'support_sim', sort: 'index', label: 'Support'
       config.add_facet_field 'form_sim', sort: 'index', label: 'Form'
       config.add_facet_field 'names_sim', sort: 'index', label: 'Names'
-      config.add_facet_field 'collection_sim', sort: 'index', label: 'Collection'
+      config.add_facet_field 'collection_ssi', sort: 'index', label: 'Collection'
 
     # The generic_type isn't displayed on the facet list
     # It's used to give a label to the filter that comes from the user profile
@@ -139,7 +139,7 @@ class CatalogController < ApplicationController
       config.add_index_field 'uniform_title_tesim', link_to_facet: 'uniform_title_sim'
       config.add_index_field 'date_created_tesim', label: 'Date'
       config.add_index_field 'human_readable_language_tesim', label: 'Language'
-      config.add_index_field 'collection_sim'
+      config.add_index_field 'collection_ssi'
       config.add_index_field 'name_fields_index_tesim', label: 'Name', link_to_facet: 'names_sim'
 
     # ------------------------------------------------------
@@ -198,6 +198,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'inscription_tesim', label: 'Inscription'
     config.add_show_field 'script_tesim', label: 'Script', link_to_facet: 'script_sim'
     config.add_show_field 'writing_system_tesim', label: 'Writing system', link_to_facet: 'writing_system_sim'
+    config.add_show_field 'collection_ssi', label: 'Collection'
 
     # Notes
     config.add_show_field 'summary_tesim', label: 'Summary'
