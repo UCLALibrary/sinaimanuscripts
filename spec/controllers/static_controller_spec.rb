@@ -44,5 +44,13 @@ RSpec.describe StaticController, type: :controller do
         expect(response).to render_template(:manuscript_descriptions)
       end
     end
+
+    context 'GET #references' do
+      it "returns http success" do
+        get :references
+        expect(response).to have_http_status(:success)
+        expect(response).to render_template(:references)
+      end
+    end
   end
 end
