@@ -19,7 +19,7 @@ RSpec.describe Ursus::PhysicalDescriptionMetadataPresenter do
       'condition_note_ssi' => 'Condition note',
       'binding_note_ssi' => 'Binding note',
       'inscription_tesim' => 'Inscription',
-      'form_ssi' => 'Form'
+      'form_tesim' => 'Form'
     }
   end
   let(:solr_doc_missing_items) do

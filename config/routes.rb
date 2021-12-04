@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/contributors_credits', to: 'static#contributors_credits'
   get '/manuscript_descriptions', to: 'static#manuscript_descriptions'
   get '/terms-of-use', to: 'static#terms_of_use'
+  get '/references', to: 'static#references'
 
   # Canon Law
   get '/canonlaw', to: 'canon_law#index'

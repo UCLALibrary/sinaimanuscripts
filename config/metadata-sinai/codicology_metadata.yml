@@ -1,9 +1,9 @@
 # These fields are in order of display
 
 # Sinai only - Codicology
-extent_tesim: 'Extent'
+format_extent_tesim: 'Extent'
 collation_tesim: 'Collation'
-form_ssi: 'Form'
+form_tesim: 'Form'
 support_tesim: 'Support'
 writing_system_tesim: 'Writing system'
 script_tesim: 'Script'
