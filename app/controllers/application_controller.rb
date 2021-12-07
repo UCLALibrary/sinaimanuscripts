@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   end
 
   def sinai_authn_check
-    return true if !Flipflop.sinai? || [login_path, version_path].include?(request.path) || sinai_authenticated_3day?
+    return true if [version_path].include?(request.path) || sinai_authenticated_3day?
     if ENV['SINAI_ID_BYPASS'] # skip auth in development
       cookies[:sinai_authenticated_3day] = 'true'
       return true
@@ -127,6 +127,6 @@ class ApplicationController < ActionController::Base
 
     def redirect_target
       cookies[:request_original_url] = request.original_url
-      "/login"
+      "/"
     end
 end

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   mount Flipflop::Engine => "/flipflop"
 
   # Sinai static pages
-  get '/login', to: 'login#new', as: 'login'
+  # get '/login', to: 'login#new', as: 'login'
   get '/about', to: 'static#about'
   get '/contact', to: 'static#contact'
   get '/contributors_credits', to: 'static#contributors_credits'

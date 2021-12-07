@@ -86,24 +86,6 @@ RSpec.describe ApplicationController, type: :controller do
       end
     end
 
-    context 'if the \'sinai\' feature flag is off' do
-      before do
-        allow(Flipflop).to receive(:sinai?).and_return(false)
-      end
-      it 'returns Ursus and not Callisto' do
-        expect(controller.sinai_authn_check).to be true
-      end
-    end
-
-    context 'if the requested path is login_path' do
-      before do
-        allow(controller).to receive(:request).and_return(instance_double('ActionDispatch::Request', path: controller.login_path))
-      end
-      it 'allows Rails to continue' do
-        expect(controller.sinai_authn_check).to be true
-      end
-    end
-
     context 'if the requested path is version_path' do
       before do
         allow(controller).to receive(:request).and_return(instance_double('ActionDispatch::Request', path: controller.version_path))
