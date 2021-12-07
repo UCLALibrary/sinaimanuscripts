@@ -89,7 +89,7 @@ RSpec.describe BlacklightHelper, type: :helper do
         )
       end
       it 'displays a linked href value' do
-        expect(render_other_versions_link).to eq '<a href="https://www.test">https://www.test</a>'
+        expect(render_other_versions_link).to eq '<a href="https://www.test" "target="_blank">https://www.test</a>'
       end
     end
   end
