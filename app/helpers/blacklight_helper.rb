@@ -49,7 +49,7 @@ module BlacklightHelper
   def other_versions_markup
     other_versions_text = ''
     urls = @document[:other_versions_tesim]
-    urls.each { |url| other_versions_text += '<a href="' + url + ' "target="_blank">' + url + '</a>' }
+    urls.each { |url| other_versions_text += '<a href="' + url + ' "target="_blank">' + url + '</a> <br>' }
     other_versions_text
   end
 
