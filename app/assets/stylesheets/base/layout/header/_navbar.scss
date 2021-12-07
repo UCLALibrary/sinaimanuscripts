@@ -20,7 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: nowrap;
+  white-space: nobreak;
 
   @media (max-width: 991px) {
     margin-bottom: 0.5rem;
