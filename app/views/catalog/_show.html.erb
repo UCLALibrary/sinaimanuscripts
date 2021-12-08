@@ -7,9 +7,11 @@
 
     <%# ---------- IIIF & Tooltip ------------ %>
     <div class='si-link-iiif'>
-      <% if @document["viscodex_ssi"] %>
-        <%= link_to image_tag('sinai-logos/logo-viscodex.png'), @document[:viscodex_ssi], target: '_blank', alt: 'Collation Visualization', class: 'tooltips si-link-viscodex', data: { toggle: 'tooltip', placement: 'left', original_title: 'Click to view the collation viewer' }  %>
-      <% end %>
+    <% if @document["viscodex_ssi"] %>
+    <div class='si-link-viscodex' data-toggle="tooltip" data-placement="bottom" data-html="true" title="Click to view collation viewer">
+        <%= link_to image_tag('sinai-logos/logo-viscodex.png'), @document[:viscodex_ssi], target: '_blank', alt: 'Collation Viewer'%>
+        </div>
+    <% end %>
       <%= link_to image_tag('iiif-logo.png'), @document[:iiif_manifest_url_ssi], target: '_blank', alt: 'IIIF Manifest' %>
       </div>
     </div>
@@ -23,13 +25,6 @@
   <div class='item-page__metadata-wrapper'>
     <%= render 'catalog/work_record--sinai/primary_metadata', document: document %>
     <%= render 'catalog/work_record--sinai/secondary_metadata', document: document %>
-  </div>
-
-<%# ----------- Ursus --------------- %>
-<% else %>
-  <div class='item-page__metadata-wrapper'>
-    <%= render 'catalog/work_record--ursus/primary_metadata', document: document %>
-    <%= render 'catalog/work_record--ursus/secondary_metadata', document: document %>
   </div>
 <% end %>
 
