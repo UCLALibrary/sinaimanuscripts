@@ -7,9 +7,11 @@
 
     <%# ---------- IIIF & Tooltip ------------ %>
     <div class='si-link-iiif'>
-        <%#= link_to image_tag("linkedin.svg"), "http://www.linkedin.com/in/myprofile",  :target => "_blank"%>
-        <%= link_to image_tag('iiif-logo.png'), @document[:iiif_manifest_url_ssi], target: '_blank', alt: 'IIIF Manifest', class: 'si-link-iiif' %>
+    
+      <%= link_to image_tag('sinai-logos/logo-viscodex.png'), @document[:viscodex_ssi], target: '_blank', alt: 'Collation Visualization', class: 'si-link-viscodex' %>
+      <%= link_to image_tag('iiif-logo.png'), @document[:iiif_manifest_url_ssi], target: '_blank', alt: 'IIIF Manifest' %>
       </div>
+
     </div>
   </div>
 
