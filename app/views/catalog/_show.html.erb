@@ -28,15 +28,9 @@
   </div>
 <% end %>
 
-# <script>
-# $(function () {
-#   $('[data-toggle="tooltip"]').tooltip()
-# })
-# </script>
-
+<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js">
 <script>
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
-var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-  return new bootstrap.Tooltip(tooltipTriggerEl)
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
 })
 </script>
