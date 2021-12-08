@@ -13,8 +13,8 @@
     <% end %>
     <div class="metadata-block--sinai">
       <% if @document["viscodex_ssi"] %>
-        <span class="metadata-block_title--sinai">Collation vizualization </span>
-        <%= link_to @document[:viscodex_ssi], @document[:viscodex_ssi], target: '_blank', alt: 'Collation vizualization', class: "metadata-block_value--sinai" %>
+        <span class="metadata-block_title--sinai">Collation Diagram </span>
+        <span class="metadata-block_value--sinai"> <%= link_to @document[:viscodex_ssi], @document[:viscodex_ssi], target: '_blank', alt: 'Collation vizualization', class: "metadata-block_value--sinai" %></span>
       <% end %>
     </div>
   </div>
