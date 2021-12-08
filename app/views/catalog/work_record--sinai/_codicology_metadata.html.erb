@@ -12,9 +12,9 @@
     </div>
     <% end %>
     
-    <% if @document[:viscodex_ssi].to_a.length > 0 %>
+    <%= @document[:viscodex_ssi] %>
       <span class="metadata-block_title--sinai">Collation vizualization </span>
       <%= link_to @document[:viscodex_ssi], @document[:viscodex_ssi], target: '_blank', alt: 'Collation vizualization', class: "metadata-block_value--sinai" %>
-      <% end %>
+    <% end %>
   </div>
 <% end %>
