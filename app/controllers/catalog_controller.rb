@@ -199,6 +199,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'script_tesim', label: 'Script', link_to_facet: 'script_sim'
     config.add_show_field 'writing_system_tesim', label: 'Writing system', link_to_facet: 'writing_system_sim'
     config.add_show_field 'collection_ssi', label: 'Collection'
+    config.add_show_field 'viscodex_ssi', label: 'Collation visualization'
 
     # Notes
     config.add_show_field 'summary_tesim', label: 'Summary'
