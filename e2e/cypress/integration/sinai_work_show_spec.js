@@ -18,7 +18,6 @@ describe('Sinai Work show pages', () => {
     cy.percySnapshot();
   });
 
-
   it('IIIF Manifest Tooltip', () => {
     cy.visit(Cypress.env('SINAI_BASE_URL') + '/catalog/' + encodeURIComponent('ark:/21198/z1s76kq5'));
     cy.get('.si-link-iiif-manifest').trigger('mouseover');
