@@ -17,4 +17,12 @@ describe('Sinai Work show pages', () => {
     cy.contains('div.title-row-show--siani', 'Sinai Syriac 70');
     cy.percySnapshot();
   });
+
+
+  it('IIIF Manifest Tooltip', () => {
+    cy.visit(Cypress.env('SINAI_BASE_URL') + '/catalog/' + encodeURIComponent('ark:/21198/z1s76kq5'));
+    cy.get('.si-link-iiif-manifest').trigger('mouseover');
+    cy.get('.si-link-iiif-manifest').should('be.visible');
+    cy.percySnapshot();
+  });
 });
