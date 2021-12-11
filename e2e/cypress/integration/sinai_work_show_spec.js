@@ -21,7 +21,7 @@ describe('Sinai Work show pages', () => {
   it('IIIF Manifest Tooltip', () => {
     cy.visit(Cypress.env('SINAI_BASE_URL') + '/catalog/' + encodeURIComponent('ark:/21198/z1s76kq5'));
     cy.get('.si-link-iiif-manifest').trigger('mouseover');
-    cy.get('.si-link-iiif-manifest').should('be.visible');
+    cy.contains('div.tooltip-inner','IIIF Manifest');
     cy.percySnapshot();
   });
 });
