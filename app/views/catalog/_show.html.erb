@@ -9,7 +9,7 @@
     <div class='si-link-iiif'>
       <% if @document["viscodex_ssi"] %>
         <div class='viscodex-tooltip' data-toggle="tooltip" data-placement="bottom" data-html="true" title="Click to view collation viewer">
-          <%= link_to image_tag('sinai-logos/logo-viscodex.png'), @document[:viscodex_ssi], target: '_blank', alt: 'Collation Viewer', class: 'viscodex-link' %>
+          <%= link_to image_tag('sinai-logos/logo-viscodex.png'), @document[:viscodex_ssi], target: '_blank', alt: 'Collation Viewer', class: 'viscodex-image' %>
         </div>
       <% end %>
       <div class="iiif-tooltip" data-toggle="tooltip" data-placement="bottom" data-html="true" title="IIIF Manifest">
