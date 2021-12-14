@@ -1,6 +1,5 @@
 <% doc_presenter = index_presenter(document) %>
 
-
 <%
 cookies[:requested_path] = request.original_url
 login_service = LoginService.new
@@ -21,8 +20,8 @@ Login required to view manuscript images. Select "Continue" to view the item rec
   <div class="si-auth-modal-btn-block">
     <div class="si-auth-modal-btn-group">
       <%= button_to 'Login', ENV['SINAIID_URL'], params: { 'key' => ENV['SINAIID_UCLA_KEY'], callback_url: request.original_url, token: @token }, method: :post, class: 'btn-base btn-outline-sinai--primary btn-modal' %>
-      <%= button_to 'Register', 'https://sinai-id.org/users/sign_up', class: 'btn-base btn-outline-sinai--primary btn-modal' %>
-      <%= button_to 'Continue', document, class: 'btn-base btn-outline-sinai--primary btn-modal' %>
+      <%= link_to 'Register', 'https://sinai-id.org/users/sign_up', class: 'btn-base btn-outline-sinai--primary btn-modal' %>
+      <%= link_to 'Continue', document, class: 'btn-base btn-outline-sinai--primary btn-modal' %>
     </div>
 
   </div>
