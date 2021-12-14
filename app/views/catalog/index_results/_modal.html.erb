@@ -17,13 +17,13 @@ login_service = LoginService.new
   </button>
   </div>
 <div class="modal-body">
-Login is required to view the manuscripts. Please login or register for a free account.
+Login required to view manuscript images. Select "Continue" to view the item record without images.
   <div class="si-auth-modal-btn-block">
     <div class="si-auth-modal-btn-group">
       <%= button_to 'Login', ENV['SINAIID_URL'], params: { 'key' => ENV['SINAIID_UCLA_KEY'], callback_url: request.original_url, token: @token }, method: :post, class: 'btn-base btn-outline-sinai--primary' %>
       <%= link_to 'Register', 'https://sinai-id.org/users/sign_up', class: 'btn-base btn-outline-sinai--primary' %>
     </div>
-    <%= link_to 'Continue', document %>
+    <%= link_to 'Continue', document, class: 'btn-base btn-outline-sinai--primary' %>
   </div>
   </div>
 <div class="modal-footer">
