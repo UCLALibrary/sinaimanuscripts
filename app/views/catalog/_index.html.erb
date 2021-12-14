@@ -22,9 +22,9 @@
   <%# ----------------------------------------------- %>
 
   <%# METADATA %>
-  <% if cookies[:sinai_authenticated_3day] %>
+  <% if !cookies[:sinai_authenticated_3day] %>
     <%# Sinai NOT LOGGED IN %>
-    <%# !cookies[:request_original_url] = request.original_url %>
+    <%# cookies[:request_original_url] = request.original_url %>
 
     <div class='metadata-wrapper-index--sinai'>
 
