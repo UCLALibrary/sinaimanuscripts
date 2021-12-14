@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   end
 
   def sinai_authn_check
-    return true if [version_path].include?(request.path) || sinai_authenticated_3day?
+    return true if [version_path].include?(request.path) || sinai_authenticated_3day? || terms_of_use_30day?
     if ENV['SINAI_ID_BYPASS'] # skip auth in development
       cookies[:sinai_authenticated_3day] = 'true'
       return true
@@ -69,6 +69,10 @@ class ApplicationController < ActionController::Base
     cookies[:sinai_authenticated_3day]
   end
 
+  def terms_of_use_30day?
+    cookies[:terms_of_use_30day]
+  end
+
   def ucla_token?
     # does the request have a querystring containing a param named token and, if so, was it previously written to the database?
     return true if params[:token].present? && SinaiToken.find_by(sinai_token: params[:token])
@@ -91,6 +95,19 @@ class ApplicationController < ActionController::Base
     cookies[:initialization_vector] = {
       value: cipher_iv.unpack('H*')[0].upcase,
       expires: Time.zone.now + 3.days,
+      domain: ENV['DOMAIN']
+    }
+  end
+
+  def set_terms_of_use_cookies
+    cookies[:terms_of_use_30day] = {
+      value: create_encrypted_string.unpack('H*')[0].upcase,
+      expires: Time.zone.now + 30.days,
+      domain: ENV['DOMAIN']
+    }
+    cookies[:initialization_vector] = {
+      value: cipher_iv.unpack('H*')[0].upcase,
+      expires: Time.zone.now + 30.days,
       domain: ENV['DOMAIN']
     }
   end
