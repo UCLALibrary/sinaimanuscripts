@@ -1,33 +1,30 @@
 <% doc_presenter = index_presenter(document) %>
 
 <%
-cookies[:requested_path] = request.original_url
-login_service = LoginService.new
-@token = login_service.create_token
+  cookies[:requested_path] = request.original_url
+  login_service = LoginService.new
+  @token = login_service.create_token
 %>
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered" role="document">
-<div class="modal-content msg-container">
-<div class="modal-header">
-  <h5 class="modal-title" id="exampleModalLongTitle">Login Required</h5>
-  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-  </div>
-<div class="modal-body">
-Login required to view manuscript images. Select "Continue" to view the item record without images.
-  <div class="si-auth-modal-btn-block">
-    <div class="si-auth-modal-btn-group">
-      <%= button_to 'Login', ENV['SINAIID_URL'], params: { 'key' => ENV['SINAIID_UCLA_KEY'], callback_url: request.original_url, token: @token }, method: :post, class: 'btn-base btn-outline-sinai--primary btn-modal' %>
-      <%= link_to 'Register', 'https://sinai-id.org/users/sign_up', class: 'btn-base btn-outline-sinai--primary btn-modal' %>
-      <%= link_to 'Continue', document, class: 'btn-base btn-outline-sinai--primary btn-modal' %>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content msg-container">
+      <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Login Required</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        Login required to view manuscript images. Select "Continue" to view the item record without images.
+        <div class="si-auth-modal-btn-block">
+          <div class="si-auth-modal-btn-group">
+            <%= button_to 'Login', ENV['SINAIID_URL'], params: { 'key' => ENV['SINAIID_UCLA_KEY'], callback_url: request.original_url, token: @token }, method: :post, class: 'btn-base btn-outline-sinai--primary btn-modal' %>
+            <%= link_to 'Register', 'https://sinai-id.org/users/sign_up', class: 'btn-base btn-outline-sinai--primary btn-modal' %>
+            <%= link_to 'Continue', document, class: 'btn-base btn-outline-sinai--primary btn-modal' %>
+          </div>
+        </div>
+      </div>
     </div>
-
   </div>
-  </div>
-<div class="modal-footer">
-</div>
-</div>
-</div>
 </div>
