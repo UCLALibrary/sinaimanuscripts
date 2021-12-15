@@ -8,8 +8,8 @@
     <div class='si-media-viewer-login'>
       <div class="si-auth-text">Login required to view manuscript images.</div>
         <div class="si-auth-modal-btn-group">
-          <%= button_to 'Login', ENV['SINAIID_URL'], params: { 'key' => ENV['SINAIID_UCLA_KEY'], callback_url: request.original_url, token: @token }, method: :post, class: 'btn-base btn-outline-sinai--primary  btn-modal'   %>
-          <%= link_to 'Register', 'https://sinai-id.org/users/sign_up', class:    'btn-base btn-outline-sinai--primary btn-modal' %>
+          <%= button_to 'Login', ENV['SINAIID_URL'], params: { 'key' => ENV['SINAIID_UCLA_KEY'], callback_url: request.original_url, token: @token }, method: :post, class: 'btn-base btn-outline-sinai--primary  btn-modal' %>
+          <%= link_to 'Register', 'https://sinai-id.org/users/sign_up', class: 'btn-base btn-outline-sinai--primary btn-modal' %>
       </div>
     </div>
   <% else %>

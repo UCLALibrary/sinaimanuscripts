@@ -5,22 +5,21 @@
 
 .si-auth-modal-btn-group {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-content: center;
   align-items: center;
-
+  justify-content: flex-start;
+  margin-bottom: 10px;
   width: 100%;
   max-width: 200px;
-  margin-bottom: 10px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
 }
 
 .si-media-viewer-login {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
 
 .si-auth-text {

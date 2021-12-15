@@ -125,8 +125,8 @@ class ApplicationController < ActionController::Base
       @iv ||= cipher.random_iv
     end
 
-    # def redirect_target
-    #   cookies[:request_original_url] = request.original_url
-    #   "/"
-    # end
+  # def redirect_target
+  #   cookies[:request_original_url] = request.original_url
+  #   "/"
+  # end
 end
