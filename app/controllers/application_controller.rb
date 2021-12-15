@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  before_action :display_banner?, :sinai_authn_check, :add_legacy_views, :cors_preflight_check, :set_default_sort
+  before_action :display_banner?, :sinai_authn_check, :add_legacy_views, :cors_preflight_check, :set_default_sort, :display_terms_of_use_modal?
   after_action :cors_set_access_control_headers
 
   def add_legacy_views
@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   end
 
   def sinai_authn_check
-    return true if [version_path].include?(request.path) || sinai_authenticated_3day? || terms_of_use_30day?
+    return true if [version_path].include?(request.path) || sinai_authenticated_3day?
     if ENV['SINAI_ID_BYPASS'] # skip auth in development
       cookies[:sinai_authenticated_3day] = 'true'
       return true
@@ -69,10 +69,6 @@ class ApplicationController < ActionController::Base
     cookies[:sinai_authenticated_3day]
   end
 
-  def terms_of_use_30day?
-    cookies[:terms_of_use_30day]
-  end
-
   def ucla_token?
     # does the request have a querystring containing a param named token and, if so, was it previously written to the database?
     return true if params[:token].present? && SinaiToken.find_by(sinai_token: params[:token])
@@ -99,18 +95,23 @@ class ApplicationController < ActionController::Base
     }
   end
 
+  # TERMS OF USE MODAL
+  def terms_of_use_30day?
+    cookies[:terms_of_use_30day]
+  end
+
   def set_terms_of_use_cookies
     cookies[:terms_of_use_30day] = {
-      value: create_encrypted_string.unpack('H*')[0].upcase,
-      expires: Time.zone.now + 30.days,
-      domain: ENV['DOMAIN']
-    }
-    cookies[:initialization_vector] = {
-      value: cipher_iv.unpack('H*')[0].upcase,
-      expires: Time.zone.now + 30.days,
-      domain: ENV['DOMAIN']
+      value: "terms-of-use",
+      expires: Time.zone.now + 3600,
     }
   end
+
+  def display_terms_of_use_modal?
+    terms_of_use_30day?
+  end
+
+  # ------------------------
 
   def create_encrypted_string
     cipher.encrypt

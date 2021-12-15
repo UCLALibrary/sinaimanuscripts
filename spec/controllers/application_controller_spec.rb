@@ -104,15 +104,6 @@ RSpec.describe ApplicationController, type: :controller do
       end
     end
 
-    context 'if we are within the terms of use 30day period' do
-      before do
-        allow(controller).to receive(:terms_of_use_30day?).and_return(true)
-      end
-      it 'allows Rails to continue' do
-        expect(controller.sinai_authn_check).to be true
-      end
-    end
-
     context 'if the requested path is solr_document_path' do
       before do
         allow(controller).to receive(:params).and_return(id: 'ark:')
