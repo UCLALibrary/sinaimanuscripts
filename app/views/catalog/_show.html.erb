@@ -1,6 +1,6 @@
-<%# --------- Back to Search Results ----- %>
-<div class='item-page__metadata-wrapper-results--sinai'>
-    <%= link_back_to_catalog label: '← Back to Search Results', class:'si-link si-link-search-results' %>
+<%# --------- Back to Search Results ----- %>   
+<div class='item-page__metadata-wrapper-results--sinai'>  
+  <%= link_back_to_catalog label: '← Back to Search Results', class: 'si-link si-link-search-results' %>  
   <%# ---------- IIIF & Tooltip ------------ %>
   <% if cookies[:sinai_authenticated_3day] %>
     <div class='si-link-iiif'>
@@ -15,15 +15,14 @@
     </div>
   <% end %>
 </div>
-<%# ----------- Shelfmark --------------- %>
+<%# ----------- Shelfmark --------------- %>  
 <div class='title-row-show--siani'>
   <%= @document[:shelfmark_ssi] %>
 </div>
 <div class='item-page__metadata-wrapper'>
-    <%= render 'catalog/work_record--sinai/primary_metadata', document:document %>
-    <%= render 'catalog/work_record--sinai/secondary_metadata', document:document %>
+  <%= render 'catalog/work_record--sinai/primary_metadata', document: document %>
+  <%= render 'catalog/work_record--sinai/secondary_metadata', document: document %>
 </div>
-
 
 <script>
 document.addEventListener("DOMContentLoaded", function(event) {
