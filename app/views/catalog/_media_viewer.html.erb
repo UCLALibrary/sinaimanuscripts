@@ -1,4 +1,5 @@
 <% if can?(:read, document) %>
+<%# --------- Sinai Not Logged in ----- %>
   <% if !cookies[:sinai_authenticated_3day] %>
     <%
       cookies[:requested_path] = request.original_url
@@ -13,6 +14,7 @@
       </div>
     </div>
   <% else %>
+  <%# --------- Sinai Logged in ----- %>
     <div class='media-viewer-container media-viewer-container--sinai'>
       <% iiif_service = IiifService.new %>
       <iframe
