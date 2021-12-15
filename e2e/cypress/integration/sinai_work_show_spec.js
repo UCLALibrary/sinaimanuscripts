@@ -24,4 +24,11 @@ describe('Sinai Work show pages', () => {
     cy.contains('div.tooltip-inner','IIIF Manifest');
     cy.percySnapshot();
   });
+
+  it('Sinai Not Logged In', () => {
+    cy.clearCookie('sinai_authenticated');
+    cy.setCookie('sinai_authenticated', 'false')
+    cy.visit(Cypress.env('SINAI_BASE_URL') + '/catalog/' + encodeURIComponent('ark:/21198/z1s76kq5'));
+    cy.percySnapshot();
+  });
 });
