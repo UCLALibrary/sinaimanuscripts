@@ -113,8 +113,7 @@ RSpec.describe ApplicationController, type: :controller do
       it 'directs to requested path' do
         controller.sinai_authn_check
         # expect(controller).to have_received(:request)
-        expect(response.status).to eq(200) #not redirected
-        
+        expect(response.status).to eq(200) # not redirected
       end
     end
   end
