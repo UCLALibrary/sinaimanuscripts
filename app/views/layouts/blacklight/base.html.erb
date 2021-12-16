@@ -45,6 +45,11 @@
     <% end %>
 
     <div class="site-container" <%= schema_org_markup %>>
+
+      <% if !cookies[:terms_of_use_30day?] %>
+        <%= render 'catalog/modal_terms_of_use' %>
+      <% end %>
+
       <%= render partial: 'shared/header/header_navbar' %>
       <%= render 'catalog/banners/homepage_banner' %>
 

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  before_action :display_banner?, :sinai_authn_check, :add_legacy_views, :cors_preflight_check, :set_default_sort
+  before_action :display_banner?, :sinai_authn_check, :add_legacy_views, :cors_preflight_check, :set_default_sort, :display_terms_of_use_modal?
   after_action :cors_set_access_control_headers
 
   def add_legacy_views
@@ -59,6 +59,31 @@ class ApplicationController < ActionController::Base
   def set_banner_cookie
     cookies[:banner_display_option] = "banner_off"
   end
+
+  # ------------------------
+  # TERMS OF USE MODAL
+
+  def terms_of_use_30day?
+    cookies[:terms_of_use_30day]
+  end
+
+  def set_terms_of_use_cookie
+    cookies[:terms_of_use_30day] = {
+      value: "terms-of-use",
+      expires: Time.zone.now + 30.days
+    }
+  end
+
+  def display_terms_of_use_modal?
+    if terms_of_use_30day?
+      @terms_of_use_30day = "none"
+    else
+      @terms_of_use_30day = "block"
+      set_terms_of_use_cookie
+    end
+  end
+
+  # ------------------------
 
   def set_default_sort
     # set sort to be relevance if keyword search is not empty
