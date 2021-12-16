@@ -27,8 +27,8 @@
     <%# cookies[:request_original_url] = request.original_url %>
 
     <div class='metadata-wrapper-index--sinai'>
-
       <header class='header-index--sinai'>
+        <%= render 'catalog/index_results/modal', document: document %>
         <%# link the header to the block access modal%>
         <a href='#' data-toggle='modal' data-target='#exampleModalCenter'>
           <%= render 'catalog/index_results/header', document: document %>

@@ -6,7 +6,7 @@ RSpec.describe ApplicationController, type: :controller do
 
   before do
     allow(Flipflop).to receive(:sinai?).and_return(true)
-    allow(controller).to receive(:redirect_target).and_return('/redirect_target')
+    # allow(controller).to receive(:redirect_target).and_return('/redirect_target')
     allow(controller).to receive(:cookies).and_return(requested_path: '/requested_path')
     allow(controller).to receive(:login_path).and_return('/test_login')
     allow(controller).to receive(:redirect_to)
@@ -110,9 +110,10 @@ RSpec.describe ApplicationController, type: :controller do
         allow(controller).to receive(:sinai_authenticated_3day?).and_return(false)
         allow(controller).to receive(:request).and_return(instance_double('ActionDispatch::Request', path: controller.solr_document_path('ark:')))
       end
-      it 'redirects to requested path' do
+      it 'directs to requested path' do
         controller.sinai_authn_check
-        expect(controller).to have_received(:redirect_to).with('/redirect_target')
+        # expect(controller).to have_received(:request)
+        expect(response.status).to eq(200) # not redirected
       end
     end
   end
