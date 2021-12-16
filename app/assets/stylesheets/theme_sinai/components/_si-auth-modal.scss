@@ -5,7 +5,23 @@
 
 .si-auth-modal-btn-group {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 10px;
   width: 100%;
-  max-width: 165px;
+  max-width: 200px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+}
+
+.si-media-viewer-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.si-auth-text {
+  margin-right: 16px;
 }
