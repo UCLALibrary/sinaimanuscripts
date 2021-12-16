@@ -60,6 +60,31 @@ class ApplicationController < ActionController::Base
     cookies[:banner_display_option] = "banner_off"
   end
 
+  # ------------------------
+  # TERMS OF USE MODAL
+
+  def terms_of_use_30day?
+    cookies[:terms_of_use_30day]
+  end
+
+  def set_terms_of_use_cookies
+    cookies[:terms_of_use_30day] = {
+      value: "terms-of-use",
+      expires: Time.zone.now + 3600,
+    }
+  end
+
+  def display_terms_of_use_modal?
+    if terms_of_use_30day?
+      @terms_of_use_30day= "none"
+    else
+      @terms_of_use_30day = "block"
+      set_banner_cookie
+    end
+  end
+
+  # ------------------------
+
   def set_default_sort
     # set sort to be relevance if keyword search is not empty
     params[:sort] ||= 'score desc' unless params[:q].to_s.empty?
@@ -94,24 +119,6 @@ class ApplicationController < ActionController::Base
       domain: ENV['DOMAIN']
     }
   end
-
-  # TERMS OF USE MODAL
-  def terms_of_use_30day?
-    cookies[:terms_of_use_30day]
-  end
-
-  def set_terms_of_use_cookies
-    cookies[:terms_of_use_30day] = {
-      value: "terms-of-use",
-      expires: Time.zone.now + 3600,
-    }
-  end
-
-  def display_terms_of_use_modal?
-    terms_of_use_30day?
-  end
-
-  # ------------------------
 
   def create_encrypted_string
     cipher.encrypt
