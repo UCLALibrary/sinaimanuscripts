@@ -24,4 +24,11 @@ describe('Sinai Work show pages', () => {
     cy.contains('div.tooltip-inner','IIIF Manifest');
     cy.percySnapshot();
   });
+
+  it('Viscodex Tooltip', () => {
+    cy.visit(Cypress.env('SINAI_BASE_URL') + '/catalog/' + encodeURIComponent('ark:/21198/z10k3d0v'));
+    cy.get('.si-link-viscodex').trigger('mouseover');
+    cy.contains('div.tooltip-inner','Click to view collation viewer');
+    cy.percySnapshot();
+  });
 });
