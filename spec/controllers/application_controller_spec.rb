@@ -213,29 +213,29 @@ RSpec.describe ApplicationController, type: :controller do
   end
 
   describe '#display_terms_of_use_modal?' do
-    context 'when terms_of_use_30day cookie is set' do
+    context 'when terms_of_use_90day cookie is set' do
       before do
-        allow(controller).to receive(:terms_of_use_30day).and_return(true)
+        allow(controller).to receive(:terms_of_use_90day).and_return(true)
       end
 
-      it 'sets @terms_of_use_30day to \'none\'' do
+      it 'sets @terms_of_use_90day to \'none\'' do
         controller.display_terms_of_use_modal?
-        expect(controller.instance_variable_get('@terms_of_use_30day')).to eq 'none'
+        expect(controller.instance_variable_get('@terms_of_use_90day')).to eq 'none'
       end
     end
 
-    context 'when terms_of_use_30day cookie is not set' do
+    context 'when terms_of_use_90day cookie is not set' do
       before do
-        allow(controller).to receive(:terms_of_use_30day).and_return(false)
+        allow(controller).to receive(:terms_of_use_90day).and_return(false)
         allow(controller).to receive(:set_terms_of_use_cookie)
       end
 
-      it 'sets @terms_of_use_30day to \'block\'' do
+      it 'sets @terms_of_use_90day to \'block\'' do
         controller.display_terms_of_use_modal?
-        expect(controller.instance_variable_get('@terms_of_use_30day')).to eq 'block'
+        expect(controller.instance_variable_get('@terms_of_use_90day')).to eq 'block'
       end
 
-      it 'sets the terms_of_use_30day cookie' do
+      it 'sets the terms_of_use_90day cookie' do
         controller.display_terms_of_use_modal?
         expect(controller).to have_received(:set_banner_cookie)
       end

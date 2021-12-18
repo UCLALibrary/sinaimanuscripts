@@ -63,22 +63,22 @@ class ApplicationController < ActionController::Base
   # ------------------------
   # TERMS OF USE MODAL
 
-  def terms_of_use_30day?
-    cookies[:terms_of_use_30day]
+  def terms_of_use_90day?
+    cookies[:terms_of_use_90day]
   end
 
   def set_terms_of_use_cookie
-    cookies[:terms_of_use_30day] = {
+    cookies[:terms_of_use_90day] = {
       value: "terms-of-use",
-      expires: Time.zone.now + 30.days
+      expires:  Time.zone.now + 90.days,
     }
   end
 
   def display_terms_of_use_modal?
-    if terms_of_use_30day?
-      @terms_of_use_30day = "none"
+    if terms_of_use_90day?
+      @terms_of_use_90day = "none"
     else
-      @terms_of_use_30day = "block"
+      @terms_of_use_90day = "block"
       set_terms_of_use_cookie
     end
   end

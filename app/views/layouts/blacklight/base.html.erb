@@ -46,7 +46,7 @@
 
     <div class="site-container" <%= schema_org_markup %>>
 
-      <% if !cookies[:terms_of_use_30day?] %>
+      <% if !cookies[:terms_of_use_90day] %>
         <%= render 'catalog/modal_terms_of_use' %>
       <% end %>
 
