@@ -19,7 +19,6 @@
           login_service = LoginService.new
           @token = login_service.create_token
           %>
-          <%# cookies[:request_original_url] = request.original_url %>
           <li class='nav-item site-navbar__item--sinai'>
             <%= button_to 'LOGIN', ENV['SINAIID_URL'], params: { 'key' => ENV['SINAIID_UCLA_KEY'], callback_url: request.original_url, token: @token }, method: :post, class: 'btn btn_nav_link--sinai' %>
           </li>
