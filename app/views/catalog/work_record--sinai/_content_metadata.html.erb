@@ -5,6 +5,7 @@
   <input type="radio" name="tabs" id="tabone" checked="checked">
   <label for="tabone">Content</label>
   <div class="primary-metadata_tab-box--sinai">
+  <%= render 'catalog/work_record--sinai/content_work_metadata', document: document %>
   <% contents.each do |field_name, field| %>
     <div class="metadata-block--sinai">
         <span class="metadata-block_title--sinai"> <%= (render_document_show_field_label document, field: field_name).tr(':', '') %></span>
