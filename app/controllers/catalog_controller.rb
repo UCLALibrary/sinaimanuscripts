@@ -233,6 +233,7 @@ class CatalogController < ApplicationController
 
     # Keywords
     config.add_show_field 'keywords_tesim', label: 'Keywords', link_to_facet: 'keywords_sim', separator_options: {}
+    config.add_show_field 'folio_dimensions_ss', label: 'Typical Folio Dimensions'
     config.add_show_field 'form_tesim', label: 'Form', link_to_facet: 'form_sim'
     config.add_show_field 'genre_tesim', label: 'Genre', link_to_facet: 'genre_sim'
     config.add_show_field 'support_tesim', label: 'Support', link_to_facet: 'support_sim'
