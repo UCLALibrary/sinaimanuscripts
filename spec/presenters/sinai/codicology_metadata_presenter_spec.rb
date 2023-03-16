@@ -62,7 +62,7 @@ RSpec.describe Sinai::CodicologyMetadataPresenter do
       end
 
       it 'returns the Page layout Key' do
-        expect(config['page_layout_ssim'].to_s).to eq('Page layout')
+        expect(config['page_layout_ssim'].to_s).to eq('Page Layout')
       end
 
       it 'returns the Foliation Key' do
