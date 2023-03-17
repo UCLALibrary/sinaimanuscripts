@@ -197,7 +197,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'incipit_tesim', label: 'Incipit'
     config.add_show_field 'inscription_tesim', label: 'Inscription'
     config.add_show_field 'script_tesim', label: 'Script', link_to_facet: 'script_sim'
-    config.add_show_field 'script_note_tesim', label: 'Script'
+    config.add_show_field 'script_note_tesim', label: 'Script Note'
     config.add_show_field 'ink_color_tesim', label: 'Ink Color'
     config.add_show_field 'writing_system_tesim', label: 'Writing system', link_to_facet: 'writing_system_sim'
     config.add_show_field 'collection_ssi', label: 'Collection'
