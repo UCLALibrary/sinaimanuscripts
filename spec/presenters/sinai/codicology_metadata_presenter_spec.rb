@@ -5,16 +5,19 @@ RSpec.describe Sinai::CodicologyMetadataPresenter do
   let(:solr_doc) do
     {
       'format_extent_tesim' => 'Extent',
+      'folio_dimensions_ss' => 'Typical Folio Dimensions',
       'collation_tesim' => 'Collation',
       'form_tesim' => 'Form',
       'support_tesim' => 'Support',
       'writing_system_tesim' => 'Writing system',
       'script_tesim' => 'Script',
-      'page_layout_ssim' => 'Page layout',
-      'foliation_tesim' => 'Foliation note',
-      'hand_note_tesim' => 'Hand note',
-      'binding_note_tesim' => 'Binding note',
-      'condition_note_tesim' => 'Condition note',
+      'script_note_tesim' => 'Script Note',
+      'ink_color_tesim' => 'Ink Color',
+      'page_layout_ssim' => 'Page Layout',
+      'foliation_tesim' => 'Foliation',
+      'hand_note_tesim' => 'Hand Note',
+      'binding_note_tesim' => 'Binding Note',
+      'condition_note_tesim' => 'Condition Note',
       'description_tesim' => 'Physical Description note'
     }
   end
@@ -59,23 +62,23 @@ RSpec.describe Sinai::CodicologyMetadataPresenter do
       end
 
       it 'returns the Page layout Key' do
-        expect(config['page_layout_ssim'].to_s).to eq('Page layout')
+        expect(config['page_layout_ssim'].to_s).to eq('Page Layout')
       end
 
-      it 'returns the Foliation note Key' do
-        expect(config['foliation_tesim'].to_s).to eq('Foliation note')
+      it 'returns the Foliation Key' do
+        expect(config['foliation_tesim'].to_s).to eq('Foliation')
       end
 
       it 'returns the Hand note Key' do
-        expect(config['hand_note_tesim'].to_s).to eq('Hand note')
+        expect(config['hand_note_tesim'].to_s).to eq('Hand Note')
       end
 
       it 'returns the Binding note Key' do
-        expect(config['binding_note_tesim'].to_s).to eq('Binding note')
+        expect(config['binding_note_tesim'].to_s).to eq('Binding Note')
       end
 
       it 'returns the Condition note Key' do
-        expect(config['condition_note_tesim'].to_s).to eq('Condition note')
+        expect(config['condition_note_tesim'].to_s).to eq('Condition Note')
       end
 
       it 'returns the Physical Description note Key' do
@@ -88,7 +91,7 @@ RSpec.describe Sinai::CodicologyMetadataPresenter do
       let(:missing) { presenter_object_missing_items.codicology_terms.keys.length }
 
       it "returns existing keys" do
-        expect(all).to eq 12
+        expect(all).to eq 15
         expect(config.length).to eq all
       end
 
