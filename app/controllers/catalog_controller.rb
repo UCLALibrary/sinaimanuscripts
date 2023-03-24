@@ -197,6 +197,8 @@ class CatalogController < ApplicationController
     config.add_show_field 'incipit_tesim', label: 'Incipit'
     config.add_show_field 'inscription_tesim', label: 'Inscription'
     config.add_show_field 'script_tesim', label: 'Script', link_to_facet: 'script_sim'
+    config.add_show_field 'script_note_tesim', label: 'Script Note'
+    config.add_show_field 'ink_color_tesim', label: 'Ink Color'
     config.add_show_field 'writing_system_tesim', label: 'Writing system', link_to_facet: 'writing_system_sim'
     config.add_show_field 'collection_ssi', label: 'Collection'
     config.add_show_field 'viscodex_ssi', label: 'Collation Viewer'
@@ -219,8 +221,8 @@ class CatalogController < ApplicationController
     config.add_show_field 'format_extent_tesim', label: 'Extent'
     config.add_show_field 'dimensions_tesim', label: 'Dimensions'
     config.add_show_field 'page_layout_ssim', label: 'Page layout'
-    config.add_show_field 'binding_note_ssi', label: 'Binding note'
-    config.add_show_field 'condition_note_ssi', label: 'Condition note'
+    config.add_show_field 'binding_note_tesim', label: 'Binding note', break_options: {} # with this break_options enabled for this field, will display mutiple values in this field on new lines with line breaks
+    config.add_show_field 'condition_note_tesim', label: 'Condition note', break_options: {}
     config.add_show_field 'collation_tesim', label: 'Collation'
     config.add_show_field 'foliation_tesim', label: 'Foliation'
     config.add_show_field 'illustrations_note_tesim', label: 'Illustrations note'
@@ -231,6 +233,7 @@ class CatalogController < ApplicationController
 
     # Keywords
     config.add_show_field 'keywords_tesim', label: 'Keywords', link_to_facet: 'keywords_sim', separator_options: {}
+    config.add_show_field 'folio_dimensions_ss', label: 'Typical Folio Dimensions'
     config.add_show_field 'form_tesim', label: 'Form', link_to_facet: 'form_sim'
     config.add_show_field 'genre_tesim', label: 'Genre', link_to_facet: 'genre_sim'
     config.add_show_field 'support_tesim', label: 'Support', link_to_facet: 'support_sim'
