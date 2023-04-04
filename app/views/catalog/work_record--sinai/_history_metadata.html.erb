@@ -6,10 +6,21 @@
   <label for="tabthree">History</label>
   <div class="primary-metadata_tab-box--sinai">
   <% history.each do |field_name, field| %>
+    <% if field_name == "overtext_manuscript_ssm" %>
     <div class="metadata-block--sinai">
-        <span class="metadata-block_title--sinai"> <%= (render_document_show_field_label document, field: field_name).tr(':', '') %></span>
-        <span class="metadata-block_value--sinai"><%= doc_presenter.field_value field %></span>
-    </div>
+        <span class="metadata-block_title--sinai">
+          <%= 'Overtext Manuscript' %>
+        </span>
+        <span class="metadata-block_value--sinai">
+         <%= render_overtext_manuscript_links %>
+        </span>
+      </div>
+    <% else %>
+      <div class="metadata-block--sinai">
+          <span class="metadata-block_title--sinai"> <%= (render_document_show_field_label document, field: field_name).tr(':', '') %></span>
+          <span class="metadata-block_value--sinai"><%= doc_presenter.field_value field %></span>
+      </div>
     <% end %>
+  <% end %>
   </div>
 <% end %>

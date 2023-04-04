@@ -195,7 +195,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'contributor_tesim', label: 'Contributors', break_options: {}
     config.add_show_field 'explicit_tesim', label: 'Explicit'
     config.add_show_field 'incipit_tesim', label: 'Incipit'
-    config.add_show_field 'inscription_tesim', label: 'Inscription'
+    config.add_show_field 'inscription_tesim', label: 'Inscription', break_options: {}
     config.add_show_field 'script_tesim', label: 'Script', link_to_facet: 'script_sim'
     config.add_show_field 'script_note_tesim', label: 'Script Note'
     config.add_show_field 'ink_color_tesim', label: 'Ink Color'
@@ -248,6 +248,10 @@ class CatalogController < ApplicationController
     config.add_show_field 'latitude_tesim', label: 'Latitude'
     config.add_show_field 'longitude_tesim', label: 'Longitude'
     config.add_show_field 'geographic_coordinates_ssim'
+
+    # HISTORY TAB
+    config.add_show_field 'related_tesim', label: 'Related Items', break_options: {}
+    config.add_show_field 'overtext_manuscript_ssm', label: 'Overtext manuscript', break_options: {}
 
     # SECONDARY
     # Find This Item

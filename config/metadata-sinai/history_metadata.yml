@@ -2,9 +2,9 @@
 
 # Sinai only - History
 date_created_tesim: 'Date created'
-scribe_tesim: 'Scribe'
 place_of_origin_tesim: 'Place of Origin'
 colophon_tesim: 'Colophon'
-hand_note_tesim: 'Hand note'
-script_tesim: 'Script note'
 provenance_tesim: 'Provenance'
+inscription_tesim: 'Inscription'
+overtext_manuscript_ssm: 'Overtext manuscript'
+related_tesim: 'Related Items'

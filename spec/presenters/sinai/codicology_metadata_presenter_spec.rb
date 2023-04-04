@@ -10,6 +10,7 @@ RSpec.describe Sinai::CodicologyMetadataPresenter do
       'form_tesim' => 'Form',
       'support_tesim' => 'Support',
       'writing_system_tesim' => 'Writing system',
+      'scribe_tesim' => 'Scribe',
       'script_tesim' => 'Script',
       'script_note_tesim' => 'Script Note',
       'ink_color_tesim' => 'Ink Color',
@@ -57,6 +58,10 @@ RSpec.describe Sinai::CodicologyMetadataPresenter do
         expect(config['writing_system_tesim'].to_s).to eq('Writing system')
       end
 
+      it 'returns the Scribe Key' do
+        expect(config['scribe_tesim'].to_s).to eq('Scribe')
+      end
+
       it 'returns the Script Key' do
         expect(config['script_tesim'].to_s).to eq('Script')
       end
@@ -91,7 +96,7 @@ RSpec.describe Sinai::CodicologyMetadataPresenter do
       let(:missing) { presenter_object_missing_items.codicology_terms.keys.length }
 
       it "returns existing keys" do
-        expect(all).to eq 15
+        expect(all).to eq 16
         expect(config.length).to eq all
       end
 

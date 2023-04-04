@@ -5,19 +5,19 @@ RSpec.describe Sinai::HistoryMetadataPresenter do
   let(:solr_doc) do
     {
       'date_created_tesim' => 'Date created',
-      'scribe_tesim' => 'Scribe',
       'place_of_origin_tesim' => 'Place of Origin',
       'colophon_tesim' => 'Colophon',
-      'hand_note_tesim' => 'Hand note',
-      'script_tesim' => 'Script note',
-      'provenance_tesim' => 'Provenance'
+      'provenance_tesim' => 'Provenance',
+      'inscription_tesim' => 'Inscription',
+      'overtext_manuscript_ssm' => 'Overtext manuscript',
+      'related_tesim' => 'Related Items'
     }
   end
   let(:solr_doc_missing_items) do
     {
       'date_created_tesim' => 'Date created',
-      'scribe_tesim' => 'Scribe',
-      'place_of_origin_tesim' => 'Place of Origin'
+      'place_of_origin_tesim' => 'Place of Origin',
+      'colophon_tesim' => 'Colophon'
     }
   end
   let(:presenter_object) { described_class.new(document: solr_doc) }
@@ -30,24 +30,12 @@ RSpec.describe Sinai::HistoryMetadataPresenter do
         expect(config['date_created_tesim'].to_s).to eq('Date created')
       end
 
-      it 'returns the Scribe Key' do
-        expect(config['scribe_tesim'].to_s).to eq('Scribe')
-      end
-
       it 'returns the Place of Origin Key' do
         expect(config['place_of_origin_tesim'].to_s).to eq('Place of Origin')
       end
 
       it 'returns the Colophon Key' do
         expect(config['colophon_tesim'].to_s).to eq('Colophon')
-      end
-
-      it 'returns the Hand note Key' do
-        expect(config['hand_note_tesim'].to_s).to eq('Hand note')
-      end
-
-      it 'returns the Script note Key' do
-        expect(config['script_tesim'].to_s).to eq('Script note')
       end
 
       it 'returns the Provenance Key' do
