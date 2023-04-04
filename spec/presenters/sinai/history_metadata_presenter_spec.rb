@@ -8,7 +8,7 @@ RSpec.describe Sinai::HistoryMetadataPresenter do
       'place_of_origin_tesim' => 'Place of Origin',
       'colophon_tesim' => 'Colophon',
       'provenance_tesim' => 'Provenance',
-      'inscription_tesim' => 'Inscription',
+      'inscription_tesim' => 'Inscriptions',
       'overtext_manuscript_ssm' => 'Overtext manuscript',
       'related_tesim' => 'Related Items'
     }

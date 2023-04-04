@@ -195,7 +195,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'contributor_tesim', label: 'Contributors', break_options: {}
     config.add_show_field 'explicit_tesim', label: 'Explicit'
     config.add_show_field 'incipit_tesim', label: 'Incipit'
-    config.add_show_field 'inscription_tesim', label: 'Inscription', break_options: {}
+    config.add_show_field 'inscription_tesim', label: 'Inscriptions', break_options: {}
     config.add_show_field 'script_tesim', label: 'Script', link_to_facet: 'script_sim'
     config.add_show_field 'script_note_tesim', label: 'Script Note'
     config.add_show_field 'ink_color_tesim', label: 'Ink Color'
