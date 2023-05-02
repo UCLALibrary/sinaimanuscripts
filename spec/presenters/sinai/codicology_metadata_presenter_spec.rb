@@ -19,7 +19,8 @@ RSpec.describe Sinai::CodicologyMetadataPresenter do
       'hand_note_tesim' => 'Hand Note',
       'binding_note_tesim' => 'Binding Note',
       'condition_note_tesim' => 'Condition Note',
-      'description_tesim' => 'Physical Description note'
+      'description_tesim' => 'Physical Description note',
+      'binding_condition_tesim' => 'Binding condition'
     }
   end
   let(:solr_doc_missing_items) do
@@ -96,7 +97,7 @@ RSpec.describe Sinai::CodicologyMetadataPresenter do
       let(:missing) { presenter_object_missing_items.codicology_terms.keys.length }
 
       it "returns existing keys" do
-        expect(all).to eq 16
+        expect(all).to eq 17
         expect(config.length).to eq all
       end
 

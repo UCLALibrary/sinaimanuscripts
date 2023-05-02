@@ -55,6 +55,7 @@ module BlacklightHelper
     data = undertext_objects_markup
     data.html_safe
   end
+
   def undertext_objects_markup
     undertext_objects_text = ''
     markups = @document[:undertext_objects_ssim]

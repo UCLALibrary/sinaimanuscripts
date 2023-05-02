@@ -32,7 +32,6 @@ class SearchFieldService
     'ink_color_tesim',
     'inscription_tesim',
     'incipit_tesim',
-    'item_ark_ssi',
     'local_identifier_ssm',
     'location_tesim',
     'lyricist_tesim',

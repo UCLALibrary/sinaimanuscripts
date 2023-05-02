@@ -224,7 +224,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'dimensions_tesim', label: 'Dimensions'
     config.add_show_field 'page_layout_ssim', label: 'Page layout'
     config.add_show_field 'binding_note_tesim', label: 'Binding note', break_options: {} # with this break_options enabled for this field, will display mutiple values in this field on new lines with line breaks
-    config.add_show_field 'binding_condition_tesim', label: 'Binding condition', break_options: {} 
+    config.add_show_field 'binding_condition_tesim', label: 'Binding condition', break_options: {}
     config.add_show_field 'condition_note_tesim', label: 'Condition note', break_options: {}
     config.add_show_field 'collation_tesim', label: 'Collation'
     config.add_show_field 'foliation_tesim', label: 'Foliation'
