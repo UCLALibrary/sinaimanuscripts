@@ -59,14 +59,14 @@ module BlacklightHelper
   def undertext_objects_markup
     undertext_objects_text = ''
     markups = @document[:undertext_objects_ssim]
-    markups.each { |markup| undertext_objects_text += markup + ' <br>' }
+    markups.each { |markup| undertext_objects_text += markup + '<br>' }
     undertext_objects_text
   end
 
   def overtext_manuscript_markup
     overtext_manuscript_text = ''
     urls = @document[:overtext_manuscript_ssm]
-    urls.each { |url| overtext_manuscript_text += '<a href="' + url + ' "target="_blank">' + url + '</a> <br>' }
+    urls.each { |url| overtext_manuscript_text += '<a href="' + url + '" target="_blank">' + url + '</a><br>' }
     overtext_manuscript_text
   end
 
