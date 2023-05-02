@@ -51,6 +51,17 @@ module BlacklightHelper
     data.html_safe
   end
 
+  def render_undertext_objects_markup
+    data = undertext_objects_markup
+    data.html_safe
+  end
+  def undertext_objects_markup
+    undertext_objects_text = ''
+    markups = @document[:undertext_objects_ssim]
+    markups.each { |markup| undertext_objects_text += markup + ' <br>' }
+    undertext_objects_text
+  end
+
   def overtext_manuscript_markup
     overtext_manuscript_text = ''
     urls = @document[:overtext_manuscript_ssm]

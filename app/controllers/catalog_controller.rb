@@ -193,7 +193,6 @@ class CatalogController < ApplicationController
 
     # IF SINAI ?
     config.add_show_field 'contributor_tesim', label: 'Contributors', break_options: {}
-    config.add_show_field 'item_ark_ssi', label: 'Item Ark', break_options: {}
     config.add_show_field 'explicit_tesim', label: 'Explicit'
     config.add_show_field 'incipit_tesim', label: 'Incipit'
     config.add_show_field 'inscription_tesim', label: 'Inscriptions', break_options: {}
