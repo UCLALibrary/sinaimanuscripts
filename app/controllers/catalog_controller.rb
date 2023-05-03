@@ -209,6 +209,8 @@ class CatalogController < ApplicationController
     config.add_show_field 'caption_tesim', label: 'Caption'
     config.add_show_field 'toc_tesim', label: 'Table of Contents'
     config.add_show_field 'contents_note_tesim', label: 'Contents note'
+    config.add_show_field 'contents_ssi', label: 'Contents'
+    config.add_show_field 'undertext_objects_ssim', label: 'Undertext Objects', break_options: {}
     config.add_show_field 'provenance_tesim', label: 'Provenance'
     config.add_show_field 'colophon_tesim', label: 'Colophon'
     config.add_show_field 'note_tesim', label: 'Note'
@@ -222,6 +224,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'dimensions_tesim', label: 'Dimensions'
     config.add_show_field 'page_layout_ssim', label: 'Page layout'
     config.add_show_field 'binding_note_tesim', label: 'Binding note', break_options: {} # with this break_options enabled for this field, will display mutiple values in this field on new lines with line breaks
+    config.add_show_field 'binding_condition_tesim', label: 'Binding condition', break_options: {}
     config.add_show_field 'condition_note_tesim', label: 'Condition note', break_options: {}
     config.add_show_field 'collation_tesim', label: 'Collation'
     config.add_show_field 'foliation_tesim', label: 'Foliation'
@@ -370,9 +373,9 @@ class CatalogController < ApplicationController
         pf: ''
       }
     end
-    config.add_search_field('toc_tesim contents_note_tesim', label: 'Contents') do |field|
+    config.add_search_field('toc_tesim contents_note_tesim contents_ssi', label: 'Contents') do |field|
       field.solr_parameters = {
-        qf: 'toc_tesim contents_note_tesim',
+        qf: 'toc_tesim contents_note_tesim contents_ssi',
         pf: ''
       }
     end
