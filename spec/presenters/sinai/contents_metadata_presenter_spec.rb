@@ -9,7 +9,9 @@ RSpec.describe Sinai::ContentsMetadataPresenter do
       'explicit_tesim' => 'Explicit',
       'author_tesim' => 'Author',
       'associated_name_tesim' => 'Associated Name',
-      'contents_note_tesim' => 'Contents note'
+      'contents_note_tesim' => 'Contents note',
+      'contents_ssi' => 'Contents',
+      'undertext_objects_ssim' => 'Undertext Objects'
     }
   end
   let(:solr_doc_missing_items) do
@@ -54,7 +56,7 @@ RSpec.describe Sinai::ContentsMetadataPresenter do
       let(:missing) { presenter_object_missing_items.contents_terms.keys.length }
 
       it "returns existing keys" do
-        expect(all).to eq 6
+        expect(all).to eq 8
         expect(config.length).to eq all
       end
 
