@@ -1,17 +1,12 @@
 # Sinai Manuscripts Digital Library
 
-The repo was recently forked form Ursus, and the README still needs to be updated...
-
-## UCLA Library Management - Ursus
-
-<img align="left" width="150" src="http://digital2.library.ucla.edu/imageResize.do?contentFileId=78999&scaleFactor=0.4">
+The repo was forked form [Ursus](https://github.com/UCLALibrary/ursus)
 
 ---
 
-#### Ursus is designed as the public interface for UCLA's digital library content.
+#### Sinai Manuscripts
 
-[Bruin Bear (statue)](http://digital2.library.ucla.edu/viewItem.do?ark=21198/zz0009b6bm)
-In 1984 to mark its 50th Anniversary, the UCLA Alumni Association commissioned "Mighty Bruins" and presented the Bruin Bear Statue to the university. The [statue](http://www.publicartinla.com/UCLAArt/bruin_bear.html) is now a campus landmark and a focal point in Westwood Plaza.
+St. Catherine’s Monastery of the Sinai, in partnership with the Early Manuscripts Electronic Library (EMEL) and the UCLA Library, welcomes you to the Sinai Manuscripts Digital Library. Widely recognized as the world’s oldest continually operating library, the manuscript holdings of St. Catherine’s Monastery represent an unparalleled resource to study the history and literature of the Eastern Mediterranean from late antiquity until early modernity.
 
 ---
 
@@ -23,7 +18,7 @@ In 1984 to mark its 50th Anniversary, the UCLA Alumni Association commissioned "
 
 ## Development
 
-This section gives basic instructions to get Ursus running locally. More extensive developer documentation is maintained [in the wiki](https://github.com/UCLALibrary/amalgamated-samvera/wiki).
+This section gives basic instructions to get Sinai running locally. More extensive developer documentation is maintained [in the wiki](https://github.com/UCLALibrary/amalgamated-samvera/wiki).
 
 ### Install and run locally
 
@@ -42,17 +37,16 @@ The file `docker-compose-standalone.yml` includes a setup with a clone of the ur
 
 #### 1. Clone the repo from GitHub
 ```
-:3004
 cd sinaimanuscripts
 ```
 
-#### 3. Set up the databases
+#### 2. Set up the databases
 
 ```
 docker-compose run sinai bundle exec rails db:setup
 ```
 
-#### 4. Bring up the development environment
+#### 3. Bring up the development environment
 
 ** Do this _after_ setting up the databases** - the startup scripts require the database to be ready so that they can set feature flags e.g. for the Sinai UI mode.
 
@@ -60,11 +54,55 @@ docker-compose run sinai bundle exec rails db:setup
 docker-compose up
 ```
 
-#### Ursus should now be running
+#### Sinai should now be running locally at http://0.0.0.0:3004/
 
-- Ursus / [UCLA Library Digital Collections](https://digital.library.ucla.edu/) UI is enabled on [port 3003](http://localhost:3003)
 - [Sinai Manuscripts Digital Library](https://sinaimanuscripts.library.ucla.edu/) UI is enabled on [port 3004](http://localhost:3004)
   - **Note**: to view Sinai images, first visit the [production site](https://sinaimanuscripts.library.ucla.edu) and sign in/up to load the cookie from Production.
+
+---
+
+### Running linters and unit tests
+
+Connect to a shell _inside_ the container with:
+
+```
+docker-compose run web bash
+```
+
+Then run the entire suite, except for the cypress integration test, with:
+
+```
+sh start-ci.sh
+```
+
+You can inspect the `start-ci.sh` script to see which linters and tests this invokes.
+
+### Running the integration tests
+
+First, you will need to install node.js and npm locally.
+
+Then cd into the `e2e` directory and install the javascript dependencies:
+
+```
+cd e2e
+npm install
+```
+
+Next, you can either open the cypress test runner GUI with:
+
+```
+npx cypress open
+```
+
+or run the tests in the command line:
+
+```
+npx cypress run
+```
+
+### Visual regression tests
+
+Visual regression testing is done via [percy.io](https://percy.io/UCLA-Library-Software-Development/ursus). This runs only for pull requests on travis; it will not run locally.
 
 ---
 
@@ -114,46 +152,3 @@ docker-compose -f docker-compose-with-californica.yml run sinai bash
 ```
 git ...
 ```
-
-### Running linters and unit tests
-
-Connect to a shell _inside_ the container with:
-
-```
-docker-compose run web bash
-```
-
-Then run the entire suite, except for the cypress integration test, with:
-
-```
-sh start-ci.sh
-```
-
-You can inspect the `start-ci.sh` script to see which linters and tests this invokes.
-
-### Running the integration tests
-
-First, you will need to install node.js and npm locally.
-
-Then cd into the `e2e` directory and install the javascript dependencies:
-
-```
-cd e2e
-npm install
-```
-
-Next, you can either open the cypress test runner GUI with:
-
-```
-npx cypress open
-```
-
-or run the tests in the command line:
-
-```
-npx cypress run
-```
-
-### Visual regression tests
-
-Visual regression testing is done via [percy.io](https://percy.io/UCLA-Library-Software-Development/ursus). This runs only for pull requests on travis; it will not run locally.
