@@ -228,7 +228,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'condition_note_tesim', label: 'Condition note', break_options: {}
     config.add_show_field 'collation_tesim', label: 'Collation'
     config.add_show_field 'foliation_tesim', label: 'Foliation'
-    config.add_show_field 'illustrations_note_tesim', label: 'Illustrations note'
+    config.add_show_field 'illustrations_note_tesim', label: 'Decoration note'
 
     config.add_show_field 'hand_note_tesim', limit: 7, label: 'Hand note' # 'Writing and hands'
 
