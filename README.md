@@ -63,6 +63,8 @@ docker-compose up
 
 ### Running linters and unit tests
 
+#### Press these three buttons together when on a page to view in X-Ray SHIFT & COMMAND & X
+
 Connect to a shell _inside_ the container with:
 
 ```
