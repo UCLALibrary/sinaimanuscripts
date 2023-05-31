@@ -106,7 +106,6 @@ class CatalogController < ApplicationController
 
     # SINAI
     config.add_facet_field 'genre_sim', sort: 'index'
-    config.add_facet_field 'place_of_origin_sim', sort: 'index', label: 'Place of origin'
     config.add_facet_field 'year_isim', range: true
     config.add_facet_field 'human_readable_language_sim', sort: 'index'
     config.add_facet_field 'writing_system_sim', sort: 'index', label: 'Writing system'
