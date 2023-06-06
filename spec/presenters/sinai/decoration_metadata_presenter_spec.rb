@@ -4,12 +4,12 @@ require 'rails_helper'
 RSpec.describe Sinai::DecorationMetadataPresenter do
   let(:solr_doc) do
     {
-      'illustrations_note_tesim' => 'Illustrations note'
+      'illustrations_note_tesim' => 'Decoration note'
     }
   end
   # let(:solr_doc_missing_items) do
   #   {
-  #     'illustrations_note_tesim' => 'Illustrations note'
+  #     'illustrations_note_tesim' => 'Decoration note'
   #   }
   # end
   let(:presenter_object) { described_class.new(document: solr_doc) }
@@ -18,8 +18,8 @@ RSpec.describe Sinai::DecorationMetadataPresenter do
 
   context 'with a solr document containing overview metadata' do
     describe 'config' do
-      it 'returns the Illustrations note' do
-        expect(config['illustrations_note_tesim'].to_s).to eq('Illustrations note')
+      it 'returns the Decoration note' do
+        expect(config['illustrations_note_tesim'].to_s).to eq('Decoration note')
       end
     end
 
