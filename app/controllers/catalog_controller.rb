@@ -106,7 +106,6 @@ class CatalogController < ApplicationController
 
     # SINAI
     config.add_facet_field 'genre_sim', sort: 'index'
-    config.add_facet_field 'place_of_origin_sim', sort: 'index', label: 'Place of origin'
     config.add_facet_field 'year_isim', range: true
     config.add_facet_field 'human_readable_language_sim', sort: 'index'
     config.add_facet_field 'writing_system_sim', sort: 'index', label: 'Writing system'
@@ -195,8 +194,10 @@ class CatalogController < ApplicationController
     config.add_show_field 'contributor_tesim', label: 'Contributors', break_options: {}
     config.add_show_field 'explicit_tesim', label: 'Explicit'
     config.add_show_field 'incipit_tesim', label: 'Incipit'
-    config.add_show_field 'inscription_tesim', label: 'Inscription'
+    config.add_show_field 'inscription_tesim', label: 'Inscriptions', break_options: {}
     config.add_show_field 'script_tesim', label: 'Script', link_to_facet: 'script_sim'
+    config.add_show_field 'script_note_tesim', label: 'Script Note'
+    config.add_show_field 'ink_color_tesim', label: 'Ink Color'
     config.add_show_field 'writing_system_tesim', label: 'Writing system', link_to_facet: 'writing_system_sim'
     config.add_show_field 'collection_ssi', label: 'Collection'
     config.add_show_field 'viscodex_ssi', label: 'Collation Viewer'
@@ -207,6 +208,8 @@ class CatalogController < ApplicationController
     config.add_show_field 'caption_tesim', label: 'Caption'
     config.add_show_field 'toc_tesim', label: 'Table of Contents'
     config.add_show_field 'contents_note_tesim', label: 'Contents note'
+    config.add_show_field 'contents_ssi', label: 'Contents'
+    config.add_show_field 'undertext_objects_ssim', label: 'Undertext Objects', break_options: {}
     config.add_show_field 'provenance_tesim', label: 'Provenance'
     config.add_show_field 'colophon_tesim', label: 'Colophon'
     config.add_show_field 'note_tesim', label: 'Note'
@@ -219,11 +222,12 @@ class CatalogController < ApplicationController
     config.add_show_field 'format_extent_tesim', label: 'Extent'
     config.add_show_field 'dimensions_tesim', label: 'Dimensions'
     config.add_show_field 'page_layout_ssim', label: 'Page layout'
-    config.add_show_field 'binding_note_ssi', label: 'Binding note'
-    config.add_show_field 'condition_note_ssi', label: 'Condition note'
+    config.add_show_field 'binding_note_tesim', label: 'Binding note', break_options: {} # with this break_options enabled for this field, will display mutiple values in this field on new lines with line breaks
+    config.add_show_field 'binding_condition_tesim', label: 'Binding condition', break_options: {}
+    config.add_show_field 'condition_note_tesim', label: 'Condition note', break_options: {}
     config.add_show_field 'collation_tesim', label: 'Collation'
     config.add_show_field 'foliation_tesim', label: 'Foliation'
-    config.add_show_field 'illustrations_note_tesim', label: 'Illustrations note'
+    config.add_show_field 'illustrations_note_tesim', label: 'Decoration note'
 
     config.add_show_field 'hand_note_tesim', limit: 7, label: 'Hand note' # 'Writing and hands'
 
@@ -231,6 +235,7 @@ class CatalogController < ApplicationController
 
     # Keywords
     config.add_show_field 'keywords_tesim', label: 'Keywords', link_to_facet: 'keywords_sim', separator_options: {}
+    config.add_show_field 'folio_dimensions_ss', label: 'Typical Folio Dimensions'
     config.add_show_field 'form_tesim', label: 'Form', link_to_facet: 'form_sim'
     config.add_show_field 'genre_tesim', label: 'Genre', link_to_facet: 'genre_sim'
     config.add_show_field 'support_tesim', label: 'Support', link_to_facet: 'support_sim'
@@ -245,6 +250,10 @@ class CatalogController < ApplicationController
     config.add_show_field 'latitude_tesim', label: 'Latitude'
     config.add_show_field 'longitude_tesim', label: 'Longitude'
     config.add_show_field 'geographic_coordinates_ssim'
+
+    # HISTORY TAB
+    config.add_show_field 'related_tesim', label: 'Related Items', break_options: {}
+    config.add_show_field 'overtext_manuscript_ssm', label: 'Overtext manuscript', break_options: {}
 
     # SECONDARY
     # Find This Item
@@ -363,9 +372,9 @@ class CatalogController < ApplicationController
         pf: ''
       }
     end
-    config.add_search_field('toc_tesim contents_note_tesim', label: 'Contents') do |field|
+    config.add_search_field('toc_tesim contents_note_tesim contents_ssi', label: 'Contents') do |field|
       field.solr_parameters = {
-        qf: 'toc_tesim contents_note_tesim',
+        qf: 'toc_tesim contents_note_tesim contents_ssi',
         pf: ''
       }
     end
