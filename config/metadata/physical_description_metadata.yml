@@ -8,7 +8,7 @@ binding_note_ssi: 'Binding note'
 condition_note_ssi: 'Condition note'
 collation_tesim: 'Collation'
 foliation_tesim: 'Foliation'
-illustrations_note_tesim: 'Illustrations note'
+illustrations_note_tesim: 'Decoration note'
 form_tesim: 'Form'
 
 # Sinai only
