@@ -27,12 +27,12 @@ This section gives basic instructions to get Ursus running locally. More extensi
 
 ### Install and run locally
 
-Ursus is a Black application and only needs Solr and Fedora.
+Ursus is a [Blacklight](https://projectblacklight.org/) application and only needs Solr and Fedora.
 
 Ursus can be locally run in two ways:
 
 1. Running in standalone mode
-1. Running in conjunction with local instance Californica
+1. Running in conjunction with local instance feedMe solr
 
 ---
 
@@ -41,14 +41,14 @@ Ursus can be locally run in two ways:
 The file `docker-compose-standalone.yml` includes a setup with a clone of the ursus-stage and sinai-stage solr indexes, so you do not need to run californica and manually ingest material (in fact, californica should #not# be running to avoid port conflicts.)
 
 #### 1. Clone the repo from GitHub
-:3003
-cd ursus
+```
+:3004
+cd sinaimanuscripts
 ```
 
 #### 3. Set up the databases
 
 ```
-docker-compose run web bundle exec rails db:setup
 docker-compose run sinai bundle exec rails db:setup
 ```
 

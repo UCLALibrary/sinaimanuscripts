@@ -6,22 +6,23 @@ RSpec.describe Sinai::OverviewMetadataPresenter do
     {
       'place_of_origin_tesim' => 'Place of origin',
       'date_created_tesim' => 'Date created',
-      'extent_tesim' => 'Extent',
-      'form_ssi' => 'Form',
+      'format_extent_tesim' => 'Extent',
+      'form_tesim' => 'Form',
       'human_readable_language_tesim' => 'Language',
       'writing_system_tesim' => 'Writing system',
       'script_tesim' => 'Script',
       'repository_tesim' => 'Repository',
       'human_readable_rights_statement_tesim' => 'Rights statement',
-      'services_contact_ssm' => 'Rights contact'
+      'services_contact_ssm' => 'Rights contact',
+      'collection_ssi' => 'Collection'
     }
   end
   let(:solr_doc_missing_items) do
     {
       'place_of_origin_tesim' => 'Place of origin',
       'date_created_tesim' => 'Date created',
-      'extent_tesim' => 'Extent',
-      'form_ssi' => 'Form',
+      'format_extent_tesim' => 'Extent',
+      'form_tesim' => 'Form',
       'human_readable_language_tesim' => 'Language'
     }
   end
@@ -40,11 +41,11 @@ RSpec.describe Sinai::OverviewMetadataPresenter do
       end
 
       it 'returns the Extent Key' do
-        expect(config['extent_tesim'].to_s).to eq('Extent')
+        expect(config['format_extent_tesim'].to_s).to eq('Extent')
       end
 
       it 'returns the Form Key' do
-        expect(config['form_ssi'].to_s).to eq('Form')
+        expect(config['form_tesim'].to_s).to eq('Form')
       end
 
       it 'returns the Language Key' do
@@ -70,6 +71,10 @@ RSpec.describe Sinai::OverviewMetadataPresenter do
       it 'returns the Rights contact Key' do
         expect(config['services_contact_ssm'].to_s).to eq('Rights contact')
       end
+
+      it 'returns the Collection Key' do
+        expect(config['collection_ssi'].to_s).to eq('Collection')
+      end
     end
 
     describe "#overview_terms terms" do
@@ -77,7 +82,7 @@ RSpec.describe Sinai::OverviewMetadataPresenter do
       let(:missing) { presenter_object_missing_items.overview_terms.keys.length }
 
       it "returns existing keys" do
-        expect(all).to eq 10
+        expect(all).to eq 11
         expect(config.length).to eq all
       end
 

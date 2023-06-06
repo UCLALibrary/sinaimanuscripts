@@ -15,11 +15,11 @@ RSpec.describe Ursus::PhysicalDescriptionMetadataPresenter do
       'writing_system_tesim' => 'Writing system',
       'script_tesim' => 'Script',
       'hand_note_tesim' => 'Hand note',
-      'illustrations_note_tesim' => 'Illustrations note',
+      'illustrations_note_tesim' => 'Decoration note',
       'condition_note_ssi' => 'Condition note',
       'binding_note_ssi' => 'Binding note',
       'inscription_tesim' => 'Inscription',
-      'form_ssi' => 'Form'
+      'form_tesim' => 'Form'
     }
   end
   let(:solr_doc_missing_items) do
@@ -59,8 +59,8 @@ RSpec.describe Ursus::PhysicalDescriptionMetadataPresenter do
         expect(config['format_tesim'].to_s).to eq 'Format'
       end
 
-      it 'returns the Illustrations note Key' do
-        expect(config['illustrations_note_tesim'].to_s).to eq 'Illustrations note'
+      it 'returns the Decoration note Key' do
+        expect(config['illustrations_note_tesim'].to_s).to eq 'Decoration note'
       end
 
       it 'returns the Incription note Key' do

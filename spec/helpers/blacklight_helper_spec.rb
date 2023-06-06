@@ -51,6 +51,42 @@ RSpec.describe BlacklightHelper, type: :helper do
     end
   end
 
+  describe 'render_overtext_manuscript_links' do
+    context 'has links in solr document' do
+      let(:document) do
+        SolrDocument.new(
+          'title_tsim' => "A Fake Document",
+          'id' => '8',
+          'overtext_manuscript_ssm' => ["http://www.google.com", "http://www.bk.org"]
+        )
+      end
+      it 'returns links' do
+        expect(render_overtext_manuscript_links).to eq '<a href="http://www.google.com" target="_blank">http://www.google.com</a>'\
+        '<br><a href="http://www.bk.org" target="_blank">http://www.bk.org</a><br>'
+      end
+    end
+  end
+
+  describe 'render_undertext_objects_markup' do
+    context 'has html in solr document' do
+      let(:document) do
+        SolrDocument.new(
+          'title_tsim' => "A Fake Document",
+          'id' => '8',
+          'undertext_objects_ssim' => [
+            "<a href=“https://sinaimanuscripts.library.ucla.edu/catalog/ark:%2F21198%2Fz12r59fj”>Months of the Zodiac</a> (Arabic, 10th c. CE), Folios: 119v",
+            "Divine Liturgy of Saint James (Greek, 9th c. CE), Folios: 50-52, 56, 63, 74-77, 96-106, 109-110 "
+          ]
+        )
+      end
+      it 'returns html markup' do
+        expect(render_undertext_objects_markup).to eq '<a href=“https://sinaimanuscripts.library.ucla.edu/catalog/ark:%2F21198%2Fz12r59fj”>'\
+        'Months of the Zodiac</a> (Arabic, 10th c. CE), Folios: 119v<br>Divine Liturgy of Saint James (Greek, 9th c. CE),'\
+        ' Folios: 50-52, 56, 63, 74-77, 96-106, 109-110 <br>'
+      end
+    end
+  end
+
   describe 'render_truncated_list' do
     context 'no field values' do
       let(:document) {}
@@ -89,7 +125,7 @@ RSpec.describe BlacklightHelper, type: :helper do
         )
       end
       it 'displays a linked href value' do
-        expect(render_other_versions_link).to eq '<a href="https://www.test">https://www.test</a> <br>'
+        expect(render_other_versions_link).to eq '<a href="https://www.test "target="_blank">https://www.test</a> <br>'
       end
     end
   end

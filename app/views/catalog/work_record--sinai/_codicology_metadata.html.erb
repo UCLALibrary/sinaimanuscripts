@@ -11,5 +11,11 @@
         <span class="metadata-block_value--sinai"><%= doc_presenter.field_value field %></span>
     </div>
     <% end %>
+    <% if @document["viscodex_ssi"] %>
+      <div class="metadata-block--sinai">
+        <span class="metadata-block_title--sinai">Collation Viewer </span>
+        <span class="metadata-block_value--sinai"> <%= link_to @document[:viscodex_ssi], @document[:viscodex_ssi], target: '_blank', alt: 'Collation vizualization', class: "metadata-block_value--sinai" %></span>
+      </div>
+    <% end %>
   </div>
 <% end %>
