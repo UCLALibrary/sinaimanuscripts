@@ -106,7 +106,6 @@ class CatalogController < ApplicationController
 
     # SINAI
     config.add_facet_field 'genre_sim', sort: 'index'
-    config.add_facet_field 'place_of_origin_sim', sort: 'index', label: 'Place of origin'
     config.add_facet_field 'year_isim', range: true
     config.add_facet_field 'human_readable_language_sim', sort: 'index'
     config.add_facet_field 'writing_system_sim', sort: 'index', label: 'Writing system'
@@ -228,7 +227,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'condition_note_tesim', label: 'Condition note', break_options: {}
     config.add_show_field 'collation_tesim', label: 'Collation'
     config.add_show_field 'foliation_tesim', label: 'Foliation'
-    config.add_show_field 'illustrations_note_tesim', label: 'Illustrations note'
+    config.add_show_field 'illustrations_note_tesim', label: 'Decoration note'
 
     config.add_show_field 'hand_note_tesim', limit: 7, label: 'Hand note' # 'Writing and hands'
 
