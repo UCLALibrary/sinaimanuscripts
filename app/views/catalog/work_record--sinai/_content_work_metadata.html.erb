@@ -1,0 +1,16 @@
+<% doc_presenter = show_presenter(document) %>
+<% contents = Sinai::ContentsWorksMetadataPresenter.new(document: doc_presenter.fields_to_render).contents_terms %>
+<div class="metadata-block--sinai">
+    <span class="metadata-block_title--sinai">Works</span>
+    <span class="metadata-block_value--sinai">
+    <% index = 0 %>
+    <% contents.each do |field_name, field| %>
+    <% if index == 0 && field_name.include?("descriptive_title") && contents.length > 1 %>
+        <%= doc_presenter.field_value field %>&nbsp;|&nbsp;
+    <% else %>
+       <%= doc_presenter.field_value field %>
+    <% end %>
+     <% index += 1 %>
+    <% end %>
+    </span>
+</div>
