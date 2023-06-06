@@ -2,7 +2,8 @@ name: Build with tag
 
 on:
   push:
-    tags: [ v*.*.* ]
+    tags:
+      - 'v*.*.*'
 
 jobs:
 
