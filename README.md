@@ -32,7 +32,7 @@ Ursus is a [Blacklight](https://projectblacklight.org/) application and only nee
 Ursus can be locally run in two ways:
 
 1. Running in standalone mode
-1. Running in conjunction with local instance Californica
+1. Running in conjunction with local instance feedMe solr
 
 ---
 
@@ -42,14 +42,13 @@ The file `docker-compose-standalone.yml` includes a setup with a clone of the ur
 
 #### 1. Clone the repo from GitHub
 ```
-:3003
-cd ursus
+:3004
+cd sinaimanuscripts
 ```
 
 #### 3. Set up the databases
 
 ```
-docker-compose run web bundle exec rails db:setup
 docker-compose run sinai bundle exec rails db:setup
 ```
 
