@@ -6,7 +6,9 @@ RSpec.describe Sinai::ReferencesMetadataPresenter do
     {
       'contributor_tesim' => 'Contributors',
       'references_tesim' => 'References',
-      'other_versions_tesim' => 'Other version(s)'
+      'other_versions_tesim' => 'Other version(s)',
+      'ark_ssi' => 'Item Ark'
+
     }
   end
   let(:solr_doc_missing_items) do
@@ -30,7 +32,7 @@ RSpec.describe Sinai::ReferencesMetadataPresenter do
       let(:missing) { presenter_object_missing_items.references_terms.keys.length }
 
       it "returns existing keys" do
-        expect(all).to eq 2
+        expect(all).to eq 3
         expect(config.length).to eq all
       end
 

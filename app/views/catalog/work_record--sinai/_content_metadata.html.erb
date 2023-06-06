@@ -1,15 +1,28 @@
 <% doc_presenter = show_presenter(document) %>
+<% works = Sinai::ContentsWorksMetadataPresenter.new(document: doc_presenter.fields_to_render).contents_terms %>
 <% contents = Sinai::ContentsMetadataPresenter.new(document: doc_presenter.fields_to_render).contents_terms %>
 
-<% if contents.length > 0 %>
+<% if contents.length > 0 || works.length > 0 %>
   <input type="radio" name="tabs" id="tabone" checked="checked">
   <label for="tabone">Content</label>
   <div class="primary-metadata_tab-box--sinai">
+  <%= render 'catalog/work_record--sinai/content_work_metadata', document: document %>
   <% contents.each do |field_name, field| %>
+   <% if field_name == "undertext_objects_ssim" %>
     <div class="metadata-block--sinai">
-        <span class="metadata-block_title--sinai"> <%= (render_document_show_field_label document, field: field_name).tr(':', '') %></span>
-        <span class="metadata-block_value--sinai"><%= doc_presenter.field_value field %></span>
-    </div>
+        <span class="metadata-block_title--sinai">
+          <%= 'Undertext objects' %>
+        </span>
+        <span class="metadata-block_value--sinai">
+         <%= render_undertext_objects_markup %>
+        </span>
+      </div>
+    <% else %>
+      <div class="metadata-block--sinai">
+          <span class="metadata-block_title--sinai"> <%= (render_document_show_field_label document, field: field_name).tr(':', '') %></span>
+          <span class="metadata-block_value--sinai"><%= doc_presenter.field_value field %></span>
+      </div>
     <% end %>
+  <% end %>
   </div>
 <% end %>
