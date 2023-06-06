@@ -20,6 +20,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  white-space: nobreak;
+  
+  @media (min-width: 1430px) {
+    width: 520px;
+  }
 
   @media (max-width: 991px) {
     margin-bottom: 0.5rem;

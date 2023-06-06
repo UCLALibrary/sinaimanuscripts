@@ -4,20 +4,18 @@ require 'rails_helper'
 RSpec.describe Sinai::ContentsMetadataPresenter do
   let(:solr_doc) do
     {
-      'descriptive_title_tesim' => 'Descriptive title',
-      'uniform_title_tesim' => 'Uniform title',
       'alternative_title_tesim' => 'Alternative title',
       'incipit_tesim' => 'Incipit',
       'explicit_tesim' => 'Explicit',
       'author_tesim' => 'Author',
       'associated_name_tesim' => 'Associated Name',
-      'contents_note_tesim' => 'Contents note'
+      'contents_note_tesim' => 'Contents note',
+      'contents_ssi' => 'Contents',
+      'undertext_objects_ssim' => 'Undertext Objects'
     }
   end
   let(:solr_doc_missing_items) do
     {
-      'descriptive_title_tesim' => 'Descriptive title',
-      'uniform_title_tesim' => 'Uniform title',
       'alternative_title_tesim' => 'Alternative title',
       'incipit_tesim' => 'Incipit'
     }
@@ -28,14 +26,6 @@ RSpec.describe Sinai::ContentsMetadataPresenter do
 
   context 'with a solr document containing contents metadata' do
     describe '#terms' do
-      it 'returns the Descriptive title Key' do
-        expect(config['descriptive_title_tesim'].to_s).to eq('Descriptive title')
-      end
-
-      it 'returns the Uniform title Key' do
-        expect(config['uniform_title_tesim'].to_s).to eq('Uniform title')
-      end
-
       it 'returns the Alternative title Key' do
         expect(config['alternative_title_tesim'].to_s).to eq('Alternative title')
       end
