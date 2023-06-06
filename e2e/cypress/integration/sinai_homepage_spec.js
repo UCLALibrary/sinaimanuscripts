@@ -7,6 +7,8 @@ describe('Sinai Homepage', () => {
   it('Sinai Manuscripts Digital Library Logo', () => {
     cy.visit(Cypress.env('SINAI_BASE_URL'));
     cy.get('.site-navbar__logo-block--sinai');
+    cy.viewport(1440, 900)
+    cy.percySnapshot();
   });
 
   it('Search Component', () => {

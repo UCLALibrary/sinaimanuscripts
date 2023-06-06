@@ -1,38 +1,33 @@
-<% if Flipflop.sinai? %>
-  <%# --------- Back to Search Results ----- %>
-
-  <div class='item-page__metadata-wrapper-results--sinai'>
-    <%= link_back_to_catalog label: '← Back to Search Results', class: 'si-link si-link-search-results' %>
-    <%#= link_to image_tag('iiif-logo.png', alt: 'IIIF Manifest'), @document[:iiif_manifest_url_ssi], class: 'si-link-iiif' %>
-
-    <%# ---------- IIIF & Tooltip ------------ %>
+<%# --------- Back to Search Results ----- %>
+<div class='item-page__metadata-wrapper-results--sinai'>
+  <%= link_back_to_catalog label: '← Back to Search Results', class: 'si-link si-link-search-results' %>
+  <%# ---------- IIIF & Tooltip ------------ %>
+  <% if cookies[:sinai_authenticated_3day] %>
     <div class='si-link-iiif'>
-        <%#= link_to image_tag("linkedin.svg"), "http://www.linkedin.com/in/myprofile",  :target => "_blank"%>
-        <%= link_to image_tag('iiif-logo.png'), @document[:iiif_manifest_url_ssi], target: '_blank', alt: 'IIIF Manifest', class: 'si-link-iiif' %>
+      <% if @document["viscodex_ssi"] %>
+        <div class='si-link-viscodex' data-toggle="tooltip" data-placement="bottom" data-html="true" title="Click to  view collation viewer">
+          <%= link_to image_tag('sinai-logos/logo-viscodex.png'), @document[:viscodex_ssi], target: '_blank', alt: 'Collation Viewer' %>
+        </div>
+      <% end %>
+      <div class="si-link-iiif-manifest" data-toggle="tooltip" data-placement="bottom" data-html="true" title="IIIF Manifest">
+        <%= link_to image_tag('iiif-logo.png'), @document[:iiif_manifest_url_ssi], target: '_blank', alt: 'IIIF Manifest' %>
       </div>
     </div>
-  </div>
-
-  <%# ----------- Shelfmark --------------- %>
-  <div class='title-row-show--siani'>
-    <%= @document[:shelfmark_ssi] %>
-  </div>
-
-  <div class='item-page__metadata-wrapper'>
-    <%= render 'catalog/work_record--sinai/primary_metadata', document: document %>
-    <%= render 'catalog/work_record--sinai/secondary_metadata', document: document %>
-  </div>
-
-<%# ----------- Ursus --------------- %>
-<% else %>
-  <div class='item-page__metadata-wrapper'>
-    <%= render 'catalog/work_record--ursus/primary_metadata', document: document %>
-    <%= render 'catalog/work_record--ursus/secondary_metadata', document: document %>
-  </div>
-<% end %>
+  <% end %>
+</div>
+<%# ----------- Shelfmark --------------- %>
+<div class='title-row-show--siani'>
+  <%= @document[:shelfmark_ssi] %>
+</div>
+<div class='item-page__metadata-wrapper'>
+  <%= render 'catalog/work_record--sinai/primary_metadata', document: document %>
+  <%= render 'catalog/work_record--sinai/secondary_metadata', document: document %>
+</div>
 
 <script>
-$(function () {
+document.addEventListener("DOMContentLoaded", function(event) {
+  $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
+});
 </script>
