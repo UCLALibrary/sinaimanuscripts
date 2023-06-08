@@ -1,3 +1,5 @@
+
+if (document.readyState === "interactive") {
 document.addEventListener("turbolinks:load", function() {
   var viewMoreButtons = document.querySelectorAll('.view-more')
   viewMoreButtons.forEach(function (el) {
@@ -25,3 +27,4 @@ document.addEventListener("turbolinks:load", function() {
     })
   })
 })
+}
