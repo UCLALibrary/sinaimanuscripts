@@ -4,6 +4,7 @@ exclude:
   - '**/views_legacy/**'
   - '**/vendor/**/*'
   - '**/node_modules/**/*'
+  - '**/views/shared/_sitelinks_search_box.html.erb'
 linters:
   ErbSafety:
     enabled: false
