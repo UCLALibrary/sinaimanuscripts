@@ -73,7 +73,7 @@ jobs:
         docker-compose up --detach
         docker-compose run sinai bundle exec rails db:setup
         docker-compose ps
-    - uses: cypress-io/github-action@224f894ce0b082eba28a3a4562f630c54a17b432
+    - uses: cypress-io/github-action@v5.7.2
       with:
         command-prefix: 'percy exec -- npx'
         working-directory: e2e
