@@ -10,7 +10,6 @@
 .env.production
 
 spec/examples.txt
-cypress/
 e2e/cypress/screenshots
 e2e/cypress/videos
 
