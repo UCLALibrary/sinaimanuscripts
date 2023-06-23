@@ -5,16 +5,13 @@ class AutoLink < Blacklight::Rendering::AbstractStep
 
   def render
     if config.auto_link
-        linkedValues = values.map do |value| 
-            auto_link(html_escape(value)) do |text|
-                "#{text }"
-            end
-        end  
-        next_step(linkedValues)
+      linked_values = values.map do |value|
+        auto_link(html_escape(value), &:to_s)
+      end
+      next_step(linked_values)
     else
-        next_step(values)
+      next_step(values)
     end
-    
   end
 
   def html_escape(*args)

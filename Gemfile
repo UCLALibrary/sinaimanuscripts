@@ -26,6 +26,7 @@ gem 'mysql2', '~> 0.5'
 gem 'pkg-config', '~> 1.1'
 gem 'puma', '~> 5.5' # app server
 gem 'rails', '~> 5.2'
+gem 'rails_autolink'
 gem 'rollbar' # Error reporting tool
 gem 'rsolr', '>= 1.0'
 gem 'sassc-rails', '>= 2.1.2' # SASS -> CSS compiler
@@ -35,7 +36,6 @@ gem 'sprockets', '>= 3.7.2', '< 4'
 gem 'turbolinks', '~> 5' # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'uglifier', '>= 1.3.0' # JavaScript compressor
 gem 'whenever', require: false
-gem 'rails_autolink'
 
 group :development, :test do
   gem 'bixby', '~> 1.0'
