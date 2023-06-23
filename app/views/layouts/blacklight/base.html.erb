@@ -25,15 +25,14 @@
 
     <%= opensearch_description_tag application_name, opensearch_catalog_url(format: 'xml') %>
 
-      <%= favicon_link_tag 'favicon.ico' %>
+    <%= favicon_link_tag 'favicon.ico' %>
 
-    <% if Flipflop.sinai? %>
     <%= stylesheet_link_tag 'https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;600&display=swap' %>
     <%= stylesheet_link_tag 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap' %>
-    <% end %>
 
     <%= stylesheet_link_tag (Flipflop.sinai? ? "sinai" : "ursus"), media: "all" %>
     <%= javascript_include_tag "application", defer: Rails.env.development? ? false : true %>
+    <%#= javascript_include_tag('terms_of_use_modal.js') %>
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>
   </head>
@@ -46,24 +45,62 @@
 
     <div class="site-container" <%= schema_org_markup %>>
       <%= render partial: 'shared/header/header_navbar' %>
+
       <%= render 'catalog/banners/homepage_banner' %>
 
-      <% if Flipflop.sinai? && controller.controller_name == 'catalog' && controller.action_name == 'show' %>
+      <%# TERMS OF USE MODAL %>
 
-        <main class="main-content-container container-constrained container-constrained__item-page--sinai">
-          <%= content_for(:container_header) %>
-            <%= content_for?(:content) ? yield(:content) : yield %>
-        </main>
+      <!-- Trigger/Open The Modal -->
+      <button id="myBtn">Open Modal</button>
 
-      <% else %>
-        <main class="main-content-container container-constrained">
-          <%= content_for(:container_header) %>
-            <%= content_for?(:content) ? yield(:content) : yield %>
-        </main>
-      <% end %>
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Some text in the Modal..</p>
+        </div>
+
+      </div>
+
+
+      <main class="main-content-container container-constrained container-constrained__item-page--sinai">
+        <%= content_for(:container_header) %>
+          <%= content_for?(:content) ? yield(:content) : yield %>
+      </main>
 
       <%= render partial: 'shared/footer/footer' %>
+
       <%= render partial: 'shared/modal' %>
     </div>
   </body>
 </html>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
