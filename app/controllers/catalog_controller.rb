@@ -207,9 +207,9 @@ class CatalogController < ApplicationController
     config.add_show_field 'description_tesim', label: 'Description'
     config.add_show_field 'caption_tesim', label: 'Caption'
     config.add_show_field 'toc_tesim', label: 'Table of Contents'
-    config.add_show_field 'contents_note_tesim', label: 'Contents note'
+    config.add_show_field 'contents_note_tesim', label: 'Contents note', auto_link: true # make this field url aware
     config.add_show_field 'contents_ssi', label: 'Contents'
-    config.add_show_field 'undertext_objects_ssim', label: 'Undertext Objects', break_options: {}
+    config.add_show_field 'undertext_objects_ssim', label: 'Undertext Objects', auto_link: true, break_options: {}
     config.add_show_field 'provenance_tesim', label: 'Provenance'
     config.add_show_field 'colophon_tesim', label: 'Colophon'
     config.add_show_field 'note_tesim', label: 'Note'
@@ -252,8 +252,8 @@ class CatalogController < ApplicationController
     config.add_show_field 'geographic_coordinates_ssim'
 
     # HISTORY TAB
-    config.add_show_field 'related_tesim', label: 'Related Items', break_options: {}
-    config.add_show_field 'overtext_manuscript_ssm', label: 'Overtext manuscript', break_options: {}
+    config.add_show_field 'related_tesim', label: 'Related Items', break_options: {}, auto_link: true
+    config.add_show_field 'overtext_manuscript_ssm', label: 'Overtext manuscript', break_options: {}, auto_link: true
 
     # SECONDARY
     # Find This Item
