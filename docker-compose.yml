@@ -1,10 +1,12 @@
-version: '3.6'
+version: "3.6"
 
 services:
   sinai:
     # image: uclalibrary/sinaimanuscripts:latest
     build: .
-    command: 'sh start-sinai.sh'
+    stdin_open: true
+    tty: true
+    command: "sh start-sinai.sh"
     depends_on:
       - db
       - solr
@@ -12,7 +14,7 @@ services:
       - ./default.env
       - ./docker.env
     ports:
-      - '127.0.0.1:3004:3000'
+      - "127.0.0.1:3004:3000"
     volumes:
       - .:/sinai
       - node_modules:/sinai/node_modules
@@ -25,19 +27,19 @@ services:
       - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
       - mysql_data:/var/lib/mysql
     ports:
-      - '127.0.0.1:3306:3306'
+      - "127.0.0.1:3306:3306"
     environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
 
   solr:
     image: uclalibrary/solr-ursus:7.4
     ports:
-      - '127.0.0.1:8983:8983'
+      - "127.0.0.1:8983:8983"
 
   solr_test:
     image: uclalibrary/solr-ursus:7.4
     ports:
-      - '127.0.0.1:8985:8983'
+      - "127.0.0.1:8985:8983"
 
 volumes:
   mysql_data:
