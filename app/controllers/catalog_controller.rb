@@ -207,9 +207,9 @@ class CatalogController < ApplicationController
     config.add_show_field 'description_tesim', label: 'Description'
     config.add_show_field 'caption_tesim', label: 'Caption'
     config.add_show_field 'toc_tesim', label: 'Table of Contents'
-    config.add_show_field 'contents_note_tesim', label: 'Contents note'
+    config.add_show_field 'contents_note_tesim', label: 'Contents note', auto_link: true # make this field url aware
     config.add_show_field 'contents_ssi', label: 'Contents'
-    config.add_show_field 'undertext_objects_ssim', label: 'Undertext Objects', break_options: {}
+    config.add_show_field 'undertext_objects_ssim', label: 'Undertext Objects', auto_link: true, break_options: {}
     config.add_show_field 'provenance_tesim', label: 'Provenance'
     config.add_show_field 'colophon_tesim', label: 'Colophon'
     config.add_show_field 'note_tesim', label: 'Note'
@@ -252,8 +252,8 @@ class CatalogController < ApplicationController
     config.add_show_field 'geographic_coordinates_ssim'
 
     # HISTORY TAB
-    config.add_show_field 'related_tesim', label: 'Related Items', break_options: {}
-    config.add_show_field 'overtext_manuscript_ssm', label: 'Overtext manuscript', break_options: {}
+    config.add_show_field 'related_tesim', label: 'Related Items', break_options: {}, auto_link: true
+    config.add_show_field 'overtext_manuscript_ssm', label: 'Overtext manuscript', break_options: {}, auto_link: true
 
     # SECONDARY
     # Find This Item
@@ -331,34 +331,47 @@ class CatalogController < ApplicationController
       }
     end
 
+    # URSUS
+    unless Flipflop.sinai?
+      config.add_search_field('title_tesim', label: 'Title') do |field|
+        field.solr_parameters = {
+          qf: 'title_tesim',
+          pf: ''
+        }
+      end
+      config.add_search_field('subject_tesim', label: 'Subject') do |field|
+        field.solr_parameters = {
+          qf: 'subject_tesim',
+          pf: ''
+        }
+      end
+    end
+
+    # SINAI
     config.add_search_field('shelfmark_tsi', label: 'Shelfmark') do |field|
       field.solr_parameters = {
         qf: 'shelfmark_tsi',
         pf: ''
       }
     end
-
-    config.add_search_field('title_tesim descriptive_title_tesim contents_ssi contents_note_tesim alternative_title_tesim uniform_title_tesim', label: 'Title') do |field|
+    config.add_search_field('title_tesim descriptive_title_tesim alternative_title_tesim uniform_title_tesim', label: 'Title') do |field|
       field.solr_parameters = {
-        qf: 'title_tesim descriptive_title_tesim contents_ssi contents_note_tesim alternative_title_tesim uniform_title_tesim',
+        qf: 'title_tesim descriptive_title_tesim alternative_title_tesim uniform_title_tesim',
         pf: ''
       }
     end
-
     config.add_search_field('author_tesim scribe_tesim associated_name_tesim translator_tesim', label: 'Names') do |field|
       field.solr_parameters = {
         qf: 'author_tesim scribe_tesim associated_name_tesim translator_tesim',
         pf: ''
       }
     end
-
     config.add_search_field('incipit_tesim explicit_tesim', label: 'Incipit/Explicit') do |field|
       field.solr_parameters = {
         qf: 'incipit_tesim explicit_tesim',
         pf: ''
       }
     end
-
     config.add_search_field('toc_tesim contents_note_tesim contents_ssi', label: 'Contents') do |field|
       field.solr_parameters = {
         qf: 'toc_tesim contents_note_tesim contents_ssi',
