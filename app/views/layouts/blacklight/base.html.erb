@@ -27,12 +27,10 @@
 
       <%= favicon_link_tag 'favicon.ico' %>
 
-    <% if Flipflop.sinai? %>
     <%= stylesheet_link_tag 'https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;600&display=swap' %>
     <%= stylesheet_link_tag 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap' %>
-    <% end %>
 
-    <%= stylesheet_link_tag (Flipflop.sinai? ? "sinai" : "ursus"), media: "all" %>
+    <%= stylesheet_link_tag ("sinai"), media: "all" %>
     <%= javascript_include_tag "application", defer: Rails.env.development? ? false : true %>
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>
@@ -48,7 +46,44 @@
       <%= render partial: 'shared/header/header_navbar' %>
       <%= render 'catalog/banners/homepage_banner' %>
 
-      <% if Flipflop.sinai? && controller.controller_name == 'catalog' && controller.action_name == 'show' %>
+      <!-- TERMS OF USE MODAL -->
+
+      <!-- Trigger/Open The Modal -->
+      <button id="myBtn">Open Modal</button>
+
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <!-- HEADER -->
+          <div class=' modal-headersite-navbar__logo-block site-navbar__logo-block--sinai'>
+            <div class='modal__logo-block--sinai-text-logo'>
+              <span class='modal__logo-title'>Sinai Manuscripts Digital Library</span><br>
+              <span class="modal__logo-subtitle--sinai">A publication of St. Catherine's Monastery of the Sinai, Egypt</span>
+            </div>
+          </div>
+          <!-- End of Header -->
+
+          <div class='modal-terms-of-use'>
+            <p class='modal-terms'>Manuscript images from the Sinai Manuscripts Digital Library should not be used without the express consent of St. Catherine's Monastery of the Sinai.</p>
+
+            <p class='modal-terms'>This includes use in published works and social media.</p>
+
+            <p class='modal-terms'>For more information, see the Terms of Use below.</p>
+
+            <p class='modal-terms'>Click "I AGREE..." to continue using the site.</p>
+
+            <button class="modal-button"><span class="close modal-close">I AGREE <br>to the Sinai Manuscripts Digital Library<br>Terms of Use</span></button>
+          </div>
+          <hr />
+          <div class='terms'>
+            <%= render partial: 'shared/terms_of_use_modal' %>
+          </div>
+        </div>
+      </div>
+      <!-- End of Modal -->
+
+      <% if controller.controller_name == 'catalog' && controller.action_name == 'show' %>
 
         <main class="main-content-container container-constrained container-constrained__item-page--sinai">
           <%= content_for(:container_header) %>
@@ -67,3 +102,31 @@
     </div>
   </body>
 </html>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
