@@ -57,181 +57,89 @@
 /* --------------- */
 
 // Terms of User Modal
+// terms_of_use_90day
 
 /* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 5; /* Sit on top */
-  left: 0;
+  display: none; /* Hidden by default */
+  align-self: center;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
+  left: 0;
+  z-index: 5; /* Sit on top */
+  max-width: 500px;
   overflow: auto; /* Enable scroll if needed */
+  height: 100%; /* Full height */
 }
 
 /* Modal Content/Box */
 .modal-content {
-  background-color: #f7f2ea;
   margin: 4% auto;
   padding: 25%;
-  border: 1px solid #87331a;
+  background-color: white;
   width: 92%;
+  border: 1.5px solid #f7f2ea;
 }
 
-.modal-terms-of-use {
+.modal__terms-of-use {
+  padding: 5px;
   font-size: $text-14;
-  padding: 20px;
-}
-
-.modal-terms {
-  margin: 20px auto;
+  margin-bottom: 20px;
 }
 
 // Modal Header
-.modal-headersite-navbar__logo-block {
-  background-color: #87331a;
-  padding: 15px;
-}
-.modal-header {
-  padding: 2px 5px;
-  background-color: #87331a;
-  color: white;
-}
-
-.modal-logo-block {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  white-space: nobreak;
-
-  @media (min-width: 1430px) {
-    width: 520px;
-  }
-
-  @media (max-width: 991px) {
-    margin-bottom: 0.5rem;
-    padding-left: 1.5rem;
-  }
-
-  @media (max-width: 767px) {
-    padding-left: 1rem;
-    display: flex;
-    flex-direction: column;
-  }
-
-  @media (max-width: 374px) {
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: unset;
-  }
-}
-
-.modal__logo-img--sinai {
-  color: white;
-  padding-right: 5px;
-  height: 66px;
-}
-
-.modal__logo-block--sinai-text-logo {
+.modal__logo-title {
   font-family: 'Dosis', sans-serif;
   line-height: 1.25;
-  align-self: flex-end;
-}
-
-.modal__logo-title {
-  font-size: $text-28;
-  color: white;
+  align-self: flex-start;
+  font-size: $text-24;
+  color: #87331a;
   text-transform: uppercase;
+  margin-bottom: 5px;
 
   @media (max-width: 800px) {
-    font-size: $text-24;
-  }
-
-  @media (max-width: 600px) {
-    font-size: $text-18;
-  }
-}
-
-.modal__logo-subtitle--sinai {
-  display: block;
-  font-size: $text-14;
-  font-weight: 500;
-  color: #e5e5e5;
-
-  @media (max-width: 800px) {
-    font-size: $text-14;
-  }
-
-  @media (max-width: 600px) {
-    font-size: 11px;
+    font-size: $text-20;
   }
 }
 
 /* The Close Button */
 .modal-button {
-  font-weight: 200;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-content: center;
+
   cursor: pointer;
-  background: linear-gradient(#87331a, #962605);
-  opacity:unset;
+  background: #f7f2ea;
   width: 50%;
-  padding: 10px;
-  margin-bottom: 25px;
-  border-radius: 1px;
-  color: white;
+  padding: 5px;
+  color: #87331a;
   text-align: center;
   text-shadow: 0 0 0 0;
+  border-style: none;
 
   @media (max-width: 767px) {
     width: 100%;
   }
 }
 
-.modal-button:hover {
-  background: linear-gradient(
-    #323232,#191919);
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-  font-size: 16px;
-  text-align: center;
-  text-shadow: 0 0 0 0;
-  opacity:unset;
-  padding: 10px;
-  margin-bottom:50px;
-}
-
-.modal-close {
-  color: white;
-  font-size: 16px;
-  text-shadow: 0 0 0 0;
-  float:none;
-  opacity:unset;
-}
-
 .close {
+  display: flex;
+  align-self: center;
   text-shadow: 0 0 0 0;
-  font-weight: 400;
-}
-.close:hover {
-  color: white;
-}
-
-/* Margin over Terms of Use */
-.terms {
-  margin-top: 25px;
-}
-
-.terms-title {
-  font-size: 20px;
+  text-align: center;
+  color: #87331a;
   font-family: 'Dosis', sans-serif;
   font-weight: 500;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  font-size: 16px;
+  padding:5px;
+  cursor: pointer;
+  background: #f7f2ea;
+  border: 1px solid #f7f2ea;
+  opacity:unset;
 }
-
-.terms-subtitle {
-  font-size: 18px;
-  margin-bottom: 1.25rem;
-  text-transform: uppercase;
+.close:hover {
+  font-size: 16px;
+  color: black;
+  opacity:unset;
 }

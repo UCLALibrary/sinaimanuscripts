@@ -52,33 +52,25 @@
       <button id="myBtn">Open Modal</button>
 
       <!-- The Modal -->
-      <div id="myModal" class="modal">
+      <div id="termsOfUseModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
+
           <!-- HEADER -->
-          <div class=' modal-headersite-navbar__logo-block site-navbar__logo-block--sinai'>
-            <div class='modal__logo-block--sinai-text-logo'>
-              <span class='modal__logo-title'>Sinai Manuscripts Digital Library</span><br>
-              <span class="modal__logo-subtitle--sinai">A publication of St. Catherine's Monastery of the Sinai, Egypt</span>
+            <div class='modal__logo-title'>Sinai Manuscripts Digital Library
             </div>
-          </div>
           <!-- End of Header -->
 
-          <div class='modal-terms-of-use'>
-            <p class='modal-terms'>Manuscript images from the Sinai Manuscripts Digital Library should not be used without the express consent of St. Catherine's Monastery of the Sinai.</p>
+          <div class='modal__terms-of-use'>
+            <p>Manuscript images from the Sinai Manuscripts Digital Library should not be used without the express consent of St. Catherine's Monastery of the Sinai. This includes use in published works and social media.</p>
+            <br>
+            <p>For more information, see the Terms of Use.</p>
 
-            <p class='modal-terms'>This includes use in published works and social media.</p>
-
-            <p class='modal-terms'>For more information, see the Terms of Use below.</p>
-
-            <p class='modal-terms'>Click "I AGREE..." to continue using the site.</p>
-
-            <button class="modal-button"><span class="close modal-close">I AGREE <br>to the Sinai Manuscripts Digital Library<br>Terms of Use</span></button>
+            <p>Click "I AGREE" to continue using the site.</p>
           </div>
-          <hr />
-          <div class='terms'>
-            <%= render partial: 'shared/terms_of_use_modal' %>
-          </div>
+
+          <button class="modal-button"><span class="close">I AGREE</span></button>
+
         </div>
       </div>
       <!-- End of Modal -->
@@ -105,7 +97,7 @@
 
 <script>
 // Get the modal
-var modal = document.getElementById("myModal");
+var modal = document.getElementById("termsOfUseModal");
 
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn");
