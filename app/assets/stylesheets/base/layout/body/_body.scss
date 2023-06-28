@@ -62,41 +62,40 @@
 /* The Modal (background) */
 .modal {
   position: fixed; /* Stay in place */
-  display: none; /* Hidden by default */
-  align-self: center;
   top: 0;
   left: 0;
-  z-index: 5; /* Sit on top */
-  max-width: 500px;
+  display: none; /* Hidden by default */
+  align-self: center;
   overflow: auto; /* Enable scroll if needed */
+  max-width: 500px;
   height: 100%; /* Full height */
+  z-index: 5; /* Sit on top */
 }
 
 /* Modal Content/Box */
 .modal-content {
   margin: 4% auto;
   padding: 25%;
-  background-color: white;
   width: 92%;
+  background-color: #fff;
   border: 1.5px solid #f7f2ea;
 }
 
 .modal__terms-of-use {
+  margin-bottom: 20px;
   padding: 5px;
   font-size: $text-14;
-  margin-bottom: 20px;
 }
 
 // Modal Header
 .modal__logo-title {
+  margin-bottom: 5px;
+  font-size: $text-24;
   font-family: 'Dosis', sans-serif;
   line-height: 1.25;
   align-self: flex-start;
-  font-size: $text-24;
   color: #87331a;
   text-transform: uppercase;
-  margin-bottom: 5px;
-
   @media (max-width: 800px) {
     font-size: $text-20;
   }
@@ -108,15 +107,14 @@
   align-self: center;
   justify-content: center;
   align-content: center;
-
   cursor: pointer;
-  background: #f7f2ea;
-  width: 50%;
   padding: 5px;
-  color: #87331a;
+  width: 50%;
   text-align: center;
-  text-shadow: 0 0 0 0;
+  color: #87331a;
+  background: #f7f2ea;
   border-style: none;
+  text-shadow: 0 0 0 0;
 
   @media (max-width: 767px) {
     width: 100%;
@@ -126,20 +124,21 @@
 .close {
   display: flex;
   align-self: center;
-  text-shadow: 0 0 0 0;
-  text-align: center;
-  color: #87331a;
+  padding: 5px;
+  font-size: 16px;
   font-family: 'Dosis', sans-serif;
   font-weight: 500;
-  font-size: 16px;
-  padding:5px;
-  cursor: pointer;
+  text-align: center;
+  color: #87331a;
   background: #f7f2ea;
   border: 1px solid #f7f2ea;
-  opacity:unset;
+  opacity: unset;
+  text-shadow: 0 0 0 0;
+  cursor: pointer;
 }
+
 .close:hover {
   font-size: 16px;
-  color: black;
-  opacity:unset;
+  color: #000;
+  opacity: unset;
 }
