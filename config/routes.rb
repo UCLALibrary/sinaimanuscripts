@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     concerns :range_searchable
   end
 
-  devise_for :users
+  devise_for :users, skip: :all
   concern :exportable, Blacklight::Routes::Exportable.new
 
   resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
