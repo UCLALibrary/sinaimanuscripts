@@ -11,6 +11,13 @@
 
     <div class='site-navbar__link-block--sinai'>
       <ul class='nav'>
+        <li class='nav-item site-navbar__item--sinai'>
+          XX
+          <% if user_signed_in? %>
+            Current User: <%= current_user %>
+            <%= user_signed_in? %>
+          <% end %>
+          </li>
         <li class='nav-item site-navbar__item--sinai'><%= link_to "Search#{image_tag('sinai-logos/search-icon-bold.svg', class: 'site-header__search-icon--sinai', alt: 'Search icon')}".html_safe, '/catalog?utf8=%E2%9C%93&q=&search_field=all_fields' %></li>
         <li class='nav-item site-navbar__item--sinai'><%= link_to 'About', about_path %></li>
         <% if !cookies[:sinai_authenticated_3day] %>
