@@ -12,7 +12,10 @@
     <div class='site-navbar__link-block--sinai'>
       <ul class='nav'>
         <li class='nav-item site-navbar__item--sinai'>
-          XXTest<%= cookies[:sinai_authenticated_3day] %>
+        XX<%= cookies[:sinai_authenticated_3day] %>
+        <% if cookies[:sinai_authenticated_3day] %>
+          SET A NEW COOKIE for 30 DAYS
+        <% end %>
           <% if user_signed_in? %>
           <%= @user.first_name.capitalize %>
             Current User: <%= current_user %>

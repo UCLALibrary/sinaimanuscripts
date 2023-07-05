@@ -47,12 +47,19 @@
       <%= render 'catalog/banners/homepage_banner' %>
 
       <!-- TERMS OF USE MODAL -->
-
+      <% if cookies[:sinai_authenticated_3day] %>
+        cookies[:set_modal] = { :value => 'set modal', :expires => 10.seconds.from_now }
+      <% end %>
+      <% if cookies[:set_modal] %>
       <!-- Trigger/Open The Modal -->
       <button id="myBtn">Open Modal</button>
       CURRENT USER: <%= current_user %> |
       SIGNED IN: <%= user_signed_in? %> |
-      USER SESSION: <%= user_session %>
+      USER SESSION: <%= user_session %> |
+      <% if cookies[:sinai_authenticated_3day] %>
+        <%= cookies[:sinai_authenticated_3day] %>
+      <% end %>
+      <% end %>
 
 
       <!-- The Modal -->
@@ -78,6 +85,9 @@
         </div>
       </div>
       <!-- End of Modal -->
+      <% end %>
+
+
 
       <% if controller.controller_name == 'catalog' && controller.action_name == 'show' %>
 
