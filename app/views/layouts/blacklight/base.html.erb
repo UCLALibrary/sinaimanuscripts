@@ -48,10 +48,7 @@
 
       <!-- TERMS OF USE MODAL -->
       <% if cookies[:sinai_authenticated_3day] %>
-        cookies[:set_modal] = { :value => 'set modal', :expires => 30.seconds.from_now }
-      <% end %>
 
-      <% if cookies[:set_modal] %>
         <!-- Trigger/Open The Modal -->
         <button id="myBtn">Open Modal</button>
         CURRENT USER: <%= current_user %> |
