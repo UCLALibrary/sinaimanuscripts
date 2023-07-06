@@ -54,31 +54,33 @@
   }
 }
 
-/* --------------- */
-
-// Terms of User Modal
-// terms_of_use_90day
+// Terms of Use Modal - appears every 90 days
 
 /* The Modal (background) */
 .modal {
-  position: fixed; /* Stay in place */
-  top: 0;
-  left: 0;
+  position: absolute; /* Stay in place */
+  top: 15%;
+  left: 25%;
   display: none; /* Hidden by default */
   align-self: center;
   overflow: auto; /* Enable scroll if needed */
-  max-width: 500px;
+  max-width: 600px;
   height: 100%; /* Full height */
   z-index: 5; /* Sit on top */
+
+  @media (max-width: 767px) {
+    top: 0;
+    left: 0;
+  }
 }
 
 /* Modal Content/Box */
 .modal-content {
   margin: 4% auto;
-  padding: 25%;
+  padding: 30%;
   width: 92%;
   background-color: #fff;
-  border: 1.5px solid #f7f2ea;
+  border: 1px solid #87331a;
 }
 
 .modal__terms-of-use {
@@ -96,6 +98,7 @@
   align-self: flex-start;
   color: #87331a;
   text-transform: uppercase;
+
   @media (max-width: 800px) {
     font-size: $text-20;
   }

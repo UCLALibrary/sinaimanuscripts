@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  before_action :display_banner?, :sinai_authn_check, :add_legacy_views, :cors_preflight_check, :set_default_sort, :set_term_of_use_cookie, :terms_of_use_modal_check
+  before_action :display_banner?, :sinai_authn_check, :add_legacy_views, :cors_preflight_check, :set_default_sort, :display_term_of_use?
   after_action :cors_set_access_control_headers
 
   def add_legacy_views
@@ -95,16 +95,27 @@ class ApplicationController < ActionController::Base
     }
   end
 
+  # TERMS OF USE MODAL
+  def term_of_use_cookie?
+    cookies[:set_modal]
+  end
+
   def set_term_of_use_cookie
     cookies[:set_modal] = {
       value: 'Set this Modal',
-      expires: Time.zone.now + 1.minutes
+      expires: Time.zone.now + 90.days
     }
   end
 
-  def terms_of_use_modal_check
-    return true if cookies[:sinai_authenticated_3day] = 'true'
+  def display_term_of_use?
+    if term_of_use_cookie?
+      @term_of_use_modal_option = "none"
+    else
+      @term_of_use_modal_option = "block"
+      set_term_of_use_cookie
+    end
   end
+  # End Terms of Use Modal
 
   def create_encrypted_string
     cipher.encrypt

@@ -43,59 +43,33 @@
     <% end %>
 
     <div class="site-container" <%= schema_org_markup %>>
+      <!-- HEADER -->
       <%= render partial: 'shared/header/header_navbar' %>
       <%= render 'catalog/banners/homepage_banner' %>
 
       <!-- TERMS OF USE MODAL -->
-      <% if cookies[:sinai_authenticated_3day] %>
-      <% if cookies[:set_modal] %>
+      <% if @term_of_use_modal_option == "block" %>
+        <div id="termsOfUseModal" style="display: block" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <div class='modal__logo-title'>Sinai Manuscripts Digital Library</div>
 
-        <!-- Trigger/Open The Modal -->
-        <button id="myBtn">Open Modal</button>
-        CURRENT USER: <%= current_user %> |
-        SIGNED IN: <%= user_signed_in? %> |
-        USER SESSION: <%= user_session %> |
-        <% if cookies[:sinai_authenticated_3day] %>
-          <%= cookies[:sinai_authenticated_3day] %>
-        <% end %>
+            <div class='modal__terms-of-use'>
+              <p>Manuscript images from the Sinai Manuscripts Digital Library should not be used without the express consent of St. Catherine's Monastery of the Sinai. This includes use in published works and social media.</p>
+              <br>
 
-        <% if cookies[:set_modal] %>
-          Set Modal: <%= cookies[:set_modal] %>
-          | <%= :terms_of_use_modal? %>
-        <% end %>
+              <p>For more information, see the Terms of Use.</p>
 
-        <% if :terms_of_use_modal_check %>
-          :terms_of_use_modal_check is true
-        <% end %>
-
-      <!-- The Modal -->
-      <div id="termsOfUseModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-
-          <!-- HEADER -->
-            <div class='modal__logo-title'>Sinai Manuscripts Digital Library
+              <p>Click "I AGREE" to continue using the site.</p>
             </div>
-          <!-- End of Header -->
 
-          <div class='modal__terms-of-use'>
-            <p>Manuscript images from the Sinai Manuscripts Digital Library should not be used without the express consent of St. Catherine's Monastery of the Sinai. This includes use in published works and social media.</p>
-            <br>
-            <p>For more information, see the Terms of Use.</p>
-
-            <p>Click "I AGREE" to continue using the site.</p>
+            <button class="modal-button" onclick="closeModal()"><span class="close">I AGREE</span></button>
           </div>
-
-          <button class="modal-button"><span class="close">I AGREE</span></button>
-
         </div>
-      </div>
+      <% end %>
       <!-- End of Modal -->
-      <% end %>
-      <% end %>
 
-
-
+      <!-- BODY -->
       <% if controller.controller_name == 'catalog' && controller.action_name == 'show' %>
 
         <main class="main-content-container container-constrained container-constrained__item-page--sinai">
@@ -110,6 +84,7 @@
         </main>
       <% end %>
 
+      <!-- FOOTER -->
       <%= render partial: 'shared/footer/footer' %>
       <%= render partial: 'shared/modal' %>
     </div>
@@ -117,29 +92,11 @@
 </html>
 
 <script>
-// Get the modal
-var modal = document.getElementById("termsOfUseModal");
+  // Get the modal
+  var modal = document.getElementById("termsOfUseModal");
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
+  // When the user clicks on "I Agree", close the modal
+  function closeModal() {
     modal.style.display = "none";
   }
-}
 </script>
