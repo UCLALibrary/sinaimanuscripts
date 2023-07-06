@@ -98,11 +98,11 @@ class ApplicationController < ActionController::Base
   def set_term_of_use_cookie
     cookies[:set_modal] = {
       :value => 'set modal',
-      expires: Time.zone.now + 1.hour.from_now
+      expires: Time.zone.now + 1.hour
     }
   end
 
-  def modal_check
+  def terms_of_use_modal?
     return true if set_term_of_use_cookie
   end
 
