@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  before_action :display_banner?, :sinai_authn_check, :add_legacy_views, :cors_preflight_check, :set_default_sort
+  before_action :display_banner?, :sinai_authn_check, :add_legacy_views, :cors_preflight_check, :set_default_sort, :set_term_of_use_cookie
   after_action :cors_set_access_control_headers
 
   def add_legacy_views
@@ -92,6 +92,13 @@ class ApplicationController < ActionController::Base
       value: cipher_iv.unpack('H*')[0].upcase,
       expires: Time.zone.now + 3.days,
       domain: ENV['DOMAIN']
+    }
+  end
+
+  def set_term_of_use_cookie
+    cookies[:set_modal] = {
+      :value => 'set modal',
+      expires: Time.zone.now + 1.day,
     }
   end
 
