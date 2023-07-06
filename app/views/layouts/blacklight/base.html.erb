@@ -47,8 +47,7 @@
       <%= render 'catalog/banners/homepage_banner' %>
 
       <!-- TERMS OF USE MODAL -->
-      <%# if cookies[:sinai_authenticated_3day] %>
-      <% if cookies[:set_modal] %>
+      <% if cookies[:sinai_authenticated_3day] && if cookies[:set_modal]  %>
 
         <!-- Trigger/Open The Modal -->
         <button id="myBtn">Open Modal</button>
