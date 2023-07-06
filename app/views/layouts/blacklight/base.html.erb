@@ -64,6 +64,10 @@
           | <%= :terms_of_use_modal? %>
         <% end %>
 
+        <% if :terms_of_use_modal_check %>
+          :terms_of_use_modal_check is true
+        <% end %>
+
       <!-- The Modal -->
       <div id="termsOfUseModal" class="modal">
         <!-- Modal content -->
