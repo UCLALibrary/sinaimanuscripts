@@ -2,9 +2,9 @@
 describe('Sinai Search', () => {
   beforeEach(() => {
     cy.visit(Cypress.env('SINAI_BASE_URL') + '/catalog');
-    cy.get('.modal');
+    cy.get('.si-terms-of-use-modal-block');
     cy.contains('p', 'Manuscript images');
-    cy.get('.modal-button').click();
+    cy.get('.si-terms-of-use-modal-button').click();
   });
 
   it('Search Blank', () => {

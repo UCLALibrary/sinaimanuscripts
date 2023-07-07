@@ -49,12 +49,12 @@
 
       <!-- TERMS OF USE MODAL -->
       <% if @term_of_use_modal_option == "block" %>
-        <div id="termsOfUseModal" style="display: block" class="modal">
+        <div id="termsOfUseModal" style="display: block" class="si-terms-of-use-modal-block">
           <!-- Modal content -->
-          <div class="modal-content">
-            <div class='modal__logo-title'>Sinai Manuscripts Digital Library</div>
+          <div class="si-terms-of-use-modal-group">
+            <div class='si-terms-of-use-modal-title'>Sinai Manuscripts Digital Library</div>
 
-            <div class='modal__terms-of-use'>
+            <div class='si-terms-of-use-modal-content'>
               <p>Manuscript images from the Sinai Manuscripts Digital Library should not be used without the express consent of St. Catherine's Monastery of the Sinai. This includes use in published works and social media.</p>
               <br>
 
@@ -63,7 +63,7 @@
               <p>Click "I AGREE" to continue using the site.</p>
             </div>
 
-            <button class="modal-button" onclick="closeModal()"><span class="close">I AGREE</span></button>
+            <button class="si-terms-of-use-modal-button" onclick="closeModal()"><span class="close">I AGREE</span></button>
           </div>
         </div>
       <% end %>
