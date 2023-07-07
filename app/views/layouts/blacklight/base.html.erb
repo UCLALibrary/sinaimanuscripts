@@ -27,12 +27,10 @@
 
       <%= favicon_link_tag 'favicon.ico' %>
 
-    <% if Flipflop.sinai? %>
     <%= stylesheet_link_tag 'https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;600&display=swap' %>
     <%= stylesheet_link_tag 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap' %>
-    <% end %>
 
-    <%= stylesheet_link_tag (Flipflop.sinai? ? "sinai" : "ursus"), media: "all" %>
+    <%= stylesheet_link_tag "sinai", media: "all" %>
     <%= javascript_include_tag "application", defer: Rails.env.development? ? false : true %>
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>
@@ -45,10 +43,34 @@
     <% end %>
 
     <div class="site-container" <%= schema_org_markup %>>
+      <!-- HEADER -->
       <%= render partial: 'shared/header/header_navbar' %>
       <%= render 'catalog/banners/homepage_banner' %>
 
-      <% if Flipflop.sinai? && controller.controller_name == 'catalog' && controller.action_name == 'show' %>
+      <!-- TERMS OF USE MODAL -->
+      <% if @term_of_use_modal_option == "block" %>
+        <div id="termsOfUseModal" style="display: block" class="si-terms-of-use-modal-block">
+          <!-- Modal content -->
+          <div class="si-terms-of-use-modal-group">
+            <div class='si-terms-of-use-modal-title'>Sinai Manuscripts Digital Library</div>
+
+            <div class='si-terms-of-use-modal-content'>
+              <p>Manuscript images from the Sinai Manuscripts Digital Library should not be used without the express consent of St. Catherine's Monastery of the Sinai. This includes use in published works and social media.</p>
+              <br>
+
+              <p>For more information, see the Terms of Use.</p>
+
+              <p>Click "I AGREE" to continue using the site.</p>
+            </div>
+
+            <button class="si-terms-of-use-modal-button" onclick="closeModal()"><span class="close">I AGREE</span></button>
+          </div>
+        </div>
+      <% end %>
+      <!-- End of Modal -->
+
+      <!-- BODY -->
+      <% if controller.controller_name == 'catalog' && controller.action_name == 'show' %>
 
         <main class="main-content-container container-constrained container-constrained__item-page--sinai">
           <%= content_for(:container_header) %>
@@ -62,8 +84,19 @@
         </main>
       <% end %>
 
+      <!-- FOOTER -->
       <%= render partial: 'shared/footer/footer' %>
       <%= render partial: 'shared/modal' %>
     </div>
   </body>
 </html>
+
+<script>
+  // Get the modal
+  var modal = document.getElementById("termsOfUseModal");
+
+  // When the user clicks on "I Agree", close the modal
+  function closeModal() {
+    modal.style.display = "none";
+  }
+</script>
