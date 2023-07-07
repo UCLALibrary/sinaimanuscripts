@@ -1,25 +1,28 @@
 describe('Sinai Homepage', () => {
-  it('Visit the Sinai Homepage', () => {
+  beforeEach(() => {
     cy.visit(Cypress.env('SINAI_BASE_URL'));
+    cy.get('.modal');
+    cy.contains('p', 'Manuscript images');
+    cy.get('.modal-button').click();
+  });
+
+  it('Visit the Sinai Homepage', () => {
     cy.percySnapshot();
   });
 
   it('Sinai Manuscripts Digital Library Logo', () => {
-    cy.visit(Cypress.env('SINAI_BASE_URL'));
     cy.get('.site-navbar__logo-block--sinai');
     cy.viewport(1440, 900)
     cy.percySnapshot();
   });
 
   it('Search Component', () => {
-    cy.visit(Cypress.env('SINAI_BASE_URL'));
-    cy.get('.nav').contains('Search').click(); 
+    cy.get('.nav').contains('Search').click();
     cy.url().should('include', 'search_field=all_fields');
   });
 
   // Navbar Links
   it('About Link', () => {
-    cy.visit(Cypress.env('SINAI_BASE_URL'));
     cy.contains('a', 'About');
     cy.get('[href="/about"]').click({ force: true });
     cy.url().should('include', '/about');
