@@ -40,7 +40,7 @@ describe('Sinai Search', () => {
 
   it('Search Title Found', () => {
     cy.get('[id=q]').type('sinai');
-    cy.get('select').select('Title').should('have.value', 'title_tesim descriptive_title_tesim alternative_title_tesim uniform_title_tesim');
+    cy.get('select').select('Title').should('have.value', 'title_tesim descriptive_title_tesim contents_ssi contents_note_tesim alternative_title_tesim uniform_title_tesim');
     cy.get('[id=search]').click();
     cy.get('.search-count__heading').contains('Catalog Results');
     cy.percySnapshot();
