@@ -3,28 +3,24 @@
 /* The Modal (background) */
 .si-terms-of-use-modal-block {
   position: absolute; /* Stay in place */
-  top: 15%;
-  left: 25%;
   display: none; /* Hidden by default */
-  align-self: center;
-  overflow: auto; /* Enable scroll if needed */
-  max-width: 600px;
-  height: 100%; /* Full height */
-  z-index: 5; /* Sit on top */
-
-  @media (max-width: 767px) {
-    top: 0;
-    left: 0;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 7; /* Sit on top */
 }
 
 /* Modal Content/Box */
 .si-terms-of-use-modal-group {
-  margin: 4% auto;
   padding: 1.25rem;
   width: 92%;
+  max-width: 600px;
   background-color: $white;
   border: 1px solid $sinai-primary-dk;
+  z-index: 5; /* Sit on top */
 }
 
 .si-terms-of-use-modal-title {
@@ -35,10 +31,6 @@
   align-self: flex-start;
   color: $sinai-primary-dk;
   text-transform: uppercase;
-
-  @media (max-width: 800px) {
-    font-size: $text-20;
-  }
 }
 
 .si-terms-of-use-modal-content {
