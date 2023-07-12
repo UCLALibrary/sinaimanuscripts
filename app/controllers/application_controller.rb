@@ -111,7 +111,7 @@ class ApplicationController < ActionController::Base
     if term_of_use_cookie?
       @term_of_use_modal_option = "none"
     else
-      @term_of_use_modal_option = "block"
+      @term_of_use_modal_option = "flex"
       set_term_of_use_cookie
     end
   end
