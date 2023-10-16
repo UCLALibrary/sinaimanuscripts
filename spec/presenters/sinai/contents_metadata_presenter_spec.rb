@@ -10,7 +10,7 @@ RSpec.describe Sinai::ContentsMetadataPresenter do
       'author_tesim' => 'Author',
       'associated_name_tesim' => 'Associated Name',
       'contents_note_tesim' => 'Contents note',
-      'contents_ssi' => 'Contents',
+      'contents_tesim' => 'Contents',
       'undertext_objects_ssim' => 'Undertext Objects'
     }
   end
