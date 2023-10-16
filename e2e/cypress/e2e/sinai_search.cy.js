@@ -27,7 +27,7 @@ describe('Sinai Search', () => {
     cy.get('[id=search]').click();
     cy.get('.search-count__heading').contains('Catalog Results');
     cy.get('.document-position-0 > .document__list-item-wrapper > .document__gallery-thumbnail > a > img').click();
-    cy.contains('h2','Item Overview');
+    cy.contains('h2', 'Item Overview');
   });
 
   it('Search Shelfmark Found', () => {
@@ -40,7 +40,7 @@ describe('Sinai Search', () => {
 
   it('Search Title Found', () => {
     cy.get('[id=q]').type('sinai');
-    cy.get('select').select('Title').should('have.value', 'title_tesim descriptive_title_tesim contents_ssi contents_note_tesim alternative_title_tesim uniform_title_tesim');
+    cy.get('select').select('Title').should('have.value', 'title_tesim descriptive_title_tesim contents_tesim contents_note_tesim alternative_title_tesim uniform_title_tesim');
     cy.get('[id=search]').click();
     cy.get('.search-count__heading').contains('Catalog Results');
     cy.percySnapshot();
@@ -52,7 +52,7 @@ describe('Sinai Search', () => {
     cy.get('[id=q]').type('sinai');
     cy.get('.search-widget__dropdown').contains('Relevance');
   });
-// <a data-turbolinks="false" href="#facet-script_sim">Script</a>
+  // <a data-turbolinks="false" href="#facet-script_sim">Script</a>
   it('Search Facet are visbile', () => {
     cy.get('[id=search]').click();
     cy.get('a[href="#facet-script_sim"]').click();
