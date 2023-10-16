@@ -16,7 +16,7 @@ class SearchFieldService
     'composer_tesim',
     'condition_note_ssi',
     'contents_note_tesim',
-    'contents_ssi',
+    'contents_tesim',
     'contributor_tesim',
     'creator_tesim',
     'date_created_tesim',
