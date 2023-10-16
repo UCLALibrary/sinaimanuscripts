@@ -208,7 +208,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'caption_tesim', label: 'Caption'
     config.add_show_field 'toc_tesim', label: 'Table of Contents'
     config.add_show_field 'contents_note_tesim', label: 'Contents note', auto_link: true # make this field url aware
-    config.add_show_field 'contents_ssi', label: 'Contents'
+    config.add_show_field 'contents_tesim', label: 'Contents', break_options: {}
     config.add_show_field 'undertext_objects_ssim', label: 'Undertext Objects', auto_link: true, break_options: {}
     config.add_show_field 'provenance_tesim', label: 'Provenance'
     config.add_show_field 'colophon_tesim', label: 'Colophon'
@@ -338,9 +338,9 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field('title_tesim descriptive_title_tesim contents_ssi contents_note_tesim alternative_title_tesim uniform_title_tesim', label: 'Title') do |field|
+    config.add_search_field('title_tesim descriptive_title_tesim contents_tesim contents_note_tesim alternative_title_tesim uniform_title_tesim', label: 'Title') do |field|
       field.solr_parameters = {
-        qf: 'title_tesim descriptive_title_tesim contents_ssi contents_note_tesim alternative_title_tesim uniform_title_tesim',
+        qf: 'title_tesim descriptive_title_tesim contents_tesim contents_note_tesim alternative_title_tesim uniform_title_tesim',
         pf: ''
       }
     end
@@ -359,9 +359,9 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field('toc_tesim contents_note_tesim contents_ssi', label: 'Contents') do |field|
+    config.add_search_field('toc_tesim contents_note_tesim contents_tesim', label: 'Contents') do |field|
       field.solr_parameters = {
-        qf: 'toc_tesim contents_note_tesim contents_ssi',
+        qf: 'toc_tesim contents_note_tesim contents_tesim',
         pf: ''
       }
     end
