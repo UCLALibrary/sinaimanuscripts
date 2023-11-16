@@ -65,10 +65,6 @@ class ApplicationController < ActionController::Base
     params[:sort] ||= 'score desc' unless params[:q].to_s.empty?
   end
 
-  def sinai_authenticated_3day?
-    cookies[:sinai_authenticated_3day]
-  end
-
   def sinai_authenticated_1year?
     cookies[:sinai_authenticated_1year]
   end
