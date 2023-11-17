@@ -3,7 +3,7 @@
   <%= link_back_to_catalog label: '← Back to Search Results', class: 'si-link si-link-search-results left' %>
   <%= link_to "Terms of Use and Permissions", "/terms-of-use", class: "si-link si-link-terms-of-use center" %>
   <%# ---------- IIIF & Tooltip ------------ %>
-  <% if cookies[:sinai_authenticated_3day] %>
+  <% if cookies[:sinai_authenticated_1year] %>
     <div class='si-link-iiif right'>
       <% if @document["viscodex_ssi"] %>
         <div class='si-link-viscodex' data-toggle="tooltip" data-placement="bottom" data-html="true" title="Click to  view collation viewer">
