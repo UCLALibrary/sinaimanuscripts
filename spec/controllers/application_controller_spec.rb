@@ -12,7 +12,7 @@ RSpec.describe ApplicationController, type: :controller do
     allow(controller).to receive(:redirect_to)
     allow(controller).to receive(:request).and_return(instance_double('ActionDispatch::Request', path: '/'))
     allow(controller).to receive(:set_auth_cookies)
-    allow(controller).to receive(:sinai_authenticated_3day?).and_return(false)
+    allow(controller).to receive(:sinai_authenticated_1year?).and_return(false)
     allow(controller).to receive(:version_path).and_return('/test_version')
     allow(controller).to receive(:solr_document_path).with('ark:').and_return('/catalog/ark:')
     allow(controller).to receive(:params).and_return(id: nil)
@@ -97,7 +97,7 @@ RSpec.describe ApplicationController, type: :controller do
 
     context 'if we are already authenticated' do
       before do
-        allow(controller).to receive(:sinai_authenticated_3day?).and_return(true)
+        allow(controller).to receive(:sinai_authenticated_1year?).and_return(true)
       end
       it 'allows Rails to continue' do
         expect(controller.sinai_authn_check).to be true
@@ -107,7 +107,7 @@ RSpec.describe ApplicationController, type: :controller do
     context 'if the requested path is solr_document_path' do
       before do
         allow(controller).to receive(:params).and_return(id: 'ark:')
-        allow(controller).to receive(:sinai_authenticated_3day?).and_return(false)
+        allow(controller).to receive(:sinai_authenticated_1year?).and_return(false)
         allow(controller).to receive(:request).and_return(instance_double('ActionDispatch::Request', path: controller.solr_document_path('ark:')))
       end
       it 'directs to requested path' do
@@ -178,7 +178,7 @@ RSpec.describe ApplicationController, type: :controller do
   end # describe ucla_token?
 
   describe 'set_auth_cookies' do
-    context 'creates the sinai_authenticated_3day cookie' do
+    context 'creates the sinai_authenticated_1year cookie' do
       let(:cookies) { {} }
       before do
         allow(controller).to receive(:cookies).and_return(cookies)
@@ -190,14 +190,14 @@ RSpec.describe ApplicationController, type: :controller do
         allow(controller).to receive(:cipher_iv).and_return('mock_cipher_iv')
       end
 
-      it 'sets the sinai_authenticated_3day cookie value' do
+      it 'sets the sinai_authenticated_1year cookie value' do
         controller.set_auth_cookies
-        expect(cookies[:sinai_authenticated_3day][:value]).to eq('mock_encrypted_string'.unpack('H*')[0].upcase)
+        expect(cookies[:sinai_authenticated_1year][:value]).to eq('mock_encrypted_string'.unpack('H*')[0].upcase)
       end
 
-      it 'sets an expiration date for the sinai_authenticated_3day cookie' do
+      it 'sets an expiration date for the sinai_authenticated_1year cookie' do
         controller.set_auth_cookies
-        expect(cookies[:sinai_authenticated_3day][:expires]).to be_kind_of(Time)
+        expect(cookies[:sinai_authenticated_1year][:expires]).to be_kind_of(Time)
       end
 
       it 'sets the initialization_vector cookie value' do
