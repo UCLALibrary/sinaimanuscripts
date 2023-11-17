@@ -37,9 +37,9 @@ class ApplicationController < ActionController::Base
   end
 
   def sinai_authn_check
-    return true if [version_path].include?(request.path) || sinai_authenticated_3day?
+    return true if [version_path].include?(request.path) || sinai_authenticated_1year?
     if ENV['SINAI_ID_BYPASS'] # skip auth in development
-      cookies[:sinai_authenticated_3day] = 'true'
+      cookies[:sinai_authenticated_1year] = 'true'
       return true
     end
     # check_document_paths
@@ -65,8 +65,8 @@ class ApplicationController < ActionController::Base
     params[:sort] ||= 'score desc' unless params[:q].to_s.empty?
   end
 
-  def sinai_authenticated_3day?
-    cookies[:sinai_authenticated_3day]
+  def sinai_authenticated_1year?
+    cookies[:sinai_authenticated_1year]
   end
 
   def ucla_token?
@@ -83,14 +83,14 @@ class ApplicationController < ActionController::Base
   end
 
   def set_auth_cookies
-    cookies[:sinai_authenticated_3day] = {
+    cookies[:sinai_authenticated_1year] = {
       value: create_encrypted_string.unpack('H*')[0].upcase,
-      expires: Time.zone.now + 3.days,
+      expires: Time.zone.now + 1.year,
       domain: ENV['DOMAIN']
     }
     cookies[:initialization_vector] = {
       value: cipher_iv.unpack('H*')[0].upcase,
-      expires: Time.zone.now + 3.days,
+      expires: Time.zone.now + 1.year,
       domain: ENV['DOMAIN']
     }
   end
