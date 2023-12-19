@@ -32,7 +32,7 @@ describe('Sinai Search', () => {
 
   it('Search Shelfmark Found', () => {
     cy.get('[id=q]').type('sinai syriac 100');
-    cy.get('select').select('Shelfmark').should('have.value', 'shelfmark_tsi');
+    cy.get('select').select('Shelfmark').should('have.value', 'shelfmark_ssi');
     cy.get('[id=search]').click();
     cy.get('.search-count__heading').contains('Catalog Results');
     cy.percySnapshot();

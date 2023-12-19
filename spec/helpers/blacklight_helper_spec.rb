@@ -12,7 +12,7 @@ RSpec.describe BlacklightHelper, type: :helper do
     context 'cc 4.0 license' do
       let(:document) do
         SolrDocument.new(
-          'title_tsim' => "A Fake Document",
+          'title_tesim' => "A Fake Document",
           'id' => '8',
           'license_tesim' => ["http://creativecommons.org/licenses/by/4.0/"]
         )
@@ -24,7 +24,7 @@ RSpec.describe BlacklightHelper, type: :helper do
     context 'no license' do
       let(:document) do
         SolrDocument.new(
-          'title_tsim' => "A Fake Document",
+          'title_tesim' => "A Fake Document",
           'id' => '8'
         )
       end
@@ -35,7 +35,7 @@ RSpec.describe BlacklightHelper, type: :helper do
     context 'a different value' do
       let(:document) do
         SolrDocument.new(
-          'title_tsim' => "A Fake Document",
+          'title_tesim' => "A Fake Document",
           'id' => '8',
           'license_tesim' => ["some other value"]
         )
@@ -55,7 +55,7 @@ RSpec.describe BlacklightHelper, type: :helper do
     context 'has links in solr document' do
       let(:document) do
         SolrDocument.new(
-          'title_tsim' => "A Fake Document",
+          'title_tesim' => "A Fake Document",
           'id' => '8',
           'overtext_manuscript_ssm' => ["http://www.google.com", "http://www.bk.org"]
         )
@@ -71,7 +71,7 @@ RSpec.describe BlacklightHelper, type: :helper do
     context 'has html in solr document' do
       let(:document) do
         SolrDocument.new(
-          'title_tsim' => "A Fake Document",
+          'title_tesim' => "A Fake Document",
           'id' => '8',
           'undertext_objects_ssim' => [
             "<a href=“https://sinaimanuscripts.library.ucla.edu/catalog/ark:%2F21198%2Fz12r59fj”>Months of the Zodiac</a> (Arabic, 10th c. CE), Folios: 119v",
