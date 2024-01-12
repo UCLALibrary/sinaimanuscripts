@@ -5,7 +5,7 @@
 # a front-end related pull request.  
 
 # Front-End Assets
-/app/assets/              @tinuola
+# /app/assets/              @tinuola
 
 # ci
 /.travis.yml              @andrewbenedictwallace,@pghorpade
