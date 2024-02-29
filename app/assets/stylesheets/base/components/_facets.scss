@@ -76,6 +76,10 @@
     display: none;
   }
 
+  .collapsing {
+    visibility: hidden;
+  }
+
   .facets__svg-icon {
     width: 1.5em;
     height: 1.5em;
@@ -185,6 +189,8 @@
 .facet-field__body {
   @extend .card-body;
 
+  overflow: scroll;
+  max-height: 180px;
   border-left: 1px solid $gray-10;
   border-right: 1px solid $gray-10;
 
