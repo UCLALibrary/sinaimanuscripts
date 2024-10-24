@@ -3,7 +3,7 @@ FROM ruby:2.6
 RUN apt-get update -qq
 RUN apt-get install mariadb-client build-essential libpq-dev yarn nodejs chromium-driver libatk-bridge2.0-0 libgtk-3.0 -y
 
-WORKDIR /ursus
+WORKDIR /sinai
 
 COPY Gemfile ./Gemfile
 COPY Gemfile.lock ./Gemfile.lock
