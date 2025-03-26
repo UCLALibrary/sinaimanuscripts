@@ -132,9 +132,11 @@ RSpec.describe ApplicationController, type: :controller do
         allow(controller).to receive(:params).and_return(params)
         allow(SinaiToken).to receive(:find_by).and_return(nil) # default
         allow(SinaiToken).to receive(:find_by).with(sinai_token: params[:token]).and_return(foo) # specific case
+        allow(foo).to receive(:destroy)
       end
       it "returns true" do
         expect(controller.ucla_token?).to be true
+        expect(foo).to have_received(:destroy)
       end
     end
 
@@ -148,9 +150,11 @@ RSpec.describe ApplicationController, type: :controller do
       context "token is found in the database" do
         before do
           allow(SinaiToken).to receive(:find_by).with(sinai_token: '408626bb-87a0-46cb-a592-8ece576a745f').and_return(foo)
+          allow(foo).to receive(:destroy)
         end
         it "returns true" do
           expect(controller.ucla_token?).to be true
+          expect(foo).to have_received(:destroy)
         end
       end
       context "token is NOT found in the database" do
