@@ -70,16 +70,13 @@ class ApplicationController < ActionController::Base
   end
 
   def ucla_token?
-    # does the request have a querystring containing a param named token and, if so, was it previously written to the database?
-    return true if params[:token].present? && SinaiToken.find_by(sinai_token: params[:token])
-    # does the request have a querystring containing the character "?token=" and, if so, extract the token
-    return false unless request.fullpath.include?("?token=")
-    returned_token_array = request.fullpath.split(/\?token=/)
-    returned_token = returned_token_array[1]
-    # is the extracted token in the database and did the user pass through the login page?
-    return true if SinaiToken.find_by(sinai_token: returned_token) && cookies[:requested_path]
+    # second version in case url params not parsable
+    token_from_emel = params[:token] || request.fullpath.split(/\?token=/)[1]
+    token = SinaiToken.find_by(sinai_token: token_from_emel) if token_from_emel
+    authorized = token && cookies[:requested_path].present? || false
 
-    false
+    token&.destroy
+    authorized
   end
 
   def set_auth_cookies
