@@ -66,3 +66,14 @@ if ENV['FEATURE_FLAG'] == 'sinaimanu'
 end
 
 ########################################
+
+# Truncate database (only used for short-term items)
+namespace :db do
+  task :truncate do
+    on roles(:app) do
+      execute "cd #{deploy_to}/current; /usr/bin/env bundle exec rake db:truncate RAILS_ENV=production"
+    end
+  end
+end
+
+after 'deploy:published', 'db:truncate'
