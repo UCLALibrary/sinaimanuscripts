@@ -105,17 +105,42 @@ class CatalogController < ApplicationController
     # solr fields that will be treated as facets by the blacklight application
     # The ordering of the field names is the order of the display
 
-    # SINAI
-    config.add_facet_field 'genre_sim', sort: 'index'
-    config.add_facet_field 'year_isim', range: true
-    config.add_facet_field 'human_readable_language_sim', sort: 'index'
-    config.add_facet_field 'writing_system_sim', sort: 'index', label: 'Writing system'
-    config.add_facet_field 'script_sim', sort: 'index', label: 'Script'
-    config.add_facet_field 'features_sim', sort: 'index', label: 'Features'
-    config.add_facet_field 'support_sim', sort: 'index', label: 'Support'
-    config.add_facet_field 'form_sim', sort: 'index', label: 'Form'
-    config.add_facet_field 'names_sim', sort: 'index', label: 'Names'
-    config.add_facet_field 'collection_ssi', sort: 'index', label: 'Collection'
+    # FACETS - MAIN/ANY
+    config.add_facet_field 'ms_type_ssi', sort: 'index', label: 'Type'
+    config.add_facet_field 'state_ssi', sort: 'index', label: 'State'
+    config.add_facet_field 'features_ssim', sort: 'index', label: 'Features'
+    config.add_facet_field 'support_ssim', sort: 'index', label: 'Support'
+    config.add_facet_field 'repository_ssim', sort: 'index', label: 'Repository'
+    config.add_facet_field 'collection_ssim', sort: 'index', label: 'Collection'
+    config.add_facet_field 'names_ssim', sort: 'index', label: 'Names'
+    config.add_facet_field 'places_ssim', sort: 'index', label: 'Places'
+    config.add_facet_field 'date_types_ssim', sort: 'index', label: 'Date Types'
+    config.add_facet_field 'program_ssim', sort: 'index', label: 'Program'
+    config.add_facet_field 'reconstructed_from_ssim', sort: 'index', label: 'Reconstructed From'
+
+    # FACETS – OT Only
+    config.add_facet_field 'ot_script_ssim', sort: 'index', label: 'Script'
+    config.add_facet_field 'ot_writing_system_ssim', sort: 'index', label: 'Writing System'
+    config.add_facet_field 'ot_genre_ssim', sort: 'index', label: 'Genre'
+    config.add_facet_field 'ot_year_isim', range: true, label: 'Date'
+    config.add_facet_field 'ot_language_ssim', sort: 'index', label: 'Language'
+    config.add_facet_field 'ot_works_ssim', sort: 'index', label: 'Works'
+
+    # FACETS – Guest/Para only
+    config.add_facet_field 'para_script_ssim', sort: 'index', label: 'Guest/Para Script'
+    config.add_facet_field 'para_writing_system_ssim', sort: 'index', label: 'Guest/Para Writing System'
+    config.add_facet_field 'para_genre_ssim', sort: 'index', label: 'Guest/Para Genre'
+    config.add_facet_field 'para_year_isim', range: true, label: 'Guest/Para Date'
+    config.add_facet_field 'para_language_ssim', sort: 'index', label: 'Guest/Para Language'
+    config.add_facet_field 'para_works_ssim', sort: 'index', label: 'Guest/Para Works'
+    config.add_facet_field 'para_type_ssim', sort: 'index', label: 'Guest/Para Type'
+    config.add_facet_field 'para_names_ssim', sort: 'index', label: 'Guest/Para Names'
+
+    # FACETS – UTO only
+    config.add_facet_field 'uto_script_ssim', sort: 'index', label: 'UTO Script'
+    config.add_facet_field 'uto_writing_system_ssim', sort: 'index', label: 'UTO Writing System'
+    config.add_facet_field 'uto_year_isim', range: true, label: 'UTO Date'
+
 
     # The generic_type isn't displayed on the facet list
     # It's used to give a label to the filter that comes from the user profile
@@ -133,15 +158,12 @@ class CatalogController < ApplicationController
     # solr fields to be displayed in the index search results / list view
     # The config.add_index_field ::Solrizer.solr_name('title',  :stored_searchable), label: 'Title', itemprop: 'name', if: false
 
-    config.add_index_field 'header_index_sim', label: 'Header'
-    # Title descriptive_title_tesim & uniform_title_tesim
-    config.add_index_field 'descriptive_title_tesim'
-    config.add_index_field 'uniform_title_tesim', link_to_facet: 'uniform_title_sim'
-    config.add_index_field 'date_created_tesim', label: 'Date'
-    config.add_index_field 'human_readable_language_tesim', label: 'Language'
-    config.add_index_field 'collection_ssi'
-    config.add_index_field 'name_fields_index_tesim', label: 'Name', link_to_facet: 'names_sim'
-
+    config.add_index_field 'header_index_tesim'
+    config.add_index_field 'ot_works_ssim', link_to_facet: 'ot_works_ssim'
+    config.add_index_field 'ot_date_tesim'
+    config.add_index_field 'ot_language_ssim', link_to_facet: 'ot_language_ssim'
+    config.add_index_field 'collection_ssim', link_to_facet: 'collection_ssim'
+    
     # ------------------------------------------------------
     # SHOW PAGE / ITEM PAGE / Individual Work (Universal Viewer Page)
 

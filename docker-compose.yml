@@ -32,12 +32,12 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
 
   solr:
-    image: uclalibrary/solr-ursus:7.4
+    image: uclalibrary/solr-ursus
     ports:
       - "127.0.0.1:8983:8983"
 
   solr_test:
-    image: uclalibrary/solr-ursus:7.4
+    image: uclalibrary/solr-ursus
     ports:
       - "127.0.0.1:8985:8983"
 
