@@ -8,7 +8,7 @@ class IiifService
   end
 
   def iiif_manifest_url(document)
-    document[:iiif_manifest_url_ssi].sub('http:', 'https:')
+    document[:iiif_manifest_url_ssi].sub('http:', 'https:').sub('ingest.iiif.library.ucla.edu', 'iiif.library.ucla.edu')
   end
 
   def media_viewer_url(request)
