@@ -348,43 +348,57 @@ class CatalogController < ApplicationController
     # since we aren't specifying it otherwise.
 
     search_field_service = ::SearchFieldService.instance
-    config.add_search_field('all_fields', label: 'All Fields') do |field|
+    config.add_search_field('full_text_tesim', label: 'Full Text') do |field|
       field.solr_parameters = {
-        qf: search_field_service.search_fields
+        qf: 'full_text_tesim'
       }
     end
 
-    config.add_search_field('shelfmark_tsi', label: 'Shelfmark') do |field|
+    config.add_search_field('shelfmark_ssi', label: 'Shelfmark') do |field|
       field.solr_parameters = {
-        qf: 'shelfmark_tsi',
+        qf: 'shelfmark_ssi',
         pf: ''
       }
     end
 
-    config.add_search_field('title_tesim descriptive_title_tesim contents_tesim contents_note_tesim alternative_title_tesim uniform_title_tesim', label: 'Title') do |field|
+    config.add_search_field('titles_tesim', label: 'Titles') do |field|
       field.solr_parameters = {
         qf: 'title_tesim descriptive_title_tesim contents_tesim contents_note_tesim alternative_title_tesim uniform_title_tesim',
         pf: ''
       }
     end
 
-    config.add_search_field('author_tesim scribe_tesim associated_name_tesim translator_tesim', label: 'Names') do |field|
+    config.add_search_field('names_tesim', label: 'Names') do |field|
       field.solr_parameters = {
-        qf: 'author_tesim scribe_tesim associated_name_tesim translator_tesim',
+        qf: 'names_tesim',
         pf: ''
       }
     end
 
-    config.add_search_field('incipit_tesim explicit_tesim', label: 'Incipit/Explicit') do |field|
+    config.add_search_field('exerpts_tesim', label: 'Exerpts') do |field|
       field.solr_parameters = {
-        qf: 'incipit_tesim explicit_tesim',
+        qf: 'exerpts_tesim',
         pf: ''
       }
     end
 
-    config.add_search_field('toc_tesim contents_note_tesim contents_tesim', label: 'Contents') do |field|
+    config.add_search_field('places_tesim', label: 'Places') do |field|
       field.solr_parameters = {
-        qf: 'toc_tesim contents_note_tesim contents_tesim',
+        qf: 'places_tesim',
+        pf: ''
+      }
+    end
+
+    config.add_search_field('contents_tesim', label: 'Contents') do |field|
+      field.solr_parameters = {
+        qf: 'contents_tesim',
+        pf: ''
+      }
+    end
+
+    config.add_search_field('paracontent_tesim', label: 'Guest and Paracontent') do |field|
+      field.solr_parameters = {
+        qf: 'paracontent_tesim',
         pf: ''
       }
     end
