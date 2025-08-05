@@ -81,15 +81,15 @@ class ApplicationController < ActionController::Base
 
   def set_auth_cookies
     cookies[:sinai_authenticated_1year] = {
-      value: create_encrypted_string.unpack('H*')[0].upcase,
+      value: true,  # create_encrypted_string.unpack('H*')[0].upcase,
       expires: Time.zone.now + 1.year,
       domain: ENV['DOMAIN']
     }
-    cookies[:initialization_vector] = {
-      value: cipher_iv.unpack('H*')[0].upcase,
-      expires: Time.zone.now + 1.year,
-      domain: ENV['DOMAIN']
-    }
+    # cookies[:initialization_vector] = {
+    #   value: cipher_iv.unpack('H*')[0].upcase,
+    #   expires: Time.zone.now + 1.year,
+    #   domain: ENV['DOMAIN']
+    # }
   end
 
   # TERMS OF USE MODAL
@@ -116,7 +116,7 @@ class ApplicationController < ActionController::Base
 
   def create_encrypted_string
     cipher.encrypt
-    cipher.key = ENV['CIPHER_KEY']
+    cipher.key = ENV['CIPHER_KEY'] || 'abcdefghijklmnop'
     cipher.iv = cipher_iv
     cipher.update("Authenticated #{Time.zone.today}") + cipher.final
   end
