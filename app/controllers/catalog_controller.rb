@@ -140,6 +140,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'uto_script_ssim', sort: 'index', label: 'UTO Script'
     config.add_facet_field 'uto_writing_system_ssim', sort: 'index', label: 'UTO Writing System'
     config.add_facet_field 'uto_year_isim', range: true, label: 'UTO Date'
+    config.add_facet_field 'uto_language_ssim', sort: 'index', label: 'UTO Language'
 
 
     # The generic_type isn't displayed on the facet list
