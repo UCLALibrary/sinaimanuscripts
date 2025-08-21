@@ -403,6 +403,13 @@ class CatalogController < ApplicationController
         pf: ''
       }
     end
+   
+    config.add_search_field('cataloguer_tesim', label: 'Cataloguer') do |field|
+      field.solr_parameters = {
+        qf: 'cataloguer_tesim',
+        pf: ''
+      }
+    end
 
     # ------------------------------------------------------
     # CATALOG RESULTS 'SORT RESULTS BY' DROPDOWN
@@ -421,11 +428,12 @@ class CatalogController < ApplicationController
     # set shelfmark A-Z as default so empty searches are ordered by Shelfmark
     config.add_sort_field 'shelfmark_alpha_numeric_ssort asc', label: 'Shelfmark (A-Z)', default: true
     config.add_sort_field 'shelfmark_alpha_numeric_ssort desc', label: 'Shelfmark (Z-A)'
-    # config.add_sort_field 'sort_year_isi desc', label: 'Year (newest)'
-    # config.add_sort_field 'sort_year_isi asc', label: 'Year (oldest)'
 
     config.add_sort_field 'date_dtsort desc', label: 'Date (newest)'
     config.add_sort_field 'date_dtsort asc', label: 'Date (oldest)'
+
+    config.add_sort_field 'last_modified_dtsi desc', label: 'last_modified (newest)'
+    config.add_sort_field 'last_modified_dtsi asc', label: 'last_modified (oldest)'
     #------------------------------------------------------
     # AUTO_SUGGEST / AUTO_COMPLETE
     # If there are more than this many search results,
