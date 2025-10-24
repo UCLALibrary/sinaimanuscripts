@@ -79,16 +79,25 @@ class ApplicationController < ActionController::Base
     authorized
   end
 
+  def domain
+    domain = ENV['DOMAIN']
+    if (!domain.is_a? String) || domain.include?('library.ucla.edu') || domain.empty?
+      'library.ucla.edu'
+    else
+      domain
+    end
+  end
+
   def set_auth_cookies
     cookies[:sinai_authenticated_1year] = {
       value: create_encrypted_string.unpack('H*')[0].upcase,
       expires: Time.zone.now + 1.year,
-      domain: ENV['DOMAIN']
+      domain: domain
     }
     cookies[:initialization_vector] = {
       value: cipher_iv.unpack('H*')[0].upcase,
       expires: Time.zone.now + 1.year,
-      domain: ENV['DOMAIN']
+      domain: domain
     }
   end
 
