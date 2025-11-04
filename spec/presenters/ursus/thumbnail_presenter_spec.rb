@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 require 'rails_helper'
 
-Blacklight::ThumbnailPresenter.send(:prepend, Ursus::ThumbnailPresenter)
-
 class MockViewContext
   def image_tag(_document, _image_options)
     '<i />'
@@ -15,7 +13,7 @@ end
 
 # NOTE: Ursus::ThumbnailPresenter gets injected into Blacklight::ThumbnailPresenter via config/initializers/prepends.rb, so these tests are written against Blacklight::ThumbnailPresenter but they test
 # the behavior defined in Ursus::ThumbnailPresenter
-RSpec.describe Blacklight::ThumbnailPresenter do
+RSpec.describe Ursus::ThumbnailPresenter do
   let(:presenter) { described_class.new(solr_document, view_context, view_config) }
   let(:solr_document) { SolrDocument.new('thumbnail_url_ss' => thumbnail_url, 'title_tesim' => [title], 'visibility_ssi' => visibility) }
   let(:thumbnail_url) { 'http://test.url/thumbnail.jpg' }
@@ -75,7 +73,7 @@ RSpec.describe Blacklight::ThumbnailPresenter do
 
   describe '#thumbnail_value_from_document' do
     it 'uses thumbnail_url_ss' do
-      expect(presenter.thumbnail_value_from_document(solr_document)).to eq thumbnail_url
+      expect(presenter.thumbnail_value_from_document).to eq thumbnail_url
     end
   end
 end
