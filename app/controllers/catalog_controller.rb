@@ -41,7 +41,6 @@ class CatalogController < ApplicationController
     # config.view.slideshow.partials = [:index]
 
     config.show.tile_source_field = :content_metadata_image_iiif_info_ssm
-    config.show.partials.insert(1, :openseadragon)
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
     #
@@ -65,8 +64,10 @@ class CatalogController < ApplicationController
     }
     config.default_solr_params[:fq] = '((has_model_ssim:Work) AND !(visibility_ssi:restricted))' if Flipflop.sinai?
 
+    config.search_state_fields += [:range_end, :range_field, :range_start]
+
     # config.show.partials.insert(1, :collection_banner)
-    config.show.partials.insert(2, :media_viewer)
+    config.show.partials.insert(0, :media_viewer)
 
     # ------------------------------------------------------
     # INDEX PAGE

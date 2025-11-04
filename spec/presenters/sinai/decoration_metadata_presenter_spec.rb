@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 require 'rails_helper'
+require 'support/solr_doc_double'
+
+include SolrDocDouble
 
 RSpec.describe Sinai::DecorationMetadataPresenter do
   let(:solr_doc) do
-    {
+    doc_double_with_fields_to_render(
       'illustrations_note_tesim' => 'Decoration note'
-    }
+    )
   end
   # let(:solr_doc_missing_items) do
   #   {

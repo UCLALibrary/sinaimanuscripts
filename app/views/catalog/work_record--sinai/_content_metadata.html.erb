@@ -1,6 +1,6 @@
 <% doc_presenter = show_presenter(document) %>
-<% works = Sinai::ContentsWorksMetadataPresenter.new(document: doc_presenter.fields_to_render).contents_terms %>
-<% contents = Sinai::ContentsMetadataPresenter.new(document: doc_presenter.fields_to_render).contents_terms %>
+<% works = Sinai::ContentsWorksMetadataPresenter.new(document: doc_presenter).contents_terms %>
+<% contents = Sinai::ContentsMetadataPresenter.new(document: doc_presenter).contents_terms %>
 
 <% if contents.length > 0 || works.length > 0 %>
   <input type="radio" name="tabs" id="tabone" checked="checked">
