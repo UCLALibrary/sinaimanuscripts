@@ -57,25 +57,7 @@ RSpec.describe IiifService do
     it 'links to mirador' do
       allow(Flipflop).to receive(:sinai?).and_return(true)
 
-      expect(service.src(request, solr_document)).to eq 'https://p-w-dl-viewer01.library.ucla.edu/?site=sinai&manifest=https%3A%2F%2Fmanifest.store%2Fark%253A%252Fabc%252F123%2Fmanifest'
-    end
-  end
-
-  describe '#viewer' do
-    context 'when the mirador4 flag IS NOT set' do
-      it 'sets "site=sinai"' do
-        allow(Flipflop).to receive(:enabled?).with(:mirador4).and_return(false)
-
-        expect(service.viewer).to eq 'site=sinai'
-      end
-    end
-
-    context 'when the mirador4 flag IS set' do
-      it 'sets "viewer=mirador4"' do
-        allow(Flipflop).to receive(:enabled?).with(:mirador4).and_return(true)
-
-        expect(service.viewer).to eq 'viewer=mirador4'
-      end
+      expect(service.src(request, solr_document)).to eq 'https://p-w-dl-viewer01.library.ucla.edu/?viewer=mirador4&manifest=https%3A%2F%2Fmanifest.store%2Fark%253A%252Fabc%252F123%2Fmanifest'
     end
   end
 end
