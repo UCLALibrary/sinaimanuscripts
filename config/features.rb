@@ -31,8 +31,4 @@ Flipflop.configure do
   feature :sinai,
           default: true,
           description: "Use styling and auth for Sinai Manuscripts site"
-
-  feature :mirador4,
-          default: false,
-          description: "Use Mirador 4 viewer"
 end
