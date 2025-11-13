@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 module Ursus
-  module ThumbnailPresenter
+  class ThumbnailPresenter < Blacklight::ThumbnailPresenter
     ##
     # Render the thumbnail, if available, for a document and
     # link it to the document record.
@@ -20,8 +20,8 @@ module Ursus
       view_context.link_to_document document, value, url_options
     end
 
-    def thumbnail_value_from_document(document)
-      document[:thumbnail_url_ss]
+    def thumbnail_value_from_document
+      super
     end
   end
 end

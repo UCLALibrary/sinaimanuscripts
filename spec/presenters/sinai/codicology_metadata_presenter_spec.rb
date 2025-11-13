@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 require 'rails_helper'
+require 'support/solr_doc_double'
+
+include SolrDocDouble
 
 RSpec.describe Sinai::CodicologyMetadataPresenter do
   let(:solr_doc) do
-    {
+    doc_double_with_fields_to_render(
       'format_extent_tesim' => 'Extent',
       'folio_dimensions_ss' => 'Typical Folio Dimensions',
       'collation_tesim' => 'Collation',
@@ -21,17 +24,17 @@ RSpec.describe Sinai::CodicologyMetadataPresenter do
       'condition_note_tesim' => 'Condition Note',
       'description_tesim' => 'Physical Description note',
       'binding_condition_tesim' => 'Binding condition'
-    }
+    )
   end
   let(:solr_doc_missing_items) do
-    {
+    doc_double_with_fields_to_render
       'format_extent_tesim' => 'Extent',
       'collation_tesim' => 'Collation',
       'form_sim' => 'Form',
       'support_tesim' => 'Support',
       'writing_system_tesim' => 'Writing system',
       'script_tesim' => 'Script'
-    }
+    )
   end
   let(:presenter_object) { described_class.new(document: solr_doc) }
   let(:presenter_object_missing_items) { described_class.new(document: solr_doc_missing_items) }

@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 require 'rails_helper'
+require 'support/solr_doc_double'
+
+include SolrDocDouble
 
 RSpec.describe Sinai::OverviewMetadataPresenter do
   let(:solr_doc) do
-    {
+    doc_double_with_fields_to_render(
       'place_of_origin_tesim' => 'Place of origin',
       'date_created_tesim' => 'Date created',
       'format_extent_tesim' => 'Extent',
@@ -15,16 +18,16 @@ RSpec.describe Sinai::OverviewMetadataPresenter do
       'human_readable_rights_statement_tesim' => 'Rights statement',
       'services_contact_ssm' => 'Rights contact',
       'collection_ssi' => 'Collection'
-    }
+    )
   end
   let(:solr_doc_missing_items) do
-    {
+    doc_double_with_fields_to_render(
       'place_of_origin_tesim' => 'Place of origin',
       'date_created_tesim' => 'Date created',
       'format_extent_tesim' => 'Extent',
       'form_tesim' => 'Form',
       'human_readable_language_tesim' => 'Language'
-    }
+    )
   end
   let(:presenter_object) { described_class.new(document: solr_doc) }
   let(:presenter_object_missing_items) { described_class.new(document: solr_doc_missing_items) }

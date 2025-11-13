@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 require 'rails_helper'
+require 'support/solr_doc_double'
+
+include SolrDocDouble
 
 RSpec.describe Sinai::ContentsMetadataPresenter do
   let(:solr_doc) do
-    {
+    doc_double_with_fields_to_render(
       'alternative_title_tesim' => 'Alternative title',
       'incipit_tesim' => 'Incipit',
       'explicit_tesim' => 'Explicit',
@@ -12,13 +15,13 @@ RSpec.describe Sinai::ContentsMetadataPresenter do
       'contents_note_tesim' => 'Contents note',
       'contents_tesim' => 'Contents',
       'undertext_objects_ssim' => 'Undertext Objects'
-    }
+    )
   end
   let(:solr_doc_missing_items) do
-    {
+    doc_double_with_fields_to_render(
       'alternative_title_tesim' => 'Alternative title',
       'incipit_tesim' => 'Incipit'
-    }
+    )
   end
   let(:presenter_object) { described_class.new(document: solr_doc) }
   let(:presenter_object_missing_items) { described_class.new(document: solr_doc_missing_items) }

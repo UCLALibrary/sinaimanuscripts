@@ -1,15 +1,10 @@
 # frozen_string_literal: true
 module Sinai
-  class OverviewMetadataPresenter
-    attr_reader :document
-
-    def initialize(document:)
-      @document = document
-      @config = YAML.safe_load(File.open(Rails.root.join('config', 'metadata-sinai/overview_metadata.yml')))
-    end
+  class OverviewMetadataPresenter < BaseMetadataPresenter
+    self.config_file = 'metadata-sinai/overview_metadata.yml'
 
     def overview_terms
-      @document.slice(*@config.keys)
+      fields_to_render_by_config_keys
     end
   end
 end

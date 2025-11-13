@@ -3,8 +3,6 @@ class SolrDocument
   include Blacklight::Solr::Document
   include BlacklightOaiProvider::SolrDocument
 
-  include Blacklight::Gallery::OpenseadragonSolrDocument
-
   def self.add_field_semantics(label, solr_name, schema = nil)
     label = "#{schema}:#{label}" if schema
     field_semantics.merge!(label => Array.wrap(solr_name)) { |_key, old_val, new_val| Array.wrap(old_val) + Array.wrap(new_val) }

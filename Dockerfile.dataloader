@@ -1,0 +1,9 @@
+FROM python:3.14
+
+RUN pip install feed-ursus
+RUN cd / 
+RUN git clone https://github.com/UCLALibrary/sinaiportal_data.git
+
+WORKDIR /sinaiportal_data
+
+CMD [ "sinai", "load", ".", "${SOLR_URL}" ]
