@@ -6,12 +6,12 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'blacklight', '7.40'
-gem 'blacklight-access_controls', '>= 6.0.0'
-gem 'blacklight-gallery', '~> 3.5.0'
+gem 'blacklight', '~> 8.8'
+gem 'blacklight-access_controls'
+gem 'blacklight-gallery', '~> 4.8'
 gem 'blacklight_dynamic_sitemap', '~> 0.6.0'
 gem 'blacklight_oai_provider',  git: 'https://github.com/projectblacklight/blacklight_oai_provider', branch: 'update-to-bl-8.x'
-gem 'blacklight_range_limit', '~> 7.0.0'
+gem 'blacklight_range_limit', '~> 8.5.0'
 gem 'bootstrap', '~> 4.4', '>= 4.4.1'
 gem 'concurrent-ruby', '1.3.4'
 gem 'coveralls', '>= 0.8.23', require: false

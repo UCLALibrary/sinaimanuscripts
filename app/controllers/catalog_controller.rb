@@ -36,11 +36,8 @@ class CatalogController < ApplicationController
       }
     }
 
-    config.view.gallery.partials = [:gallery]
-    # config.view.masonry.partials = [:index]
-    # config.view.slideshow.partials = [:index]
-
     config.show.tile_source_field = :content_metadata_image_iiif_info_ssm
+    config.index.document_component = Blacklight::DocumentComponent
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
     #
@@ -66,8 +63,7 @@ class CatalogController < ApplicationController
 
     config.search_state_fields += [:range_end, :range_field, :range_start]
 
-    # config.show.partials.insert(1, :collection_banner)
-    config.show.partials.insert(0, :media_viewer)
+    config.show.partials = [:show_header, :media_viewer, :show]
 
     # ------------------------------------------------------
     # INDEX PAGE
@@ -76,6 +72,7 @@ class CatalogController < ApplicationController
     config.index.title_field = 'title_tesim'
     config.index.display_type_field = 'has_model_ssim'
     config.index.thumbnail_field = 'thumbnail_url_ss'
+    config.advanced_search.enabled = false
 
     # solr path which will be added to solr base url before the other solr params.
     # config.solr_path = 'select'
@@ -107,7 +104,9 @@ class CatalogController < ApplicationController
 
     # SINAI
     config.add_facet_field 'genre_sim', sort: 'index'
-    config.add_facet_field 'year_isim', range: true
+    config.add_facet_field 'year_isim', range: {
+      assumed_boundaries: [0, Time.now.year],
+    }
     config.add_facet_field 'human_readable_language_sim', sort: 'index'
     config.add_facet_field 'writing_system_sim', sort: 'index', label: 'Writing system'
     config.add_facet_field 'script_sim', sort: 'index', label: 'Script'
@@ -436,8 +435,8 @@ class CatalogController < ApplicationController
   # https://github.com/projectblacklight/blacklight/blob/master/app/controllers/concerns/blacklight/catalog.rb -- line: 46
   # https://www.rubydoc.info/github/projectblacklight/blacklight/Blacklight/Catalog
   def show
-    deprecated_response, @document = search_service.fetch(params[:id])
-    @response = ActiveSupport::Deprecation::DeprecatedObjectProxy.new(deprecated_response, 'The @response instance variable is deprecated; use @document.response instead.')
+    @document = search_service.fetch(params[:id])
+
     respond_to do |format|
       format.html { @search_context = setup_next_and_previous_documents }
       format.json

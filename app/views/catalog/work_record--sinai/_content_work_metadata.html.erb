@@ -1,4 +1,4 @@
-<% doc_presenter = show_presenter(document) %>
+<% doc_presenter = document_presenter(document) %>
 <% contents = Sinai::ContentsWorksMetadataPresenter.new(document: doc_presenter).contents_terms %>
 <div class="metadata-block--sinai">
     <span class="metadata-block_title--sinai">Works</span>

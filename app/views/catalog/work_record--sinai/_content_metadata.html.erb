@@ -1,4 +1,4 @@
-<% doc_presenter = show_presenter(document) %>
+<% doc_presenter = document_presenter(document) %>
 <% works = Sinai::ContentsWorksMetadataPresenter.new(document: doc_presenter).contents_terms %>
 <% contents = Sinai::ContentsMetadataPresenter.new(document: doc_presenter).contents_terms %>
 
@@ -9,7 +9,7 @@
   <%= render 'catalog/work_record--sinai/content_work_metadata', document: document %>
   <% contents.each do |field_name, field| %>
       <div class="metadata-block--sinai">
-          <span class="metadata-block_title--sinai"> <%= (render_document_show_field_label document, field: field_name).tr(':', '') %></span>
+          <span class="metadata-block_title--sinai"> <%= field.label %></span>
           <span class="metadata-block_value--sinai"><%= doc_presenter.field_value field %></span>
       </div>
   <% end %>
