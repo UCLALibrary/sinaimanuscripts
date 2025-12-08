@@ -1,0 +1,37 @@
+<%= content_tag @component,
+  id: @id,
+  data: {
+    'document-id': @document.id.to_s.parameterize,
+    'document-counter': @counter,
+  },
+  itemscope: true,
+  itemtype: @document.itemtype,
+  class: classes.flatten.join(' ') do %>
+  <%= header %>
+  <% if body.present? %>
+    <%= body %>
+  <% else %>
+    <div class="document__gallery-item-wrapper">
+      <% if !cookies[:sinai_authenticated_1year] %>
+        <%= image_tag("sinai/sinai-generic-thumbnail.png") %>
+      <% else %>
+        <%= thumbnail %>
+      <% end %>
+      <div class="caption document__gallery-item-text-wrapper document__gallery-item-text-wrapper--sinai">
+        <header class="header-gallery--sinai">
+          <%= render 'catalog/index_results/modal', document: @document %>
+          <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
+            <%= @document['shelfmark_ssi'] %>
+          </a>
+        </header>
+        <div class="metadata-block-gallery--sinai">
+          <div class="metadata-value-gallery--sinai">
+          <%= image_tag('sinai-icons/calendar-icon.png', class: 'icon-calendar-index--sinai') %>
+            <%= @document['date_created_tesim'][0] %> &nbsp; | &nbsp; <%= @document['extent_tesim'][0] %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <%= footer %>
+<% end %>

@@ -27,7 +27,7 @@ RSpec.describe Sinai::CodicologyMetadataPresenter do
     )
   end
   let(:solr_doc_missing_items) do
-    doc_double_with_fields_to_render
+    doc_double_with_fields_to_render(
       'format_extent_tesim' => 'Extent',
       'collation_tesim' => 'Collation',
       'form_sim' => 'Form',

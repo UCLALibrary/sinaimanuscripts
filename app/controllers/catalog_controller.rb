@@ -76,6 +76,8 @@ class CatalogController < ApplicationController
     config.index.title_field = 'title_tesim'
     config.index.display_type_field = 'has_model_ssim'
     config.index.thumbnail_field = 'thumbnail_url_ss'
+    config.index.document_component = Blacklight::DocumentComponent
+    config.index.thumbnail_presenter = Ursus::ThumbnailPresenter
 
     # solr path which will be added to solr base url before the other solr params.
     # config.solr_path = 'select'
