@@ -1,10 +1,6 @@
 <% if @document[:has_model_ssim].to_a[0] == 'Collection' %>
 <%
-@page_title = if Flipflop.sinai?
-                t('blacklight.search.show.title', document_title: document_show_html_title, application_name: sinai_application_name).html_safe
-              else
-                t('blacklight.search.show.title', document_title: document_show_html_title, application_name: application_name).html_safe
-              end
+  @page_title = t('blacklight.search.show.title', document_title: document_show_html_title, application_name: application_name).html_safe
 %>
  <%= render 'catalog/collection_record/collection_record', document: @document %>
 <% else %>

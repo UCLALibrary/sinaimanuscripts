@@ -119,6 +119,32 @@ class CatalogController < ApplicationController
     config.add_facet_field 'names_sim', sort: 'index', label: 'Names'
     config.add_facet_field 'collection_ssi', sort: 'index', label: 'Collection'
 
+    # following facets are hidden from the menu, and are here to allow user to search by them
+    config.add_facet_field 'architect_sim', show: false
+    config.add_facet_field 'associated_name_sim', show: false
+    config.add_facet_field 'author_sim', show: false
+    config.add_facet_field 'calligrapher_sim', show: false
+    config.add_facet_field 'commentator_sim', show: false
+    config.add_facet_field 'composer_sim', show: false
+    config.add_facet_field 'creator_sim', show: false
+    config.add_facet_field 'editor_sim', show: false
+    config.add_facet_field 'engraver_sim', show: false
+    config.add_facet_field 'human_readable_resource_type_sim', show: false
+    config.add_facet_field 'illuminator_sim', show: false
+    config.add_facet_field 'illustrator_sim', show: false
+    config.add_facet_field 'keywords_sim', show: false
+    config.add_facet_field 'location_sim', show: false
+    config.add_facet_field 'lyricist_sim', show: false
+    config.add_facet_field 'member_of_collections_ssim', show: false
+    config.add_facet_field 'named_subject_sim', show: false
+    config.add_facet_field 'photographer_sim', show: false
+    config.add_facet_field 'printmaker_sim', show: false
+    config.add_facet_field 'rubricator_sim', show: false
+    config.add_facet_field 'scribe_sim', show: false
+    config.add_facet_field 'subject_sim', show: false
+    config.add_facet_field 'translator_sim', show: false
+    config.add_facet_field 'uniform_title_sim', show: false
+
     # The generic_type isn't displayed on the facet list
     # It's used to give a label to the filter that comes from the user profile
     config.add_facet_field 'generic_type_sim', if: false

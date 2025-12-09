@@ -446,15 +446,6 @@ module Blacklight::BlacklightHelperBehavior
     path&.starts_with?(Blacklight::BlacklightHelperBehavior.blacklight_path)
   end
 
-  def sinai_application_name
-    # It's important that we don't use ActionView::Helpers::CacheHelper#cache here
-    # because it returns nil.
-    Rails.cache.fetch 'blacklight/sinai_application_name' do
-      t('blacklight.sinai_application_name',
-        default: t('blacklight.sinai_application_name', locale: I18n.default_locale))
-    end
-  end
-
   ##
   # Render the document's title in the embedded thumbnail alt tag
   def render_document_alttag(*args)
