@@ -1,14 +1,14 @@
-  <!--% unless has_search_parameters? % -->
-  <% if current_page?(root_path) %>
-    <%# if there are no input/search related params,
-              display the "sitelinks_search_box" partial -%>
-    <%= render 'shared/sitelinks_search_box' %>
-    <%= render 'homepage_sinai' %>
+<% content_for(:head) do %>
+  <meta name="blacklight-search-storage" content="<%= blacklight_config.track_search_session.storage %>">
+<% end %>
 
-  <% else %>
-    <% request.original_url %>
-    <div class='content-container--index-page'>
-      <%= render 'facets' %>
-      <%= render 'search_results' %>
-    </div>
-  <% end %>
+<% unless has_search_parameters? %>
+  <%# if there are no input/search related params, display the "home" partial -%>
+  <%= render 'home' %>
+  <%= render 'shared/sitelinks_search_box' %>
+<% else %>
+  <div class="content-container--index-page">
+    <%= render 'facets' %>
+    <%= render 'search_results' %>
+  </div>
+<% end %>

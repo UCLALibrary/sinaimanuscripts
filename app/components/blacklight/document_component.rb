@@ -20,8 +20,6 @@ module Blacklight
   #    end
   #  end
   class DocumentComponent < Blacklight::Component
-    include Blacklight::ContentAreasShim
-
     with_collection_parameter :document
 
     # ViewComponent 3 changes iteration counters to begin at 0 rather than 1
@@ -41,14 +39,15 @@ module Blacklight
     renders_one :title, (lambda do |*args, component: nil, **kwargs|
       component ||= @presenter&.view_config&.title_component || Blacklight::DocumentTitleComponent
 
-      component.new(*args, counter: nil, document: @document, presenter: @presenter, as: @title_component, link_to_document: !@show, document_component: self, **kwargs)
+      component.new(*args, counter: @counter, document: @document, presenter: @presenter, as: @title_component, actions: !@show, link_to_document: !@show, document_component: self, **kwargs)
     end)
 
     renders_one :embed, (lambda do |static_content = nil, *args, component: nil, **kwargs|
       next static_content if static_content.present?
-      next unless component
 
-      Deprecation.warn(Blacklight::DocumentComponent, 'Pass the presenter to the DocumentComponent') if @presenter.nil?
+      component ||= @presenter.view_config&.embed_component
+
+      next unless component
 
       component.new(*args, document: @document, presenter: @presenter, document_counter: @document_counter, **kwargs)
     end)
@@ -57,9 +56,7 @@ module Blacklight
     renders_one :metadata, (lambda do |static_content = nil, *args, component: nil, fields: nil, **kwargs|
       next static_content if static_content.present?
 
-      Deprecation.warn(Blacklight::DocumentComponent, 'Pass the presenter to the DocumentComponent') if !fields && @presenter.nil?
-
-      component ||= presenter&.view_config&.metadata_component || Blacklight::DocumentMetadataComponent
+      component ||= @presenter&.view_config&.metadata_component || Blacklight::DocumentMetadataComponent
 
       component.new(*args, fields: fields || @presenter&.field_presenters || [], **kwargs)
     end)
@@ -70,10 +67,9 @@ module Blacklight
     renders_one :thumbnail, (lambda do |image_options_or_static_content = {}, *args, component: nil, **kwargs|
       next image_options_or_static_content if image_options_or_static_content.is_a? String
 
-      component ||= presenter&.view_config&.thumbnail_component || Blacklight::Document::ThumbnailComponent
-      Deprecation.warn(Blacklight::DocumentComponent, 'Pass the presenter to the DocumentComponent') if !component && @presenter.nil?
+      component ||= @presenter&.view_config&.thumbnail_component || Blacklight::Document::ThumbnailComponent
 
-      component.new(*args, document: @document, presenter: @presenter, counter: @counter, gallery_view: @gallery_view, image_options: image_options_or_static_content, **kwargs)
+      component.new(*args, document: @document, presenter: @presenter, counter: @counter, image_options: image_options_or_static_content, **kwargs)
     end)
 
     # A container for partials rendered using the view config partials configuration. Its use is discouraged, but necessary until
@@ -83,40 +79,27 @@ module Blacklight
     # Backwards compatibility
     renders_one :actions
 
-    with_collection_parameter :document
-
     # rubocop:disable Metrics/ParameterLists
-    # @param document [Blacklight::Document]
-    # @param presenter [Blacklight::DocumentPresenter]
+    # @param document [Blacklight::DocumentPresenter]
+    # @param presenter [Blacklight::DocumentPresenter] alias for document
     # @param partials [Array, nil] view partial names that should be used to provide content for the `partials` slot
     # @param id [String] HTML id for the root element
     # @param classes [Array, String] additional HTML classes for the root element
     # @param component [Symbol, String] HTML tag type to use for the root element
     # @param title_component [Symbol, String] HTML tag type to use for the title element
     # @param counter [Number, nil] a pre-computed counter for the position of this document in a search result set
-    # @param document_counter [Number, nil] alternatively, the document's position in a collection and,
-    # @param counter_offset [Number] with `document_counter`, the offset of the start of that collection counter to the overall result set
+    # @param document_counter [Number, nil] provided by ViewComponent collection iteration
+    # @param counter_offset [Number] the offset of the start of the collection counter parameter for the component to the overall result set
     # @param show [Boolean] are we showing only a single document (vs a list of search results); used for backwards-compatibility
     def initialize(document: nil, presenter: nil, partials: nil,
                    id: nil, classes: [], component: :article, title_component: nil,
-                   metadata_component: nil,
-                   embed_component: nil,
-                   thumbnail_component: nil,
                    counter: nil, document_counter: nil, counter_offset: 0,
-                   show: false,  gallery_view: false,
-                   cookies: {},
-                   **args)
-      if presenter.nil? && document.nil?
-        raise ArgumentError, 'missing keyword: :document or :presenter'
-      end
+                   show: false, gallery_view: false, **args)
+      Blacklight.deprecation.warn('the `presenter` argument to DocumentComponent#initialize is deprecated; pass the `presenter` in as document instead') if presenter
 
-      if document.is_a?(Blacklight::DocumentPresenter) && presenter.nil?
-        @presenter = document
-        @document = @presenter.document || args[self.class.collection_parameter]
-      else
-        @document = document || presenter&.document || args[self.class.collection_parameter]
-        @presenter = presenter
-      end
+      @presenter = presenter || document || args[self.class.collection_parameter]
+      @document = @presenter.document
+      @view_partials = partials || []
 
       @component = component
       @title_component = title_component
@@ -138,8 +121,9 @@ module Blacklight
       @document_counter = document_counter || args.fetch(self.class.collection_counter_parameter, nil)
       @counter ||= @document_counter + COLLECTION_INDEX_OFFSET + counter_offset if @document_counter.present?
 
+      @gallery_view = gallery_view
+
       @show = show
-      @view_partials = partials
     end
     # rubocop:enable Metrics/ParameterLists
 
@@ -190,11 +174,7 @@ module Blacklight
 
     private
 
-    attr_reader :view_partials
-
-    def presenter
-      @presenter ||= helpers.document_presenter(@document)
-    end
+    attr_reader :document_counter, :presenter, :view_partials
 
     def show?
       @show
