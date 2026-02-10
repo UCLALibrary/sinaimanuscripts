@@ -94,7 +94,8 @@ module Blacklight
     def initialize(document: nil, presenter: nil, partials: nil,
                    id: nil, classes: [], component: :article, title_component: nil,
                    counter: nil, document_counter: nil, counter_offset: 0,
-                   show: false, gallery_view: false, **args)
+                   show: false, gallery_view: false,
+                   cookies: {}, **args)
       Blacklight.deprecation.warn('the `presenter` argument to DocumentComponent#initialize is deprecated; pass the `presenter` in as document instead') if presenter
 
       @presenter = presenter || document || args[self.class.collection_parameter]
@@ -107,15 +108,6 @@ module Blacklight
       @classes = classes
       @cookies = cookies
       @gallery_view = gallery_view
-
-      Deprecation.warn(Blacklight::DocumentComponent, 'Passing embed_component is deprecated') if @embed_component.present?
-      @embed_component = embed_component
-
-      Deprecation.warn(Blacklight::DocumentComponent, 'Passing metadata_component is deprecated') if @metadata_component.present?
-      @metadata_component = metadata_component
-
-      Deprecation.warn(Blacklight::DocumentComponent, 'Passing thumbnail_component is deprecated') if @thumbnail_component.present?
-      @thumbnail_component = thumbnail_component
 
       @counter = counter
       @document_counter = document_counter || args.fetch(self.class.collection_counter_parameter, nil)
@@ -149,23 +141,15 @@ module Blacklight
 
     def before_render
       set_slot(:title, nil) unless title
-      set_slot(:thumbnail, nil, component: @thumbnail_component || presenter.view_config&.thumbnail_component) unless thumbnail || show?
-      set_slot(:metadata, nil, component: @metadata_component || presenter&.view_config&.metadata_component, fields: presenter.field_presenters, show: @show) unless metadata
-      set_slot(:embed, nil, component: @embed_component || presenter.view_config&.embed_component) unless embed
+      set_slot(:thumbnail, nil) unless thumbnail || show?
+      set_slot(:metadata, nil, fields: presenter.field_presenters, show: @show) unless metadata
+      set_slot(:embed, nil) unless embed
 
-      # Blacklight 8 allows applications to pass in the partials to render instead of requiring the template to render the slots.
-      if partials.empty? && view_partials.present? # rubocop:disable Style/GuardClause
-        @render_partials = true
-        view_partials.each do |view_partial|
-          with_partial(view_partial) do
-            helpers.render_document_partial @document, view_partial, component: self, document_counter: @counter
-          end
+      view_partials.each do |view_partial|
+        with_partial(view_partial) do
+          helpers.render_document_partial @document, view_partial, component: self, document_counter: @counter
         end
       end
-    end
-
-    def render_partials?
-      @render_partials || presenter.view_config&.render_partials_in_component?
     end
 
     def cookies

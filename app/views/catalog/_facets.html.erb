@@ -1,8 +1,8 @@
 <% conf = blacklight_config.view_config(document_index_view_type) %>
-  <div id="facets" class="facets facets-toggleable-md facets-container">
-    <div id="facet-panel-collapse" class="facets-collapse collapse facet-field__heading--ursus">
-      <%= render conf.sidebar_component.new(blacklight_config: blacklight_config,
-                                            response: @response,
-                                            view_config: conf) %>
-    </div>
+<div id="facets" class="facets facets-toggleable-md facets-container facets-container--sinai">
+  <div id="facet-panel-collapse" class="facets-collapse collapse facet-field__heading--sinai collapse-toggle--sinai">
+    <%= render conf.sidebar_component.new(blacklight_config: blacklight_config,
+                                          response: @response,
+                                          view_config: conf) %>
   </div>
+</div>

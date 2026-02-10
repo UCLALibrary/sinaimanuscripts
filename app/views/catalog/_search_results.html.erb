@@ -1,4 +1,4 @@
-<div class="search-results-container">
+<div class="search-results-container--sinai">
   <% @page_title = t('blacklight.search.page_title.title', constraints: render_search_to_page_title(search_state), application_name: application_name) %>
 
   <% content_for(:head) do -%>
@@ -16,7 +16,6 @@
   <% end %>
 
   <%= render 'search_results_header' %>
-  <%= render 'constraints' %>
   <%= render partial: 'search_header',  locals: { pagination_only: false } %>
 
   <h2 class="sr-only visually-hidden"><%= t('blacklight.search.search_results') %></h2>

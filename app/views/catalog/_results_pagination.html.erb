@@ -1,7 +1,7 @@
 <!-- SINAI -->
 <% if show_pagination? and @response.total_pages > 1 %>
-  <div class='pagination-block pagination-block--siani'>
-    <%= render 'search_header' %>
+  <div class='pagination-block pagination-block--sinai'>
+    <%= render partial: 'search_header',  locals: { pagination_only: false } %>
   </div>
   <hr class='divider'>
 <% end %>

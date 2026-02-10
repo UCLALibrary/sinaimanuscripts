@@ -38,6 +38,7 @@ class CatalogController < ApplicationController
 
     config.show.tile_source_field = :content_metadata_image_iiif_info_ssm
     config.index.document_component = Blacklight::DocumentComponent
+    config.view.gallery.partials = [:gallery]
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
     #

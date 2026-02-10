@@ -2,8 +2,9 @@
   <% if @render_headers %>
     <h2 class="sr-only visually-hidden"><%= t('blacklight.search.search_constraints_header') %></h2>
   <% end %>
-  <div class="filter-group">
-    <span class="filter-group__heading filter-group__heading--ursus">You searched for: </span>
+<div class="searchbar--sinai"><%= search_bar %></div>
+  <div class="search-filter-wrapper search-filter-wrapper--sinai">
+    <span class="filter-group__heading filter-group__heading--sinai">You searched for: </span>
     <% if @render_headers %>
       <span class="constraints-label sr-only visually-hidden"><%= t('blacklight.search.filters.title') %></span>
     <% end %>
@@ -26,6 +27,6 @@
     <% additional_constraints.each do |constraints| %>
       <%= constraints %>
     <% end %>
+    <%= render 'catalog/startover' %>
   </div>
-  <%= render 'catalog/startover' %>
 <% end %>

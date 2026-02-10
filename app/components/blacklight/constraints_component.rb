@@ -6,6 +6,10 @@ module Blacklight
     renders_many :facet_constraints_area
     renders_many :additional_constraints
 
+    renders_one :search_bar, lambda { |component: Blacklight::SearchNavbarComponent|
+      component.new(blacklight_config: helpers.blacklight_config)
+    }
+
     def self.for_search_history(**kwargs)
       new(tag: :span,
           render_headers: false,
@@ -20,7 +24,7 @@ module Blacklight
     def initialize(search_state:,
                    tag: :div,
                    render_headers: true,
-                   id: 'appliedParams', classes: 'search-filter-wrapper',
+                   id: 'appliedParams', classes: '',
                    query_constraint_component: Blacklight::ConstraintLayoutComponent,
                    query_constraint_component_options: {},
                    facet_constraint_component: Blacklight::ConstraintComponent,
@@ -37,7 +41,10 @@ module Blacklight
       @id = id
       @classes = classes
     end
-    # rubocop:enable Metrics/ParameterLists
+
+    def before_render
+      set_slot(:search_bar, nil) unless search_bar
+    end
 
     def query_constraints
       if @search_state.query_param.present?

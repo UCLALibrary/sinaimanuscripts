@@ -1,17 +1,15 @@
-<header class="document__list-title document__list-title--ursus">
-  <%= content_tag @as, class: @classes do %>
-    <% before_titles.each do |t| %>
-      <%= t %>
-    <% end %>
-
-    <%= title -%>
-
-    <% after_titles.each do |t| %>
-      <%= t %>
-    <% end %>
+<%= content_tag @as, class: @classes do %>
+  <% before_titles.each do |t| %>
+    <%= t %>
   <% end %>
 
-  <% actions.each do |action| %>
-    <%= action %>
+  <%= title -%>
+
+  <% after_titles.each do |t| %>
+    <%= t %>
   <% end %>
-</header>
+<% end %>
+
+<% actions.each do |action| %>
+  <%= action %>
+<% end %>

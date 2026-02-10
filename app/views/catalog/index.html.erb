@@ -1,12 +1,9 @@
-<% content_for(:head) do %>
-  <meta name="blacklight-search-storage" content="<%= blacklight_config.track_search_session.storage %>">
-<% end %>
-
-<% unless has_search_parameters? %>
-  <%# if there are no input/search related params, display the "home" partial -%>
-  <%= render 'home' %>
+<% if current_page?(root_path) %>
   <%= render 'shared/sitelinks_search_box' %>
+  <%= render 'homepage_sinai' %>
+
 <% else %>
+  <% request.original_url %>
   <div class="content-container--index-page">
     <%= render 'facets' %>
     <%= render 'search_results' %>
