@@ -82,6 +82,7 @@ jobs:
           working-directory: e2e
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          ELECTRON_EXTRA_LAUNCH_ARGS: --remote-debugging-port=9222
       - name: Run Chromatic
         working-directory: e2e
         env:
