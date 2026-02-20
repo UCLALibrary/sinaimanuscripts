@@ -15,7 +15,7 @@ jobs:
         uses: ruby/setup-ruby@b818bea8cf015031920150a891dbdd4105cc7e47
         with:
           ruby-version: "2.5"
-          bundler-cache: true
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: rubocop
         run: bundle exec rubocop
 
@@ -27,7 +27,7 @@ jobs:
         uses: ruby/setup-ruby@b818bea8cf015031920150a891dbdd4105cc7e47
         with:
           ruby-version: "2.5"
-          bundler-cache: true
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: erblint
         run: bundle exec erblint --lint-all
 
@@ -44,43 +44,15 @@ jobs:
     steps:
       - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
       - name: Login to DockerHub
-        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9 # v1.10.0
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-      - name: Start and Initialize Docker services (with retries)
+      - name: Start and Initialize Docker services
         run: |
-          set -euo pipefail
-          retry() {
-            local -r cmd="$*"
-            local n=0
-            until [ $n -ge 3 ]; do
-              echo "Attempt $((n+1)) for: $cmd"
-              if eval "$cmd"; then
-                break
-              fi
-              n=$((n+1))
-              echo "Command failed — retrying in $((5 * n))s..."
-              sleep $((5 * n))
-            done
-            if [ $n -ge 3 ]; then
-              echo "Command failed after 3 attempts: $cmd"
-              return 1
-            fi
-          }
-
-          # Build the sinai image first (pull latest base layers); retry on transient failures
-          retry docker compose build --pull sinai
-
-          # Install gems inside container (bundle install may trigger docker build)
-          retry docker compose run sinai bundle install
-
-          # Start necessary services and retry if network/mirror hiccup happened during image pulls
-          retry docker compose up --detach db solr_test
-
-          # Setup DB/schema/seeds
-          retry docker compose run sinai bundle exec rails db:setup
-
+          docker compose run sinai bundle install
+          docker compose up --detach db solr_test
+          docker compose run sinai bundle exec rails db:setup
       - name: run rspec
         run: docker compose run sinai bundle exec rspec spec
       - name: Stop docker services
@@ -91,40 +63,19 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # <--- fetch full git history required by Chromatic
           persist-credentials: true
       - name: Login to DockerHub
-        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9 # v1.10.0
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-      - name: Start and Initialize Docker services (with retries)
+      - name: Start and Initialize Docker services
         run: |
-          set -euo pipefail
-          retry() {
-            local -r cmd="$*"
-            local n=0
-            until [ $n -ge 3 ]; do
-              echo "Attempt $((n+1)) for: $cmd"
-              if eval "$cmd"; then
-                break
-              fi
-              n=$((n+1))
-              echo "Command failed — retrying in $((5 * n))s..."
-              sleep $((5 * n))
-            done
-            if [ $n -ge 3 ]; then
-              echo "Command failed after 3 attempts: $cmd"
-              return 1
-            fi
-          }
-
-          retry docker compose build --pull sinai
-          retry docker compose run sinai bundle install
-          retry docker compose up --detach
-          retry docker compose run sinai bundle exec rails db:setup
+          docker compose run sinai bundle install
+          docker compose up --detach
+          docker compose run sinai bundle exec rails db:setup
           docker compose ps
-
       - uses: cypress-io/github-action@v5.7.2
         with:
           command-prefix: "percy exec -- npx"
