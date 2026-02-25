@@ -1,5 +1,5 @@
 <% doc_presenter = show_presenter(document) %>
-<% references = Sinai::ReferencesMetadataPresenter.new(document: doc_presenter.fields_to_render).references_terms %>
+<% references = Sinai::ReferencesMetadataPresenter.new(document: doc_presenter).references_terms %>
 
 <% if (references.length > 0) || (@document[:other_versions_tesim].to_a.length > 0) %>
 
