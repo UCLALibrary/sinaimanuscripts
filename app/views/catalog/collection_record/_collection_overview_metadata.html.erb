@@ -1,5 +1,5 @@
-<% doc_presenter = show_presenter(document) %>
-<% overview = Ursus::CollectionOverviewMetadataPresenter.new(document: doc_presenter.fields_to_render).overview_terms %>
+<% doc_presenter = document_presenter(document) %>
+<% overview = Ursus::CollectionOverviewMetadataPresenter.new(document: doc_presenter).overview_terms %>
 
 <% if overview.length > 0 %>
   <div class='metadata-block'>
@@ -7,7 +7,7 @@
     <% overview.each do |field_name, field| %>
       <div class='metadata-block__group--collection-pg'>
         <div class="blacklight-<%= field_name.parameterize %> metadata-block__label-key">
-          <%= (render_document_show_field_label document, field: field_name).tr(':', '') %>
+          <%= field.label %>
         </div>
         <div class="blacklight-<%= field_name.parameterize %> metadata-block__label-value">
           <%= doc_presenter.field_value field %>

@@ -1,10 +1,10 @@
-<% doc_presenter = show_presenter(document) %>
-<% overview = Sinai::OverviewMetadataPresenter.new(document: doc_presenter.fields_to_render).overview_terms %>
+<% doc_presenter = document_presenter(document) %>
+<% overview = Sinai::OverviewMetadataPresenter.new(document: doc_presenter).overview_terms %>
 
 <% if overview.length > 0 %>
   <% overview.each do |field_name, field| %>
     <div class="metadata-block--sinai">
-        <span class="metadata-block_title--sinai"> <%= (render_document_show_field_label document, field: field_name).tr(':', '') %></span>
+        <span class="metadata-block_title--sinai"> <%= field.label %></span>
         <span class="metadata-block_value--sinai"><%= doc_presenter.field_value field %></span>
     </div>
     <% end %>

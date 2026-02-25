@@ -71,7 +71,6 @@
 
       <!-- BODY -->
       <% if controller.controller_name == 'catalog' && controller.action_name == 'show' %>
-
         <main class="main-content-container container-constrained container-constrained__item-page--sinai">
           <%= content_for(:container_header) %>
             <%= content_for?(:content) ? yield(:content) : yield %>
@@ -85,7 +84,7 @@
       <% end %>
 
       <!-- FOOTER -->
-      <%= render partial: 'shared/footer/footer' %>
+      <%= render partial: 'shared/footer' %>
       <%= render partial: 'shared/modal' %>
     </div>
   </body>

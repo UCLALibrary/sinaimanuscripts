@@ -1,0 +1,75 @@
+<%= content_tag @component,
+  id: @id,
+  data: {
+    'document-id': @document.id.to_s.parameterize,
+    'document-counter': @counter,
+  },
+  itemscope: true,
+  itemtype: @document.itemtype,
+  class: classes.flatten.join(' ') do %>
+  <%= header %>
+  <% if body.present? %>
+    <%= body %>
+  <% elsif @gallery_view %>
+    <div class="document__gallery-item-wrapper">
+      <% if !cookies[:sinai_authenticated_1year] %>
+        <%= image_tag("sinai/sinai-generic-thumbnail.png") %>
+      <% else %>
+        <%= thumbnail %>
+      <% end %>
+      <div class="caption document__gallery-item-text-wrapper document__gallery-item-text-wrapper--sinai">
+        <header class="header-gallery--sinai">
+          <%= render 'catalog/index_results/modal', document: @document %>
+          <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
+            <%= @document['shelfmark_ssi'] %>
+          </a>
+        </header>
+        <div class="metadata-block-gallery--sinai">
+          <div class="metadata-value-gallery--sinai">
+          <%= image_tag('sinai-icons/calendar-icon.png', class: 'icon-calendar-index--sinai') %>
+            <%= @document['date_created_tesim'][0] %> &nbsp; | &nbsp; <%= @document['extent_tesim'][0] %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="document__list-item-wrapper document__list-item-wrapper--sinai">
+      <div class="document__gallery-thumbnail document__gallery-thumbnail--sinai">
+        <%= thumbnail %>
+      </div>
+
+      <%# Sinai LOGGED IN %>
+      <div class="metadata-wrapper-index--sinai">
+        <header class="header-index--sinai">
+          <%= render "catalog/index_results/modal", document: @document %>
+          <%# link the header to the block access modal%>
+          <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
+            <%= render "catalog/index_results/header", document: @document %>
+          </a>
+        </header>
+
+        <%# TITLE: descriptive_title_one | descriptive_title_two | uniform_title_one | uniform_title_two %>
+        <div class="title-index--sinai">
+          <%= render 'catalog/index_results/title', document: @document %>
+        </div>
+
+        <%# DATE - LANGUAGE %>
+        <div class="metadata-block-index--sinai">
+          <%= image_tag('sinai-icons/calendar-icon.png', class: 'icon-calendar-index--sinai') %><%= render 'catalog/index_results/date', document: @document %>&nbsp;&nbsp;<%= image_tag('sinai-icons/world-icon.png', class: 'icon-world-index-sinai') %><%= render 'catalog/index_results/language', document: @document %>
+        </div>
+
+        <%# NAMES %>
+        <% name_field = render 'catalog/index_results/name', document: @document %>
+        <% if name_field =~ /href/ %>
+          <div class="metadata-block-index--sinai">
+            <%= image_tag('sinai-icons/people-icon.svg', class: 'icon-people-index--sinai') %><%= name_field %>
+          </div><%# metadata-block-index--sinai %>
+        <% end %>
+
+        <%# COLLECTION %>
+        <%= render 'catalog/index_results/collection', document: @document %>
+      </div>
+    </div>
+  <% end %>
+  <%= footer %>
+<% end %>

@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 require 'rails_helper'
+require 'support/solr_doc_double'
+
+include SolrDocDouble
 
 RSpec.describe Ursus::CollectionBlockPresenter do
   let(:response) { RESPONSE }

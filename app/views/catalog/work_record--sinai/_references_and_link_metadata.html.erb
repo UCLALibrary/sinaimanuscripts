@@ -1,5 +1,5 @@
-<% doc_presenter = show_presenter(document) %>
-<% references = Sinai::ReferencesMetadataPresenter.new(document: doc_presenter.fields_to_render).references_terms %>
+<% doc_presenter = document_presenter(document) %>
+<% references = Sinai::ReferencesMetadataPresenter.new(document: doc_presenter).references_terms %>
 
 <% if (references.length > 0) || (@document[:other_versions_tesim].to_a.length > 0) %>
 
@@ -12,7 +12,7 @@
       <% references.each do |field_name, field| %>
         <div class="metadata-block--sinai">
           <span class="metadata-block_title--sinai">
-            <%= (render_document_show_field_label document, field: field_name).tr(':', '') %>
+            <%= field.label %>
           </span>
           <span class="metadata-block_value--sinai">
             <%= doc_presenter.field_value field %>
