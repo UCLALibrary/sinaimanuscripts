@@ -72,6 +72,10 @@ module Blacklight
     end
 
     def render?
+      true
+    end
+
+    def show_constraints?
       @search_state.has_constraints?
     end
 

@@ -156,6 +156,10 @@ module Blacklight
       @cookies
     end
 
+    def link_to_document(*args)
+      helpers.link_to_document(*args)
+    end
+
     private
 
     attr_reader :document_counter, :presenter, :view_partials

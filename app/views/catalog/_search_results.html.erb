@@ -28,5 +28,9 @@
     <%= render_document_index @response.documents %>
   <%- end %>
 
-  <%= render 'results_pagination' %>
+  <% if show_pagination? and @response.total_pages > 1 %>
+    <div class="pagination-block pagination-block--sinai">
+      <%= paginate @response, left: 2, right: 3, :theme => 'blacklight'%>
+    </div>
+  <% end %>
 </div>
