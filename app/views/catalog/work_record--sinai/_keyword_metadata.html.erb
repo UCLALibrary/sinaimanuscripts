@@ -1,5 +1,5 @@
-<% doc_presenter = show_presenter(document) %>
-<% keyword = Sinai::KeywordsMetadataPresenter.new(document: doc_presenter.fields_to_render).keywords_terms %>
+<% doc_presenter = document_presenter(document) %>
+<% keyword = Sinai::KeywordsMetadataPresenter.new(document: doc_presenter).keywords_terms %>
 
 <% if keyword.length > 0 %>
   <div class="metadata-block--sinai">

@@ -13,7 +13,6 @@
 //= require turbolinks
 //
 
-//= require tether
 // Required by Blacklight
 //= require jquery3
 //= require rails-ujs
