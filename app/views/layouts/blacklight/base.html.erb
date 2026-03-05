@@ -6,11 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Internet Explorer use the highest version available -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <% if controller.controller_name == 'catalog' && controller.action_name == 'show' %>
-      <meta name="Description" content="<%= render_page_title %>">
-    <% else %>
-      <meta name="Description" content="St. Catherine's Monastery of the Sinai, in partnership with the Early Manuscripts Electronic Library (EMEL) and the UCLA Library, welcomes you to the Sinai Manuscripts Digital Library. Widely recognized as the world’s oldest continually operating library, St. Catherine’s holdings represent an unparalleled resource to study the history and literature of the Eastern Mediterranean from late antiquity until early modernity.">
-    <% end %>
+    <meta name="Description" content="Sinai Manuscripts Digital Library">
     <meta name="theme-color" content="#2774ae">
 
     <% if ENV["GOOGLE_TAG_MGR_ID"] %>
@@ -21,7 +17,7 @@
       })(window,document,'script','dataLayer','<%= ENV["GOOGLE_TAG_MGR_ID"] %>');</script>
     <% end %>
 
-    <title><%= render_page_title %></title>
+    <title>Sinai Manuscripts Digital Library</title>
 
     <%= opensearch_description_tag application_name, opensearch_catalog_url(format: 'xml') %>
 
