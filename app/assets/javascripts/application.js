@@ -13,7 +13,6 @@
 //= require turbolinks
 //
 
-//= require tether
 // Required by Blacklight
 //= require jquery3
 //= require rails-ujs
@@ -27,3 +26,8 @@
 // For blacklight_range_limit built-in JS, if you don't want it you don't need
 // this:
 //= require 'blacklight_range_limit'
+
+document.addEventListener("turbolinks:before-render", () => {
+  $('.modal.show').hide();
+  $('.modal-backdrop').hide();
+})

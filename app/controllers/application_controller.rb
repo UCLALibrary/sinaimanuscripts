@@ -130,7 +130,6 @@ class ApplicationController < ActionController::Base
     cipher.update("Authenticated #{Time.zone.today}") + cipher.final
   end
 
-  helper Openseadragon::OpenseadragonHelper
   # Adds a few additional behaviors into the application controller
   include Blacklight::Controller
   layout 'blacklight'

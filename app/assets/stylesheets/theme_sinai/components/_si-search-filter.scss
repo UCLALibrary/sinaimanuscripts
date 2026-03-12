@@ -26,17 +26,17 @@
 .filter-label-remove--sinai {
   margin-left: 0.5rem;
   padding: 0;
-  color: $sinai-primary;
-  background-color: $white;
+  color: $sinai-primary!important;
+  background-color: $white!important;
 
   &:visited {
-    color: $sinai-primary;
-    background-color: $white;
+    color: $sinai-primary!important;
+    background-color: $white!important;
   }
 
   &:hover {
-    color: $white;
-    background-color: #b22222;
+    color: $white!important;
+    background-color: #b22222!important;
   }
 
   .remove-icon {
