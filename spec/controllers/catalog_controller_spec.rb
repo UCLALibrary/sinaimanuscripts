@@ -127,18 +127,13 @@ RSpec.describe CatalogController, type: :controller do
       allow(controller).to receive(:search_service).and_return(search_service)
       allow(search_service).to receive(:fetch).and_return([mock_response, mock_document])
     end
-    let(:ark) { 'ark:/123/abc' }
+    let(:doc_id) { 'ark:/123/abc' }
     let(:mock_response) { instance_double(Blacklight::Solr::Response) }
-    let(:mock_document) { SolrDocument.new(id: ark, export_formats: {}) }
+    let(:mock_document) { instance_double(SolrDocument, export_formats: {}) }
     let(:search_service) { instance_double(Blacklight::SearchService) }
 
-    it 'Renders a blank SolrDocument (meaning missing fields don\'t cause errors)' do
-      get :show, params: { id: ark }
-    end
-
-    xit "has collection count on Collection Item record page" do
-      # get :show, params: { id: ark }
-      # expect(assigns[:document]).not_to be_nil
+    it "Renders a blank SolrDocument (meaning missing fields don\'t cause errors)" do
+      get :show, params: { id: doc_id }
     end
   end
 end

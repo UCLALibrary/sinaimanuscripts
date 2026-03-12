@@ -8,12 +8,12 @@
   itemtype: @document.itemtype,
   class: classes.flatten.join(' ') do %>
   <%= header %>
+  <%= render 'catalog/index_results/modal', document: @document %>
   <% if body.present? %>
     <%= body %>
   <% elsif @gallery_view %>
     <div class="document__gallery-item-wrapper">
       <% if !cookies[:sinai_authenticated_1year] %>
-        <%= render 'catalog/index_results/modal', document: @document %>
         <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
           <%= image_tag("sinai/sinai-generic-thumbnail.png") %>
         </a>
@@ -23,7 +23,6 @@
       <div class="caption document__gallery-item-text-wrapper document__gallery-item-text-wrapper--sinai">
         <header class="header-gallery--sinai">
           <% if !cookies[:sinai_authenticated_1year] %>
-            <%= render 'catalog/index_results/modal', document: @document %>
             <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
               <%= @document['shelfmark_ssi'] %>
             </a>
@@ -42,13 +41,22 @@
   <% else %>
     <div class="document__list-item-wrapper document__list-item-wrapper--sinai">
       <div class="document__gallery-thumbnail document__gallery-thumbnail--sinai">
-        <%= thumbnail %>
+        <% if !cookies[:sinai_authenticated_1year] %>
+          <div class="document__gallery-thumbnail document__gallery-thumbnail--sinai-generic">
+            <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
+              <%= image_tag("sinai/sinai-generic-thumbnail.png") %>
+            </a>
+          </div>
+        <% else %>
+          <div class="document__gallery-thumbnail document__gallery-thumbnail--sinai">
+            <%= thumbnail %>
+          </div>
+        <% end %>
       </div>
 
       <div class="metadata-wrapper-index--sinai">
         <header class="header-index--sinai">
           <% if !cookies[:sinai_authenticated_1year] %>
-            <%= render 'catalog/index_results/modal', document: @document %>
             <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
               <%= render 'catalog/index_results/header', document: @document %>
             </a>
