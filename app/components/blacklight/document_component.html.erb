@@ -7,14 +7,17 @@
   itemscope: true,
   itemtype: @document.itemtype,
   class: classes.flatten.join(' ') do %>
+  <% modal_id = "exampleModalCenter" + @document[:id].gsub(/[^a-z\d]/, '') %>
   <%= header %>
-  <%= render 'catalog/index_results/modal', document: @document %>
+
+  <%= render 'catalog/index_results/modal', document: @document, modal_id: modal_id %>
+
   <% if body.present? %>
     <%= body %>
   <% elsif @gallery_view %>
     <div class="document__gallery-item-wrapper">
       <% if !cookies[:sinai_authenticated_1year] %>
-        <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
+        <a href="#" data-toggle="modal" data-target="#<%= modal_id %>">
           <%= image_tag("sinai/sinai-generic-thumbnail.png") %>
         </a>
       <% else %>
@@ -23,7 +26,7 @@
       <div class="caption document__gallery-item-text-wrapper document__gallery-item-text-wrapper--sinai">
         <header class="header-gallery--sinai">
           <% if !cookies[:sinai_authenticated_1year] %>
-            <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
+            <a href="#" data-toggle="modal" data-target="#<%= modal_id %>">
               <%= @document['shelfmark_ssi'] %>
             </a>
           <% else %>
@@ -43,7 +46,7 @@
       <div class="document__gallery-thumbnail document__gallery-thumbnail--sinai">
         <% if !cookies[:sinai_authenticated_1year] %>
           <div class="document__gallery-thumbnail document__gallery-thumbnail--sinai-generic">
-            <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
+            <a href="#" data-toggle="modal" data-target="#<%= modal_id %>">
               <%= image_tag("sinai/sinai-generic-thumbnail.png") %>
             </a>
           </div>
@@ -57,7 +60,7 @@
       <div class="metadata-wrapper-index--sinai">
         <header class="header-index--sinai">
           <% if !cookies[:sinai_authenticated_1year] %>
-            <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
+            <a href="#" data-toggle="modal" data-target="#<%= modal_id %>">
               <%= render 'catalog/index_results/header', document: @document %>
             </a>
           <% else %>

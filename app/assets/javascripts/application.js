@@ -28,6 +28,7 @@
 //= require 'blacklight_range_limit'
 
 document.addEventListener("turbolinks:before-render", () => {
-  $('.modal.show').hide();
-  $('.modal-backdrop').hide();
+  $(".modal.show").hide();
+  $(".modal-backdrop").hide();
+  $(".blacklight-catalog-index").removeClass(`modal-open`);
 })
