@@ -1,0 +1,11 @@
+<% doc_presenter = index_presenter(document) %>
+<% sinai_index_text_units = Ursus::SinaiIndexTextUnitLabelsPresenter.new(document: doc_presenter).sinai_index_text_unit_labels_terms %>
+
+<% if sinai_index_text_units.length.positive? %>
+  <% field_values = [] %>
+  <% sinai_index_text_units.each_value do |field| %>
+    <% value = (doc_presenter.field_value field) %>
+    <% field_values += value.split("&nbsp;|&nbsp;") %>
+  <% end %>
+  <%= render_truncated_list(field_values) %>
+<% end %>

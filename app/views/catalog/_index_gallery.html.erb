@@ -15,7 +15,7 @@
             <div class="metadata-block-gallery--sinai">
               <div class="metadata-value-gallery--sinai">
               <%= image_tag('sinai-icons/calendar-icon.png', class: 'icon-calendar-index--sinai') %>
-                <%= document['date_created_tesim'][0] %> &nbsp; | &nbsp; <%= document['extent_tesim'][0] %>
+                <%= document['ot_date_tesim']&.first %> &nbsp; | &nbsp; <%= document['extent_tesi'] %>
               </div>
             </div>
             <%#= render_document_partials document, blacklight_config.view_config(:gallery).partials, document_counter: document_counter %>

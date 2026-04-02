@@ -35,24 +35,23 @@
         </a>
       </header>
 
-      <%# TITLE: descriptive_title_one | descriptive_title_two | uniform_title_one | uniform_title_two %>
+      <%# ROW 2: ms_type %>
       <div class='title-index--sinai'>
         <%= render 'catalog/index_results/title', document: document %>
       </div>
 
-      <%# DATE - LANGUAGE %>
+      <%# ROW 3: text unit labels %>
+      <div class='title-index--sinai'>
+        <%= render 'catalog/index_results/text_unit_labels', document: document %>
+      </div>
+
+      <%# ROW 4: DATE - LANGUAGE %>
       <div class='metadata-block-index--sinai'>
         <%= image_tag('sinai-icons/calendar-icon.png', class: 'icon-calendar-index--sinai') %><%= render 'catalog/index_results/date', document: document %>&nbsp;&nbsp;<%= image_tag('sinai-icons/world-icon.png', class: 'icon-world-index-sinai') %><%= render 'catalog/index_results/language', document: document %>
       </div>
-      <%# NAMES %>
-      <% name_field = render 'catalog/index_results/name', document: document %>
-      <% if name_field =~ /href/ %>
-        <div class='metadata-block-index--sinai'>
-          <div class='metadata-value-index--sinai'>
-              <%= image_tag('sinai-icons/people-icon.svg', class: 'icon-people-index--sinai') %><%= name_field %>
-          </div>
-        </div><%# metadata-block-index--sinai %>
-      <% end %>
+
+      <%# ROW 5: REPOSITORY | COLLECTION %>
+      <%= render 'catalog/index_results/collection', document: document %>
     </div><%# metadata-wrapper-index--sinai %>
 
   <%# ----------------------------------------------- %>
@@ -68,25 +67,22 @@
         </a>
       </header>
 
-      <%# TITLE: descriptive_title_one | descriptive_title_two | uniform_title_one | uniform_title_two %>
+      <%# ROW 2: ms_type %>
       <div class='title-index--sinai'>
         <%= render 'catalog/index_results/title', document: document %>
       </div>
 
-      <%# DATE - LANGUAGE %>
+      <%# ROW 3: text unit labels %>
+      <div class='title-index--sinai'>
+        <%= render 'catalog/index_results/text_unit_labels', document: document %>
+      </div>
+
+      <%# ROW 4: DATE - LANGUAGE %>
       <div class='metadata-block-index--sinai'>
         <%= image_tag('sinai-icons/calendar-icon.png', class: 'icon-calendar-index--sinai') %><%= render 'catalog/index_results/date', document: document %>&nbsp;&nbsp;<%= image_tag('sinai-icons/world-icon.png', class: 'icon-world-index-sinai') %><%= render 'catalog/index_results/language', document: document %>
       </div>
 
-      <%# NAMES %>
-      <% name_field = render 'catalog/index_results/name', document: document %>
-      <% if name_field =~ /href/ %>
-        <div class='metadata-block-index--sinai'>
-          <%= image_tag('sinai-icons/people-icon.svg', class: 'icon-people-index--sinai') %><%= name_field %>
-        </div><%# metadata-block-index--sinai %>
-      <% end %>
-
-      <%# COLLECTION %>
+      <%# ROW 5: REPOSITORY | COLLECTION %>
       <%= render 'catalog/index_results/collection', document: document %>
     </div><%# metadata-wrapper-index--sinai %>
   </div><%# document__list-item-wrapper--sinai %>

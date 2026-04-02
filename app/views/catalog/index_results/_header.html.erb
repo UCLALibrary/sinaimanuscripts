@@ -1,10 +1,5 @@
-<% if document[:header_index_tesim] %>
-  <% header_index = document[:header_index_tesim] %>
-   <% header_index.each_with_index do |field, index| %>
-      <% if index == 0 %>
-        <%= field %>&nbsp;|
-      <% else %>
-        <%= field %>
-      <% end %>
-  <% end %>
+<% shelfmark = document[:shelfmark_ssi] %>
+<% extent = document[:extent_tesi] %>
+<% if shelfmark %>
+  <%= shelfmark %><% if extent %>&nbsp;| <%= extent %><% end %>
 <% end %>

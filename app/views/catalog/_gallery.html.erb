@@ -10,7 +10,7 @@
 <div class="metadata-block-gallery--sinai">
     <div class="metadata-value-gallery--sinai">
         <%= image_tag('sinai-icons/calendar-icon.png', class: 'icon-calendar-index--sinai') %>
-        <%= document['ot_date_isim'][0] %>
+        <%= document['ot_date_tesim']&.first %> &nbsp; | &nbsp; <%= document['extent_tesi'] %>
     </div>
 </div>
 <% end %>

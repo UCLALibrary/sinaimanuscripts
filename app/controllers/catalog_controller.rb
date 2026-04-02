@@ -159,10 +159,13 @@ class CatalogController < ApplicationController
     # solr fields to be displayed in the index search results / list view
     # The config.add_index_field ::Solrizer.solr_name('title',  :stored_searchable), label: 'Title', itemprop: 'name', if: false
 
-    config.add_index_field 'header_index_tesim'
-    config.add_index_field 'ot_works_ssim', link_to_facet: 'ot_works_ssim'
+    config.add_index_field 'shelfmark_ssi'
+    config.add_index_field 'extent_tesi'
+    config.add_index_field 'ms_type_ssi'
+    config.add_index_field 'text_unit_labels_tesim'
     config.add_index_field 'ot_date_tesim'
     config.add_index_field 'ot_language_ssim', link_to_facet: 'ot_language_ssim'
+    config.add_index_field 'repository_ssim'
     config.add_index_field 'collection_ssim', link_to_facet: 'collection_ssim'
     
     # ------------------------------------------------------

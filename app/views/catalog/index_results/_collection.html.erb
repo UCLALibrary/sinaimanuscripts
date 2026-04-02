@@ -2,10 +2,14 @@
 <% sinai_index_collection = Ursus::SinaiIndexCollectionPresenter.new(document: doc_presenter).sinai_index_collection_terms %>
 
 <% if sinai_index_collection.length > 0 %>
-  <% sinai_index_collection.each do |field_name, field| -%>
-    <!-- VALUE -->
+  <% field_values = [] %>
+  <% sinai_index_collection.each_value do |field| %>
+    <% value = doc_presenter.field_value(field).presence %>
+    <% field_values << value if value %>
+  <% end %>
+  <% if field_values.any? %>
     <div class='metadata-value-index--sinai'>
-      <%= doc_presenter.field_value field %>
+      <%= safe_join(field_values, ' | ') %>
     </div>
   <% end %>
 <% end %>
