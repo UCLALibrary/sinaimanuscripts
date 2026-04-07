@@ -12,7 +12,13 @@ class BaseMetadataPresenter
   end
 
   def fields_to_render_by_config_keys
-    fields_to_render_by_keys(@config.keys)
+    result = fields_to_render_by_keys(@config.keys)
+    # Re-sort by YAML config order (not CatalogController order)
+    ordered = {}
+    @config.keys.each do |key|
+      ordered[key] = result[key] if result.key?(key)
+    end
+    ordered
   end
 
   def fields_to_render_by_keys(keys)

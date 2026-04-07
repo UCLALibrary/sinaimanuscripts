@@ -1,7 +1,10 @@
 <div class='item-page__secondary-metadata item-page__secondary-metadata--sinai'>
-  <h2 class="metadata-block__title">Item Overview</h2>
+  <h2 class="overview-heading--sinai">Overview</h2>
   <div class="secondary-metadata_container--sinai">
-    <%= render 'catalog/work_record--sinai/keyword_metadata', document: document %>
+    <% if document['summary_tesim'].present? %>
+      <p class="overview-summary--sinai"><%= Array(document['summary_tesim']).join('; ') %></p>
+    <% end %>
     <%= render 'catalog/work_record--sinai/item_overview_metadata', document: document %>
+    <%= render 'catalog/work_record--sinai/keyword_metadata', document: document %>
   </div>
 </div>

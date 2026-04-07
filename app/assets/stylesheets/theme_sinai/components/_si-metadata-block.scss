@@ -226,3 +226,103 @@
     color: $sinai-primary;
   }
 }
+
+// Overview section redesign
+.overview-heading--sinai {
+  color: $sinai-primary;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.overview-summary--sinai {
+  font-style: italic;
+  font-size: 0.95rem;
+  color: $sinai-grey;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.overview-dl--sinai {
+  margin: 0;
+  padding: 0;
+}
+
+.overview-dl__row--sinai {
+  display: flex;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid $sinai-secondary-dk;
+
+  &:first-child {
+    border-top: 1px solid $sinai-secondary-dk;
+  }
+}
+
+.overview-dl__label--sinai {
+  flex: 0 0 150px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: $sinai-black;
+  letter-spacing: 0.03em;
+  padding-top: 2px;
+}
+
+.overview-dl__value--sinai {
+  flex: 1;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: $sinai-black;
+  margin: 0;
+  line-height: 1.5;
+
+  a {
+    color: $sinai-primary;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:visited {
+      color: $sinai-primary-lt;
+    }
+  }
+}
+
+.overview-dl__value-keywords--sinai {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.keyword-badge--sinai {
+  display: inline-block;
+  padding: 3px 10px;
+  font-size: 0.85rem;
+  font-weight: 400;
+  background-color: #0b3954;
+  color: white;
+  border-radius: 0.7rem;
+
+  a {
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      color: white;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .overview-dl__row--sinai {
+    flex-direction: column;
+  }
+
+  .overview-dl__label--sinai {
+    flex: none;
+    margin-bottom: 0.25rem;
+  }
+}

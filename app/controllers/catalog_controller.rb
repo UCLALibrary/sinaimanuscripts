@@ -228,6 +228,15 @@ class CatalogController < ApplicationController
     config.add_show_field 'writing_system_tesim', label: 'Writing system', link_to_facet: 'writing_system_sim'
     config.add_show_field 'collection_ssi', label: 'Collection'
     config.add_show_field 'viscodex_ssi', label: 'Collation Viewer'
+    config.add_show_field 'state_ssi', label: 'Current State'
+    config.add_show_field 'repository_ssim', label: 'Repository'
+    config.add_show_field 'collection_ssim', label: 'Collection'
+    config.add_show_field 'ot_date_tesim', label: 'Date of Origin'
+    config.add_show_field 'ot_script_ssim', label: 'Scripts'
+    config.add_show_field 'ot_language_ssim', label: 'Languages'
+    config.add_show_field 'extent_tesi', label: 'Extent'
+    config.add_show_field 'features_ssim', label: 'Features'
+    config.add_show_field 'ot_genre_ssim', label: 'Genre'
 
     # Notes
     config.add_show_field 'summary_tesim', label: 'Summary'

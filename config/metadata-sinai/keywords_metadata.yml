@@ -1,4 +1,5 @@
 # These fields are in order of display
 
 # Sinai only - Keywords
-keywords_tesim: 'Keywords'
+features_ssim: 'Features'
+ot_genre_ssim: 'Genre'
