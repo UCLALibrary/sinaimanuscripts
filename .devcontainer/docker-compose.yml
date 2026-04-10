@@ -1,0 +1,18 @@
+version: '3.6'
+services:
+
+  devcontainer:
+    # image: uclalibrary/sinaimanuscripts:latest
+    build: .
+    command: sleep infinity
+    env_file:
+      - ./default.env
+      - ./docker.env
+    volumes:
+      - ..:/workspaces:cached
+      - devcontainer_node_modules:/workspaces/sinaimanuscripts/node_modules
+      - devcontainer_tmp:/workspaces/sinaimanuscripts/tmp
+
+volumes:
+  devcontainer_node_modules:
+  devcontainer_tmp:
