@@ -16,6 +16,11 @@
   border-right: 2px solid $sinai-secondary;
 }
 
+.item-page__tab-wrapper--sinai {
+  width: 100%;
+  padding-top: 1rem;
+}
+
 .item-page__pagination-widgets--sinai {
   .previous {
     color: $sinai-primary;

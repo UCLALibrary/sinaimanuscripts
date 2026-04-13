@@ -20,9 +20,8 @@
 <div class='title-row-show--siani'>
   <%= @document[:shelfmark_ssi] %>
 </div>
-<div class='item-page__metadata-wrapper'>
-  <%= render 'catalog/work_record--sinai/primary_metadata', document: document %>
-  <%= render 'catalog/work_record--sinai/secondary_metadata', document: document %>
+<div class='item-page__tab-wrapper--sinai'>
+  <%= render 'catalog/work_record--sinai/tab_navigation', document: document %>
 </div>
 
 <script>

@@ -1,0 +1,60 @@
+<%
+  tab_definitions = [
+    { id: 'full-description', label: 'Full Description' },
+    { id: 'contents', label: 'Contents' },
+    { id: 'undertexts', label: 'Undertexts' },
+    { id: 'guest-content', label: 'Guest Content' },
+    { id: 'related-manuscripts', label: 'Related Manuscripts' },
+    { id: 'references-bibliography', label: 'References & Bibliography' },
+    { id: 'names-dates-places', label: 'Names, Dates, Places' },
+    { id: 'rights-credits', label: 'Rights & Credits' }
+  ]
+%>
+
+<nav class="scrollable-tabs--sinai" aria-label="Manuscript details">
+  <button class="scrollable-tabs__arrow scrollable-tabs__arrow--left scrollable-tabs__arrow--hidden" aria-hidden="true" type="button">
+    <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 3L5 8L10 13" fill="currentColor"/>
+    </svg>
+  </button>
+  <ul class="scrollable-tabs__list" role="tablist">
+    <% tab_definitions.each_with_index do |tab, index| %>
+      <li role="presentation">
+        <button role="tab"
+                aria-selected="<%= index == 0 ? 'true' : 'false' %>"
+                aria-controls="panel-<%= tab[:id] %>"
+                id="tab-<%= tab[:id] %>"
+                class="scrollable-tabs__tab<%= ' scrollable-tabs__tab--active' if index == 0 %>"
+                type="button">
+          <%= tab[:label] %>
+        </button>
+      </li>
+    <% end %>
+  </ul>
+  <button class="scrollable-tabs__arrow scrollable-tabs__arrow--right scrollable-tabs__arrow--hidden" aria-hidden="true" type="button">
+    <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 3L11 8L6 13" fill="currentColor"/>
+    </svg>
+  </button>
+</nav>
+
+<div class="tab-panels--sinai">
+  <%# Full Description — content from current Overview sidebar %>
+  <div role="tabpanel" id="panel-full-description" aria-labelledby="tab-full-description" class="tab-panel--sinai tab-panel--active">
+    <h2 class="overview-heading--sinai">Overview</h2>
+    <div class="secondary-metadata_container--sinai">
+      <% if document['summary_tesim'].present? %>
+        <p class="overview-summary--sinai"><%= Array(document['summary_tesim']).join('; ') %></p>
+      <% end %>
+      <%= render 'catalog/work_record--sinai/item_overview_metadata', document: document %>
+      <%= render 'catalog/work_record--sinai/keyword_metadata', document: document %>
+    </div>
+  </div>
+
+  <%# Placeholder tabs %>
+  <% tab_definitions.drop(1).each do |tab| %>
+    <div role="tabpanel" id="panel-<%= tab[:id] %>" aria-labelledby="tab-<%= tab[:id] %>" class="tab-panel--sinai">
+      <h2 class="overview-heading--sinai"><%= tab[:label] %></h2>
+    </div>
+  <% end %>
+</div>
