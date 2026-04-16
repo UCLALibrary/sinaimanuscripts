@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 require 'rails_helper'
+require 'support/solr_doc_double'
+
+include SolrDocDouble
 
 RSpec.describe Sinai::HistoryMetadataPresenter do
   let(:solr_doc) do
-    {
+    doc_double_with_fields_to_render(
       'date_created_tesim' => 'Date created',
       'place_of_origin_tesim' => 'Place of Origin',
       'colophon_tesim' => 'Colophon',
@@ -11,14 +14,14 @@ RSpec.describe Sinai::HistoryMetadataPresenter do
       'inscription_tesim' => 'Inscriptions',
       'overtext_manuscript_ssm' => 'Overtext manuscript',
       'related_tesim' => 'Related Items'
-    }
+    )
   end
   let(:solr_doc_missing_items) do
-    {
+    doc_double_with_fields_to_render(
       'date_created_tesim' => 'Date created',
       'place_of_origin_tesim' => 'Place of Origin',
       'colophon_tesim' => 'Colophon'
-    }
+    )
   end
   let(:presenter_object) { described_class.new(document: solr_doc) }
   let(:presenter_object_missing_items) { described_class.new(document: solr_doc_missing_items) }

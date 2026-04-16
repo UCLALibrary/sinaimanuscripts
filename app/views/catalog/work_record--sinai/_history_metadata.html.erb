@@ -1,5 +1,5 @@
 <% doc_presenter = show_presenter(document) %>
-<% history = Sinai::HistoryMetadataPresenter.new(document: doc_presenter.fields_to_render).history_terms %>
+<% history = Sinai::HistoryMetadataPresenter.new(document: doc_presenter).history_terms %>
 
 <% if history.length > 0 %>
   <input type="radio" name="tabs" id="tabthree">

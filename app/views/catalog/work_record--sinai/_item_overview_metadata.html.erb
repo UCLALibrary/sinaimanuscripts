@@ -1,5 +1,5 @@
 <% doc_presenter = show_presenter(document) %>
-<% overview = Sinai::OverviewMetadataPresenter.new(document: doc_presenter.fields_to_render).overview_terms %>
+<% overview = Sinai::OverviewMetadataPresenter.new(document: doc_presenter).overview_terms %>
 
 <% if overview.length > 0 %>
   <% overview.each do |field_name, field| %>

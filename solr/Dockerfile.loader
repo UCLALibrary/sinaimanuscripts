@@ -1,0 +1,5 @@
+FROM python:3.14
+
+RUN pip install feed_ursus
+
+CMD [ "sinai", "load", "/data", "http://solr:8983/solr/ursus" ]

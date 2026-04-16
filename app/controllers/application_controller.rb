@@ -99,6 +99,11 @@ class ApplicationController < ActionController::Base
       expires: Time.zone.now + 1.year,
       domain: domain
     }
+    # cookies[:initialization_vector] = {
+    #   value: cipher_iv.unpack('H*')[0].upcase,
+    #   expires: Time.zone.now + 1.year,
+    #   domain: ENV['DOMAIN']
+    # }
   end
 
   # TERMS OF USE MODAL
@@ -125,12 +130,11 @@ class ApplicationController < ActionController::Base
 
   def create_encrypted_string
     cipher.encrypt
-    cipher.key = ENV['CIPHER_KEY']
+    cipher.key = ENV['CIPHER_KEY'] || 'abcdefghijklmnop'
     cipher.iv = cipher_iv
     cipher.update("Authenticated #{Time.zone.today}") + cipher.final
   end
 
-  helper Openseadragon::OpenseadragonHelper
   # Adds a few additional behaviors into the application controller
   include Blacklight::Controller
   layout 'blacklight'

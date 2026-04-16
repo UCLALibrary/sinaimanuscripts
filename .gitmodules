@@ -1,0 +1,3 @@
+[submodule "sinaiportal_data"]
+	path = solr/sinaiportal_data
+	url = https://github.com/UCLALibrary/sinaiportal_data.git

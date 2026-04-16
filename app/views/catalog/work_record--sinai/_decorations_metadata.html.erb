@@ -1,5 +1,5 @@
 <% doc_presenter = show_presenter(document) %>
-<% decorations = Sinai::DecorationMetadataPresenter.new(document: doc_presenter.fields_to_render).decoration_terms %>
+<% decorations = Sinai::DecorationMetadataPresenter.new(document: doc_presenter).decoration_terms %>
 
 <% if decorations.length > 0 %>
   <input type="radio" name="tabs" id="tabfour">
