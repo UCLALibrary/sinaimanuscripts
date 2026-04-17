@@ -414,6 +414,226 @@
   line-height: 1.5;
 }
 
+// Items / Contents section within Full Description tab
+.items-section--sinai {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid $sinai-secondary-dk;
+}
+
+.item-block--sinai {
+  margin-bottom: 1.5rem;
+}
+
+.item-heading--sinai {
+  color: $sinai-primary;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.item-summary--sinai {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: $sinai-grey;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.item-subsection--sinai {
+  margin-bottom: 0.5rem;
+}
+
+// Works section: static label + per-work accordions
+.works-section--sinai {
+  padding: 0.4rem 0;
+}
+
+.works-section__label--sinai {
+  flex: 0 0 150px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $sinai-grey;
+  padding-bottom: 0.25rem;
+}
+
+// Each work_wit as an individual accordion row
+.work-accordion--sinai {
+  margin-left: 150px; // align with field values
+
+  > summary {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    list-style: none;
+    padding: 0.35rem 0;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::before {
+      content: '\203A'; // ›
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: $sinai-grey;
+      margin-right: 0.5rem;
+      transition: transform 0.2s;
+      display: inline-block;
+      width: 0.75rem;
+      flex-shrink: 0;
+    }
+  }
+
+  &[open] > summary::before {
+    transform: rotate(90deg);
+  }
+}
+
+.work-accordion--static--sinai {
+  padding: 0.35rem 0;
+}
+
+.work-accordion__title--sinai {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: $sinai-black;
+  line-height: 1.5;
+}
+
+.work-accordion__body--sinai {
+  padding: 0.5rem 0 0.75rem 1.25rem; // indent body under the title
+  border-bottom: 1px solid lighten($sinai-secondary-dk, 10%);
+  margin-bottom: 0.25rem;
+}
+
+.work-fields--sinai {
+  margin: 0;
+}
+
+.work-field-row--sinai {
+  display: flex;
+  padding: 0.4rem 0;
+  align-items: flex-start;
+}
+
+.work-field-label--sinai {
+  flex: 0 0 150px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $sinai-grey;
+  padding-top: 0.15rem;
+}
+
+.work-field-value--sinai {
+  flex: 1;
+  font-size: 0.95rem;
+  color: $sinai-black;
+  line-height: 1.5;
+}
+
+// Table of Contents show-more
+.work-toc--sinai {
+  // container for ToC entries + show-more button
+}
+
+.work-toc-entry--sinai {
+  margin-bottom: 0.35rem;
+}
+
+.work-toc-entry--hidden--sinai {
+  display: none;
+}
+
+.work-toc-entry__line--sinai {
+  font-size: 0.95rem;
+  color: $sinai-black;
+  line-height: 1.5;
+}
+
+.work-toc-entry__note--sinai {
+  font-size: 0.9rem;
+  color: $sinai-grey;
+  padding-left: 1rem;
+  line-height: 1.5;
+}
+
+.work-show-more--sinai {
+  background: none;
+  border: none;
+  color: $sinai-primary;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  margin-top: 0.25rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Excerpt blocks
+.work-excerpt--sinai {
+  margin-bottom: 0.75rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.work-excerpt__header--sinai {
+  font-size: 0.95rem;
+  color: $sinai-black;
+  line-height: 1.5;
+}
+
+.work-excerpt__as-written--sinai {
+  font-style: normal;
+}
+
+.work-excerpt__translation--sinai {
+  font-size: 0.9rem;
+  color: $sinai-grey;
+  padding-left: 1rem;
+  line-height: 1.5;
+}
+
+.work-excerpt__note--sinai {
+  font-size: 0.9rem;
+  color: $sinai-grey;
+  padding-left: 1rem;
+  line-height: 1.5;
+}
+
+// Edition entries within works
+.work-edition--sinai {
+  margin-bottom: 0.5rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.work-edition__citation--sinai {
+  font-size: 0.95rem;
+  color: $sinai-black;
+  line-height: 1.5;
+}
+
+.work-edition__note--sinai {
+  font-size: 0.9rem;
+  color: $sinai-grey;
+  padding-left: 1rem;
+  line-height: 1.5;
+}
+
 .overview-json-debug--sinai {
   margin-top: 2rem;
   border-top: 1px solid $sinai-secondary-dk;
