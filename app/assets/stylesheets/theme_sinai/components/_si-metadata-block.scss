@@ -252,11 +252,6 @@
 .overview-dl__row--sinai {
   display: flex;
   padding: 0.75rem 0;
-  border-bottom: 1px solid $sinai-secondary-dk;
-
-  &:first-child {
-    border-top: 1px solid $sinai-secondary-dk;
-  }
 }
 
 .overview-dl__label--sinai {
@@ -325,6 +320,98 @@
     flex: none;
     margin-bottom: 0.25rem;
   }
+}
+
+// Part sections within Full Description tab
+.part-section--sinai {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid $sinai-secondary-dk;
+}
+
+.part-heading--sinai {
+  color: $sinai-primary;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.part-summary--sinai {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: $sinai-grey;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+// Expandable fields (Support, Writing, Ink) using <details>
+.part-expandable--sinai {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+  summary {
+    display: flex;
+    width: 100%;
+    cursor: pointer;
+    list-style: none;
+    align-items: flex-start;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::before {
+      content: '\203A'; // right-pointing angle bracket ›
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: $sinai-grey;
+      margin-right: 0.25rem;
+      margin-left: -0.75rem;
+      transition: transform 0.2s;
+      display: inline-block;
+      width: 0.75rem;
+      flex-shrink: 0;
+    }
+  }
+
+  &[open] > summary::before {
+    transform: rotate(90deg);
+  }
+}
+
+.part-expandable__label--sinai {
+  flex: 0 0 150px;
+  margin-left: -0.25rem;
+}
+
+.part-expandable__details--sinai {
+  margin: 0;
+  padding-left: 150px;
+  padding-top: 0.5rem;
+  width: 100%;
+}
+
+// Grouped blocks for writing/ink/layout entries
+.part-grouped-block--sinai {
+  margin-bottom: 0.75rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.part-grouped-block__line--sinai {
+  font-size: 0.95rem;
+  color: $sinai-black;
+  line-height: 1.5;
+}
+
+.part-grouped-block__note--sinai {
+  font-size: 0.9rem;
+  color: $sinai-grey;
+  line-height: 1.5;
 }
 
 .overview-json-debug--sinai {
