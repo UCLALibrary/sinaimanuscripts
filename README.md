@@ -16,4 +16,4 @@ docker-compose up
 
 ### Data
 
-Data is maintained at https://github.com/UCLALibrary/sinaiportal_data, which is included as a git submodule.
+Data is maintained at https://github.com/UCLALibrary/sinaiportal_data, which is included as a git submodule. It is loaded with the `sinai load` command of [feed_ursus](https://github.com/uclalibrary/feed_ursus), which runs automatically in a container on `docker-compose up`. It can be re-run at any time with `docker-compose run loader`.
