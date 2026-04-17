@@ -7,26 +7,24 @@ include SolrDocDouble
 RSpec.describe Sinai::OverviewMetadataPresenter do
   let(:solr_doc) do
     doc_double_with_fields_to_render(
-      'place_of_origin_tesim' => 'Place of origin',
-      'date_created_tesim' => 'Date created',
+      'repository_ssim' => 'Location',
+      'collection_ssim' => 'Collection',
+      'state_ssi' => 'Current State',
+      'place_of_origin_tesim' => 'Origin',
+      'ot_date_tesim' => 'Date of Origin',
+      'ot_script_ssim' => 'Scripts',
+      'ot_language_ssim' => 'Languages',
+      'extent_tesi' => 'Extent',
       'format_extent_tesim' => 'Extent',
-      'form_tesim' => 'Form',
-      'human_readable_language_tesim' => 'Language',
-      'writing_system_tesim' => 'Writing system',
-      'script_tesim' => 'Script',
-      'repository_tesim' => 'Repository',
-      'human_readable_rights_statement_tesim' => 'Rights statement',
-      'services_contact_ssm' => 'Rights contact',
-      'collection_ssi' => 'Collection'
+      'foliation_tesim' => 'Foliation',
+      'collation_tesim' => 'Collation'
     )
   end
   let(:solr_doc_missing_items) do
     doc_double_with_fields_to_render(
-      'place_of_origin_tesim' => 'Place of origin',
-      'date_created_tesim' => 'Date created',
-      'format_extent_tesim' => 'Extent',
-      'form_tesim' => 'Form',
-      'human_readable_language_tesim' => 'Language'
+      'repository_ssim' => 'Location',
+      'place_of_origin_tesim' => 'Origin',
+      'ot_date_tesim' => 'Date of Origin'
     )
   end
   let(:presenter_object) { described_class.new(document: solr_doc) }
@@ -35,48 +33,44 @@ RSpec.describe Sinai::OverviewMetadataPresenter do
 
   context 'with a solr document containing overview metadata' do
     describe '#terms' do
-      it 'returns the Place of origin Key' do
-        expect(config['place_of_origin_tesim'].to_s).to eq('Place of origin')
-      end
-
-      it 'returns the Date created Key' do
-        expect(config['date_created_tesim'].to_s).to eq('Date created')
-      end
-
-      it 'returns the Extent Key' do
-        expect(config['format_extent_tesim'].to_s).to eq('Extent')
-      end
-
-      it 'returns the Form Key' do
-        expect(config['form_tesim'].to_s).to eq('Form')
-      end
-
-      it 'returns the Language Key' do
-        expect(config['human_readable_language_tesim'].to_s).to eq('Language')
-      end
-
-      it 'returns the Writing system Key' do
-        expect(config['writing_system_tesim'].to_s).to eq('Writing system')
-      end
-
-      it 'returns the Script Key' do
-        expect(config['script_tesim'].to_s).to eq('Script')
-      end
-
-      it 'returns the Repository Key' do
-        expect(config['repository_tesim'].to_s).to eq('Repository')
-      end
-
-      it 'returns the Rights statement Key' do
-        expect(config['human_readable_rights_statement_tesim'].to_s).to eq('Rights statement')
-      end
-
-      it 'returns the Rights contact Key' do
-        expect(config['services_contact_ssm'].to_s).to eq('Rights contact')
+      it 'returns the Location Key' do
+        expect(config['repository_ssim'].to_s).to eq('Location')
       end
 
       it 'returns the Collection Key' do
-        expect(config['collection_ssi'].to_s).to eq('Collection')
+        expect(config['collection_ssim'].to_s).to eq('Collection')
+      end
+
+      it 'returns the Current State Key' do
+        expect(config['state_ssi'].to_s).to eq('Current State')
+      end
+
+      it 'returns the Origin Key' do
+        expect(config['place_of_origin_tesim'].to_s).to eq('Origin')
+      end
+
+      it 'returns the Date of Origin Key' do
+        expect(config['ot_date_tesim'].to_s).to eq('Date of Origin')
+      end
+
+      it 'returns the Scripts Key' do
+        expect(config['ot_script_ssim'].to_s).to eq('Scripts')
+      end
+
+      it 'returns the Languages Key' do
+        expect(config['ot_language_ssim'].to_s).to eq('Languages')
+      end
+
+      it 'returns the Extent Key' do
+        expect(config['extent_tesi'].to_s).to eq('Extent')
+      end
+
+      it 'returns the Foliation Key' do
+        expect(config['foliation_tesim'].to_s).to eq('Foliation')
+      end
+
+      it 'returns the Collation Key' do
+        expect(config['collation_tesim'].to_s).to eq('Collation')
       end
     end
 

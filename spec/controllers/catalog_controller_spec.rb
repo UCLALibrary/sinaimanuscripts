@@ -7,102 +7,83 @@ RSpec.describe CatalogController, type: :controller do
       allow(Flipflop).to receive(:sinai?).and_return(true)
     end
 
-    let(:facets_sinai) do
-      controller
-        .blacklight_config
-        .facet_fields.keys
-        .map { |field| field.gsub(/\_s+im$/, '') }
-    end
+    let(:facet_keys) { controller.blacklight_config.facet_fields.keys }
 
-    let(:expected_facets) do
-      ["generic_type",
-       "genre",
-       "human_readable_language",
-       "human_readable_resource_type",
-       "location",
-       "member_of_collections",
-       "named_subject",
-       "subject",
-       "year_isim"]
-    end
-
-    it 'has exactly expected facets' do
-      pending("Need to update for Sinai Manuscripts site.")
-      expect(facets_sinai).to contain_exactly(*expected_facets)
-    end
-  end
-
-  describe "show fields" do
-    let(:show_fields) do
-      controller
-        .blacklight_config
-        .show_fields.keys
-    end
-    let(:expected_show_fields) do
-      ["architect_tesim", "alternative_title_tesim", "ark_ssi", "author_tesim",
-       "based_near_label_tesim", "binding_note_ssi", "calligrapher_tesim", "caption_tesim",
-       "collation_tesim", "colophon_tesim", "composer_tesim", "condition_note_ssi", "contents_note_tesim",
-       "contributor_tesim", "creator_tesim", "date_created_tesim", "description_tesim",
-       "dimensions_tesim", "dlcs_collection_name_tesim", "editor_tesim",
-       "engraver_tesim", "explicit_tesim", "extent_tesim", "features_tesim", "finding_aid_url_ssm",
-       "foliation_tesim", "format_tesim", "funding_note_tesim", "genre_tesim", "geographic_coordinates_ssim",
-       "human_readable_resource_type_tesim", "human_readable_rights_statement_tesim", "human_readable_language_tesim",
-       "identifier_tesim", "illuminator_tesim", "illustrator_tesim", "iiif_manifest_url_ssi",
-       "illustrations_note_tesim", "incipit_tesim", "inscription_tesim",
-       "keyword_tesim", "latitude_tesim", "local_rights_statement_ssim", "location_tesim", "local_identifier_ssm",
-       "longitude_tesim", "lyricist_tesim", "medium_tesim", "member_of_collections_ssim",
-       "named_subject_tesim", "note_tesim", "oclc_ssi", "opac_url_ssi", "page_layout_ssim", "photographer_tesim",
-       "place_of_origin_tesim", "printmaker_tesim", "provenance_tesim", "publisher_tesim",
-       "repository_tesim", "rights_country_tesim", "rights_holder_tesim", "rubricator_tesim",
-       "scribe_tesim", "script_tesim", "services_contact_ssm", "subject_tesim", "subject_topic_tesim",
-       "summary_tesim", "support_tesim", "title_tesim", "toc_tesim", "uniform_title_tesim",
-       "hand_note_tesim", "writing_system_tesim", "commentator_tesim", "translator_tesim",
-       "license_tesim", "normalized_date_sim", "subject_geographic_tesim", "subject_temporal_tesim",
-       "associated_name_tesim", "descriptive_title_tesim", "form_tesim", "references_tesim", "shelfmark_ssi", "other_versions_tesim"]
-    end
-
-    it 'has exactly expected show fields' do
-      pending("Need to update for Sinai Manuscripts site.")
-      expect(show_fields).to contain_exactly(*expected_show_fields)
-    end
-  end
-
-  describe "sort fields" do
-    let(:sort_fields) do
-      controller
-        .blacklight_config
-        .sort_fields.keys
-    end
-
-    let(:expected_sort_fields) do
-      ["score desc", "title_alpha_numeric_ssort asc", "title_alpha_numeric_ssort desc", "date_dtsort desc", "date_dtsort asc"]
-    end
-
-    it 'has exactly expected sort fields' do
-      pending("Need to update for Sinai Manuscripts site.")
-      expect(sort_fields).to contain_exactly(*expected_sort_fields)
+    it 'has the expected facets' do
+      expected_facets = %w[
+        ms_type_ssi
+        state_ssi
+        features_ssim
+        support_ssim
+        repository_ssim
+        collection_ssim
+        names_ssim
+        places_ssim
+        date_types_ssim
+        program_ssim
+        reconstructed_from_ssim
+        ot_script_ssim
+        ot_writing_system_ssim
+        ot_genre_ssim
+        ot_year_isim
+        ot_language_ssim
+        ot_works_ssim
+        para_script_ssim
+        para_writing_system_ssim
+        para_genre_ssim
+        para_year_isim
+        para_language_ssim
+        para_works_ssim
+        para_type_ssim
+        para_names_ssim
+        uto_script_ssim
+        uto_writing_system_ssim
+        uto_year_isim
+        uto_language_ssim
+        generic_type_sim
+      ]
+      expect(facet_keys).to contain_exactly(*expected_facets)
     end
   end
 
   describe 'index fields' do
-    let(:index_fields) do
-      controller
-        .blacklight_config
-        .index_fields.keys
-        .map { |field| field.gsub(/\_s+im$/, '') }
-    end
+    let(:index_fields) { controller.blacklight_config.index_fields.keys }
 
     let(:expected_index_fields) do
-      ['description_tesim',
-       'date_created_tesim',
-       'human_readable_resource_type_tesim',
-       'photographer_tesim',
-       'member_of_collections']
+      %w[
+        shelfmark_ssi
+        extent_tesi
+        ms_type_ssi
+        text_unit_labels_tesim
+        ot_date_tesim
+        ot_language_ssim
+        repository_ssim
+        collection_ssim
+      ]
     end
 
     it 'has exactly the expected index fields' do
-      pending("Need to update for Sinai Manuscripts site.")
       expect(index_fields).to contain_exactly(*expected_index_fields)
+    end
+  end
+
+  describe 'sort fields' do
+    let(:sort_fields) { controller.blacklight_config.sort_fields.keys }
+
+    let(:expected_sort_fields) do
+      [
+        'score desc',
+        'shelfmark_alpha_numeric_ssort asc',
+        'shelfmark_alpha_numeric_ssort desc',
+        'date_dtsort desc',
+        'date_dtsort asc',
+        'last_modified_dtsi desc',
+        'last_modified_dtsi asc'
+      ]
+    end
+
+    it 'has exactly expected sort fields' do
+      expect(sort_fields).to contain_exactly(*expected_sort_fields)
     end
   end
 
@@ -110,11 +91,20 @@ RSpec.describe CatalogController, type: :controller do
     let(:search_fields) { controller.blacklight_config.search_fields.keys }
 
     let(:expected_search_fields) do
-      ['all_fields', 'subject_tesim', 'title_tesim']
+      %w[
+        full_text_tesim
+        shelfmark_ssi
+        titles_tesim
+        names_tesim
+        exerpts_tesim
+        places_tesim
+        contents_tesim
+        paracontent_tesim
+        cataloguer_tesim
+      ]
     end
 
     it 'has exactly the expected search fields' do
-      pending("Need to update for Sinai Manuscripts site.")
       expect(search_fields).to contain_exactly(*expected_search_fields)
     end
   end
@@ -134,11 +124,6 @@ RSpec.describe CatalogController, type: :controller do
 
     it 'Renders a blank SolrDocument (meaning missing fields don\'t cause errors)' do
       get :show, params: { id: ark }
-    end
-
-    xit "has collection count on Collection Item record page" do
-      # get :show, params: { id: ark }
-      # expect(assigns[:document]).not_to be_nil
     end
   end
 end

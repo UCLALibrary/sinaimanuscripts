@@ -20,7 +20,6 @@ RSpec.describe Ursus::ContactCollectionMetadataPresenter do
 
     describe "#contact_collection_terms" do
       let(:all) { presenter_object.contact_collection_terms.keys.length }
-      let(:missing) { presenter_object_missing_items.contact_collection_terms.keys.length }
 
       it "returns existing keys" do
         expect(presenter_object.contact_collection_terms).to be_instance_of(Hash)

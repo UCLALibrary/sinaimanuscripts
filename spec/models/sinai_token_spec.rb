@@ -11,10 +11,5 @@ RSpec.describe SinaiToken, type: :model do
       expect(new_token.reload.sinai_token).to eq(random_string)
     end
 
-    it "has one token after adding one" do
-      instance_double("SinaiToken", sinai_token: "Random-36-Charater-String")
-    end
   end
 end
-
-# instance_double https://relishapp.com/rspec/rspec-mocks/v/3-2/docs/verifying-doubles/using-an-instance-double

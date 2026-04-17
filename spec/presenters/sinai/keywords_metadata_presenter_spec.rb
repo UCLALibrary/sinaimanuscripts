@@ -7,11 +7,14 @@ include SolrDocDouble
 RSpec.describe Sinai::KeywordsMetadataPresenter do
   let(:solr_doc) do
     doc_double_with_fields_to_render(
-      'keywords_tesim' => 'Keywords'
+      'features_ssim' => 'Features',
+      'ot_genre_ssim' => 'Genre'
     )
   end
   let(:solr_doc_missing_items) do
-    doc_double_with_fields_to_render({})
+    doc_double_with_fields_to_render(
+      'features_ssim' => 'Features'
+    )
   end
   let(:presenter_object) { described_class.new(document: solr_doc) }
   let(:presenter_object_missing_items) { described_class.new(document: solr_doc_missing_items) }
@@ -19,8 +22,12 @@ RSpec.describe Sinai::KeywordsMetadataPresenter do
 
   context 'with a solr document containing keywords metadata' do
     describe '#terms' do
-      it 'returns the Keywords Key' do
-        expect(config['keywords_tesim'].to_s).to eq('Keywords')
+      it 'returns the Features Key' do
+        expect(config['features_ssim'].to_s).to eq('Features')
+      end
+
+      it 'returns the Genre Key' do
+        expect(config['ot_genre_ssim'].to_s).to eq('Genre')
       end
     end
 
@@ -29,7 +36,7 @@ RSpec.describe Sinai::KeywordsMetadataPresenter do
       let(:missing) { presenter_object_missing_items.keywords_terms.keys.length }
 
       it "returns existing keys" do
-        expect(all).to eq 1
+        expect(all).to eq 2
         expect(config.length).to eq all
       end
 
