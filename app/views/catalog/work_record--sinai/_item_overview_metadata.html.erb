@@ -1,53 +1,184 @@
 <% doc_presenter = show_presenter(document) %>
 <% overview = Sinai::OverviewMetadataPresenter.new(document: doc_presenter).overview_terms %>
+<% ms_json = begin JSON.parse(document['manuscript_json_ts'] || '{}') rescue {} end %>
 
-<% if overview.length > 0 %>
-  <dl class="overview-dl--sinai">
-    <% overview.each do |field_name, field| %>
-      <%# Skip fields that are merged into other rows %>
-      <% next if field_name == 'collection_ssim' %>
-      <% next if field_name == 'ot_date_tesim' %>
-      <% next if field_name == 'format_extent_tesim' && overview['extent_tesi'] %>
+<%# === Extract JSON-based field data === %>
+<%
+  # Scripts: walk part > ot_layer > layer_record > writing > script
+  json_scripts = []
+  json_scripts_debug = []
+  Array(ms_json['part']).each_with_index do |part, pi|
+    Array(part['ot_layer']).each_with_index do |layer, li|
+      Array(layer.dig('layer_record', 'writing')).each_with_index do |writing, wi|
+        Array(writing['script']).each_with_index do |script, si|
+          pair = script['label'].to_s
+          pair = "#{pair} (#{script['writing_system']})" if script['writing_system'].present?
+          json_scripts << pair
+          json_scripts_debug << "ms_obj.part[#{pi}].ot_layer[#{li}].layer_record.writing[#{wi}].script[#{si}] = #{script.to_json}"
+        end
+      end
+    end
+  end
+  json_scripts = json_scripts.uniq
 
-      <div class="overview-dl__row--sinai">
-        <dt class="overview-dl__label--sinai">
-          <% if field_name == 'repository_ssim' %>
-            Location
-          <% elsif field_name == 'place_of_origin_tesim' %>
-            Origin
-          <% elsif field_name == 'extent_tesi' || field_name == 'format_extent_tesim' %>
-            Extent
-          <% else %>
-            <%= (render_document_show_field_label document, field: field_name).tr(':', '') %>
+  # Origin: walk part > ot_layer > layer_record > assoc_date/assoc_place where type.id=origin / event.id=origin
+  json_origins = []
+  json_origins_debug = []
+  Array(ms_json['part']).each_with_index do |part, pi|
+    Array(part['ot_layer']).each_with_index do |layer, li|
+      lr = layer['layer_record'] || {}
+      dates = Array(lr['assoc_date']).select { |d| d.dig('type', 'id') == 'origin' }
+      places = Array(lr['assoc_place']).select { |p| p.dig('event', 'id') == 'origin' }
+
+      if dates.any?
+        dates.each_with_index do |date, di|
+          place = places[di] || places.first
+          line = date['value'].to_s
+          if place
+            place_name = place.dig('place_record', 'pref_name').to_s
+            line = "#{line} ; #{place_name}" if place_name.present?
+          end
+          json_origins << line
+          json_origins_debug << "ms_obj.part[#{pi}].ot_layer[#{li}].layer_record.assoc_date[#{di}] = #{date.to_json}"
+          json_origins_debug << "ms_obj.part[#{pi}].ot_layer[#{li}].layer_record.assoc_place = #{(place || {}).to_json}" if place
+        end
+      elsif places.any?
+        places.each_with_index do |p, pli|
+          json_origins << p.dig('place_record', 'pref_name').to_s
+          json_origins_debug << "ms_obj.part[#{pi}].ot_layer[#{li}].layer_record.assoc_place[#{pli}] = #{p.to_json}"
+        end
+      end
+    end
+  end
+  json_origins = json_origins.uniq
+
+  # Extent: combine extent, dim, weight
+  extent_parts = [ms_json['extent'], ms_json['dim'], ms_json['weight']].compact.reject(&:blank?)
+  extent_display = extent_parts.join(' | ')
+  extent_debug_parts = []
+  extent_debug_parts << "ms_obj.extent = #{ms_json['extent'].to_json}" if ms_json['extent'].present?
+  extent_debug_parts << "ms_obj.dim = #{ms_json['dim'].to_json}" if ms_json['dim'].present?
+  extent_debug_parts << "ms_obj.weight = #{ms_json['weight'].to_json}" if ms_json['weight'].present?
+
+  # Foliation
+  fol_value = ms_json['fol']
+  fol_notes = Array(ms_json['note']).select { |n| n.dig('type', 'id') == 'foliation' }.map { |n| n['value'] }
+  fol_debug = []
+  fol_debug << "ms_obj.fol = #{fol_value.to_json}" if fol_value.present?
+  fol_notes_raw = Array(ms_json['note']).each_with_index.select { |n, _| n.dig('type', 'id') == 'foliation' }
+  fol_notes_raw.each { |n, i| fol_debug << "ms_obj.note[#{i}] = #{n.to_json}" }
+
+  # Collation
+  coll_value = ms_json['coll']
+  coll_notes = Array(ms_json['note']).select { |n| n.dig('type', 'id') == 'collation' }.map { |n| n['value'] }
+  coll_debug = []
+  coll_debug << "ms_obj.coll = #{coll_value.to_json}" if coll_value.present?
+  coll_notes_raw = Array(ms_json['note']).each_with_index.select { |n, _| n.dig('type', 'id') == 'collation' }
+  coll_notes_raw.each { |n, i| coll_debug << "ms_obj.note[#{i}] = #{n.to_json}" }
+  viscodex_entries = Array(ms_json['viscodex'])
+  viscodex_entries.each_with_index { |v, i| coll_debug << "ms_obj.viscodex[#{i}] = #{v.to_json}" }
+%>
+
+<dl class="overview-dl--sinai">
+  <%# === Location (Solr) === %>
+  <% if overview['repository_ssim'] %>
+    <!-- DATA SOURCE: solr:repository_ssim = <%= document['repository_ssim'].to_json %>, solr:collection_ssim = <%= document['collection_ssim'].to_json %> -->
+    <div class="overview-dl__row--sinai">
+      <dt class="overview-dl__label--sinai">Location</dt>
+      <dd class="overview-dl__value--sinai">
+        <%= doc_presenter.field_value overview['repository_ssim'] %>
+        <% if overview['collection_ssim'] %>
+          , <%= doc_presenter.field_value overview['collection_ssim'] %>
+        <% end %>
+      </dd>
+    </div>
+  <% end %>
+
+  <%# === Current State (Solr) === %>
+  <% if overview['state_ssi'] %>
+    <!-- DATA SOURCE: solr:state_ssi = <%= document['state_ssi'].to_json %> -->
+    <div class="overview-dl__row--sinai">
+      <dt class="overview-dl__label--sinai">Current State</dt>
+      <dd class="overview-dl__value--sinai">
+        <%= doc_presenter.field_value overview['state_ssi'] %>
+      </dd>
+    </div>
+  <% end %>
+
+  <%# === Origin (JSON) === %>
+  <% if json_origins.any? %>
+    <!-- DATA SOURCE: <%= json_origins_debug.join(' | ') %> -->
+    <div class="overview-dl__row--sinai">
+      <dt class="overview-dl__label--sinai">Origin</dt>
+      <dd class="overview-dl__value--sinai">
+        <%= safe_join(json_origins.map { |o| h(o) }, tag.br) %>
+      </dd>
+    </div>
+  <% end %>
+
+  <%# === Scripts (JSON) === %>
+  <% if json_scripts.any? %>
+    <!-- DATA SOURCE: <%= json_scripts_debug.join(' | ') %> -->
+    <div class="overview-dl__row--sinai">
+      <dt class="overview-dl__label--sinai">Scripts</dt>
+      <dd class="overview-dl__value--sinai">
+        <%= json_scripts.join(' | ') %>
+      </dd>
+    </div>
+  <% end %>
+
+  <%# === Languages (Solr) === %>
+  <% if overview['ot_language_ssim'] %>
+    <!-- DATA SOURCE: solr:ot_language_ssim = <%= document['ot_language_ssim'].to_json %> -->
+    <div class="overview-dl__row--sinai">
+      <dt class="overview-dl__label--sinai">Languages</dt>
+      <dd class="overview-dl__value--sinai">
+        <%= doc_presenter.field_value overview['ot_language_ssim'] %>
+      </dd>
+    </div>
+  <% end %>
+
+  <%# === Extent (JSON) === %>
+  <% if extent_display.present? %>
+    <!-- DATA SOURCE: <%= extent_debug_parts.join(' | ') %> -->
+    <div class="overview-dl__row--sinai">
+      <dt class="overview-dl__label--sinai">Extent</dt>
+      <dd class="overview-dl__value--sinai">
+        <%= extent_display %>
+      </dd>
+    </div>
+  <% end %>
+
+  <%# === Foliation (JSON) === %>
+  <% if fol_value.present? || fol_notes.any? %>
+    <!-- DATA SOURCE: <%= fol_debug.join(' | ') %> -->
+    <div class="overview-dl__row--sinai">
+      <dt class="overview-dl__label--sinai">Foliation</dt>
+      <dd class="overview-dl__value--sinai">
+        <% lines = [] %>
+        <% lines << h(fol_value) if fol_value.present? %>
+        <% fol_notes.each { |n| lines << h(n) } %>
+        <%= safe_join(lines, tag.br) %>
+      </dd>
+    </div>
+  <% end %>
+
+  <%# === Collation (JSON) === %>
+  <% if coll_value.present? || coll_notes.any? || viscodex_entries.any? %>
+    <!-- DATA SOURCE: <%= coll_debug.join(' | ') %> -->
+    <div class="overview-dl__row--sinai">
+      <dt class="overview-dl__label--sinai">Collation</dt>
+      <dd class="overview-dl__value--sinai">
+        <% lines = [] %>
+        <% lines << h(coll_value) if coll_value.present? %>
+        <% coll_notes.each { |n| lines << h(n) } %>
+        <% viscodex_entries.each do |v| %>
+          <% if v['url'].present? && v['label'].present? %>
+            <% lines << link_to(v['label'], v['url'], target: '_blank', rel: 'noopener noreferrer') %>
           <% end %>
-        </dt>
-        <dd class="overview-dl__value--sinai">
-          <%= doc_presenter.field_value field %>
-          <%# Append collection to repository for Location row %>
-          <% if field_name == 'repository_ssim' && overview['collection_ssim'] %>
-            , <%= doc_presenter.field_value overview['collection_ssim'] %>
-          <% end %>
-          <%# Append date to place for Origin row %>
-          <% if field_name == 'place_of_origin_tesim' && overview['ot_date_tesim'] %>
-            <br><%= doc_presenter.field_value overview['ot_date_tesim'] %>
-          <% end %>
-        </dd>
-      </div>
-
-      <%# If there's no place_of_origin but there IS a date, render Origin from date alone %>
-      <% if field_name == 'place_of_origin_tesim' %>
-        <%# Already handled above %>
-      <% end %>
-    <% end %>
-
-    <%# Render Origin from date alone if place_of_origin is missing %>
-    <% if !overview['place_of_origin_tesim'] && overview['ot_date_tesim'] %>
-      <div class="overview-dl__row--sinai">
-        <dt class="overview-dl__label--sinai">Origin</dt>
-        <dd class="overview-dl__value--sinai">
-          <%= doc_presenter.field_value overview['ot_date_tesim'] %>
-        </dd>
-      </div>
-    <% end %>
-  </dl>
-<% end %>
+        <% end %>
+        <%= safe_join(lines, tag.br) %>
+      </dd>
+    </div>
+  <% end %>
+</dl>
