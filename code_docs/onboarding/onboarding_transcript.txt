@@ -1,0 +1,443 @@
+# Nopio + UCLA
+
+**Meeting Date:** 6th Mar, 2026 - 1:00 AM
+
+---
+
+**Dawn Childress** *[00:51]*: It. 
+**Lisa McAulay** *[01:40]*: Hello. 
+**Piotr Nowak** *[01:47]*: Hey, Lisa. 
+**Lisa McAulay** *[01:48]*: Welcome. Okay. I hope it is not the middle of the night. 
+**Piotr Nowak** *[01:53]*: Oh, it's 7:00am it's perfect. 
+**Lisa McAulay** *[01:55]*: Oh, okay. Excellent. Bright and early. 
+**Piotr Nowak** *[01:57]*: I'm definitely gonna be more aware today than. 
+**Lisa McAulay** *[02:00]*: Oh, yeah, man, you. I admire the. The leadership there. You're like, hey, I said I'll be here. Come here. But much better to find a more convenient time. Tell me where you are status wise in getting oriented to what's going on. 
+**Piotr Nowak** *[02:24]*: Okay, so as you saw, as you. As you know, I have access to Jira, so that's pretty good. I had some extensive discussions with Tatiana where we are. 
+**Dawn Childress** *[02:34]*: Okay. 
+**Piotr Nowak** *[02:34]*: I know, I know she is, 
+**Dawn Childress** *[02:38]*: You. 
+**Piotr Nowak** *[02:38]*: Know, working hard to get everything cleared out that she has on her plate before I actually can hop into stuff that makes sense. So basically what we agreed upon is right now she's doing those like smaller things with Sinai. 
+**Lisa McAulay** *[02:54]*: Yep. 
+**Piotr Nowak** *[02:55]*: Which she decided she's gonna just finish because it's easier. 
+**Lisa McAulay** *[02:59]*: Okay. 
+**Piotr Nowak** *[03:00]*: I did start to look into this login issues that are still like there, but I haven't found anything conclusive. So I want to spend a little bit more time on this. 
+**Lisa McAulay** *[03:11]*: You don't need to. We think Andy Wallace believes Andy put the details into the ticket. 
+**Piotr Nowak** *[03:22]*: Okay. So maybe I need to check it because again, I was just like looking into the code without following the ticket. 
+**Lisa McAulay** *[03:27]*: But what he does or what Andy discovered was that the. There was just a change in the way black light 8, as opposed to black light 7 puts authentication in. And there was some failure to integrate all the components in the upgrade. 
+**Piotr Nowak** *[03:54]*: That. That makes sense. That's because I was looking at like there were no really changes. So it must be something like this. I still gonna look at this because obviously it's a good training exercise just to get up to speed with where things are. So I don't think this is a waste of time anyway. 
+**Lisa McAulay** *[04:13]*: Yeah. So. 
+**Piotr Nowak** *[04:15]*: And what we discussed with Tatiana is I think her. I may be using wrong terminology. So basically, so what she's working on right now is the data structure updates. 
+**Lisa McAulay** *[04:31]*: Okay. Y. 
+**Piotr Nowak** *[04:32]*: Which makes sense for her to actually complete because jumping in the middle of something like this is kind of counterproductive. 
+**Lisa McAulay** *[04:41]*: Yeah. 
+**Piotr Nowak** *[04:41]*: And afterwards when this is done, you know, myself and rest of the team going to take a little bit more active role doing the front end updates, basically rebuilding the front end. 
+**Dawn Childress** *[04:54]*: So. 
+**Piotr Nowak** *[04:54]*: So that's the idea we're having right now. And I think it's gonna be good because a. Tatiana kind of hates front end. 
+**Lisa McAulay** *[05:01]*: Yes. Even better. 
+**Piotr Nowak** *[05:04]*: Yeah, yeah, yeah. So. And it's actually gonna be really good to get hold of like where everything is because touching content typically is like a little bit more involved than people are expecting it to be. But yeah, it should be fine. So that's basically where we are right now. I think everything is going well. Obviously the hicc, the JIRA access, but this is sorted right now. So that's absolutely fine. 
+**Lisa McAulay** *[05:32]*: And then if anybody else from your team, you want to have them get JIRA access, let me know. 
+**Piotr Nowak** *[05:38]*: I think I'm going to be working on this with Monica, who is actually, she's my wife. So it's going to be easy for us to even share the access. We're going to do it, but in general that's okay. 
+**Lisa McAulay** *[05:49]*: All right, that's brilliant. All right, so dawn, were just very briefly touching base on what the status is with Piot joining the work. We're gonna have Tati, or he and Tatiana agreed to have Tatiana finish up the work she's in the middle of and then he's gonna jump in with Monica to work on front end stuff. So. And what do you think maybe next week then we could we. That work will start. 
+**Piotr Nowak** *[06:29]*: I need to check with Tatiana, where she is with the data structure changes. But in the meantime, even if we don't start on the front end, I gonna start looking into some other tickets that may be like a little bit smaller to just get myself up to speed with the code again. 
+**Lisa McAulay** *[06:49]*: Okay. 
+**Piotr Nowak** *[06:51]*: So yeah, basically that's the plan. 
+**Lisa McAulay** *[06:54]*: Okay. 
+**Piotr Nowak** *[06:55]*: And just to give you a full picture, I thought I'm gonna be doing a little bit of this today, but I'm flying back to Europe. Well, I was flying back to Europe, to Dubai. 
+**Lisa McAulay** *[07:09]*: Oh, yes. 
+**Piotr Nowak** *[07:11]*: So I gonna spend like half a day or a day today in Emirates office trying to find out a route with them because it's colloquially saying it's a shit show here. So we need to figure out what to do. It's not bad, don't get me wrong, but it's still like no one knows what's going on. 
+**Dawn Childress** *[07:28]*: So we need to. 
+**Piotr Nowak** *[07:29]*: We already rescheduled our parents, so they are flying to Istanbul. We want to do the same just a few weeks later. But I don't know how much time they're going to waste, so I don't want to promise that they're going to do anything today. 
+**Lisa McAulay** *[07:40]*: Yeah. Amen. It's the airlines, it's international conflict. 
+**Piotr Nowak** *[07:47]*: Yeah. So it's like, we wanna like, if it's possible we're gonna come Back earlier, but I doubt it. 
+**Lisa McAulay** *[07:53]*: Okay. 
+**Piotr Nowak** *[07:53]*: So the plan is to stick to the 25th, but again, this is out of our hands. We need to just find a flight that works. Our parents were supposed to be flying on the 5th. 
+**Dawn Childress** *[08:02]*: Okay. 
+**Piotr Nowak** *[08:03]*: And surprise, they are flying on the 11th because that was the earliest they could wait for the episode. 
+**Dawn Childress** *[08:08]*: Yeah. Yeah. 
+**Lisa McAulay** *[08:09]*: Okay. 
+**Piotr Nowak** *[08:10]*: That's why, although my flight is on 25th, I wanna be in the office like, today just to start searching for those flights because. Yeah, like, There's Emirates serves 260, 000 people a day. 
+**Lisa McAulay** *[08:21]*: Yeah. 
+**Piotr Nowak** *[08:22]*: And most of them are flying through Dubai. 
+**Lisa McAulay** *[08:27]*: Yeah. Yeah. 
+**Piotr Nowak** *[08:28]*: It's kind of fun anyway. 
+**Lisa McAulay** *[08:31]*: Yeah, it's fine. 
+**Piotr Nowak** *[08:35]*: Yeah. You know, it's like, it's gonna be okay. I know. It's just like, needs to be handled because otherwise, like, I like Asia, but again, I don't want to be stuck here like. 
+**Lisa McAulay** *[08:48]*: Yeah, that's true. Quick question for both of you. Dawn and Piot. Andy Wallace had said that Andy had added to the ticket all the details that Tatiana needed about the login, but I don't see which ticket that is. 
+**Dawn Childress** *[09:16]*: I think Tatiana fixed the login. 
+**Lisa McAulay** *[09:18]*: Oh, well, then that would be that I'm not. 
+**Dawn Childress** *[09:22]*: I mean, so I left a message for Andy because the thing is, I can't see it. I can't see the changes unless I'm in private browsing mode. 
+**Lisa McAulay** *[09:34]*: Okay. 
+**Dawn Childress** *[09:35]*: And I have tried everything possible to, like, refresh, clear cache, clear cookies, everything. And I just do not understand why in any browser, I can't see the updated changes. In any browser, I can't even understand. 
+**Lisa McAulay** *[09:55]*: Why that would be. But I don't know how to start troubleshooting that. 
+**Dawn Childress** *[09:59]*: I don't know. It's baffling to me. But if I go into private browsing, it looks like things are fixed, but I want to confirm and do a double check of everything in case something new or introduced or we missed something the first time around or something was hidden because of some of the other things that needed to be fixed. 
+**Lisa McAulay** *[10:13]*: Okay. 
+**Dawn Childress** *[10:14]*: And so I don't feel comfortable signing off on it until I can see it in stage and regular browsing. 
+**Lisa McAulay** *[10:19]*: Right. So what would be the. So you think it's on stage now, but you can only see it when you're using a. An incognito browser. 
+**Dawn Childress** *[10:33]*: Right. 
+**Lisa McAulay** *[10:34]*: And you've cleared cookies and history. 
+**Piotr Nowak** *[10:40]*: So. Lisa, Tatiana made this, like, comment in NLP114. 
+**Lisa McAulay** *[10:47]*: Okay. 
+**Piotr Nowak** *[10:49]*: In the response to. I think it is. 
+**Lisa McAulay** *[10:54]*: Okay. 
+**Piotr Nowak** *[10:56]*: Login sometimes leaves you on the same page. And Andy was like, our partners have us to use custom builder party login C ID bypass is not set on the servers, means there are no login acquired, blah, blah. And oh, okay, then probably you're correct. It's this issue. And she said oh, this is. This is definitely not it. Because that's February 10th. 
+**Lisa McAulay** *[11:27]*: Yeah, that's what I was like. I know they talked about it andy had told me there were updates this week that he added that Andy had added and I not seeing them on this ticket. So I don't know where they ended up. The ticket. 
+**Piotr Nowak** *[11:49]*: Yeah. Okay. Someone closed the ticket maybe. 
+**Lisa McAulay** *[11:54]*: Yeah. But it should. If they did, it should be over and done and I'm not seeing it there. 
+**Piotr Nowak** *[12:02]*: And I think see all their work items. 
+**Dawn Childress** *[12:05]*: I mean and. And in terms of being able. But when I. When I'm in the private browsing mode, the login works as expected. 
+**Lisa McAulay** *[12:13]*: Okay. 
+**Dawn Childress** *[12:14]*: But I don't know. So it could be. So I. I'm not sure of this. I don't know for sure but I think like blacklight has its own cache which maybe does not get invoked when you're in private mode, but does appear in public browsing mode or something. And so I don't know if it's something on the server side that needs to be cleared. 
+**Piotr Nowak** *[12:37]*: That would be a little bit weird. 
+**Dawn Childress** *[12:38]*: Is that. Is that a thing? I mean just because cache is typically like Internet. 
+**Piotr Nowak** *[12:43]*: I would say cache would be rather working for people who are like private browsing. 
+**Dawn Childress** *[12:48]*: Right. 
+**Piotr Nowak** *[12:48]*: Because they are just like fully unknown. 
+**Lisa McAulay** *[12:50]*: Yeah. 
+**Dawn Childress** *[12:51]*: Yeah. But I was like reading something online about some things the. With black light and how it might have its own like cache on the server or something. 
+**Piotr Nowak** *[12:59]*: I. I don't know if Internet you try to clear. Clear all your cookies or like I. 
+**Dawn Childress** *[13:05]*: Have tried everything possible. I mean like. Like going into developer tools and looking to see what's there. Like looking at like okay, local caches. Looking at like looking at everything and I've hard refreshes and I did it both Chrome and Safari and they both are behaving exactly the same where I see it in private browsing mode, but I don't see it in regular browsing mode. It's baffled. I'm baffled. Like I've. 
+**Lisa McAulay** *[13:34]*: Did you try your Windows VM just as a different machine comparison? 
+**Piotr Nowak** *[13:39]*: Yeah, that was my next question. 
+**Dawn Childress** *[13:41]*: Yeah, I mean it. It probably does work there because I don't know that. I mean I haven't opened any of this stuff there so. 
+**Lisa McAulay** *[13:47]*: Right. 
+**Dawn Childress** *[13:47]*: Have that history at all. But nowhere on my computer. Nothing on my machine will actually. 
+**Piotr Nowak** *[13:54]*: Yeah but the question Is like, for example, if you. Because, okay, if that would be cookies issue or a problem with something that is account related. 
+**Dawn Childress** *[14:06]*: Yeah. 
+**Piotr Nowak** *[14:07]*: That would mean that if you try using it on the. Okay. If you go to the VM and you start using this and it works initially and then stops working. For example, we know that there is probably a cookie or something else being set or maybe a cache inside of the server for your session, but then you're closing the browser, so session resets anyway. 
+**Dawn Childress** *[14:33]*: Yeah, 
+**Piotr Nowak** *[14:36]*: But it is like kind of. I would say it's kind of worrying that this is happening because when I'm seeing something like this, like if you're gonna have users that are already using C9 and they're gonna come back, it may be unpredictable. 
+**Dawn Childress** *[14:52]*: Right. 
+**Piotr Nowak** *[14:53]*: Which definitely, like, it would be nice to understand why it's happening. That's what I'm trying to say. 
+**Dawn Childress** *[15:00]*: Yeah, yeah. 
+**Piotr Nowak** *[15:00]*: Because it's entirely possible it's a non issue. But then it's entirely possible it's a issue. 
+**Dawn Childress** *[15:07]*: I'm curious to know that if it is just me or if somebody else. 
+**Piotr Nowak** *[15:10]*: Is there anyone else who's experiencing this? 
+**Dawn Childress** *[15:13]*: Well, I'm the only person checking it. I mean, I'm all there is. But I don't know. I mean, I was gonna say, Lisa, if you went in and looked at it. 
+**Lisa McAulay** *[15:19]*: Yeah, that's what I was gonna do. 
+**Dawn Childress** *[15:21]*: I don't know the things. 
+**Lisa McAulay** *[15:24]*: I'm not on VPN right now, so I assume I can't see it. Right. 
+**Dawn Childress** *[15:29]*: You don't have to be on. It doesn't require VPN. 
+**Lisa McAulay** *[15:31]*: Okay, and what is the address? 
+**Dawn Childress** *[15:34]*: Stage.sinai manuscripts library, UCLA Eduardo. Okay. 
+**Lisa McAulay** *[15:42]*: Is it staged? That's unlike our usuals. 
+**Dawn Childress** *[15:47]*: Yeah, it's done that way because of the whole login. 
+**Lisa McAulay** *[15:50]*: Okay. Stage. Sinai manuscripts. 
+**Dawn Childress** *[15:55]*: They use subdomain instead of signing manuscripts-stage, which really messes everything up with the login. 
+**Lisa McAulay** *[16:00]*: Okay, got it. All right. I am on the site and you know what? Let me share screen. 
+**Dawn Childress** *[16:06]*: Oh, that's a good idea. 
+**Lisa McAulay** *[16:08]*: Get my cursor in the right place, click Share, click the right desktop and then can you see the. I agree. 
+**Dawn Childress** *[16:23]*: Yes. 
+**Lisa McAulay** *[16:26]*: Okay, so I'm going to click I Agree. And I'm trying to. Okay, that's good. I agree. 
+**Dawn Childress** *[16:36]*: Don't hit login yet. Okay, go ahead and just click like search at the top. 
+**Lisa McAulay** *[16:43]*: This. 
+**Dawn Childress** *[16:43]*: Yeah. Okay. Yeah. So it's not showing up for you either. The. The fixes. So. 
+**Lisa McAulay** *[16:51]*: Right. Show this. Right. 
+**Dawn Childress** *[16:54]*: Well. Well, that's. That's something different. That's something new. Nothing. Something new. I realize Is that when you're not logged in, it's not showing the image that it's supposed to show when you're not logged in for thumbnails. Okay. So that's missing. But that's something new. I didn't notice last time. I don't even think it was doing it last time. 
+**Lisa McAulay** *[17:09]*: Okay. 
+**Dawn Childress** *[17:10]*: When they first checked. But the search bar is missing from browse items. So that's how I know that's one of the things that was fixed. So right under browse items there should be the search. The keyword search bar. Okay. 
+**Lisa McAulay** *[17:20]*: And I'll just pull up the other one to. Whoops, wrong guy. Yeah. 
+**Dawn Childress** *[17:27]*: So you're not seeing it either. So it's not just my machine holding onto cookies, I don't think. 
+**Lisa McAulay** *[17:32]*: Yeah. Because I haven't ever gone to that site. 
+**Piotr Nowak** *[17:36]*: Yeah. 
+**Lisa McAulay** *[17:37]*: And so what's missing is this part. 
+**Dawn Childress** *[17:39]*: Right, Right. And if. If you scroll down on the other one. Yeah. And those. Those thumbnail images should be what they looks like when you're not logged in. If you scroll all the way down to the bottom, you'll see. Not that far. Sorry. Yeah. You see that 985 catalog results with like the beige back? Like, that's not supposed to be there. Oh, it's up at the top. But it's being repeated with like the wrong styling. 
+**Lisa McAulay** *[18:02]*: Okay, let's see. 
+**Dawn Childress** *[18:05]*: The other thing is click one of the thing. Any of the. Click on the first item in the list. 
+**Lisa McAulay** *[18:13]*: This one? 
+**Dawn Childress** *[18:14]*: Yep. And that should take. You go ahead and hit continue not login. And that takes you to Arabic1. So if you go back. 
+**Lisa McAulay** *[18:23]*: Back to search results or back using the back. Either way, I'll go this way. 
+**Dawn Childress** *[18:28]*: You might have to actually re. Refresh the page. Yeah, you could. Yeah. Now click the second one. 
+**Piotr Nowak** *[18:36]*: Okay. 
+**Dawn Childress** *[18:38]*: And continue. And see, that's taking you to Arabic1. So these are all the things that were the broken things that when I look at them in private browsing mode, I see that they've been fixed. 
+**Piotr Nowak** *[18:51]*: So these are try in private. We're going to see if this actually. 
+**Dawn Childress** *[18:56]*: So that's what's weird to me because it's not just me and my cookies. Because you probably have not logged into the site in ages. 
+**Lisa McAulay** *[19:02]*: No, I've never been on the stage site. 
+**Dawn Childress** *[19:05]*: Oh, what? 
+**Lisa McAulay** *[19:06]*: No. 
+**Piotr Nowak** *[19:07]*: Okay. 
+**Lisa McAulay** *[19:08]*: Not that I know of. 
+**Dawn Childress** *[19:09]*: I mean, and so then login will also be wonky. But if you did this in private browsing mode, things look correct. 
+**Piotr Nowak** *[19:17]*: Yeah. Go to the search and still no images. 
+**Dawn Childress** *[19:21]*: Oh, you're. Oh, it's not Showing up for you though. But it is for me. 
+**Piotr Nowak** *[19:25]*: Scroll down. Scroll to the very bottom. 
+**Dawn Childress** *[19:29]*: Yeah, that's weird. So why am I seeing Fix it things working correctly. 
+**Lisa McAulay** *[19:34]*: That's a miracle. 
+**Piotr Nowak** *[19:37]*: Okay, try reload. Try reloading the page. Like smack. Command shift R. 
+**Lisa McAulay** *[19:47]*: Command shift R For like a hard refresh. Yeah, yeah. 
+**Dawn Childress** *[19:52]*: Weird. And you're in on Chrome. 
+**Lisa McAulay** *[19:56]*: Yep. Incognito on Chrome. I can pull up Safari because I never use Safari. They'd like never being. 
+**Dawn Childress** *[20:05]*: Well, maybe my private browsing mode is that. Why would that look at something pretty blacklight 8. I mean that could be looking at. Is that seeing the site before it even got updated. That makes less sense to me. Unless the changes weren't all pushed. 
+**Piotr Nowak** *[20:28]*: Okay, same issue. So down if we could. Okay, maybe down if you could share your screen. 
+**Lisa McAulay** *[20:40]*: Yeah. 
+**Piotr Nowak** *[20:40]*: Or Lisa, maybe before we switch Lisa, go back to Chrome. Do right click like and there is inspect. Basically get the dev tools. Switch to network. Let's docs. Yeah, you have it correct. Refer to pa. No, no, no. You already have the. Like selected it in there. So just refresh the page. 
+**Lisa McAulay** *[21:11]*: Oh, refresh. 
+**Piotr Nowak** *[21:12]*: Yes. Now click on the catalog the link that is actually showing there and take a note at the remote address that you're hitting. That's 1641767. Yeah, just copy this somewhere so we know what it is. Maybe drop it into chat in zoom or something like. 
+**Lisa McAulay** *[21:33]*: Oh, that's good. Okay, I have to come back over here. Find me Chat. 
+**Piotr Nowak** *[21:41]*: So now if we can switch to down sharing the screen, we can do the same. And down. Let's confirm that incognito and non incognito, you're hitting the same ip. 
+**Dawn Childress** *[21:57]*: Okay. All right. So here I am in regular old way zoom thing. Okay. 
+**Piotr Nowak** *[22:25]*: Just click on the first link in the list. Yeah. Headers, headers. There is this like preview and headers on top. On top of this what you're scrolling, there's headers that looks the same. 
+**Dawn Childress** *[22:42]*: Yeah. And this is me not in private browsing mode. 
+**Piotr Nowak** *[22:46]*: And this is broken or not broken. 
+**Dawn Childress** *[22:51]*: This is broken. 
+**Piotr Nowak** *[22:54]*: No, this is not broken. 
+**Dawn Childress** *[22:56]*: Yeah, it's broken. 
+**Lisa McAulay** *[22:57]*: Yeah, it doesn't have what we're looking for. 
+**Dawn Childress** *[22:59]*: Okay, it's missing the search bar. It's got this doubled up stuff. 
+**Piotr Nowak** *[23:03]*: Okay. But it shows the images. So it's kind of like in the middle. 
+**Lisa McAulay** *[23:07]*: So now she's logged in. 
+**Dawn Childress** *[23:10]*: Oh, I'm. I'm already logged in. That's why. 
+**Piotr Nowak** *[23:13]*: Okay, okay. 
+**Dawn Childress** *[23:15]*: I can get rid of that again. That one started over, but. 
+**Piotr Nowak** *[23:17]*: Yeah, but we know you're hitting the same IP address. Yeah, yeah. 
+**Dawn Childress** *[23:20]*: So. 
+**Piotr Nowak** *[23:20]*: So now switch to incognito mode. I want to make sure that you're hitting the same server. So like. So there's no like separate instance somewhere that we don't remember about or something like that? Yeah, been there, done that. 
+**Dawn Childress** *[23:32]*: Took me over a new pilot window and here. 
+**Piotr Nowak** *[23:49]*: That would be weird that. But so what I'm. What I'm worried about is pretty much that sometimes browsers have very like you're using the same domain, but they have very long memory for like domain being mapped to a different ip. Especially like Chromium. Browsers are really bad with it. But I thought Safari is not one of them, so. Okay, do the same. 
+**Dawn Childress** *[24:14]*: Now it's not showing the fixes, but it was all day yesterday. Huh. I had. When I was in private browsing mode. Oh, I. It. It was like I had my search bar here. This was fixed when I would go to Arabic 2. It took me to Arabic 2, but it's not doing it. 
+**Piotr Nowak** *[24:37]*: Maybe someone reverted the build. 
+**Dawn Childress** *[24:40]*: Oh, I wonder. Maybe. 
+**Lisa McAulay** *[24:43]*: Okay, that's possible. Well then that would explain the difference. 
+**Dawn Childress** *[24:47]*: That would explain why you're not seeing neither one like you. If it hadn't been reverted, you might be seeing it on your. Right. On your instance. But yeah, everything is still broken here, so. Yeah, but it was not yesterday. It absolutely wasn't. Like I was seeing everything and it worked just fine. So I don't know if something got reverted or why would my private browsing not show. 
+**Piotr Nowak** *[25:19]*: I'm checking on mine. 
+**Dawn Childress** *[25:21]*: Confused. 
+**Piotr Nowak** *[25:27]*: Yeah, for me it's just like regularly broken. I would say. 
+**Lisa McAulay** *[25:34]*: Huh. 
+**Dawn Childress** *[25:35]*: I'm going to go to Chrome. 
+**Piotr Nowak** *[25:37]*: Can I force it to be. No. Yeah, I would say that. Right? Like without knowing what's going on. I would say that someone reloaded the build to a previous version. 
+**Dawn Childress** *[25:54]*: Yeah. 
+**Piotr Nowak** *[25:56]*: Not sure if we can check it somehow or we need to ask. 
+**Dawn Childress** *[25:59]*: Okay, so I take back what I said then about maybe the login being fixed. 
+**Lisa McAulay** *[26:04]*: Okay. 
+**Dawn Childress** *[26:05]*: It was working fine in private browsing yesterday on both Chrome and Safari, but not in regular browsing. Okay, but that could be some weird anomaly, I don't know. Or somebody has rolled it back. 
+**Piotr Nowak** *[26:24]*: So I think the first thing to do is pretty much ask whoever is responsible for deploying the staging, like what's the history of deployments? 
+**Lisa McAulay** *[26:33]*: Okay. 
+**Piotr Nowak** *[26:35]*: Did someone. 
+**Lisa McAulay** *[26:36]*: That would be. Does that sound like a good idea, Don? 
+**Dawn Childress** *[26:42]*: I mean, I guess, yeah. I mean I don't. I'm. I'm at a loss though. I don't but yeah, I mean, understanding what's happened would be good. 
+**Lisa McAulay** *[26:51]*: Yeah. 
+**Piotr Nowak** *[26:52]*: And pretty much maybe checking the finding the missing ticket with description. 
+**Lisa McAulay** *[27:01]*: Yeah. 
+**Piotr Nowak** *[27:02]*: I'll ask Satana. Which one is that? Maybe she. 
+**Lisa McAulay** *[27:05]*: I'm wondering. 
+**Piotr Nowak** *[27:06]*: Obviously she's asleep, so. 
+**Lisa McAulay** *[27:07]*: Yeah. Yes, rightly so. Okay, let's see. I'm going to look back at the board I was looking at. It's possible it was. Nope. 135. Yes, I think that's it. Okay, I'm gonna. I'm gonna update that ticket title. 
+**Dawn Childress** *[27:47]*: Because there were a couple of different. 
+**Piotr Nowak** *[28:02]*: Okay. Tiana said two days ago. Did you try the updated yesterday? He's like, no, I didn't. She's. Oh, she didn't push it. So she did. That is here is that document controller doesn't fully reproduce the logic of checks for the C division. Okay. So the inclusion was the model. 
+**Dawn Childress** *[28:40]*: It. 
+**Piotr Nowak** *[29:08]*: Yeah. Okay. So I think this is like Tatiana. Tatiana responded to andy pretty much 12 hours ago. 
+**Lisa McAulay** *[29:38]*: Yeah. 
+**Piotr Nowak** *[29:40]*: So this is the question is what Andy did with that because he gave her thumbs up. That doesn't really say much in terms of what happened later on because all other comments are all there. Yeah. 
+**Lisa McAulay** *[29:57]*: Yeah. So I'll just say I'm going to tag him here. Okay. Andy may be gone for today. I'm not certain. So we may need to wait, you know, another. Oh, let's see. Some. Some period of hours. 
+**Piotr Nowak** *[31:14]*: Yes, yes, I would. 
+**Lisa McAulay** *[31:16]*: Over 12 hours. 
+**Piotr Nowak** *[31:18]*: Lisa, I think it would be good to add a little bit of context that were testing the staging today and pretty much looks like we have. Regression where none of the fixes are applied. So who knows why we're asking? 
+**Lisa McAulay** *[31:38]*: Okay. Yeah, very good. Thank you. I really appreciate you're adding that need. And Don, is login still not working? I didn't try it yet. 
+**Dawn Childress** *[32:23]*: I mean, I can log in, but it still is constantly asking me to log in and doing weird stuff and like taking me to the home page instead of to the thing I'm trying to get to. Still doing all that same weird stuff. Yeah. 
+**Lisa McAulay** *[32:55]*: Regression, did you say? Or reversion. Which one's the better word? 
+**Dawn Childress** *[33:00]*: Regression. 
+**Piotr Nowak** *[33:02]*: Regression. Because it was working better than it is right now, so it regressed. 
+**Lisa McAulay** *[33:10]*: All right. 
+**Piotr Nowak** *[33:11]*: Fancy word. 
+**Lisa McAulay** *[33:12]*: Yeah. Yeah, that's good. All right, well, I thank you for both of you for talking through that and testing it out and everything. And I think. 
+**Dawn Childress** *[33:24]*: I think that's. 
+**Lisa McAulay** *[33:27]*: That was helpful. We can kind of now we're going to be working all hours of. Of the globe and that's going to give us lots of firepower That's a bad joke given that were just talking about flying through Dubai. I apologize. 
+**Piotr Nowak** *[33:44]*: No worries, no worries. Well, I hope not to fly through Dubai. 
+**Lisa McAulay** *[33:48]*: Yes. 
+**Piotr Nowak** *[33:49]*: As much as I like that airport, surprisingly especially hate big airports, Dubai is actually pretty good. This time I would prefer to avoid it. So yeah, I'll be pushing for Turkish Airlines. 
+**Lisa McAulay** *[34:03]*: Yes, Sounds good to me. 
+**Piotr Nowak** *[34:05]*: Stable connection. 
+**Dawn Childress** *[34:06]*: So I, I just have one question just to clarify. So in terms of the front end stuff then, Piot, I'm. 
+**Lisa McAulay** *[34:13]*: We. 
+**Dawn Childress** *[34:13]*: I'll be working with you on that. You're saying? Is that what you guys are saying or. 
+**Piotr Nowak** *[34:16]*: No, that's the, that's the plan. 
+**Dawn Childress** *[34:19]*: Okay. 
+**Piotr Nowak** *[34:19]*: You know, like that's where we discussed with Tatiana that she's gonna work on the completion of the like data structure migration changes because she's already into this deeply and I'm gonna slowly take over all like a smaller bits and pieces and finally Monica and I gonna be working on the front end part of this. 
+**Dawn Childress** *[34:47]*: Okay, so when you say the data structure part, what do you mean by that? Oh, that's. 
+**Piotr Nowak** *[34:56]*: To be honest, that's an excellent question. Like I said to Lisa, I may be using wrong terminology to what you're used to. Tatiana told me that there are some data structure changes that she's working on. That's what I know. 
+**Dawn Childress** *[35:08]*: Okay. And those are really related to the front end. So it's an entirely different data model and we're redoing the front end to meet this more. Much more granular data model fits JSON. There are specific solar fields in there, but there's a big JSON blob in one of the fields. 
+**Piotr Nowak** *[35:29]*: Yeah. So basically she said, oh, I really want to get this at least sorted to a point where you can actually work on the front end. So that's basically what we discussed. I think the same thing. 
+**Lisa McAulay** *[35:42]*: I bet it's like if she's not. 
+**Dawn Childress** *[35:43]*: Doing the front end stuff though, I guess I don't know why she would need to know it. Like you would need to know it if you're doing front end stuff. 
+**Piotr Nowak** *[35:51]*: I don't know, it's just like, you know, getting there. 
+**Lisa McAulay** *[35:56]*: Yeah, yeah. It could be like it could be related to setting up all the hooks. 
+**Piotr Nowak** *[36:02]*: Probably. Yeah. It's probably that she already is more like into the backend structure of this so she can create the endpoints for us immediately and then we can build on top of what she created. I gonna have a little bit deeper discussion about this with her early next week. 
+**Lisa McAulay** *[36:23]*: Okay. 
+**Piotr Nowak** *[36:24]*: So should Be. Should be fine. 
+**Lisa McAulay** *[36:25]*: Okay. Yeah. And if you can make sure we put whatever she is working on, make sure it's in the in progress column because that will help with some of this discussion too. And then likewise, if you do pick something up or if there's work that isn't described that's being done, go ahead and create a ticket. 
+**Piotr Nowak** *[36:50]*: That's fine. 
+**Lisa McAulay** *[36:52]*: Yeah, totally fine. Okay. 
+**Dawn Childress** *[36:55]*: Yeah. Let me know if you want to go through like the tickets for the front end work because I have done very kind of specific ways of noting. 
+**Lisa McAulay** *[37:07]*: That's right. 
+**Dawn Childress** *[37:08]*: Athy things. Right. 
+**Piotr Nowak** *[37:09]*: Like, so if you could send me a list of tickets in, I'll be helpful. Like I prefer to have like review them first and ask questions later so not to waste your time. 
+**Dawn Childress** *[37:21]*: Okay. And I only did. I've only done a few. I've only made a few available because I wanted to make sure that they make sense this way before I do them all. So I have to redo a bunch of work. But they. And then we're starting with the easy one so I can share those. Should I. 
+**Piotr Nowak** *[37:35]*: That would be. That would be lovely. 
+**Dawn Childress** *[37:37]*: So I can just send you some links to them in Slack or email. Do you have a preference? 
+**Piotr Nowak** *[37:45]*: I think for the sake of having this. I think email is better. 
+**Lisa McAulay** *[37:49]*: Okay. 
+**Piotr Nowak** *[37:51]*: And if they are created, maybe they should be added to NOPIA project board as well. 
+**Dawn Childress** *[37:57]*: Yeah, there are a few in there already. Those are the ones I would share with you. 
+**Piotr Nowak** *[38:00]*: The SMDL index space results. 
+**Dawn Childress** *[38:03]*: They're in the nokio. They're in. There are a couple in the Nopio one. There's the index page. Like. 
+**Piotr Nowak** *[38:10]*: Okay. Can I assume that if something is smdl it should be. It should be part of the front end part. 
+**Dawn Childress** *[38:18]*: Yeah. 
+**Lisa McAulay** *[38:20]*: And if you want dawn, we could make a new epic. 
+**Dawn Childress** *[38:26]*: I mean. Yeah, that's totally up to how like Andy and people want to work. Okay, cool with. 
+**Lisa McAulay** *[38:38]*: Yeah. Right now we don't really specify but we could. We could have smdl, you know, front end or UI if we want to. 
+**Dawn Childress** *[38:48]*: Yeah. But I think there's the index page, there's the overview section and I don't know if there's another one. 
+**Piotr Nowak** *[38:54]*: I think there are just two right now. 
+**Dawn Childress** *[38:55]*: I think there's just the two. Yeah. And I, I could. There are some other ones I could add but thought that was a good place just to start to kind of get everything. 
+**Lisa McAulay** *[39:06]*: Yeah. 
+**Piotr Nowak** *[39:08]*: And I see there are some screenshots there, so that's awesome. 
+**Lisa McAulay** *[39:12]*: And this one's assigned to you, Dawn. Should it be. 
+**Dawn Childress** *[39:17]*: I think is that. The. Which one is that? I think it's just assigned to me because weren't ready to move on it yet. But otherwise it doesn't need to be assigned to me. No. 
+**Lisa McAulay** *[39:27]*: Okay. 
+**Dawn Childress** *[39:28]*: It can be assigned to whoever's going to actually do that work of. 
+**Lisa McAulay** *[39:31]*: Yeah. 
+**Dawn Childress** *[39:32]*: Starting to do the overview section. Yeah. And then I can also share the Figma stuff. 
+**Lisa McAulay** *[39:38]*: Okay. 
+**Dawn Childress** *[39:38]*: It shows like the layout of everything. Well, actually, I mean, I don't want to share that. I could share that, but Andy shared it with Tatiana in a very specific way for coding or whatever. So I don't. I just know the visual one like what it's supposed to look like. Right. That's. 
+**Piotr Nowak** *[39:54]*: So if you could ping Andy to share it with me in this very specific way as well. 
+**Dawn Childress** *[39:59]*: Yeah. 
+**Piotr Nowak** *[39:59]*: So actually that's something that would be actually better to share with me and Monica. So let me just. 
+**Dawn Childress** *[40:07]*: We were also going to share some of the JSON files, documents so that you could see the actual JSON. I know Andy was going to share some of those with Tatiana, but we should make sure you get them too. So you get. So you can actually see the JSON instead of just it in a blob. 
+**Piotr Nowak** *[40:25]*: So I added. Monica sent my email into the chat. That's for Sigma. 
+**Dawn Childress** *[40:34]*: In the Slack. 
+**Piotr Nowak** *[40:34]*: Slack chat I added into this chat here. 
+**Lisa McAulay** *[40:40]*: Yeah, I'll grab it. 
+**Dawn Childress** *[40:42]*: Okay. 
+**Lisa McAulay** *[40:43]*: And I'll message you. 
+**Dawn Childress** *[40:45]*: Don. 
+**Piotr Nowak** *[40:48]*: Oh, sorry. It's not om. It's Com Money custom maintenance. 
+**Dawn Childress** *[40:53]*: Let me find us. 
+**Piotr Nowak** *[40:56]*: I'm not that. 
+**Lisa McAulay** *[41:03]*: What? Yeah, correct for me. It's not ka. 
+**Dawn Childress** *[41:10]*: No, it's like out the C on. Com. 
+**Lisa McAulay** *[41:12]*: Oh, oh. Got it, got it. Yes, we do need that. 
+**Piotr Nowak** *[41:21]*: I'm just thinking, Lisa, if it's not a big bother, you can ask people to add Monica with the same access to jira. But I don't think it's a high price. It's not a high priority. We can get her access to the tickets. So not the huge pressure there. It's not the blocker. 
+**Lisa McAulay** *[41:42]*: Okay, great. All right, so I'll take the action item of the JIRA access for Monica. Dawn, you have the action item of an email to PIOT with the JIRA tickets that are specifically. 
+**Piotr Nowak** *[42:01]*: I don't think it's necessary to do. It's just like if. If we can agree that those front end tickets gonna have the. What was it? SMDL in the name. I can, you know, I can understand what's going on. 
+**Dawn Childress** *[42:16]*: And right now it is just those two. So yeah, when you look at it, you kind of Want to know. Do you want me to kind of show you a little bit about some of my notation in there now or. 
+**Lisa McAulay** *[42:27]*: Sure I do. Yeah. 
+**Piotr Nowak** *[42:29]*: If we have time, then interpret. 
+**Lisa McAulay** *[42:33]*: Yeah. Because Tatiana was like, wait, what does this mean? 
+**Dawn Childress** *[42:38]*: Yeah, do you still have that handy to share, Elisa? Sorry. Or do you want. 
+**Lisa McAulay** *[42:43]*: Yeah, happy to. 
+**Dawn Childress** *[42:44]*: Okay, thanks. Because you just had it open, but I can find it if you close. 
+**Lisa McAulay** *[42:49]*: No, I got it. 
+**Piotr Nowak** *[42:51]*: I have it open as well. 
+**Lisa McAulay** *[42:55]*: For some reason it doesn't want to. There we go. Double click. Which one? Top one. 
+**Dawn Childress** *[43:01]*: Yeah. Let's look at the index page one first. Just this one is a simpler one because this is really. Everything here is being pulled from a solar property. Right. And so you can find the solar property, you know, shelf mark, ssi, the. Oh, the extent. When I need to fill that in. We. We did name it and everything. And I just need to update that with the actual extent. 
+**Piotr Nowak** *[43:25]*: There's a little bit of TBDs here. 
+**Dawn Childress** *[43:27]*: Yeah, yeah. So this one is a little bit. This one's pretty straightforward. It's basically kind of doing what we already do, but just changing out the solar properties and also maybe adding a couple of new things. 
+**Piotr Nowak** *[43:41]*: So pretty much like if I can compare it to whatever is in figma, I'm going to be like, okay, I need to use those fields to populate whatever is the appropriate row number. 
+**Dawn Childress** *[43:52]*: We did these in FIGMA because they're really just kind of replacing existing things. But. But I'll double. Yeah, let's. Let's go to the other one. 
+**Lisa McAulay** *[44:04]*: The other ticket. 
+**Dawn Childress** *[44:05]*: Yeah. Oh, but you could. Or you were going to show the index. Yeah, yeah, gotcha. 
+**Lisa McAulay** *[44:11]*: Is this it? 
+**Dawn Childress** *[44:12]*: If you go to search. Okay, search. Yeah. So they just pretty much. Okay, you know, look like this and it will look the same. It's just the property names are changing for some. For most of it. And then we've added a few new things. But you can see the little icons we already have for language and for date. So that one's pretty straightforward because it is pulling from solar fields, the other one. 
+**Lisa McAulay** *[44:37]*: So we have like these two views, the list and the gallery. So it's like right here, row one. 
+**Dawn Childress** *[44:45]*: Yeah, yeah. So if we look at the one for the overview section. Yeah. Then. This is where things start getting more complicated. So. So some of these will. Most of the values are going to be pulled from the JSON blob unless it's otherwise noted with this solar prefix. Right. So where we have field summary here. So summary is the label, but it's not going to display that's why it's in square brackets there. Location does display though, as a thing right underneath it. So we've got a visible thing. The summary just has the summary in there. But summary means it's coming from the summary property at the top level of. 
+**Piotr Nowak** *[45:36]*: The JSON, but inside of the JSON. 
+**Dawn Childress** *[45:37]*: Yeah, but it's only the top level one. Right. If you go down to like origin, you see this dot. Dot. Right. So we're using sort of like this JSON path nomenclature, which is not terribly, you know, consistent all the time or reliable, but we've done the best. 
+**Piotr Nowak** *[45:55]*: So that means we're diving into those. So it's going to be OT layer, then association data, and its value is on the association. 
+**Dawn Childress** *[46:01]*: So anywhere you find an OT layer in that JSON blob, you're going to look for the. Its associated date value and put it in there and the associated place value. And you're going to do that for each OT layer. Right. Generally we only have one OT layer though. And then the same thing like, you know, if you go down. But some of them don't have the two dots in between, which means it's the direct descendant. Right. The immediate child and not like any child underneath. And so that's really. So here this is a little bit different because we have in green sort of an instruction where it's like anywhere in OT layer where you find any kind of writing or script, you're going to show the label. 
+**Piotr Nowak** *[46:43]*: Label writing system. 
+**Dawn Childress** *[46:45]*: Yeah. 
+**Piotr Nowak** *[46:45]*: So whatever is if it's in. Okay. Yep. Makes sense. Makes sense. 
+**Dawn Childress** *[46:51]*: Okay. 
+**Piotr Nowak** *[46:51]*: And if it's multiple, it's going to be pipe. 
+**Dawn Childress** *[46:55]*: Yeah, yeah. So some. Yeah, so they're pipe. 
+**Piotr Nowak** *[46:58]*: That's neat. That's. That's actually really well thought. 
+**Dawn Childress** *[47:02]*: I'm so glad you understand my thought process. 
+**Piotr Nowak** *[47:07]*: Oh, yes, I understand. Because you probably did it because of the things you kind of hit a wall with in the past. 
+**Dawn Childress** *[47:18]*: Yes. 
+**Piotr Nowak** *[47:18]*: This is really hard to communicate. 
+**Dawn Childress** *[47:20]*: It's a very gnarly. I probably made this data model way too granular and complex. But, you know, it's awesome. 
+**Lisa McAulay** *[47:26]*: So it's awesome. 
+**Dawn Childress** *[47:28]*: It's just going to take us a long time to do this. 
+**Piotr Nowak** *[47:30]*: There are reasons there. 
+**Dawn Childress** *[47:33]*: Okay. And then of course there are some where you see it starts with solar and that means it's just. You're just looking for. Because we've extracted everything into something that's going to be like a facet or something from anywhere how we've done this. And then I've also got like the JSON SCHEMA But I think the JSON files themselves will probably be more useful to you than the schema, which. Because you don't need. 
+**Piotr Nowak** *[47:59]*: Both would be good. Both would be good. 
+**Dawn Childress** *[48:01]*: Okay. Yeah. I mean, there's good. 
+**Piotr Nowak** *[48:03]*: I can tell you why I do use AI assistance while coding, and having it have the schema makes it a little bit easier. Just like. 
+**Dawn Childress** *[48:13]*: Okay. 
+**Piotr Nowak** *[48:14]*: Because AI is stupid. It needs. It needs context. 
+**Dawn Childress** *[48:19]*: Yeah. Okay. So. Yeah, so I can share the scheme. I'll share the. I can share the schema and some example JSON files. Now, none of the JSON files are going to be totally complete. Right. Not every manuscript uses every single property. That. 
+**Piotr Nowak** *[48:35]*: Yeah, but that's why schema is important. 
+**Dawn Childress** *[48:38]*: Yeah. 
+**Piotr Nowak** *[48:39]*: So it's also important because it kind of helps with verifying that we're going in the right direction because, like, oh, we should be getting it. We're not getting it. You know, it's like. 
+**Dawn Childress** *[48:52]*: And I. I have about five sample ones that have a lot of fake data in them where we try to make sure between those five, we hit every possible thing. And also to make sure we get things where there are, like, you know, multiple entries, so we can test that's working properly. So we've got. I've got a. About 5 good sample jsons that are fake, but. Oh, nice. Have a lot of values. And, you know, we try to be as comprehensive as possible. 
+**Piotr Nowak** *[49:19]*: Makes sense. 
+**Dawn Childress** *[49:20]*: So. And also things like testing, you know, punctuation. So, for example, sometimes not all the fields are required, and sometimes you have like a field and then a comma and then another field, but the first field isn't there. So, you know, obviously no comma, should show. And so we've tried to have some examples of that, too, so we can kind of test out different things. 
+**Piotr Nowak** *[49:43]*: Yeah, perfect sense. Yes. 
+**Lisa McAulay** *[49:45]*: Anyway, this is great. 
+**Dawn Childress** *[49:49]*: I like. 
+**Lisa McAulay** *[49:50]*: All right. 
+**Dawn Childress** *[49:50]*: I have to explain my internal brain. That's good. 
+**Piotr Nowak** *[49:54]*: Yeah. 
+**Lisa McAulay** *[49:55]*: Obviously gonna have fun on this. 
+**Piotr Nowak** *[50:00]*: Yeah, I think so. And, you know, don't you just, like, sorted a lot of headaches with this kind of integration, so. 
+**Dawn Childress** *[50:09]*: Okay, okay. 
+**Piotr Nowak** *[50:10]*: This is because we would be spending a lot of time asking, like, hey, where is this field? Really? Because I'm assuming there's going to be like, a lot of maybe potential duplicated things, but, yeah. Similarly named. It's like. 
+**Dawn Childress** *[50:21]*: Yeah. 
+**Piotr Nowak** *[50:22]*: Confusing. 
+**Dawn Childress** *[50:23]*: Yeah. And another thing, too. So we have certain, like, JSON objects that are repeated and can be repeated in different sections. And so I've created separate pages for those, so those can kind of be done, but then that just Plunked in too. Say another one. Right. Another larger parent object. Right. Like for example. Yeah, yeah, yeah. 
+**Lisa McAulay** *[50:47]*: Likewise. 
+**Dawn Childress** *[50:48]*: So, for example, paracontent is a JSON object and that can be at the manuscript object level. It could also be at the work or the text unit level, which is. Will be another ticket for the text unit section. And so since they go in different places, it's still the same. Follows the same pattern of pulling the pair content just from a different location in the JSON and it might appear in a different location on the item page, but it's going to follow all the same rules. Right. So. 
+**Piotr Nowak** *[51:19]*: So we're going to have more than one JSON that's. 
+**Dawn Childress** *[51:23]*: No, no. It's all from the same JSON. Okay. But different sections of it. Like we could have pair content associated with a guest layer as opposed to an over text layer, but that's going. 
+**Piotr Nowak** *[51:33]*: To be listed inside of those, like two dots notation. 
+**Dawn Childress** *[51:35]*: Yeah, well, no, not necessarily. 
+**Lisa McAulay** *[51:42]*: You may have gone. 
+**Dawn Childress** *[51:44]*: I may have gone. 
+**Lisa McAulay** *[51:44]*: We need an example. 
+**Dawn Childress** *[51:48]*: I have examples and. But maybe we should just get through these first ones. 
+**Lisa McAulay** *[51:51]*: Yeah. 
+**Dawn Childress** *[51:51]*: And then we go to the other. 
+**Piotr Nowak** *[51:53]*: Let's do the simple stuff first. 
+**Lisa McAulay** *[51:56]*: I'm trying to think like, is. Is any of that visible here? This is too simple. Right? 
+**Dawn Childress** *[52:01]*: That's too simple. Okay, but next time I can show like the Figma file and show what I mean by that and show a corresponding ticket. 
+**Lisa McAulay** *[52:09]*: Okay. 
+**Dawn Childress** *[52:10]*: That we have. 
+**Piotr Nowak** *[52:10]*: And also, like, if there are like real products with some, maybe not all the complexity, but some of the complexity that would be like manuscripts, if you would have some kind of data. Yeah, helpful. 
+**Dawn Childress** *[52:22]*: Yeah. And then we also have the data portal which has some of this there. But there, everything. There are different records instead of all nested together, which I'm not going to explain right now. 
+**Lisa McAulay** *[52:33]*: I can't remember the URL. 
+**Dawn Childress** *[52:35]*: It's Sinai Portal. Oh yeah.org.library.ucla edu and so this one, we have three different distinct record types. Manuscript objects, the inscribed layers that belong to manuscript objects, and the text units that belong to layers. These are all combined into one JSON record for the signing manuscripts digital library here, they're all separate records. So somebody could look, do research, like, and query things across all text units of all the manuscripts, rather than looking at things at the manuscript level. But if you click on inscribed layers, for example, you'll get all the layers here. And if you click on. How did it be? We used a keyword that would help us pull up some of the sample ones. But if you click on like the shoot. Siri, Syriac, I don't know. Just click on any of these, really. It's fine. 
+**Dawn Childress** *[53:50]*: Then you can see we have some information about the layer. And then if you scroll down a little bit, there's a section about the contents and there can be. This one only has like one contents thing. A lot of times it will have 20. Right, that's possible. 
+**Piotr Nowak** *[54:05]*: And so this is like pages in manuscript or something like that. 
+**Dawn Childress** *[54:10]*: There are different text units. Okay, right, so. Or yeah, Maybe this isn't. Oh, yeah. And so here we have like a. A colophon, which is basically pair content at a layer level. And so that has its. All of its own little set of fields in it. Right, okay. 
+**Piotr Nowak** *[54:30]*: Okay. 
+**Dawn Childress** *[54:31]*: And so then. But other types of pair content can appear all over in the records in different places in different locations that are sometimes colophons, sometimes something else. And they all follow the same exact pattern, the same exact JSON object structure. And in order, instead of like defining para content every place, pair content can be in all these different tickets. I've only described it once. And then in tickets where it can go, I just say, oh, and then the pair contents object goes here. 
+**Piotr Nowak** *[55:01]*: Okay, okay. 
+**Dawn Childress** *[55:03]*: Does that make sense? So it's kind of more templatey. 
+**Piotr Nowak** *[55:05]*: High level makes sense. Low level. I need to see it working. 
+**Dawn Childress** *[55:10]*: Absolutely, yeah. And I'll highlight a few of those too. 
+**Piotr Nowak** *[55:14]*: I think we also know what's the logic of finding the first content. Like, if you say like, per content is going here, like, where can we find it? Like, what's the rules of choosing what content goes there? I'm assuming it's going to be documented somewhere. 
+**Dawn Childress** *[55:31]*: Yeah, yeah, it's all documented in the tickets. 
+**Piotr Nowak** *[55:33]*: Okay. 
+**Dawn Childress** *[55:34]*: But what I'm saying is I broke them out so that it's not like where you have too many nested things in one ticket. It's like, here's the ticket. And then it has like three nested things in it that are defined elsewhere because you'll reuse that same pattern over and over. 
+**Lisa McAulay** *[55:51]*: Okay, I think we'll get to it. I think it conceptually makes sense. And then. 
+**Piotr Nowak** *[55:58]*: Exactly. It's perfect. Perfect description. 
+**Lisa McAulay** *[56:01]*: And we will have to actually test our knowledge by doing one thing at a time. 
+**Dawn Childress** *[56:07]*: And. And I'm. Yeah, I'm hoping that fits in with like the templating in blacklight as well. Right. Like, you know, you want to be able to reuse templates and. 
+**Piotr Nowak** *[56:16]*: Yes, definitely. 
+**Dawn Childress** *[56:17]*: Instead of redoing, instead of creating three different templates that all have pair content in it, you just Want to point to that pair content template? 
+**Piotr Nowak** *[56:25]*: Yes. 
+**Dawn Childress** *[56:25]*: Yeah, the same principle of that, but in the tickets. 
+**Piotr Nowak** *[56:29]*: I'm really glad that my note taker joined us today. 
+**Lisa McAulay** *[56:33]*: Yes, I know, right? 
+**Dawn Childress** *[56:35]*: It needs to translate my crazy explanations. 
+**Lisa McAulay** *[56:39]*: Yeah, I'm in a committee, and they're using the Zoom notetaker. Yeah, the Zoom note taker. And I haven't yet read the notes, so maybe it's good it's there. 
+**Piotr Nowak** *[56:55]*: I'm using it surprisingly, a lot. Like, because what I have here is after this call, in like, an hour or two, my AI assistant is going to pull this into a comprehensive database of everything I'm doing, like project plans, notes taking, contracts, whatever. So I create a little bit of an rig system, but it's not really an rig. It's just searching through a lot of context if I need it. So I can ask questions, and I can be like, okay, I have those jsons, and I have this ticket description, and here's the transcribe of the conversation we had about this. Please tell me what I need to do with that, because I remember. 
+**Lisa McAulay** *[57:39]*: Yeah, I like that a lot. That could end up helping me in the future for sure. All right, I've got to peel off piot. I'm going to wish you good luck with travel arrangements, and I'll see. We'll do this again next week. Does that sound right? 
+**Piotr Nowak** *[57:55]*: Yeah, I think this time works. I'm not changing the time zone. I'll let you know if I'll be flying back earlier, but doubt it. So I'm assuming at least until 25th. I should be in this time zone GMT 7. 
+**Dawn Childress** *[58:10]*: Okay. 
+**Lisa McAulay** *[58:10]*: All right. You just message me if we need to change anything, and in the meantime, I'll make sure this meeting is set for the rest of this month. 
+**Piotr Nowak** *[58:20]*: Awesome. Awesome. Thank you very much. That's looking exciting. 
+**Lisa McAulay** *[58:24]*: Yes, I'm excited. 
+**Piotr Nowak** *[58:26]*: Great job with this. This notation, it's really making things clear, so I know it's gonna, like, solve. You already solved a lot of problems that we typically have with those integrations. 
+**Dawn Childress** *[58:36]*: Awesome. This is great. I like it. 
+**Lisa McAulay** *[58:40]*: All right, take care, all y', all, and we'll see you in a week at the latest. 
+**Piotr Nowak** *[58:46]*: Okay, thank you very much. Have a good day. Bye. 
+**Lisa McAulay** *[58:49]*: Bye. 

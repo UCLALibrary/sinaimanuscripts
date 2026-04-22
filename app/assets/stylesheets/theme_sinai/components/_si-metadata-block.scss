@@ -550,6 +550,10 @@
   display: none;
 }
 
+.work-toc--expanded--sinai .work-toc-entry--hidden--sinai {
+  display: block;
+}
+
 .work-toc-entry__line--sinai {
   font-size: 0.95rem;
   color: $sinai-black;
@@ -573,10 +577,27 @@
   cursor: pointer;
   padding: 0.25rem 0;
   margin-top: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+
+  &::after {
+    content: '\203A'; // right-pointing angle bracket ›
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1;
+    display: inline-block;
+    transform: rotate(90deg);
+    transition: transform 0.2s;
+  }
 
   &:hover {
     text-decoration: underline;
   }
+}
+
+.work-toc--expanded--sinai .work-show-more--sinai::after {
+  transform: rotate(-90deg);
 }
 
 // Excerpt blocks
