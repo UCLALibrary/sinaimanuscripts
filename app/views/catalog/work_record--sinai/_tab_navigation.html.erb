@@ -1,14 +1,21 @@
 <%
+  # `present` controls whether the tab button AND panel render at all.
+  # Tabs that still show dummy content keep `present: true`; as each one gets
+  # real content, swap in a data-driven check (mirrors the `undertexts` case).
+  ms_json_tabs = begin JSON.parse(document['manuscript_json_ts'] || '{}') rescue {} end
+  has_undertexts = Array(ms_json_tabs['uto']).any? ||
+                   Array(ms_json_tabs['part']).any? { |p| Array(p['uto']).any? }
+
   tab_definitions = [
-    { id: 'full-description', label: 'Full Description' },
-    { id: 'contents', label: 'Contents' },
-    { id: 'undertexts', label: 'Undertexts' },
-    { id: 'guest-content', label: 'Guest Content' },
-    { id: 'related-manuscripts', label: 'Related Manuscripts' },
-    { id: 'references-bibliography', label: 'References & Bibliography' },
-    { id: 'names-dates-places', label: 'Names, Dates, Places' },
-    { id: 'rights-credits', label: 'Rights & Credits' }
-  ]
+    { id: 'full-description',        label: 'Full Description',          present: true },
+    { id: 'contents',                 label: 'Contents',                   present: true },
+    { id: 'undertexts',               label: 'Undertexts',                 present: has_undertexts },
+    { id: 'guest-content',            label: 'Guest Content',              present: true },
+    { id: 'related-manuscripts',      label: 'Related Manuscripts',        present: true },
+    { id: 'references-bibliography',  label: 'References & Bibliography',  present: true },
+    { id: 'names-dates-places',       label: 'Names, Dates, Places',       present: true },
+    { id: 'rights-credits',           label: 'Rights & Credits',           present: true }
+  ].select { |t| t[:present] }
 %>
 
 <nav class="scrollable-tabs--sinai" aria-label="Manuscript details">
@@ -57,6 +64,9 @@
       <%# === Items / Contents Section === %>
       <%= render 'catalog/work_record--sinai/items_metadata', document: document %>
 
+      <%# === Paracontents Section === %>
+      <%= render 'catalog/work_record--sinai/paracontents_metadata', document: document %>
+
       <%# === Full JSON debug viewer === %>
       <details class="overview-json-debug--sinai">
         <summary>View raw manuscript JSON data</summary>
@@ -68,7 +78,11 @@
   <%# Placeholder tabs %>
   <% tab_definitions.drop(1).each do |tab| %>
     <div role="tabpanel" id="panel-<%= tab[:id] %>" aria-labelledby="tab-<%= tab[:id] %>" class="tab-panel--sinai">
-      <h2 class="overview-heading--sinai"><%= tab[:label] %></h2>
+      <% if tab[:id] == 'undertexts' %>
+        <%= render 'catalog/work_record--sinai/undertexts_metadata', document: document %>
+      <% else %>
+        <h2 class="overview-heading--sinai"><%= tab[:label] %></h2>
+      <% end %>
     </div>
   <% end %>
 </div>

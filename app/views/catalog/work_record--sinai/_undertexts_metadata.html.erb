@@ -1,0 +1,50 @@
+<%# === Undertexts Tab === %>
+<%# Lists Undertext Objects (UTOs) grouped by part, plus a trailing %>
+<%# "In flyleaves, bindings, repairs" group for ms_obj-level UTOs %>
+<%# not tied to any part. %>
+
+<% ms_json_ut = begin JSON.parse(document['manuscript_json_ts'] || '{}') rescue {} end %>
+<% parts_ut = Array(ms_json_ut['part']) %>
+
+<%
+  part_groups = parts_ut.each_with_index.map { |p, i|
+    utos = Array(p['uto'])
+    next nil if utos.empty?
+    { label: p['label'].to_s.presence || "Part #{i + 1}", utos: utos, part_idx: i }
+  }.compact
+
+  # Dedupe on uto_ms_ark per ticket; fall back to uto_layer_ark so older fixtures
+  # (which only have uto_layer_ark) don't render the same UTO in both a Part group
+  # and the flyleaves group.
+  uto_key = ->(u) { u['uto_ms_ark'].to_s.presence || u['uto_layer_ark'].to_s.presence }
+  part_keys = parts_ut.flat_map { |p| Array(p['uto']).map(&uto_key) }.compact
+  flyleaf_utos = Array(ms_json_ut['uto']).reject { |u| part_keys.include?(uto_key.call(u)) }
+%>
+
+<% if part_groups.any? || flyleaf_utos.any? %>
+  <div class="undertexts-section--sinai">
+    <h2 class="overview-heading--sinai">Undertext Objects</h2>
+
+    <% part_groups.each do |group| %>
+      <section class="undertext-group--sinai">
+        <h3 class="undertext-group__label--sinai"><%= h(group[:label]) %></h3>
+        <% group[:utos].each_with_index do |uto, ui| %>
+          <%= render 'catalog/work_record--sinai/undertext_entry',
+                     uto: uto,
+                     data_path: "ms_obj.part[#{group[:part_idx]}].uto[#{ui}]" %>
+        <% end %>
+      </section>
+    <% end %>
+
+    <% if flyleaf_utos.any? %>
+      <section class="undertext-group--sinai">
+        <h3 class="undertext-group__label--sinai">In flyleaves, bindings, repairs</h3>
+        <% flyleaf_utos.each_with_index do |uto, ui| %>
+          <%= render 'catalog/work_record--sinai/undertext_entry',
+                     uto: uto,
+                     data_path: "ms_obj.uto[#{ui}]" %>
+        <% end %>
+      </section>
+    <% end %>
+  </div>
+<% end %>

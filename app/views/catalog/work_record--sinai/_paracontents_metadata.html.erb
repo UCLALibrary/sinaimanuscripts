@@ -1,0 +1,180 @@
+<%# === Paracontents Section === %>
+<%# Aggregates para[] entries from ms_obj, part, ot_layer, and text_unit (non-framing), %>
+<%# grouped by type.id into Provenance (history) and Supplementary (misc) subsections. %>
+<%# guest_layer paracontent → Guest Content tab; ut_layer paracontent → Undertexts tab. %>
+<%# framing paracontent at text_unit level is already rendered in Items/Rubrics. %>
+
+<% ms_json_para = begin JSON.parse(document['manuscript_json_ts'] || '{}') rescue {} end %>
+
+<%
+  # Walk the tree and collect every para with its JSON path for debug comments.
+  collected_paras = []
+
+  Array(ms_json_para['para']).each_with_index do |pa, i|
+    collected_paras << { pa: pa, path: "ms_obj.para[#{i}]" }
+  end
+
+  Array(ms_json_para['part']).each_with_index do |part, part_idx|
+    Array(part['para']).each_with_index do |pa, i|
+      collected_paras << { pa: pa, path: "ms_obj.part[#{part_idx}].para[#{i}]" }
+    end
+
+    Array(part['ot_layer']).each_with_index do |ot_layer, layer_idx|
+      layer_rec = ot_layer['layer_record'] || {}
+      Array(layer_rec['para']).each_with_index do |pa, i|
+        collected_paras << { pa: pa, path: "ms_obj.part[#{part_idx}].ot_layer[#{layer_idx}].layer_record.para[#{i}]" }
+      end
+
+      Array(layer_rec['text_unit']).each_with_index do |tu, tu_idx|
+        tu_rec = tu['text_unit_record'] || {}
+        Array(tu_rec['para']).each_with_index do |pa, i|
+          # Framing paracontent at text_unit level is already rendered as "Rubrics, Etc." in Items.
+          next if pa.dig('type', 'id') == 'framing'
+          collected_paras << { pa: pa, path: "ms_obj.part[#{part_idx}].ot_layer[#{layer_idx}].layer_record.text_unit[#{tu_idx}].text_unit_record.para[#{i}]" }
+        end
+      end
+    end
+  end
+
+  provenance_paras = collected_paras.select { |entry| entry[:pa].dig('type', 'id') == 'history' }
+  supplementary_paras = collected_paras.select { |entry| entry[:pa].dig('type', 'id') == 'misc' }
+%>
+
+<% if provenance_paras.any? || supplementary_paras.any? %>
+  <div class="items-section--sinai">
+    <h2 class="overview-heading--sinai">Paracontents</h2>
+
+    <% [
+        { label: 'Provenance', entries: provenance_paras, slug: 'provenance' },
+        { label: 'Supplementary', entries: supplementary_paras, slug: 'supplementary' }
+      ].each do |group| %>
+      <% next if group[:entries].empty? %>
+
+      <div class="works-section--sinai item-subsection--sinai">
+        <div class="works-section__label--sinai"><%= group[:label] %></div>
+
+        <% group[:entries].each do |entry| %>
+          <%
+            pa = entry[:pa]
+            pa_data_path = entry[:path]
+
+            # --- Header: [label], [locus] ---
+            pa_label = pa['label'].to_s.presence ||
+                       Array(pa['subtype']).first&.dig('label').to_s.presence ||
+                       pa.dig('type', 'label').to_s.presence
+            pa_locus = pa['locus'].to_s.presence
+            pa_header = [pa_label, pa_locus].compact.join(', ')
+            pa_header = 'Paracontent' if pa_header.blank?
+
+            # --- Language / Script (separate rows per Figma) ---
+            pa_langs = Array(pa['lang']).map { |l| l['label'] }.compact
+            pa_scripts = Array(pa['script']).map { |s| s['label'] }.compact
+
+            # --- As Written ---
+            pa_as_written = pa['as_written'].to_s
+
+            # --- Translation ---
+            pa_translations = Array(pa['translation'])
+
+            # --- Names/Dates (pipe-separated, order: name → place → date) ---
+            ndp_parts = []
+            Array(pa['assoc_name']).each do |an|
+              an_val = an['value'].to_s.presence || an.dig('agent_record', 'pref_name').to_s.presence
+              an_role = an.dig('role', 'label').to_s.presence
+              ndp_parts << (an_role ? "#{an_val} (#{an_role})" : an_val) if an_val.present?
+            end
+            Array(pa['assoc_place']).each do |ap|
+              ap_val = ap['value'].to_s.presence || ap.dig('place_record', 'pref_name').to_s.presence
+              ap_event = ap.dig('event', 'label').to_s.presence
+              ndp_parts << (ap_event ? "#{ap_val} (#{ap_event})" : ap_val) if ap_val.present?
+            end
+            Array(pa['assoc_date']).each do |ad|
+              ad_val = ad['value'].to_s.presence
+              ad_type = ad.dig('type', 'label').to_s.presence
+              ndp_parts << (ad_type ? "#{ad_val} (#{ad_type})" : ad_val) if ad_val.present?
+            end
+
+            # --- Notes ---
+            pa_notes = Array(pa['note'])
+
+            has_details = pa_langs.any? || pa_scripts.any? || pa_as_written.present? ||
+                          pa_translations.any? || ndp_parts.any? || pa_notes.any?
+          %>
+
+          <!-- DATA SOURCE: <%= pa_data_path %> -->
+          <% if has_details %>
+            <details class="work-accordion--sinai">
+              <summary class="work-accordion__summary--sinai">
+                <span class="work-accordion__title--sinai"><%= h(pa_header) %></span>
+              </summary>
+
+              <div class="work-accordion__body--sinai">
+                <dl class="work-fields--sinai">
+
+                  <% if pa_langs.any? %>
+                    <!-- DATA SOURCE: <%= pa_data_path %>.lang -->
+                    <div class="work-field-row--sinai">
+                      <dt class="work-field-label--sinai">Language</dt>
+                      <dd class="work-field-value--sinai"><%= h(pa_langs.join(', ')) %></dd>
+                    </div>
+                  <% end %>
+
+                  <% if pa_scripts.any? %>
+                    <!-- DATA SOURCE: <%= pa_data_path %>.script -->
+                    <div class="work-field-row--sinai">
+                      <dt class="work-field-label--sinai">Script</dt>
+                      <dd class="work-field-value--sinai"><%= h(pa_scripts.join(', ')) %></dd>
+                    </div>
+                  <% end %>
+
+                  <% if pa_as_written.present? %>
+                    <!-- DATA SOURCE: <%= pa_data_path %>.as_written -->
+                    <div class="work-field-row--sinai">
+                      <dt class="work-field-label--sinai">As Written</dt>
+                      <dd class="work-field-value--sinai"><%= h(pa_as_written) %></dd>
+                    </div>
+                  <% end %>
+
+                  <% if pa_translations.any? %>
+                    <!-- DATA SOURCE: <%= pa_data_path %>.translation -->
+                    <div class="work-field-row--sinai">
+                      <dt class="work-field-label--sinai">Translation</dt>
+                      <dd class="work-field-value--sinai">
+                        <%= safe_join(pa_translations.map { |t| h(t) }, tag.br) %>
+                      </dd>
+                    </div>
+                  <% end %>
+
+                  <% if ndp_parts.any? %>
+                    <!-- DATA SOURCE: <%= pa_data_path %>.assoc_name, .assoc_place, .assoc_date -->
+                    <div class="work-field-row--sinai">
+                      <dt class="work-field-label--sinai">Names/Dates</dt>
+                      <dd class="work-field-value--sinai"><%= h(ndp_parts.join(' | ')) %></dd>
+                    </div>
+                  <% end %>
+
+                  <% if pa_notes.any? %>
+                    <!-- DATA SOURCE: <%= pa_data_path %>.note -->
+                    <div class="work-field-row--sinai">
+                      <dt class="work-field-label--sinai">Notes</dt>
+                      <dd class="work-field-value--sinai">
+                        <% pa_notes.each do |pn| %>
+                          <div><%= h(pn.is_a?(Hash) ? pn['value'].to_s : pn.to_s) %></div>
+                        <% end %>
+                      </dd>
+                    </div>
+                  <% end %>
+
+                </dl>
+              </div>
+            </details>
+          <% else %>
+            <div class="work-accordion--sinai work-accordion--static--sinai">
+              <span class="work-accordion__title--sinai"><%= h(pa_header) %></span>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

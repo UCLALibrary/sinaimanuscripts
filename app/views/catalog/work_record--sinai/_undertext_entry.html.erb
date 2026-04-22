@@ -1,0 +1,34 @@
+<%# Renders a single UTO (Undertext Object) entry. %>
+<%# Locals: uto (Hash), data_path (String, for DATA SOURCE debug comment). %>
+
+<%
+  uto_label = uto['label'].to_s
+  uto_locus = uto['locus'].to_s
+  uto_origin = Array(uto['orig_date']).find { |d| d.dig('type', 'id') == 'origin' }&.dig('value').to_s
+  uto_langs = Array(uto['lang']).reject(&:blank?)
+  uto_ark = uto['uto_ms_ark'].to_s.presence
+%>
+
+<!-- DATA SOURCE: <%= data_path %> -->
+<article class="undertext-entry--sinai">
+  <% if uto_ark %>
+    <a class="undertext-entry__title--sinai"
+       href="<%= solr_document_path(uto_ark) %>"
+       target="_blank"
+       rel="noopener noreferrer"><%= h(uto_label) %></a>
+  <% else %>
+    <span class="undertext-entry__title--sinai undertext-entry__title--plain--sinai"><%= h(uto_label) %></span>
+  <% end %>
+
+  <div class="undertext-entry__meta--sinai">
+    <% if uto_locus.present? %>
+      <div>Locus: <%= h(uto_locus) %></div>
+    <% end %>
+    <% if uto_origin.present? %>
+      <div>Origin: <%= h(uto_origin) %></div>
+    <% end %>
+    <% if uto_langs.any? %>
+      <div>Languages: <%= h(uto_langs.join(' | ')) %></div>
+    <% end %>
+  </div>
+</article>

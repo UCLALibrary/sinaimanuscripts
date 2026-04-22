@@ -678,3 +678,60 @@
     word-break: break-word;
   }
 }
+
+// Undertexts tab
+.undertexts-section--sinai {
+  margin-top: 1rem;
+}
+
+.undertext-group--sinai {
+  margin-bottom: 2rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.undertext-group__label--sinai {
+  color: $sinai-black;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+}
+
+.undertext-entry--sinai {
+  margin-bottom: 1.25rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.undertext-entry__title--sinai {
+  display: inline-block;
+  color: $sinai-primary;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-bottom: 0.25rem;
+  text-decoration: none;
+
+  &:hover:not(.undertext-entry__title--plain--sinai) {
+    text-decoration: underline;
+  }
+}
+
+.undertext-entry__title--plain--sinai {
+  cursor: default;
+}
+
+.undertext-entry__meta--sinai {
+  font-size: 0.95rem;
+  color: $sinai-black;
+  line-height: 1.5;
+
+  > div {
+    padding: 0.1rem 0;
+  }
+}
