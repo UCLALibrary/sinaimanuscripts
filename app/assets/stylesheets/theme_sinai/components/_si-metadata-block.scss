@@ -421,6 +421,21 @@
   border-top: 1px solid $sinai-secondary-dk;
 }
 
+// Contents sub-section nested inside a part — no top border, tighter spacing
+.part-items-section--sinai {
+  margin-top: 1.25rem;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.items-subsection-heading--sinai {
+  color: $sinai-primary;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin: 0 0 0.5rem;
+}
+
 .item-block--sinai {
   margin-bottom: 1.5rem;
 }

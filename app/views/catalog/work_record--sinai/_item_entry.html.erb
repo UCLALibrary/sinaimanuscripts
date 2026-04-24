@@ -1,0 +1,461 @@
+<%# Renders a single item (text_unit) block: works, rubrics, item notes, editions. %>
+<%# Locals: item_data (Hash with :tu), item_num (Integer), data_path (String) %>
+<%
+  tu = item_data[:tu]
+  rec = tu['text_unit_record'] || {}
+
+  # --- Item header components ---
+  tu_locus = tu['locus'].to_s.presence || rec['locus'].to_s.presence
+  langs = Array(rec['lang']).map { |l| l['label'] }.compact
+  lang_str = langs.any? ? "(#{langs.join(', ')})" : nil
+
+  # Build header: "Item N, locus (lang, lang)"
+  header = "Item #{item_num}"
+  header = "#{header}, #{tu_locus}" if tu_locus.present?
+  header = "#{header} #{lang_str}" if lang_str.present?
+
+  # --- Item-level fields ---
+  item_summary = rec['summary'].to_s
+  item_notes = Array(rec['note'])
+  item_editions = Array(rec['bib']).select { |b| b.dig('type', 'id') == 'edition' }
+
+  # --- Work witnesses ---
+  work_wits = Array(rec['work_wit'])
+%>
+
+<!-- DATA SOURCE: <%= data_path %> -->
+<div class="item-block--sinai">
+
+  <%# ============================================================ %>
+  <%# ITEM HEADER                                                  %>
+  <%# ============================================================ %>
+  <!-- DATA SOURCE: <%= data_path %>.locus = <%= tu_locus.to_s.to_json %>, <%= data_path %>.text_unit_record.lang = <%= Array(rec['lang']).to_json %> -->
+  <h3 class="item-heading--sinai"><%= h(header) %></h3>
+
+  <%# === Summary === %>
+  <% if item_summary.present? %>
+    <!-- DATA SOURCE: <%= data_path %>.text_unit_record.summary = <%= item_summary.to_json %> -->
+    <p class="item-summary--sinai"><%= h(item_summary) %></p>
+  <% end %>
+
+  <%# ============================================================ %>
+  <%# WORKS — each work_wit is its own accordion row                %>
+  <%# ============================================================ %>
+  <% if work_wits.any? %>
+    <!-- DATA SOURCE: <%= data_path %>.text_unit_record.work_wit (count: <%= work_wits.size %>) -->
+    <div class="works-section--sinai item-subsection--sinai">
+      <div class="works-section__label--sinai">Works</div>
+
+      <% work_wits.each_with_index do |ww, wi| %>
+        <%
+          work = ww['work'] || {}
+          ww_data_path = "#{data_path}.text_unit_record.work_wit[#{wi}]"
+
+          # --- Work title line (shown in collapsed + expanded) ---
+          ww_title = work['desc_title'].to_s.presence || work['pref_title'].to_s.presence || 'Untitled'
+          cpg_refno = Array(work['refno']).find { |r| r['source'].to_s.downcase == 'cpg' }
+          refno_str = cpg_refno ? "(#{cpg_refno['label'].to_s.strip} #{cpg_refno['idno']})".strip : nil
+          ww_locus = ww['locus'].to_s.presence
+
+          work_header_parts = [ww_title]
+          work_header_parts << refno_str if refno_str.present?
+          work_header = work_header_parts.join(' ')
+          work_header = "#{work_header}, #{ww_locus}" if ww_locus.present?
+
+          # --- Variant title ---
+          alt_titles = Array(ww['alt_title'].is_a?(Array) ? ww['alt_title'] : [ww['alt_title']]).compact.reject(&:blank?)
+
+          # --- As written ---
+          as_written = ww['as_written'].to_s
+
+          # --- Contributors (work.creator), sorted: author → translator → rest ---
+          creators = Array(work['creator'])
+          role_priority = { 'author' => 0, 'translator' => 1 }
+          sorted_creators = creators.sort_by { |c| role_priority[c.dig('role', 'id').to_s] || 99 }
+
+          # --- Table of Contents (work_wit.contents) ---
+          toc_entries = Array(ww['contents'])
+
+          # --- Excerpts ---
+          excerpts = Array(ww['excerpt'])
+
+          # --- Witness notes (work_wit.note) ---
+          wit_notes = Array(ww['note'])
+
+          # --- Editions: work_wit.bib where type.id == "edition" ---
+          wit_editions = Array(ww['bib']).select { |b| b.dig('type', 'id') == 'edition' }
+
+          # Does this work have any expanded content?
+          has_details = alt_titles.any? || as_written.present? || sorted_creators.any? ||
+                        toc_entries.any? || excerpts.any? || wit_notes.any? || wit_editions.any?
+        %>
+
+        <!-- DATA SOURCE: <%= ww_data_path %> -->
+        <% if has_details %>
+          <%# --- Work with expandable details --- %>
+          <details class="work-accordion--sinai">
+            <summary class="work-accordion__summary--sinai">
+              <span class="work-accordion__title--sinai"><%= h(work_header) %></span>
+            </summary>
+
+            <div class="work-accordion__body--sinai">
+              <dl class="work-fields--sinai">
+
+                <%# --- Variant Title --- %>
+                <% if alt_titles.any? %>
+                  <!-- DATA SOURCE: <%= ww_data_path %>.alt_title -->
+                  <div class="work-field-row--sinai">
+                    <dt class="work-field-label--sinai">Variant Title</dt>
+                    <dd class="work-field-value--sinai">
+                      <%= safe_join(alt_titles.map { |t| h(t) }, tag.br) %>
+                    </dd>
+                  </div>
+                <% end %>
+
+                <%# --- As Written --- %>
+                <% if as_written.present? %>
+                  <!-- DATA SOURCE: <%= ww_data_path %>.as_written -->
+                  <div class="work-field-row--sinai">
+                    <dt class="work-field-label--sinai">As Written</dt>
+                    <dd class="work-field-value--sinai"><%= h(as_written) %></dd>
+                  </div>
+                <% end %>
+
+                <%# --- Contributor --- %>
+                <% if sorted_creators.any? %>
+                  <!-- DATA SOURCE: <%= ww_data_path %>.work.creator -->
+                  <div class="work-field-row--sinai">
+                    <dt class="work-field-label--sinai">Contributor</dt>
+                    <dd class="work-field-value--sinai">
+                      <% sorted_creators.each do |creator| %>
+                        <%
+                          cname = creator.dig('agent_record', 'pref_name').to_s.presence || creator['value'].to_s.presence || 'Unknown'
+                          crole = creator.dig('role', 'label').to_s.presence
+                          cline = crole ? "#{cname} (#{crole})" : cname
+                        %>
+                        <div><%= h(cline) %></div>
+                      <% end %>
+                    </dd>
+                  </div>
+                <% end %>
+
+                <%# --- Table of Contents --- %>
+                <% if toc_entries.any? %>
+                  <!-- DATA SOURCE: <%= ww_data_path %>.contents (count: <%= toc_entries.size %>) -->
+                  <div class="work-field-row--sinai">
+                    <dt class="work-field-label--sinai">Table of Contents</dt>
+                    <dd class="work-field-value--sinai">
+                      <div class="work-toc--sinai">
+                        <% toc_entries.each_with_index do |toc, toc_i| %>
+                          <%
+                            toc_label = toc['label'].to_s
+                            toc_locus = toc['locus'].to_s.presence
+                            toc_notes = Array(toc['note'])
+                            toc_line = toc_label
+                            toc_line = "#{toc_line}, #{toc_locus}" if toc_locus.present?
+                          %>
+                          <div class="work-toc-entry--sinai<%= ' work-toc-entry--hidden--sinai' if toc_i >= 3 %>">
+                            <div class="work-toc-entry__line--sinai"><%= h(toc_line) %></div>
+                            <% toc_notes.each do |tn| %>
+                              <div class="work-toc-entry__note--sinai"><%= h(tn.is_a?(Hash) ? tn['value'].to_s : tn.to_s) %></div>
+                            <% end %>
+                          </div>
+                        <% end %>
+                        <% if toc_entries.size > 3 %>
+                          <button type="button" class="work-show-more--sinai" data-target="toc">Show More</button>
+                        <% end %>
+                      </div>
+                    </dd>
+                  </div>
+                <% end %>
+
+                <%# --- Excerpts --- %>
+                <% if excerpts.any? %>
+                  <!-- DATA SOURCE: <%= ww_data_path %>.excerpt (count: <%= excerpts.size %>) -->
+                  <div class="work-field-row--sinai">
+                    <dt class="work-field-label--sinai">Excerpts</dt>
+                    <dd class="work-field-value--sinai">
+                      <% excerpts.each do |exc| %>
+                        <%
+                          exc_type = exc.dig('type', 'label').to_s
+                          exc_locus = exc['locus'].to_s.presence
+                          exc_as_written = exc['as_written'].to_s
+                          exc_translations = Array(exc['translation'])
+                          exc_notes = Array(exc['note'])
+
+                          # Build: "Type, locus: as_written"
+                          exc_header_parts = [exc_type]
+                          exc_header_parts << exc_locus if exc_locus.present?
+                          exc_header = exc_header_parts.join(', ')
+                        %>
+                        <div class="work-excerpt--sinai">
+                          <div class="work-excerpt__header--sinai">
+                            <% if exc_as_written.present? %>
+                              <%= h(exc_header) %>: <span class="work-excerpt__as-written--sinai"><%= h(exc_as_written) %></span>
+                            <% else %>
+                              <%= h(exc_header) %>
+                            <% end %>
+                          </div>
+                          <% exc_translations.each do |tr| %>
+                            <div class="work-excerpt__translation--sinai">Translation: <%= h(tr) %></div>
+                          <% end %>
+                          <% exc_notes.each do |en| %>
+                            <div class="work-excerpt__note--sinai"><%= h(en.is_a?(Hash) ? en['value'].to_s : en.to_s) %></div>
+                          <% end %>
+                        </div>
+                      <% end %>
+                    </dd>
+                  </div>
+                <% end %>
+
+                <%# --- Witness Notes --- %>
+                <% if wit_notes.any? %>
+                  <!-- DATA SOURCE: <%= ww_data_path %>.note -->
+                  <div class="work-field-row--sinai">
+                    <dt class="work-field-label--sinai">Witness Notes</dt>
+                    <dd class="work-field-value--sinai">
+                      <% wit_notes.each do |wn| %>
+                        <div><%= h(wn.is_a?(Hash) ? wn['value'].to_s : wn.to_s) %></div>
+                      <% end %>
+                    </dd>
+                  </div>
+                <% end %>
+
+                <%# --- Editions (work_wit level) --- %>
+                <% if wit_editions.any? %>
+                  <!-- DATA SOURCE: <%= ww_data_path %>.bib[type.id=edition] -->
+                  <div class="work-field-row--sinai">
+                    <dt class="work-field-label--sinai">Editions</dt>
+                    <dd class="work-field-value--sinai">
+                      <% wit_editions.each do |bib| %>
+                        <%
+                          bib_citation = bib['citation'].to_s
+                          bib_range = bib['range'].to_s.presence
+                          bib_notes = Array(bib['note'])
+                          bib_line = bib_citation
+                          bib_line = "#{bib_line}, #{bib_range}" if bib_range.present?
+                        %>
+                        <div class="work-edition--sinai">
+                          <div class="work-edition__citation--sinai"><%= h(bib_line) %></div>
+                          <% bib_notes.each do |bn| %>
+                            <div class="work-edition__note--sinai"><%= h(bn.is_a?(Hash) ? bn['value'].to_s : bn.to_s) %></div>
+                          <% end %>
+                        </div>
+                      <% end %>
+                    </dd>
+                  </div>
+                <% end %>
+
+              </dl>
+            </div>
+          </details>
+        <% else %>
+          <%# --- Work with no expandable details (title only) --- %>
+          <div class="work-accordion--sinai work-accordion--static--sinai">
+            <span class="work-accordion__title--sinai"><%= h(work_header) %></span>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%# ============================================================ %>
+  <%# RUBRICS, ETC.                                                %>
+  <%# Context: text_unit_record.para where para.type.id == "framing" %>
+  <%# ============================================================ %>
+  <%
+    rubric_paras = Array(rec['para']).select { |pa| pa.dig('type', 'id') == 'framing' }
+  %>
+  <% if rubric_paras.any? %>
+    <!-- DATA SOURCE: <%= data_path %>.text_unit_record.para[type.id=framing] (count: <%= rubric_paras.size %>) -->
+    <div class="works-section--sinai item-subsection--sinai">
+      <div class="works-section__label--sinai">Rubrics, Etc.</div>
+
+      <% rubric_paras.each_with_index do |pa, pa_i| %>
+        <%
+          pa_data_path = "#{data_path}.text_unit_record.para[#{pa_i}]"
+
+          # --- Header line: [label] or [subtype.label], [locus] ---
+          pa_label = pa['label'].to_s.presence || Array(pa['subtype']).first&.dig('label').to_s.presence
+          pa_locus = pa['locus'].to_s.presence
+          pa_header = [pa_label, pa_locus].compact.join(', ')
+          pa_header = "Rubric" if pa_header.blank?
+
+          # --- Language / Script ---
+          pa_langs = Array(pa['lang']).map { |l| l['label'] }.compact
+          pa_scripts = Array(pa['script']).map { |s| s['label'] }.compact
+
+          # --- As Written ---
+          pa_as_written = pa['as_written'].to_s
+
+          # --- Translation ---
+          pa_translations = Array(pa['translation'])
+
+          # --- Names/Dates/Places (pipe-separated, in order: name, place, date) ---
+          ndp_parts = []
+          Array(pa['assoc_name']).each do |an|
+            an_val = an['value'].to_s.presence || an.dig('agent_record', 'pref_name').to_s.presence
+            an_role = an.dig('role', 'label').to_s.presence
+            ndp_parts << (an_role ? "#{an_val} (#{an_role})" : an_val) if an_val.present?
+          end
+          Array(pa['assoc_place']).each do |ap|
+            ap_val = ap['value'].to_s.presence || ap.dig('place_record', 'pref_name').to_s.presence
+            ap_event = ap.dig('event', 'label').to_s.presence
+            ndup_parts_val = ap_event ? "#{ap_val} (#{ap_event})" : ap_val
+            ndup_parts_val = ndup_parts_val.to_s
+            ndp_parts << ndup_parts_val if ap_val.present?
+          end
+          Array(pa['assoc_date']).each do |ad|
+            ad_val = ad['value'].to_s.presence
+            ad_type = ad.dig('type', 'label').to_s.presence
+            ndp_parts << (ad_type ? "#{ad_val} (#{ad_type})" : ad_val) if ad_val.present?
+          end
+
+          # --- Notes ---
+          pa_notes = Array(pa['note'])
+
+          # Does this rubric have any expanded content?
+          has_rubric_details = pa_langs.any? || pa_scripts.any? || pa_as_written.present? ||
+                              pa_translations.any? || ndp_parts.any? || pa_notes.any?
+        %>
+
+        <!-- DATA SOURCE: <%= pa_data_path %> -->
+        <% if has_rubric_details %>
+          <details class="work-accordion--sinai">
+            <summary class="work-accordion__summary--sinai">
+              <span class="work-accordion__title--sinai"><%= h(pa_header) %></span>
+            </summary>
+
+            <div class="work-accordion__body--sinai">
+              <dl class="work-fields--sinai">
+
+                <%# --- Language / Script --- %>
+                <% if pa_langs.any? || pa_scripts.any? %>
+                  <!-- DATA SOURCE: <%= pa_data_path %>.lang, <%= pa_data_path %>.script -->
+                  <div class="work-field-row--sinai">
+                    <dt class="work-field-label--sinai">Language</dt>
+                    <dd class="work-field-value--sinai">
+                      <%
+                        lang_script_parts = []
+                        lang_script_parts << pa_langs.join(', ') if pa_langs.any?
+                        lang_script_parts << "Script: #{pa_scripts.join(', ')}" if pa_scripts.any?
+                      %>
+                      <%= h(lang_script_parts.join(' | ')) %>
+                    </dd>
+                  </div>
+                <% end %>
+
+                <%# --- As Written --- %>
+                <% if pa_as_written.present? %>
+                  <!-- DATA SOURCE: <%= pa_data_path %>.as_written -->
+                  <div class="work-field-row--sinai">
+                    <dt class="work-field-label--sinai">As Written</dt>
+                    <dd class="work-field-value--sinai"><%= h(pa_as_written) %></dd>
+                  </div>
+                <% end %>
+
+                <%# --- Translation --- %>
+                <% if pa_translations.any? %>
+                  <!-- DATA SOURCE: <%= pa_data_path %>.translation -->
+                  <div class="work-field-row--sinai">
+                    <dt class="work-field-label--sinai">Translation</dt>
+                    <dd class="work-field-value--sinai">
+                      <%= safe_join(pa_translations.map { |t| h(t) }, tag.br) %>
+                    </dd>
+                  </div>
+                <% end %>
+
+                <%# --- Names/Dates/Places --- %>
+                <% if ndp_parts.any? %>
+                  <!-- DATA SOURCE: <%= pa_data_path %>.assoc_name, .assoc_place, .assoc_date -->
+                  <div class="work-field-row--sinai">
+                    <dt class="work-field-label--sinai">Names/Dates</dt>
+                    <dd class="work-field-value--sinai">
+                      <%= h(ndp_parts.join(' | ')) %>
+                    </dd>
+                  </div>
+                <% end %>
+
+                <%# --- Notes --- %>
+                <% if pa_notes.any? %>
+                  <!-- DATA SOURCE: <%= pa_data_path %>.note -->
+                  <div class="work-field-row--sinai">
+                    <dt class="work-field-label--sinai">Notes</dt>
+                    <dd class="work-field-value--sinai">
+                      <% pa_notes.each do |pn| %>
+                        <div><%= h(pn.is_a?(Hash) ? pn['value'].to_s : pn.to_s) %></div>
+                      <% end %>
+                    </dd>
+                  </div>
+                <% end %>
+
+              </dl>
+            </div>
+          </details>
+        <% else %>
+          <%# --- Rubric with no expandable details (header only) --- %>
+          <div class="work-accordion--sinai work-accordion--static--sinai">
+            <span class="work-accordion__title--sinai"><%= h(pa_header) %></span>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%# ============================================================ %>
+  <%# ITEM NOTES                                                   %>
+  <%# ============================================================ %>
+  <% if item_notes.any? %>
+    <!-- DATA SOURCE: <%= data_path %>.text_unit_record.note = <%= item_notes.to_json %> -->
+    <details class="part-expandable--sinai item-subsection--sinai">
+      <summary class="part-expandable__summary--sinai">
+        <dt class="overview-dl__label--sinai part-expandable__label--sinai">Item Notes</dt>
+      </summary>
+      <dd class="overview-dl__value--sinai part-expandable__details--sinai">
+        <% item_notes.each do |note| %>
+          <div class="part-grouped-block--sinai">
+            <div class="part-grouped-block__line--sinai">
+              <% note_label = note.dig('type', 'label').to_s %>
+              <% note_value = note['value'].to_s %>
+              <% if note_label.present? %>
+                <strong><%= h(note_label) %>:</strong> <%= h(note_value) %>
+              <% else %>
+                <%= h(note_value) %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </dd>
+    </details>
+  <% end %>
+
+  <%# ============================================================ %>
+  <%# EDITIONS (text_unit level)                                   %>
+  <%# ============================================================ %>
+  <% if item_editions.any? %>
+    <!-- DATA SOURCE: <%= data_path %>.text_unit_record.bib[type.id=edition] = <%= item_editions.to_json %> -->
+    <details class="part-expandable--sinai item-subsection--sinai">
+      <summary class="part-expandable__summary--sinai">
+        <dt class="overview-dl__label--sinai part-expandable__label--sinai">Editions</dt>
+      </summary>
+      <dd class="overview-dl__value--sinai part-expandable__details--sinai">
+        <% item_editions.each do |bib| %>
+          <div class="part-grouped-block--sinai">
+            <%
+              citation = bib['citation'].to_s
+              range = bib['range'].to_s.presence
+              bib_notes = Array(bib['note'])
+              line = citation
+              line = "#{line}, #{range}" if range.present?
+            %>
+            <div class="part-grouped-block__line--sinai"><%= h(line) %></div>
+            <% bib_notes.each do |bnote| %>
+              <div class="part-grouped-block__note--sinai"><%= h(bnote.is_a?(Hash) ? bnote['value'].to_s : bnote.to_s) %></div>
+            <% end %>
+          </div>
+        <% end %>
+      </dd>
+    </details>
+  <% end %>
+
+</div>
