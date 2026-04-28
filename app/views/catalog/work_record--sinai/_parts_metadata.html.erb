@@ -13,36 +13,64 @@
     part_support_notes = Array(part['note']).select { |n| n.dig('type', 'id') == 'support' }
     part_collation_notes = Array(part['note']).select { |n| n.dig('type', 'id') == 'collation' }
 
-    # === Extract ot_layer data (first ot_layer for origin/scribe/writing/ink/layout) ===
+    # === Extract ot_layer data (first ot_layer for scribe/writing/ink/layout) ===
     ot_layers = Array(part['ot_layer'])
     first_lr = ot_layers.first&.dig('layer_record') || {}
 
-    # Origin: assoc_date where type.id=origin + assoc_place where event.id=origin
-    origin_dates = Array(first_lr['assoc_date']).select { |d| d.dig('type', 'id') == 'origin' }
-    origin_places = Array(first_lr['assoc_place']).select { |p| p.dig('event', 'id') == 'origin' }
+    # Origin: collect from part, all ot_layer.layer_record, and ot_layer.layer_record.para
+    # Filter dates by type.id=origin; places by event.id=origin
     part_origins = []
     part_origins_debug = []
-    if origin_dates.any?
-      origin_dates.each_with_index do |date, di|
-        place = origin_places[di] || origin_places.first
-        line = date['value'].to_s
-        if place
-          place_name = place.dig('place_record', 'pref_name').to_s
-          line = "#{line} ; #{place_name}" if place_name.present?
+    first_origin_date = nil
+
+    collect_part_origins = ->(dates, places, debug_prefix) {
+      origin_dates  = Array(dates).select  { |d| d.dig('type',  'id') == 'origin' }
+      origin_places = Array(places).select { |p| p.dig('event', 'id') == 'origin' }
+
+      if origin_dates.any?
+        origin_dates.each_with_index do |date, di|
+          place      = origin_places[di] || origin_places.first
+          date_val   = date['value'].to_s
+          place_val  = place ? (place['value'].to_s.presence || place.dig('place_record', 'pref_name').to_s) : ''
+          line = if date_val.present? && place_val.present?
+                   "#{date_val} ; #{place_val}"
+                 else
+                   date_val.presence || place_val
+                 end
+          if line.present?
+            part_origins << line
+            first_origin_date ||= date_val if date_val.present?
+            part_origins_debug << "#{debug_prefix}.assoc_date[#{di}] = #{date.to_json}"
+            part_origins_debug << "#{debug_prefix}.assoc_place = #{(place || {}).to_json}" if place
+          end
         end
-        part_origins << line
-        part_origins_debug << "ms_obj.part[#{part_idx}].ot_layer[0].layer_record.assoc_date[#{di}] = #{date.to_json}"
-        part_origins_debug << "ms_obj.part[#{part_idx}].ot_layer[0].layer_record.assoc_place = #{(place || {}).to_json}" if place
+      elsif origin_places.any?
+        origin_places.each_with_index do |p, pli|
+          val = p['value'].to_s.presence || p.dig('place_record', 'pref_name').to_s
+          next if val.blank?
+          part_origins << val
+          part_origins_debug << "#{debug_prefix}.assoc_place[#{pli}] = #{p.to_json}"
+        end
       end
-    elsif origin_places.any?
-      origin_places.each_with_index do |p, pi|
-        part_origins << p.dig('place_record', 'pref_name').to_s
-        part_origins_debug << "ms_obj.part[#{part_idx}].ot_layer[0].layer_record.assoc_place[#{pi}] = #{p.to_json}"
+    }
+
+    collect_part_origins.call(part['assoc_date'], part['assoc_place'], "ms_obj.part[#{part_idx}]")
+
+    ot_layers.each_with_index do |ot_layer, layer_idx|
+      lr = ot_layer['layer_record'] || {}
+      collect_part_origins.call(lr['assoc_date'], lr['assoc_place'],
+                                "ms_obj.part[#{part_idx}].ot_layer[#{layer_idx}].layer_record")
+
+      Array(lr['para']).each_with_index do |pa, pai|
+        collect_part_origins.call(pa['assoc_date'], pa['assoc_place'],
+                                  "ms_obj.part[#{part_idx}].ot_layer[#{layer_idx}].layer_record.para[#{pai}]")
       end
     end
 
+    part_origins = part_origins.uniq
+
     # Header date: first origin date value for the section header
-    header_date = origin_dates.first&.dig('value').to_s
+    header_date = first_origin_date.to_s
 
     # Scribe: assoc_name where role.id=scribe
     scribes = Array(first_lr['assoc_name']).select { |n| n.dig('role', 'id') == 'scribe' }
@@ -76,7 +104,7 @@
       header_parts << "(#{header_date})" if header_date.present?
       header_suffix = part_locus.present? ? ", #{part_locus}" : ""
     %>
-    <!-- DATA SOURCE: ms_obj.part[<%= part_idx %>].label = <%= part_label.to_json %>, ms_obj.part[<%= part_idx %>].locus = <%= part_locus.to_json %>, header_date from ms_obj.part[<%= part_idx %>].ot_layer[0].layer_record.assoc_date -->
+    <!-- DATA SOURCE: ms_obj.part[<%= part_idx %>].label = <%= part_label.to_json %>, ms_obj.part[<%= part_idx %>].locus = <%= part_locus.to_json %>, header_date from first origin date in part / ot_layer / para -->
     <h3 class="part-heading--sinai"><%= header_parts.join(' ') %><%= header_suffix %></h3>
 
     <%# === Summary === %>

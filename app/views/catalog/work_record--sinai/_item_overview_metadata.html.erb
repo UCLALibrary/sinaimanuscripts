@@ -21,35 +21,58 @@
   end
   json_scripts = json_scripts.uniq
 
-  # Origin: walk part > ot_layer > layer_record > assoc_date/assoc_place where type.id=origin / event.id=origin
+  # Origin: collect from ms_obj, part, ot_layer.layer_record, and ot_layer.layer_record.para
+  # Filter dates by type.id=origin; places by event.id=origin
   json_origins = []
   json_origins_debug = []
+
+  collect_origins = ->(dates, places, debug_prefix) {
+    origin_dates  = Array(dates).select  { |d| d.dig('type',  'id') == 'origin' }
+    origin_places = Array(places).select { |p| p.dig('event', 'id') == 'origin' }
+
+    if origin_dates.any?
+      origin_dates.each_with_index do |date, di|
+        place      = origin_places[di] || origin_places.first
+        date_val   = date['value'].to_s
+        place_val  = place ? (place['value'].to_s.presence || place.dig('place_record', 'pref_name').to_s) : ''
+        line = if date_val.present? && place_val.present?
+                 "#{date_val} ; #{place_val}"
+               else
+                 date_val.presence || place_val
+               end
+        if line.present?
+          json_origins << line
+          json_origins_debug << "#{debug_prefix}.assoc_date[#{di}] = #{date.to_json}"
+          json_origins_debug << "#{debug_prefix}.assoc_place = #{(place || {}).to_json}" if place
+        end
+      end
+    elsif origin_places.any?
+      origin_places.each_with_index do |p, pli|
+        val = p['value'].to_s.presence || p.dig('place_record', 'pref_name').to_s
+        next if val.blank?
+        json_origins << val
+        json_origins_debug << "#{debug_prefix}.assoc_place[#{pli}] = #{p.to_json}"
+      end
+    end
+  }
+
+  collect_origins.call(ms_json['assoc_date'], ms_json['assoc_place'], 'ms_obj')
+
   Array(ms_json['part']).each_with_index do |part, pi|
+    collect_origins.call(part['assoc_date'], part['assoc_place'], "ms_obj.part[#{pi}]")
+
     Array(part['ot_layer']).each_with_index do |layer, li|
       lr = layer['layer_record'] || {}
-      dates = Array(lr['assoc_date']).select { |d| d.dig('type', 'id') == 'origin' }
-      places = Array(lr['assoc_place']).select { |p| p.dig('event', 'id') == 'origin' }
+      collect_origins.call(lr['assoc_date'], lr['assoc_place'],
+                           "ms_obj.part[#{pi}].ot_layer[#{li}].layer_record")
 
-      if dates.any?
-        dates.each_with_index do |date, di|
-          place = places[di] || places.first
-          line = date['value'].to_s
-          if place
-            place_name = place.dig('place_record', 'pref_name').to_s
-            line = "#{line} ; #{place_name}" if place_name.present?
-          end
-          json_origins << line
-          json_origins_debug << "ms_obj.part[#{pi}].ot_layer[#{li}].layer_record.assoc_date[#{di}] = #{date.to_json}"
-          json_origins_debug << "ms_obj.part[#{pi}].ot_layer[#{li}].layer_record.assoc_place = #{(place || {}).to_json}" if place
-        end
-      elsif places.any?
-        places.each_with_index do |p, pli|
-          json_origins << p.dig('place_record', 'pref_name').to_s
-          json_origins_debug << "ms_obj.part[#{pi}].ot_layer[#{li}].layer_record.assoc_place[#{pli}] = #{p.to_json}"
-        end
+      Array(lr['para']).each_with_index do |pa, pai|
+        collect_origins.call(pa['assoc_date'], pa['assoc_place'],
+                             "ms_obj.part[#{pi}].ot_layer[#{li}].layer_record.para[#{pai}]")
       end
     end
   end
+
   json_origins = json_origins.uniq
 
   # Extent: combine extent, dim, weight
