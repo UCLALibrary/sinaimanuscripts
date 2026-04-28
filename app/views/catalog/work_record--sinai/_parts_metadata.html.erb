@@ -54,9 +54,7 @@
     all_scripts = []
     writings.each do |w|
       Array(w['script']).each do |s|
-        pair = s['label'].to_s
-        pair = "#{pair} (#{s['writing_system']})" if s['writing_system'].present?
-        all_scripts << pair
+        all_scripts << s['label'].to_s if s['label'].present?
       end
     end
     all_scripts = all_scripts.uniq
@@ -163,7 +161,7 @@
       <% if all_scripts.any? %>
         <!-- DATA SOURCE: ms_obj.part[<%= part_idx %>].ot_layer[0].layer_record.writing = <%= writings.to_json %> -->
         <% expandable_writings = writings.reject { |w| w['locus'].to_s.blank? && Array(w['note']).empty? } %>
-        <% writing_summary = all_scripts.join('; ') %>
+        <% writing_summary = "Scripts: " + all_scripts.join(' | ') %>
         <div class="overview-dl__row--sinai">
           <% if expandable_writings.any? %>
             <details class="part-expandable--sinai">
@@ -213,7 +211,7 @@
       <% if all_colors.any? %>
         <!-- DATA SOURCE: ms_obj.part[<%= part_idx %>].ot_layer[0].layer_record.ink = <%= inks.to_json %> -->
         <% expandable_inks = inks.reject { |i| i['locus'].to_s.blank? && Array(i['note']).empty? } %>
-        <% ink_summary = all_colors.join(', ') %>
+        <% ink_summary = "Color: " + all_colors.join(', ') %>
         <div class="overview-dl__row--sinai">
           <% if expandable_inks.any? %>
             <details class="part-expandable--sinai">
