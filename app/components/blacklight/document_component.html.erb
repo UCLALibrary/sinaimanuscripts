@@ -1,12 +1,12 @@
 <%= content_tag @component,
-  id: @id,
-  data: {
-    'document-id': @document.id.to_s.parameterize,
-    'document-counter': @counter,
-  },
-  itemscope: true,
-  itemtype: @document.itemtype,
-  class: classes.flatten.join(' ') do %>
+                id: @id,
+                data: {
+                  'document-id': @document.id.to_s.parameterize,
+                  'document-counter': @counter
+                },
+                itemscope: true,
+                itemtype: @document.itemtype,
+                class: classes.flatten.join(' ') do %>
   <% modal_id = "exampleModalCenter" + @document[:id].gsub(/[^a-z\d]/, '') %>
   <%= header %>
 

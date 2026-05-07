@@ -16,7 +16,7 @@
   <% end %>
 
   <%= render 'search_results_header' %>
-  <%= render partial: 'search_header',  locals: { pagination_only: false } %>
+  <%= render partial: 'search_header', locals: { pagination_only: false } %>
 
   <h2 class="sr-only visually-hidden"><%= t('blacklight.search.search_results') %></h2>
 
@@ -30,7 +30,7 @@
 
   <% if show_pagination? and @response.total_pages > 1 %>
     <div class="pagination-block pagination-block--sinai">
-      <%= paginate @response, left: 2, right: 3, :theme => 'blacklight'%>
+      <%= paginate @response, left: 2, right: 3, theme: 'blacklight' %>
     </div>
   <% end %>
 </div>

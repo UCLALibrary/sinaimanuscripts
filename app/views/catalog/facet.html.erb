@@ -2,7 +2,7 @@
 <%= render Blacklight::System::ModalComponent.new do |component| %>
   <% component.with_prefix do %>
     <div class="facet-pagination top row justify-content-between">
-      <%= render :partial=>'facet_pagination' %>
+      <%= render partial: 'facet_pagination' %>
     </div>
   <% end %>
 
@@ -30,7 +30,7 @@
 
   <% component.with_footer do %>
     <div class="facet-pagination bottom flex-row justify-content-between">
-      <%= render :partial=>'facet_pagination' %>
+      <%= render partial: 'facet_pagination' %>
     </div>
   <% end %>
 <% end %>

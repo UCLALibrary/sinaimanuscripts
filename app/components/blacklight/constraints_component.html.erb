@@ -1,5 +1,5 @@
 <div class="searchbar--sinai"><%= search_bar %></div>
-<%  if show_constraints? %>
+<% if show_constraints? %>
   <%= content_tag @tag || :div, id: @id, class: @classes do %>
     <% if @render_headers %>
       <h2 class="sr-only visually-hidden"><%= t('blacklight.search.search_constraints_header') %></h2>
