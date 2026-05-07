@@ -18,9 +18,9 @@ class BaseMetadataPresenter
   def fields_to_render_by_keys(keys)
     result = {}
     @document.fields_to_render
-              .each do |field_name, field_config, _field_presenter|
-                result[field_name] = field_config if keys.include?(field_name)
-              end
+             .each do |field_name, field_config, _field_presenter|
+      result[field_name] = field_config if keys.include?(field_name)
+    end
     result
   end
 end

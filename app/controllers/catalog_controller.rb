@@ -107,7 +107,7 @@ class CatalogController < ApplicationController
     # SINAI
     config.add_facet_field 'genre_sim', sort: 'index'
     config.add_facet_field 'year_isim', range: {
-      assumed_boundaries: [0, Time.now.year],
+      assumed_boundaries: [0, Time.zone.now.year]
     }
     config.add_facet_field 'human_readable_language_sim', sort: 'index'
     config.add_facet_field 'writing_system_sim', sort: 'index', label: 'Writing system'

@@ -55,8 +55,8 @@ module Blacklight
 
     private
 
-    def presenter
-      @presenter ||= helpers.document_presenter(@document)
-    end
+      def presenter
+        @presenter ||= helpers.document_presenter(@document)
+      end
   end
 end

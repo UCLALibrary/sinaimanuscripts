@@ -16,7 +16,7 @@ module Blacklight
       end
 
       def render?
-        search_context.present? || search_session.present? || has_header_tools?
+        search_context.present? || search_session.present? || header_tools?
       end
 
       def applied_params_component
@@ -31,12 +31,12 @@ module Blacklight
         blacklight_config.track_search_session.item_pagination_component.new(search_context: search_context, search_session: search_session, current_document: document)
       end
 
-      def has_header_tools?
+      def header_tools?
         header_actions.any? || show_header_tools_component
       end
 
       def pagination_container_classes
-        has_header_tools? ? 'col-12 col-md-6 ms-auto' : ''
+        header_tools? ? 'col-12 col-md-6 ms-auto' : ''
       end
 
       def header_container_classes
@@ -44,7 +44,7 @@ module Blacklight
       end
 
       def header_actions
-        actions = helpers.filter_partials(blacklight_config.view_config(:show).header_actions, { document: document })
+        actions = helpers.filter_partials(blacklight_config.view_config(:show).header_actions, document: document)
         actions.map { |_k, v| v }
       end
 
@@ -74,7 +74,7 @@ module Blacklight
       end
 
       def render_header_tools
-        return unless has_header_tools?
+        return unless header_tools?
 
         return render show_header_tools_component.new(document: document) if show_header_tools_component
 

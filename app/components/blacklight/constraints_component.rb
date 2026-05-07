@@ -81,42 +81,42 @@ module Blacklight
 
     private
 
-    def label
-      search_field = @search_state.params[:search_field]
-      helpers.label_for_search_field(search_field) unless helpers.default_search_field?(search_field)
-    end
+      def label
+        search_field = @search_state.params[:search_field]
+        helpers.label_for_search_field(search_field) unless helpers.default_search_field?(search_field)
+      end
 
-    def facet_item_presenters
-      return to_enum(:facet_item_presenters) unless block_given?
+      def facet_item_presenters
+        return to_enum(:facet_item_presenters) unless block_given?
 
-      @search_state.filters.map do |facet|
-        facet.each_value do |val|
-          next if val.blank?
+        @search_state.filters.map do |facet|
+          facet.each_value do |val|
+            next if val.blank?
 
-          if val.is_a?(Array)
-            yield inclusive_facet_item_presenter(facet.config, val, facet.key) if val.any?(&:present?)
-          else
-            yield facet_item_presenter(facet.config, val, facet.key)
+            if val.is_a?(Array)
+              yield inclusive_facet_item_presenter(facet.config, val, facet.key) if val.any?(&:present?)
+            else
+              yield facet_item_presenter(facet.config, val, facet.key)
+            end
           end
         end
       end
-    end
 
-    def clause_presenters
-      return to_enum(:clause_presenters) unless block_given?
+      def clause_presenters
+        return to_enum(:clause_presenters) unless block_given?
 
-      @search_state.clause_params.each do |key, clause|
-        field_config = helpers.blacklight_config.search_fields[clause[:field]]
-        yield Blacklight::ClausePresenter.new(key, clause, field_config, helpers)
+        @search_state.clause_params.each do |key, clause|
+          field_config = helpers.blacklight_config.search_fields[clause[:field]]
+          yield Blacklight::ClausePresenter.new(key, clause, field_config, helpers)
+        end
       end
-    end
 
-    def facet_item_presenter(facet_config, facet_item, facet_field)
-      facet_config.item_presenter.new(facet_item, facet_config, helpers, facet_field)
-    end
+      def facet_item_presenter(facet_config, facet_item, facet_field)
+        facet_config.item_presenter.new(facet_item, facet_config, helpers, facet_field)
+      end
 
-    def inclusive_facet_item_presenter(facet_config, facet_item, facet_field)
-      Blacklight::InclusiveFacetItemPresenter.new(facet_item, facet_config, helpers, facet_field)
-    end
+      def inclusive_facet_item_presenter(facet_config, facet_item, facet_field)
+        Blacklight::InclusiveFacetItemPresenter.new(facet_item, facet_config, helpers, facet_field)
+      end
   end
 end

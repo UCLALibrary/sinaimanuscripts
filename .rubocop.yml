@@ -51,6 +51,8 @@ Metrics/CyclomaticComplexity:
     - app/helpers/blacklight/blacklight_helper_behavior.rb
     - app/models/solr_document.rb
     - app/services/iiif_service.rb
+    - app/components/blacklight/document_component.rb
+    - app/components/blacklight/document_title_component.rb
 
 Metrics/LineLength:
   Exclude:
@@ -61,6 +63,7 @@ Metrics/LineLength:
     - app/importers/actor_record_importer.rb
     - app/controllers/catalog_controller.rb
     - app/helpers/blacklight_helper.rb
+    - app/components/blacklight/metadata_field_layout_component.rb
 
 
 Metrics/MethodLength:
@@ -72,6 +75,7 @@ Metrics/MethodLength:
     - app/helpers/blacklight/url_helper_behavior.rb
     - app/controllers/catalog_controller.rb
     - app/services/iiif_service.rb
+    - app/components/blacklight/document_component.rb
 
 Metrics/PerceivedComplexity:
   Exclude:
@@ -79,6 +83,7 @@ Metrics/PerceivedComplexity:
     - app/helpers/blacklight/blacklight_helper_behavior.rb
     - app/models/solr_document.rb
     - app/services/iiif_service.rb
+    - app/components/blacklight/document_component.rb
 
 Performance/RegexpMatch:
   Exclude:
@@ -117,6 +122,7 @@ Rails/OutputSafety:
     - app/helpers/blacklight/url_helper_behavior.rb
     - app/helpers/blacklight_helper.rb
     - app/processors/custom_join.rb
+    - app/components/blacklight/constraints_component.rb
 
 Style/BlockComments:
   Exclude:

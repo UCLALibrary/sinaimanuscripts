@@ -26,7 +26,7 @@ RSpec.describe Ursus::PhysicalDescriptionMetadataPresenter do
     )
   end
   let(:solr_doc_missing_items) do
-    doc_double_with_fields_to_render( 'extent_tesim' => 'Extent' )
+    doc_double_with_fields_to_render('extent_tesim' => 'Extent')
   end
   let(:presenter_object) { described_class.new(document: solr_doc) }
   let(:presenter_object_missing_items) { described_class.new(document: solr_doc_missing_items) }
