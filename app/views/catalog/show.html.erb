@@ -1,4 +1,4 @@
-<% if @document[:has_model_ssim][0] == 'Collection' %>
+<% if @document[:has_model_ssim].to_a[0] == 'Collection' %>
   <% @page_title = t('blacklight.search.show.title', document_title: document_presenter(@document).html_title, application_name: application_name).html_safe %>
  <%= render 'catalog/collection_record/collection_record', document: @document %>
 <% else %>

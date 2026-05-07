@@ -125,11 +125,10 @@ RSpec.describe CatalogController, type: :controller do
     before do
       allow(controller).to receive(:enforce_show_permissions).and_return(true)
       allow(controller).to receive(:search_service).and_return(search_service)
-      allow(search_service).to receive(:fetch).and_return([mock_response, mock_document])
+      allow(search_service).to receive(:fetch).and_return(mock_document)
     end
     let(:doc_id) { 'ark:/123/abc' }
-    let(:mock_response) { instance_double(Blacklight::Solr::Response) }
-    let(:mock_document) { instance_double(SolrDocument, export_formats: {}) }
+    let(:mock_document) { SolrDocument.new(id: doc_id) }
     let(:search_service) { instance_double(Blacklight::SearchService) }
 
     it "Renders a blank SolrDocument (meaning missing fields don\'t cause errors)" do
