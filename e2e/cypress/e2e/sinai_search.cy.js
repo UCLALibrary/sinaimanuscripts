@@ -19,12 +19,12 @@ describe('Sinai Search', () => {
   });
 
   it('Search Found', () => {
-    cy.clearCookie('sinai_authenticated');
-    cy.setCookie('sinai_authenticated', 'true')
+    cy.clearCookie('sinai_authenticated_1year');
+    cy.setCookie('sinai_authenticated_1year', 'true')
     cy.get('input.search-q').type('manuscript');
     cy.get('[id=search]').click();
     cy.get('.search-count__heading').contains('Catalog Results');
-    cy.get('.document-position-0 > .document__list-item-wrapper > .document__gallery-thumbnail > a > img').click();
+    cy.get('.document-position-1 .document__gallery-thumbnail--sinai a').first().click();
     cy.contains('h2', 'Item Overview');
   });
 
@@ -51,7 +51,7 @@ describe('Sinai Search', () => {
   // <a data-turbolinks="false" href="#facet-script_sim">Script</a>
   it('Search Facet are visbile', () => {
     cy.get('[id=search]').click();
-    cy.get('a[href="#facet-script_sim"]').click();
+    cy.get('[data-target="#facet-script_sim"]').click();
     cy.contains('a', 'Estrangela').click({ force: true });;
     cy.get('[title="Estrangela"]', { timeout: 100000 });
   });
