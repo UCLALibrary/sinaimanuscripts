@@ -14,7 +14,18 @@
       "mcp__playwright__browser_navigate",
       "mcp__playwright__browser_evaluate",
       "mcp__playwright__browser_snapshot",
-      "mcp__playwright__browser_take_screenshot"
+      "mcp__playwright__browser_take_screenshot",
+      "Bash(curl -s \"http://localhost:3004/?q=tedesc&search_field=all_fields\" -o /dev/null -w \"HTTP %{http_code}\\\\n\")",
+      "Bash(curl -s \"http://localhost:8983/solr/sinaiportal/select?q=id:tedesc01&fl=id,shelfmark_ssi&wt=json\")",
+      "Bash(curl -s \"http://localhost:8983/solr/admin/cores?wt=json\")",
+      "Bash(curl -s \"http://localhost:8983/solr/ursus/select?q=id:tedesc01&fl=id,shelfmark_ssi,manuscript_json_ts&wt=json\")",
+      "Bash(curl -s 'http://localhost:8983/solr/ursus/select?fl=id,shelfmark_ssi&rows=5&wt=json' --data-urlencode 'q=manuscript_json_tesim:\"\\\\\"id\\\\\": \\\\\"binding\\\\\"\"')",
+      "Bash(curl -s 'http://localhost:8983/solr/ursus/select?fl=id,shelfmark_ssi&rows=5&wt=json' --data-urlencode 'q=manuscript_json_tesim:provenance')",
+      "Bash(curl -s 'http://localhost:8983/solr/ursus/select?q=id:%22ark:/21198/z1j691kc%22&fl=*&wt=json')",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); doc=d['response']['docs'][0]; print\\('\\\\n'.join\\(sorted\\([k for k in doc.keys\\(\\) if 'note' in k.lower\\(\\) or 'json' in k.lower\\(\\)]\\)\\)\\)\")",
+      "Bash(python3 -c ' *)",
+      "Bash(curl -s 'http://localhost:8983/solr/ursus/select?fl=id,manuscript_json_ts&rows=1141&wt=json')",
+      "Bash(curl -s 'http://localhost:8983/solr/ursus/select?fl=id,shelfmark_ssi,manuscript_json_ts&rows=1141&wt=json')"
     ]
   }
 }

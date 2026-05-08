@@ -703,6 +703,32 @@
   }
 }
 
+// Notes on the Manuscript section (Full Description tab)
+.notes-on-manuscript-section--sinai {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid $sinai-secondary-dk;
+}
+
+.notes-on-manuscript__row--sinai {
+  padding: 0.75rem 0;
+
+  // Reuses .overview-dl__label--sinai for typography but neutralises the
+  // 150px flex-basis it inherits from the side-by-side row pattern.
+  > .overview-dl__label--sinai {
+    flex: none;
+    margin-bottom: 0.25rem;
+  }
+}
+
+.notes-on-manuscript__value--sinai {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: $sinai-black;
+  line-height: 1.5;
+}
+
 // Undertexts tab
 .undertexts-section--sinai {
   margin-top: 1rem;

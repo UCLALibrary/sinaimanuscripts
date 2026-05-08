@@ -1,4 +1,13 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" 'http://localhost:3004/catalog/ark%3A%2F21198%2Ftetst01')",
+      "mcp__playwright__browser_close",
+      "Bash(pkill -f \"ms-playwright/mcp-chrome\")",
+      "Bash(docker-compose exec *)",
+      "Bash(docker compose *)"
+    ]
+  },
   "hooks": {
     "PreToolUse": [
       {

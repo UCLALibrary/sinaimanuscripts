@@ -1,0 +1,43 @@
+<%# === Notes on the Manuscript section (Full Description tab) === %>
+<%# Flattens typed notes from ms_obj, parts, ot_layers, and guest_layers,    %>
+<%# then groups by note type.id. Text-unit-level notes are excluded — those  %>
+<%# render in the Item section.                                              %>
+<% ms_json = begin JSON.parse(document['manuscript_json_ts'] || '{}') rescue {} end %>
+
+<%
+  collected = []
+  collected.concat Array(ms_json['note'])
+  Array(ms_json['part']).each do |part|
+    collected.concat Array(part['note'])
+    Array(part['ot_layer']).each    { |l| collected.concat Array(l.dig('layer_record', 'note')) }
+    Array(part['guest_layer']).each { |l| collected.concat Array(l.dig('layer_record', 'note')) }
+  end
+  Array(ms_json['guest_layer']).each { |l| collected.concat Array(l.dig('layer_record', 'note')) }
+
+  general_excluded = %w[binding ornamentation provenance foliation collation condition]
+  groups = [
+    ['Binding',       collected.select { |n| n.dig('type', 'id') == 'binding' }],
+    ['Ornamentation', collected.select { |n| n.dig('type', 'id') == 'ornamentation' }],
+    ['Provenance',    collected.select { |n| n.dig('type', 'id') == 'provenance' }],
+    ['Condition',     collected.select { |n| n.dig('type', 'id') == 'condition' }],
+    ['General Notes', collected.reject { |n| general_excluded.include?(n.dig('type', 'id')) }]
+  ].reject { |_, notes| notes.empty? }
+%>
+
+<% if groups.any? %>
+  <section class="notes-on-manuscript-section--sinai">
+    <h2 class="overview-heading--sinai">Notes on the Manuscript</h2>
+    <dl class="overview-dl--sinai">
+      <% groups.each do |label, notes| %>
+        <div class="notes-on-manuscript__row--sinai">
+          <dt class="overview-dl__label--sinai"><%= label %></dt>
+          <dd class="notes-on-manuscript__value--sinai">
+            <% notes.each do |n| %>
+              <div class="part-grouped-block__line--sinai"><%= h(n['value']) %></div>
+            <% end %>
+          </dd>
+        </div>
+      <% end %>
+    </dl>
+  </section>
+<% end %>
