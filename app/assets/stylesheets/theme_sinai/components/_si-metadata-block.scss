@@ -878,3 +878,28 @@
     margin-bottom: 0.25rem;
   }
 }
+
+// References & Bibliography tab
+.references-bibliography-section--sinai {
+  margin-top: 1rem;
+}
+
+.references-bibliography__link--sinai {
+  white-space: nowrap;
+}
+
+.references-bibliography__icon--sinai {
+  width: 0.85em;
+  height: 0.85em;
+  margin-left: 0.3em;
+  vertical-align: -0.05em;
+  display: inline-block;
+}
+
+.references-bibliography__note--indented--sinai {
+  padding-left: 1.5rem;
+}
+
+.references-bibliography__row-label--mixedcase--sinai {
+  text-transform: none;
+}

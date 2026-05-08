@@ -1,0 +1,161 @@
+<%# === References & Bibliography Tab === %>
+<%# All values pulled from the manuscript_json_ts blob.                                       %>
+<%# Sections are rendered in Figma order; each is omitted when its source data is empty.       %>
+<%# bib[] is sliced by type.id: ref, cite, edition, otherdigversion.                           %>
+
+<% ms_json_refs = begin JSON.parse(document['manuscript_json_ts'] || '{}') rescue {} end %>
+
+<%
+  bib_entries      = Array(ms_json_refs['bib'])
+  refs             = bib_entries.select { |b| b.dig('type', 'id') == 'ref' }
+  citations        = bib_entries.select { |b| b.dig('type', 'id') == 'cite' }
+  editions         = bib_entries.select { |b| b.dig('type', 'id') == 'edition' }
+  other_versions   = bib_entries.select { |b| b.dig('type', 'id') == 'otherdigversion' }
+  iiif_entries     = Array(ms_json_refs['iiif'])
+  viscodex_entries = Array(ms_json_refs['viscodex'])
+
+  ark_value  = ms_json_refs['ark'].to_s
+  shelfmark  = ms_json_refs['shelfmark'].to_s
+  ark_seg    = ark_value.split('/').last.to_s
+  data_portal_url = ark_seg.present? ? "https://sinaiportal.library.ucla.edu/manuscripts/#{ark_seg}" : nil
+
+  format_bib_line = ->(b) {
+    [b['shortcode'], b['alt_shelf'], b['range']].map { |v| v.to_s.strip }.reject(&:empty?).join(', ')
+  }
+%>
+
+<section class="references-bibliography-section--sinai">
+  <h2 class="overview-heading--sinai">References &amp; Bibliography</h2>
+
+  <dl class="related-mss-group__dl--sinai">
+
+    <% if refs.any? %>
+      <div class="related-mss-group__row--sinai">
+        <dt class="related-mss-group__row-label--sinai">References</dt>
+        <dd class="related-mss-group__row-value--sinai">
+          <% refs.each do |b| %>
+            <% line = format_bib_line.call(b) %>
+            <% if line.present? %>
+              <div class="related-mss-group__line--sinai"><%= line %></div>
+            <% end %>
+            <% Array(b['note']).each do |n| %>
+              <div class="related-mss-group__line--sinai references-bibliography__note--indented--sinai"><%= n %></div>
+            <% end %>
+          <% end %>
+        </dd>
+      </div>
+    <% end %>
+
+    <% if citations.any? %>
+      <div class="related-mss-group__row--sinai">
+        <dt class="related-mss-group__row-label--sinai">Citations</dt>
+        <dd class="related-mss-group__row-value--sinai">
+          <% citations.each do |b| %>
+            <% line = format_bib_line.call(b) %>
+            <% if line.present? %>
+              <div class="related-mss-group__line--sinai"><%= line %></div>
+            <% end %>
+            <% Array(b['note']).each do |n| %>
+              <div class="related-mss-group__line--sinai"><%= n %></div>
+            <% end %>
+          <% end %>
+        </dd>
+      </div>
+    <% end %>
+
+    <% if editions.any? %>
+      <div class="related-mss-group__row--sinai">
+        <dt class="related-mss-group__row-label--sinai">Editions</dt>
+        <dd class="related-mss-group__row-value--sinai">
+          <% editions.each do |b| %>
+            <% line = format_bib_line.call(b) %>
+            <% if line.present? %>
+              <div class="related-mss-group__line--sinai"><%= line %></div>
+            <% end %>
+            <% Array(b['note']).each do |n| %>
+              <div class="related-mss-group__line--sinai"><%= n %></div>
+            <% end %>
+          <% end %>
+        </dd>
+      </div>
+    <% end %>
+
+    <% if ark_value.present? %>
+      <div class="related-mss-group__row--sinai">
+        <dt class="related-mss-group__row-label--sinai">Item ARK</dt>
+        <dd class="related-mss-group__row-value--sinai">
+          <div class="related-mss-group__line--sinai"><%= ark_value %></div>
+        </dd>
+      </div>
+    <% end %>
+
+    <% if data_portal_url && shelfmark.present? %>
+      <div class="related-mss-group__row--sinai">
+        <dt class="related-mss-group__row-label--sinai">Data Portal</dt>
+        <dd class="related-mss-group__row-value--sinai">
+          <div class="related-mss-group__line--sinai">
+            <%= link_to data_portal_url, target: '_blank', rel: 'noopener', class: 'references-bibliography__link--sinai' do %>
+              <%= shelfmark %><svg class="references-bibliography__icon--sinai" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M9 2h5v5M14 2L7 9M12 9.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3.5"/></svg>
+            <% end %>
+          </div>
+        </dd>
+      </div>
+    <% end %>
+
+    <% if other_versions.any? %>
+      <div class="related-mss-group__row--sinai">
+        <dt class="related-mss-group__row-label--sinai">Other Versions</dt>
+        <dd class="related-mss-group__row-value--sinai">
+          <% other_versions.each do |b| %>
+            <% link_label = format_bib_line.call(b).presence || b['shortcode'].to_s %>
+            <% if link_label.present? && b['url'].present? %>
+              <div class="related-mss-group__line--sinai">
+                <%= link_to b['url'], target: '_blank', rel: 'noopener', class: 'references-bibliography__link--sinai' do %>
+                  <%= link_label %><svg class="references-bibliography__icon--sinai" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M9 2h5v5M14 2L7 9M12 9.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3.5"/></svg>
+                <% end %>
+              </div>
+            <% elsif link_label.present? %>
+              <div class="related-mss-group__line--sinai"><%= link_label %></div>
+            <% end %>
+            <% Array(b['note']).each do |n| %>
+              <div class="related-mss-group__line--sinai"><%= n %></div>
+            <% end %>
+          <% end %>
+        </dd>
+      </div>
+    <% end %>
+
+    <% if iiif_entries.any? { |i| i['manifest'].present? && i['label'].present? } %>
+      <div class="related-mss-group__row--sinai">
+        <dt class="related-mss-group__row-label--sinai">IIIF Manifests</dt>
+        <dd class="related-mss-group__row-value--sinai">
+          <% iiif_entries.each do |i| %>
+            <% next unless i['manifest'].present? && i['label'].present? %>
+            <div class="related-mss-group__line--sinai">
+              <%= link_to i['manifest'], target: '_blank', rel: 'noopener', class: 'references-bibliography__link--sinai' do %>
+                <%= i['label'] %><svg class="references-bibliography__icon--sinai" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M9 2h5v5M14 2L7 9M12 9.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3.5"/></svg>
+              <% end %>
+            </div>
+          <% end %>
+        </dd>
+      </div>
+    <% end %>
+
+    <% if viscodex_entries.any? { |v| v['url'].present? && v['label'].present? } %>
+      <div class="related-mss-group__row--sinai">
+        <dt class="related-mss-group__row-label--sinai references-bibliography__row-label--mixedcase--sinai">VisCodex</dt>
+        <dd class="related-mss-group__row-value--sinai">
+          <% viscodex_entries.each do |v| %>
+            <% next unless v['url'].present? && v['label'].present? %>
+            <div class="related-mss-group__line--sinai">
+              <%= link_to v['url'], target: '_blank', rel: 'noopener', class: 'references-bibliography__link--sinai' do %>
+                <%= v['label'] %><svg class="references-bibliography__icon--sinai" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M9 2h5v5M14 2L7 9M12 9.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3.5"/></svg>
+              <% end %>
+            </div>
+          <% end %>
+        </dd>
+      </div>
+    <% end %>
+
+  </dl>
+</section>
