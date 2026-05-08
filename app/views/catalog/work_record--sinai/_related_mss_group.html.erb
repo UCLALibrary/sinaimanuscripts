@@ -1,0 +1,36 @@
+<%# Renders one related_mss[] entry — used by both Disjecta Membra and  %>
+<%# Filiation sections since their structure is identical.               %>
+<%# Locals: entry (Hash from related_mss[])                              %>
+
+<% mss = Array(entry['mss']) %>
+<% notes = Array(entry['note']) %>
+
+<div class="related-mss-group--sinai">
+  <% if entry['label'].present? %>
+    <h3 class="related-mss-group__label--sinai"><%= h(entry['label']) %></h3>
+  <% end %>
+
+  <dl class="related-mss-group__dl--sinai">
+    <% if mss.any? %>
+      <div class="related-mss-group__row--sinai">
+        <dt class="related-mss-group__row-label--sinai">Manuscripts</dt>
+        <dd class="related-mss-group__row-value--sinai">
+          <% mss.each do |m| %>
+            <div class="related-mss-group__line--sinai"><%= render_related_mss_link(m) %></div>
+          <% end %>
+        </dd>
+      </div>
+    <% end %>
+
+    <% if notes.any? %>
+      <div class="related-mss-group__row--sinai">
+        <dt class="related-mss-group__row-label--sinai">Notes</dt>
+        <dd class="related-mss-group__row-value--sinai">
+          <% notes.each do |n| %>
+            <div class="related-mss-group__line--sinai"><%= h(n) %></div>
+          <% end %>
+        </dd>
+      </div>
+    <% end %>
+  </dl>
+</div>

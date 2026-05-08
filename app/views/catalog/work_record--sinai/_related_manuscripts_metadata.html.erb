@@ -1,0 +1,79 @@
+<%# === Related Manuscripts Tab === %>
+<%# Three optional sections: Disjecta Membra, Filiation, Reconstructions. %>
+<%# Each is rendered only when it has data.                               %>
+
+<% ms_json_rel = begin JSON.parse(document['manuscript_json_ts'] || '{}') rescue {} end %>
+
+<%
+  related      = Array(ms_json_rel['related_mss'])
+  disjecta     = related.select { |r| r.dig('type', 'id') == 'disjecta' }
+  filiation    = related.select { |r| r.dig('type', 'id') == 'filiation' }
+  recon_from   = Array(ms_json_rel['reconstructed_from'])
+  this_ark     = ms_json_rel['ark'].to_s
+  included_in  = manuscripts_including_in_reconstruction(this_ark)
+  has_recon    = recon_from.any? || included_in.any?
+%>
+
+<% if disjecta.any? || filiation.any? || has_recon %>
+  <div class="related-manuscripts-section--sinai">
+
+    <% if disjecta.any? %>
+      <section class="related-mss-section--sinai">
+        <h2 class="overview-heading--sinai">Disjecta Membra</h2>
+        <% disjecta.each do |entry| %>
+          <%= render 'catalog/work_record--sinai/related_mss_group', entry: entry %>
+        <% end %>
+      </section>
+    <% end %>
+
+    <% if filiation.any? %>
+      <section class="related-mss-section--sinai">
+        <h2 class="overview-heading--sinai">Filiation</h2>
+        <% filiation.each do |entry| %>
+          <%= render 'catalog/work_record--sinai/related_mss_group', entry: entry %>
+        <% end %>
+      </section>
+    <% end %>
+
+    <% if has_recon %>
+      <section class="related-mss-section--sinai">
+        <h2 class="overview-heading--sinai">Reconstructions</h2>
+
+        <% if recon_from.any? %>
+          <div class="related-mss-group--sinai">
+            <h3 class="related-mss-group__label--sinai">Reconstructed from</h3>
+            <dl class="related-mss-group__dl--sinai">
+              <div class="related-mss-group__row--sinai">
+                <dt class="related-mss-group__row-label--sinai">Manuscripts</dt>
+                <dd class="related-mss-group__row-value--sinai">
+                  <% recon_from.each do |ark| %>
+                    <div class="related-mss-group__line--sinai"><%= render_reconstructed_from_link(ark) %></div>
+                  <% end %>
+                </dd>
+              </div>
+            </dl>
+          </div>
+        <% end %>
+
+        <% if included_in.any? %>
+          <div class="related-mss-group--sinai">
+            <h3 class="related-mss-group__label--sinai">Included in the following manuscript reconstructions</h3>
+            <dl class="related-mss-group__dl--sinai">
+              <div class="related-mss-group__row--sinai">
+                <dt class="related-mss-group__row-label--sinai">Manuscripts</dt>
+                <dd class="related-mss-group__row-value--sinai">
+                  <% included_in.each do |rec| %>
+                    <div class="related-mss-group__line--sinai">
+                      <%= link_to rec[:shelfmark], solr_document_path(rec[:id]) %>
+                    </div>
+                  <% end %>
+                </dd>
+              </div>
+            </dl>
+          </div>
+        <% end %>
+      </section>
+    <% end %>
+
+  </div>
+<% end %>

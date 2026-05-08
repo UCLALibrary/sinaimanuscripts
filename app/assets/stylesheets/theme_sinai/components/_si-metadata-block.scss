@@ -785,3 +785,96 @@
     padding: 0.1rem 0;
   }
 }
+
+// Related Manuscripts tab
+.related-manuscripts-section--sinai {
+  margin-top: 1rem;
+}
+
+.related-mss-section--sinai {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid $sinai-secondary-dk;
+
+  &:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+}
+
+.related-mss-group--sinai {
+  margin-top: 1.75rem;
+  padding-left: 1.5rem;
+
+  &:first-of-type {
+    margin-top: 0.75rem;
+  }
+}
+
+.related-mss-group__label--sinai {
+  color: $sinai-black;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0 0 0.75rem;
+}
+
+.related-mss-group__dl--sinai {
+  margin: 0;
+  padding: 0;
+}
+
+.related-mss-group__row--sinai {
+  display: flex;
+  padding: 0.6rem 0;
+  padding-left: 0.5rem;
+  align-items: flex-start;
+}
+
+.related-mss-group__row-label--sinai {
+  flex: 0 0 150px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: $sinai-black;
+  letter-spacing: 0.03em;
+  padding-top: 2px;
+}
+
+.related-mss-group__row-value--sinai {
+  flex: 1;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: $sinai-black;
+  margin: 0;
+  line-height: 1.6;
+
+  a {
+    color: $sinai-primary;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:visited {
+      color: $sinai-primary-lt;
+    }
+  }
+}
+
+.related-mss-group__line--sinai {
+  padding: 0.25rem 0;
+}
+
+@media (max-width: 576px) {
+  .related-mss-group__row--sinai {
+    flex-direction: column;
+  }
+
+  .related-mss-group__row-label--sinai {
+    flex: none;
+    margin-bottom: 0.25rem;
+  }
+}

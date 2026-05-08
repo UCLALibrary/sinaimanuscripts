@@ -6,12 +6,20 @@
   has_undertexts = Array(ms_json_tabs['uto']).any? ||
                    Array(ms_json_tabs['part']).any? { |p| Array(p['uto']).any? }
 
+  related_mss_tabs    = Array(ms_json_tabs['related_mss'])
+  has_disjecta_tab    = related_mss_tabs.any? { |r| r.dig('type', 'id') == 'disjecta' }
+  has_filiation_tab   = related_mss_tabs.any? { |r| r.dig('type', 'id') == 'filiation' }
+  has_recon_from_tab  = Array(ms_json_tabs['reconstructed_from']).any?
+  has_included_in_tab = manuscripts_including_in_reconstruction(ms_json_tabs['ark'].to_s).any?
+  has_related_manuscripts = has_disjecta_tab || has_filiation_tab ||
+                            has_recon_from_tab || has_included_in_tab
+
   tab_definitions = [
     { id: 'full-description',        label: 'Full Description',          present: true },
     { id: 'contents',                 label: 'Contents',                   present: true },
     { id: 'undertexts',               label: 'Undertexts',                 present: has_undertexts },
     { id: 'guest-content',            label: 'Guest Content',              present: true },
-    { id: 'related-manuscripts',      label: 'Related Manuscripts',        present: true },
+    { id: 'related-manuscripts',      label: 'Related Manuscripts',        present: has_related_manuscripts },
     { id: 'references-bibliography',  label: 'References & Bibliography',  present: true },
     { id: 'names-dates-places',       label: 'Names, Dates, Places',       present: true },
     { id: 'rights-credits',           label: 'Rights & Credits',           present: true }
@@ -83,6 +91,8 @@
     <div role="tabpanel" id="panel-<%= tab[:id] %>" aria-labelledby="tab-<%= tab[:id] %>" class="tab-panel--sinai">
       <% if tab[:id] == 'undertexts' %>
         <%= render 'catalog/work_record--sinai/undertexts_metadata', document: document %>
+      <% elsif tab[:id] == 'related-manuscripts' %>
+        <%= render 'catalog/work_record--sinai/related_manuscripts_metadata', document: document %>
       <% else %>
         <h2 class="overview-heading--sinai"><%= tab[:label] %></h2>
       <% end %>
