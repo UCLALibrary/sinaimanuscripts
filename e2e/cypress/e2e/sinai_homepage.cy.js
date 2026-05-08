@@ -7,13 +7,11 @@ describe('Sinai Homepage', () => {
   });
 
   it('Visit the Sinai Homepage', () => {
-    cy.percySnapshot();
   });
 
   it('Sinai Manuscripts Digital Library Logo', () => {
     cy.get('.site-navbar__logo-block--sinai');
     cy.viewport(1440, 900)
-    cy.percySnapshot();
   });
 
   it('Search Component', () => {
@@ -39,7 +37,6 @@ describe('Sinai Homepage', () => {
     cy.visit(Cypress.env('SINAI_BASE_URL') + '/about');
     cy.url().should('include', '/about');
     cy.contains('h1', 'About the Project');
-    cy.percySnapshot();
   });
 
   // Footer Primary - Logos

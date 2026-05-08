@@ -10,31 +10,35 @@ jobs:
   rubocop:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@b818bea8cf015031920150a891dbdd4105cc7e47
-        with:
-          ruby-version: "2.5"
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - uses: actions/checkout@v6
+      # - name: Login to DockerHub
+      #   uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9 # v1.10.0
+      #   with:
+      #     username: ${{ secrets.DOCKERHUB_USERNAME }}
+      #     password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: rubocop
-        run: bundle exec rubocop
+        run: docker compose run sinai bundle exec rubocop
+      - name: Stop docker services
+        run: docker compose down
 
   erblint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@b818bea8cf015031920150a891dbdd4105cc7e47
-        with:
-          ruby-version: "2.5"
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - uses: actions/checkout@v6
+      # - name: Login to DockerHub
+      #   uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9 # v1.10.0
+      #   with:
+      #     username: ${{ secrets.DOCKERHUB_USERNAME }}
+      #     password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: erblint
-        run: bundle exec erblint --lint-all
+        run: docker compose run sinai bundle exec bundle exec erblint --lint-all
+      - name: Stop docker services
+        run: docker compose down
 
   stylelint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
+      - uses: actions/checkout@v6
       - uses: actions/setup-node@46071b5c7a2e0c34e49c3cb8a0e792e86e18d5ea
       - run: yarn install --frozen-lockfile
       - run: yarn run lint
@@ -42,7 +46,7 @@ jobs:
   rspec:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
+      - uses: actions/checkout@v6
       - name: Login to DockerHub
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9 # v1.10.0
         with:
@@ -77,11 +81,12 @@ jobs:
           docker compose run sinai bundle exec rails db:setup
           docker compose ps
       - uses: cypress-io/github-action@v5.7.2
+        # NOTE: we've closed our Percy account. I think we're probably okay without visual tests for now, but we might want to look into whatever replacement we used in Ursus
         with:
-          command-prefix: "percy exec -- npx"
+          # command-prefix: "percy exec -- npx"
           working-directory: e2e
         env:
-          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          # PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
           ELECTRON_EXTRA_LAUNCH_ARGS: --remote-debugging-port=9222
       - name: Run Chromatic
         working-directory: e2e

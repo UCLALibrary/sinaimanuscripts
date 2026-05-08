@@ -45,7 +45,7 @@
   .facets-toggleable-md .navbar-toggler {
     display: block;
   }
-  
+
   .facets__svg-icon--sinai {
     stroke: $sinai-primary;
     stroke-width: 0.05rem;
@@ -61,12 +61,6 @@
 .facet-field__heading--sinai {
   font-weight: 300;
 
-  a,
-  a:active,
-  a:visited {
-    color: $black;
-  }
-
   a:hover {
     text-decoration: underline;
     color: $sinai-black;
@@ -76,13 +70,6 @@
     background-color: $white;
     border: unset;
     border-radius: 0;
-
-    a,
-    a:active,
-    a:visited,
-    a:hover {
-      color: $black;
-    }
   }
 }
 

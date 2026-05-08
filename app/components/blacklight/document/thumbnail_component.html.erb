@@ -1,0 +1,18 @@
+<% value = if use_thumbnail_tag_behavior?
+             gallery_class = @gallery_view ? 'document__gallery-item-thumbnail-link--sinai' : ''
+             presenter.thumbnail.thumbnail_tag(
+               @image_options,
+               'aria-hidden': true, tabindex: -1, counter: @counter, class: gallery_class
+             )
+           else
+             presenter.thumbnail.render(@image_options)
+           end %>
+
+<% if value %>
+  <% if use_thumbnail_tag_behavior? %>
+    <% warn_about_deprecated_behavior %>
+    <%= value %>
+  <% else %>
+    <%= helpers.link_to_document(presenter.document, value, 'aria-hidden': true, tabindex: -1, counter: @counter) %>
+  <% end %>
+<% end %>
