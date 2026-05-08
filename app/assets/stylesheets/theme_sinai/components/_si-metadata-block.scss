@@ -509,7 +509,16 @@
 }
 
 .work-accordion--static--sinai {
+  display: flex;
+  align-items: flex-start;
   padding: 0.35rem 0;
+
+  &::before {
+    content: '';
+    margin-right: 0.5rem;
+    width: 0.75rem;
+    flex-shrink: 0;
+  }
 }
 
 .work-accordion__title--sinai {

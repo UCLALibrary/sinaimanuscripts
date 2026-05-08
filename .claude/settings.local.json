@@ -9,7 +9,12 @@
       "Read(//Users/ayem/.local/bin/**)",
       "Bash(pip show:*)",
       "Bash(pip3 show:*)",
-      "Bash(python3 -c \"import feed_ursus; print\\(feed_ursus.__file__\\)\")"
+      "Bash(python3 -c \"import feed_ursus; print\\(feed_ursus.__file__\\)\")",
+      "mcp__playwright__browser_resize",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_evaluate",
+      "mcp__playwright__browser_snapshot",
+      "mcp__playwright__browser_take_screenshot"
     ]
   }
 }
