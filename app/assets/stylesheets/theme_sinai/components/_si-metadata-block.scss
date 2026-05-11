@@ -903,3 +903,30 @@
 .references-bibliography__row-label--mixedcase--sinai {
   text-transform: none;
 }
+
+// Rights & Credits tab
+.rights-credits--sinai {
+  margin-top: 1rem;
+}
+
+// Match the 24px H2 -> first-child gap that Full Description gets from
+// `.secondary-metadata_container--sinai { margin-top: 24px }`. Applies whether
+// the first child is a paragraph (Usage and Rights / Description) or an image-
+// program wrapper (Images). Scoped to this tab so Full Description is untouched.
+.rights-credits--sinai .overview-heading--sinai + * {
+  margin-top: 1.5rem;
+}
+
+.rights-credits__image-program--sinai {
+  & + & {
+    margin-top: 2rem;
+  }
+}
+
+.rights-credits__image-program-label--sinai {
+  color: $sinai-black;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}

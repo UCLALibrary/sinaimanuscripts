@@ -105,6 +105,8 @@
         <%= render 'catalog/work_record--sinai/related_manuscripts_metadata', document: document %>
       <% elsif tab[:id] == 'references-bibliography' %>
         <%= render 'catalog/work_record--sinai/references_and_bibliography_metadata', document: document %>
+      <% elsif tab[:id] == 'rights-credits' %>
+        <%= render 'catalog/work_record--sinai/rights_and_credits_metadata', document: document %>
       <% else %>
         <h2 class="overview-heading--sinai"><%= tab[:label] %></h2>
       <% end %>

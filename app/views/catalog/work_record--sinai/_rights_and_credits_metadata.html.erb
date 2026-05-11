@@ -1,0 +1,170 @@
+<%# === Rights & Credits Tab === %>
+<%# All values pulled from the manuscript_json_ts blob.                                  %>
+<%# Sections render in Figma order; each is suppressed when its source data is empty.    %>
+
+<% ms_json = begin JSON.parse(document['manuscript_json_ts'] || '{}') rescue {} end %>
+
+<%
+  desc_provenance  = ms_json['desc_provenance'].is_a?(Hash) ? ms_json['desc_provenance'] : {}
+  image_provenance = ms_json['image_provenance'].is_a?(Hash) ? ms_json['image_provenance'] : {}
+
+  desc_rights      = desc_provenance['rights'].to_s.strip
+  image_rights     = image_provenance['rights'].to_s.strip
+
+  desc_programs    = Array(desc_provenance['program']).select { |p| p.is_a?(Hash) }
+  image_programs   = Array(image_provenance['program']).select { |p| p.is_a?(Hash) }
+
+  cataloguers       = Array(ms_json['cataloguer']).select { |c| c.is_a?(Hash) }
+  contributor_names = cataloguers.flat_map { |c| Array(c['contributor']) }
+                                 .map { |n| n.to_s.strip }
+                                 .reject(&:empty?)
+                                 .uniq
+  timestamps        = cataloguers.map { |c| c['timestamp'].to_s }.reject(&:empty?)
+  most_recent_ts    = timestamps.max_by { |t| (Time.parse(t) rescue Time.at(0)) }
+  last_modified     = if most_recent_ts
+                        (Date.parse(most_recent_ts).strftime('%Y-%m-%d') rescue nil)
+                      end
+
+  has_description_section = desc_programs.any? || contributor_names.any? || last_modified.present?
+%>
+
+<div class="rights-credits--sinai">
+
+  <%# === Usage and Rights === %>
+  <% if desc_rights.present? || image_rights.present? %>
+    <section class="related-mss-section--sinai">
+      <h2 class="overview-heading--sinai">Usage and Rights</h2>
+      <% if desc_rights.present? %>
+        <!-- DATA SOURCE: ms_obj.desc_provenance.rights -->
+        <p class="overview-summary--sinai"><%= desc_rights.html_safe %></p>
+      <% end %>
+      <% if image_rights.present? %>
+        <!-- DATA SOURCE: ms_obj.image_provenance.rights -->
+        <p class="overview-summary--sinai"><%= image_rights.html_safe %></p>
+      <% end %>
+    </section>
+  <% end %>
+
+  <%# === Description === %>
+  <% if has_description_section %>
+    <section class="related-mss-section--sinai">
+      <h2 class="overview-heading--sinai">Description</h2>
+      <% desc_programs.each do |prog| %>
+        <% if prog['description'].to_s.strip.present? %>
+          <!-- DATA SOURCE: ms_obj.desc_provenance.program[].description -->
+          <p class="overview-summary--sinai"><%= prog['description'].to_s.strip.html_safe %></p>
+        <% end %>
+      <% end %>
+      <% if contributor_names.any? || last_modified.present? %>
+        <dl class="related-mss-group__dl--sinai">
+          <% if contributor_names.any? %>
+            <div class="related-mss-group__row--sinai">
+              <dt class="related-mss-group__row-label--sinai">Contributors</dt>
+              <dd class="related-mss-group__row-value--sinai">
+                <% contributor_names.each do |name| %>
+                  <div class="related-mss-group__line--sinai"><%= name %></div>
+                <% end %>
+              </dd>
+            </div>
+          <% end %>
+          <% if last_modified.present? %>
+            <div class="related-mss-group__row--sinai">
+              <dt class="related-mss-group__row-label--sinai">Last Modified</dt>
+              <dd class="related-mss-group__row-value--sinai">
+                <div class="related-mss-group__line--sinai"><%= last_modified %></div>
+              </dd>
+            </div>
+          <% end %>
+        </dl>
+      <% end %>
+    </section>
+  <% end %>
+
+  <%# === Images === %>
+  <% if image_programs.any? %>
+    <section class="related-mss-section--sinai">
+      <h2 class="overview-heading--sinai">Images</h2>
+      <% image_programs.each do |prog| %>
+        <%
+          prog_label        = prog['label'].to_s.strip
+          prog_description  = prog['description'].to_s.strip
+          imaging_date      = prog['imaging_date'].to_s.strip
+          scientists        = Array(prog['scientist']).map { |s| s.to_s.strip }.reject(&:empty?)
+          camera_operators  = Array(prog['camera_operator']).map { |s| s.to_s.strip }.reject(&:empty?)
+          imaging_system    = prog['imaging_system'].to_s.strip
+          msi_processing    = Array(prog['msi_processing']).map { |s| s.to_s.strip }.reject(&:empty?)
+          notes             = Array(prog['note']).map { |s| s.to_s.strip }.reject(&:empty?)
+
+          has_program_rows  = imaging_date.present? || scientists.any? || camera_operators.any? ||
+                              imaging_system.present? || msi_processing.any? || notes.any?
+        %>
+
+        <div class="rights-credits__image-program--sinai">
+          <% if prog_label.present? %>
+            <h3 class="rights-credits__image-program-label--sinai"><%= prog_label %></h3>
+          <% end %>
+          <% if prog_description.present? %>
+            <!-- DATA SOURCE: ms_obj.image_provenance.program[].description -->
+            <p class="overview-summary--sinai"><%= prog_description.html_safe %></p>
+          <% end %>
+
+          <% if has_program_rows %>
+            <dl class="related-mss-group__dl--sinai">
+              <% if imaging_date.present? %>
+                <div class="related-mss-group__row--sinai">
+                  <dt class="related-mss-group__row-label--sinai">Imaging Date</dt>
+                  <dd class="related-mss-group__row-value--sinai">
+                    <div class="related-mss-group__line--sinai"><%= imaging_date %></div>
+                  </dd>
+                </div>
+              <% end %>
+              <% if scientists.any? %>
+                <div class="related-mss-group__row--sinai">
+                  <dt class="related-mss-group__row-label--sinai">Imaging Scientists</dt>
+                  <dd class="related-mss-group__row-value--sinai">
+                    <div class="related-mss-group__line--sinai"><%= scientists.join(', ') %></div>
+                  </dd>
+                </div>
+              <% end %>
+              <% if camera_operators.any? %>
+                <div class="related-mss-group__row--sinai">
+                  <dt class="related-mss-group__row-label--sinai">Camera Operators</dt>
+                  <dd class="related-mss-group__row-value--sinai">
+                    <div class="related-mss-group__line--sinai"><%= camera_operators.join(', ') %></div>
+                  </dd>
+                </div>
+              <% end %>
+              <% if imaging_system.present? %>
+                <div class="related-mss-group__row--sinai">
+                  <dt class="related-mss-group__row-label--sinai">Imaging Systems</dt>
+                  <dd class="related-mss-group__row-value--sinai">
+                    <div class="related-mss-group__line--sinai"><%= imaging_system %></div>
+                  </dd>
+                </div>
+              <% end %>
+              <% if msi_processing.any? %>
+                <div class="related-mss-group__row--sinai">
+                  <dt class="related-mss-group__row-label--sinai">MSI Processing</dt>
+                  <dd class="related-mss-group__row-value--sinai">
+                    <div class="related-mss-group__line--sinai"><%= msi_processing.join(', ') %></div>
+                  </dd>
+                </div>
+              <% end %>
+              <% if notes.any? %>
+                <div class="related-mss-group__row--sinai">
+                  <dt class="related-mss-group__row-label--sinai">Notes</dt>
+                  <dd class="related-mss-group__row-value--sinai">
+                    <% notes.each do |n| %>
+                      <div class="related-mss-group__line--sinai"><%= n %></div>
+                    <% end %>
+                  </dd>
+                </div>
+              <% end %>
+            </dl>
+          <% end %>
+        </div>
+      <% end %>
+    </section>
+  <% end %>
+
+</div>
