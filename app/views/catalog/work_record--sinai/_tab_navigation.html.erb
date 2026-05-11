@@ -56,39 +56,49 @@
 <div class="tab-panels--sinai">
   <%# Full Description — content from current Overview sidebar %>
   <div role="tabpanel" id="panel-full-description" aria-labelledby="tab-full-description" class="tab-panel--sinai tab-panel--active">
-    <h2 class="overview-heading--sinai">Overview</h2>
-    <div class="secondary-metadata_container--sinai">
-      <% ms_json_nav = begin JSON.parse(document['manuscript_json_ts'] || '{}') rescue {} end %>
-      <% if ms_json_nav['summary'].present? %>
-        <!-- DATA SOURCE: ms_obj.summary = <%= ms_json_nav['summary'].to_json %> -->
-        <p class="overview-summary--sinai"><%= ms_json_nav['summary'] %></p>
-      <% end %>
-      <%= render 'catalog/work_record--sinai/item_overview_metadata', document: document %>
-      <%= render 'catalog/work_record--sinai/keyword_metadata', document: document %>
+    <div class="tab-panel-grid--sinai">
+      <div class="tab-panel-grid__main--sinai">
+        <h2 id="section-overview" class="overview-heading--sinai">Overview</h2>
+        <div class="secondary-metadata_container--sinai">
+          <% ms_json_nav = begin JSON.parse(document['manuscript_json_ts'] || '{}') rescue {} end %>
+          <% if ms_json_nav['summary'].present? %>
+            <!-- DATA SOURCE: ms_obj.summary = <%= ms_json_nav['summary'].to_json %> -->
+            <p class="overview-summary--sinai"><%= ms_json_nav['summary'] %></p>
+          <% end %>
+          <%= render 'catalog/work_record--sinai/item_overview_metadata', document: document %>
+          <%= render 'catalog/work_record--sinai/keyword_metadata', document: document %>
 
-      <%# === Parts Section === %>
-      <%= render 'catalog/work_record--sinai/parts_metadata', document: document %>
+          <%# === Parts Section === %>
+          <%= render 'catalog/work_record--sinai/parts_metadata', document: document %>
 
-      <%# === Items / Contents Section === %>
-      <%= render 'catalog/work_record--sinai/items_metadata', document: document %>
+          <%# === Items / Contents Section === %>
+          <%= render 'catalog/work_record--sinai/items_metadata', document: document %>
 
-      <%# === Paracontents Section === %>
-      <%= render 'catalog/work_record--sinai/paracontents_metadata', document: document %>
+          <%# === Paracontents Section === %>
+          <%= render 'catalog/work_record--sinai/paracontents_metadata', document: document %>
 
-      <%# === Notes on the Manuscript Section === %>
-      <%= render 'catalog/work_record--sinai/notes_on_manuscript_metadata', document: document %>
+          <%# === Notes on the Manuscript Section === %>
+          <%= render 'catalog/work_record--sinai/notes_on_manuscript_metadata', document: document %>
 
-      <%# === Full JSON debug viewer === %>
-      <details class="overview-json-debug--sinai">
-        <summary>View raw manuscript JSON data</summary>
-        <pre><%= JSON.pretty_generate(ms_json_nav) %></pre>
-      </details>
+          <%# === Full JSON debug viewer === %>
+          <details class="overview-json-debug--sinai">
+            <summary>View raw manuscript JSON data</summary>
+            <pre><%= JSON.pretty_generate(ms_json_nav) %></pre>
+          </details>
+        </div>
+      </div>
+      <div class="tab-panel-grid__rail--sinai">
+        <%= render 'catalog/work_record--sinai/right_rail',
+                   document: document,
+                   entries: full_description_nav_entries(document) %>
+      </div>
     </div>
   </div>
 
-  <%# Placeholder tabs %>
+  <%# Other tabs: capture content into a buffer, parse for headings to build
+      the nav server-side, then emit the augmented HTML with the rail. %>
   <% tab_definitions.drop(1).each do |tab| %>
-    <div role="tabpanel" id="panel-<%= tab[:id] %>" aria-labelledby="tab-<%= tab[:id] %>" class="tab-panel--sinai">
+    <% panel_html = capture do %>
       <% if tab[:id] == 'undertexts' %>
         <%= render 'catalog/work_record--sinai/undertexts_metadata', document: document %>
       <% elsif tab[:id] == 'related-manuscripts' %>
@@ -98,6 +108,19 @@
       <% else %>
         <h2 class="overview-heading--sinai"><%= tab[:label] %></h2>
       <% end %>
+    <% end %>
+    <% panel_entries, panel_html_with_ids = extract_nav_entries_from_html(panel_html.to_s) %>
+    <div role="tabpanel" id="panel-<%= tab[:id] %>" aria-labelledby="tab-<%= tab[:id] %>" class="tab-panel--sinai">
+      <div class="tab-panel-grid--sinai">
+        <div class="tab-panel-grid__main--sinai">
+          <%= panel_html_with_ids.html_safe %>
+        </div>
+        <div class="tab-panel-grid__rail--sinai">
+          <%= render 'catalog/work_record--sinai/right_rail',
+                     document: document,
+                     entries: panel_entries %>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>

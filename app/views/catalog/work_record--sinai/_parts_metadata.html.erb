@@ -105,7 +105,7 @@
       header_suffix = part_locus.present? ? ", #{part_locus}" : ""
     %>
     <!-- DATA SOURCE: ms_obj.part[<%= part_idx %>].label = <%= part_label.to_json %>, ms_obj.part[<%= part_idx %>].locus = <%= part_locus.to_json %>, header_date from first origin date in part / ot_layer / para -->
-    <h3 class="part-heading--sinai"><%= header_parts.join(' ') %><%= header_suffix %></h3>
+    <h3 id="section-part-<%= part_idx %>" class="part-heading--sinai"><%= header_parts.join(' ') %><%= header_suffix %></h3>
 
     <%# === Summary === %>
     <% if part_summary.present? %>

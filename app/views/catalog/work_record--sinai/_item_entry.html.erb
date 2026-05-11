@@ -30,7 +30,7 @@
   <%# ITEM HEADER                                                  %>
   <%# ============================================================ %>
   <!-- DATA SOURCE: <%= data_path %>.locus = <%= tu_locus.to_s.to_json %>, <%= data_path %>.text_unit_record.lang = <%= Array(rec['lang']).to_json %> -->
-  <h3 class="item-heading--sinai"><%= h(header) %></h3>
+  <h3 id="section-part-<%= item_data[:part_idx] %>-item-<%= item_num %>" class="item-heading--sinai"><%= h(header) %></h3>
 
   <%# === Summary === %>
   <% if item_summary.present? %>
@@ -91,9 +91,10 @@
         %>
 
         <!-- DATA SOURCE: <%= ww_data_path %> -->
+        <% work_anchor_id = "section-part-#{item_data[:part_idx]}-item-#{item_num}-work-#{wi}" %>
         <% if has_details %>
           <%# --- Work with expandable details --- %>
-          <details class="work-accordion--sinai">
+          <details id="<%= work_anchor_id %>" class="work-accordion--sinai">
             <summary class="work-accordion__summary--sinai">
               <span class="work-accordion__title--sinai"><%= h(work_header) %></span>
             </summary>
@@ -251,7 +252,7 @@
           </details>
         <% else %>
           <%# --- Work with no expandable details (title only) --- %>
-          <div class="work-accordion--sinai work-accordion--static--sinai">
+          <div id="<%= work_anchor_id %>" class="work-accordion--sinai work-accordion--static--sinai">
             <span class="work-accordion__title--sinai"><%= h(work_header) %></span>
           </div>
         <% end %>

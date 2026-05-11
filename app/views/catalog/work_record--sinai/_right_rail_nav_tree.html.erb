@@ -1,0 +1,21 @@
+<%# Recursive nav-tree partial.
+    Locals:
+      entries — Array of { id:, label:, children: }
+      depth   — Integer (root call passes 0) %>
+<% depth_local = local_assigns.fetch(:depth, 0) %>
+<ul class="right-rail__nav-list--sinai<%= ' right-rail__nav-list--sub--sinai' if depth_local > 0 %>"<%= ' data-right-rail-nav-list'.html_safe if depth_local == 0 %>>
+  <% entries.each do |entry| %>
+    <li class="right-rail__nav-item--sinai right-rail__nav-item--lvl-<%= depth_local + 1 %>--sinai">
+      <a href="#<%= entry[:id] %>"
+         class="right-rail__nav-link--sinai right-rail__nav-link--lvl-<%= depth_local + 1 %>--sinai"
+         data-right-rail-link="<%= entry[:id] %>">
+        <%= entry[:label] %>
+      </a>
+      <% if entry[:children].present? %>
+        <%= render 'catalog/work_record--sinai/right_rail_nav_tree',
+                   entries: entry[:children],
+                   depth: depth_local + 1 %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

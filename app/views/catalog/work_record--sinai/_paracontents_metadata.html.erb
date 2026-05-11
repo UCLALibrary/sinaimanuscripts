@@ -42,7 +42,7 @@
 
 <% if provenance_paras.any? || supplementary_paras.any? %>
   <div class="items-section--sinai">
-    <h2 class="overview-heading--sinai">Paracontents</h2>
+    <h2 id="section-paracontents" class="overview-heading--sinai">Paracontents</h2>
 
     <% [
         { label: 'Provenance', entries: provenance_paras, slug: 'provenance' },
