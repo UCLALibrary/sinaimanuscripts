@@ -1,9 +1,10 @@
 <%# Sticky right-side rail for a tab panel.
     Locals:
-      entries  — Array of nav nodes (id, label, children). May be nil/[] for tabs
-                 that don't have a server-built outline yet.
-      document — current SolrDocument (for Examine-manuscript card visibility) %>
+      entries       — Array of nav nodes (id, label, children). Pass nil to hide the Navigation card.
+      document      — current SolrDocument (for Examine-manuscript card visibility)
+      show_examine  — when false, suppresses the Examine-manuscript card even if cookie/manifest allow it. %>
 <% entries_local = local_assigns.fetch(:entries, nil) %>
+<% show_examine  = local_assigns.fetch(:show_examine, true) %>
 <aside class="right-rail--sinai" data-right-rail aria-label="Manuscript navigation">
   <div class="right-rail__sticky--sinai">
     <% if entries_local.present? %>
@@ -15,7 +16,7 @@
       </nav>
     <% end %>
 
-    <% if cookies[:sinai_authenticated_1year] && document[:iiif_manifest_url_ssi].present? %>
+    <% if show_examine && cookies[:sinai_authenticated_1year] && document[:iiif_manifest_url_ssi].present? %>
       <div class="right-rail__viewer-card--sinai" data-right-rail-viewer hidden>
         <button type="button"
                 class="right-rail__viewer-btn--sinai"
