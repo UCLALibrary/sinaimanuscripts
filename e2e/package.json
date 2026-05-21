@@ -9,9 +9,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@chromatic-com/cypress": "^0.11.8",
+    "@chromatic-com/cypress": "^0.12.5",
     "chromatic": "^15.1.1",
-    "cypress": "^12.12",
+    "cypress": "^15.15",
     "cypress-iframe": "^1.0.1"
   }
 }
