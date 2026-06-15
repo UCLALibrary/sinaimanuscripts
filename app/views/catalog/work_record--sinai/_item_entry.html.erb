@@ -413,17 +413,18 @@
         <dt class="overview-dl__label--sinai part-expandable__label--sinai">Item Notes</dt>
       </summary>
       <dd class="overview-dl__value--sinai part-expandable__details--sinai">
+        <%# Each note on its own line; repeatable notes stack as consecutive lines. %>
         <% item_notes.each do |note| %>
-          <div class="part-grouped-block--sinai">
-            <div class="part-grouped-block__line--sinai">
-              <% note_label = note.dig('type', 'label').to_s %>
-              <% note_value = note['value'].to_s %>
-              <% if note_label.present? %>
-                <strong><%= h(note_label) %>:</strong> <%= h(note_value) %>
-              <% else %>
-                <%= h(note_value) %>
-              <% end %>
-            </div>
+          <%
+            note_label = note.dig('type', 'label').to_s
+            note_value = note['value'].to_s
+          %>
+          <div class="part-grouped-block__line--sinai">
+            <% if note_label.present? %>
+              <strong><%= h(note_label) %>:</strong> <%= h(note_value) %>
+            <% else %>
+              <%= h(note_value) %>
+            <% end %>
           </div>
         <% end %>
       </dd>
