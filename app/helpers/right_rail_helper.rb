@@ -165,7 +165,7 @@ module RightRailHelper
     work = ww['work'] || {}
     title = work['desc_title'].to_s.presence || work['pref_title'].to_s.presence || 'Untitled'
     cpg = Array(work['refno']).find { |r| r['source'].to_s.downcase == 'cpg' }
-    refno_str = cpg ? "(#{cpg['label'].to_s.strip} #{cpg['idno']})".strip : nil
+    refno_str = cpg ? "(#{cpg['source'].to_s.strip} #{cpg['idno']})".strip : nil
     locus = ww['locus'].to_s.presence
 
     parts = [title]

@@ -54,7 +54,7 @@
           # --- Work title line (shown in collapsed + expanded) ---
           ww_title = work['desc_title'].to_s.presence || work['pref_title'].to_s.presence || 'Untitled'
           cpg_refno = Array(work['refno']).find { |r| r['source'].to_s.downcase == 'cpg' }
-          refno_str = cpg_refno ? "(#{cpg_refno['label'].to_s.strip} #{cpg_refno['idno']})".strip : nil
+          refno_str = cpg_refno ? "(#{cpg_refno['source'].to_s.strip} #{cpg_refno['idno']})".strip : nil
           ww_locus = ww['locus'].to_s.presence
 
           work_header_parts = [ww_title]
@@ -126,7 +126,7 @@
                 <% if sorted_creators.any? %>
                   <!-- DATA SOURCE: <%= ww_data_path %>.work.creator -->
                   <div class="work-field-row--sinai">
-                    <dt class="work-field-label--sinai">Contributor</dt>
+                    <dt class="work-field-label--sinai">Contributors</dt>
                     <dd class="work-field-value--sinai">
                       <% sorted_creators.each do |creator| %>
                         <%

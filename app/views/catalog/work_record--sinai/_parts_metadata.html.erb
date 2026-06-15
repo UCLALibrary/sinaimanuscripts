@@ -205,7 +205,7 @@
                     <%
                       w_scripts = Array(writing['script']).map { |s|
                         pair = s['label'].to_s
-                        pair = "#{pair} #{s['writing_system']}" if s['writing_system'].present?
+                        pair = "#{pair} (#{s['writing_system']})" if s['writing_system'].present?
                         pair
                       }
                       w_locus = writing['locus'].to_s
