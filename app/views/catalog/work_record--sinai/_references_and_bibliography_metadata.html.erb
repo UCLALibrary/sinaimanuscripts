@@ -6,7 +6,19 @@
 <% ms_json_refs = begin JSON.parse(document['manuscript_json_ts'] || '{}') rescue {} end %>
 
 <%
-  bib_entries      = Array(ms_json_refs['bib'])
+  collect_bib = ->(node, acc) {
+    case node
+    when Hash
+      node.each do |k, v|
+        k == 'bib' ? acc.concat(Array(v)) : collect_bib.call(v, acc)
+      end
+    when Array
+      node.each { |el| collect_bib.call(el, acc) }
+    end
+    acc
+  }
+
+  bib_entries      = collect_bib.call(ms_json_refs, [])
   refs             = bib_entries.select { |b| b.dig('type', 'id') == 'ref' }
   citations        = bib_entries.select { |b| b.dig('type', 'id') == 'cite' }
   editions         = bib_entries.select { |b| b.dig('type', 'id') == 'edition' }
@@ -56,7 +68,7 @@
               <div class="related-mss-group__line--sinai"><%= line %></div>
             <% end %>
             <% Array(b['note']).each do |n| %>
-              <div class="related-mss-group__line--sinai"><%= n %></div>
+              <div class="related-mss-group__line--sinai references-bibliography__note--indented--sinai"><%= n %></div>
             <% end %>
           <% end %>
         </dd>
@@ -73,7 +85,7 @@
               <div class="related-mss-group__line--sinai"><%= line %></div>
             <% end %>
             <% Array(b['note']).each do |n| %>
-              <div class="related-mss-group__line--sinai"><%= n %></div>
+              <div class="related-mss-group__line--sinai references-bibliography__note--indented--sinai"><%= n %></div>
             <% end %>
           <% end %>
         </dd>
@@ -118,7 +130,7 @@
               <div class="related-mss-group__line--sinai"><%= link_label %></div>
             <% end %>
             <% Array(b['note']).each do |n| %>
-              <div class="related-mss-group__line--sinai"><%= n %></div>
+              <div class="related-mss-group__line--sinai references-bibliography__note--indented--sinai"><%= n %></div>
             <% end %>
           <% end %>
         </dd>

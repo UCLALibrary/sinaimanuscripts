@@ -14,7 +14,7 @@
   end
   Array(ms_json['guest_layer']).each { |l| collected.concat Array(l.dig('layer_record', 'note')) }
 
-  general_excluded = %w[binding ornamentation provenance foliation collation condition]
+  general_excluded = %w[binding ornamentation provenance foliation collation support condition]
   groups = [
     ['Binding',       collected.select { |n| n.dig('type', 'id') == 'binding' }],
     ['Ornamentation', collected.select { |n| n.dig('type', 'id') == 'ornamentation' }],
