@@ -13,12 +13,9 @@
     { label: p['label'].to_s.presence || "Part #{i + 1}", utos: utos, part_idx: i }
   }.compact
 
-  # Dedupe on uto_ms_ark per ticket; fall back to uto_layer_ark so older fixtures
-  # (which only have uto_layer_ark) don't render the same UTO in both a Part group
-  # and the flyleaves group.
-  uto_key = ->(u) { u['uto_ms_ark'].to_s.presence || u['uto_layer_ark'].to_s.presence }
-  part_keys = parts_ut.flat_map { |p| Array(p['uto']).map(&uto_key) }.compact
-  flyleaf_utos = Array(ms_json_ut['uto']).reject { |u| part_keys.include?(uto_key.call(u)) }
+  # Root-level (ms_obj) UTOs and Part-level UTOs are distinct layers in the data
+  # model and are rendered independently — no cross-level deduplication.
+  flyleaf_utos = Array(ms_json_ut['uto'])
 %>
 
 <% if part_groups.any? || flyleaf_utos.any? %>

@@ -752,6 +752,12 @@
   margin-top: 1rem;
 }
 
+// Consistent gap below the tab header whether or not Part groups precede the
+// flyleaves section. Scoped so the shared heading on other tabs is untouched.
+.undertexts-section--sinai .overview-heading--sinai {
+  margin-bottom: 1rem;
+}
+
 .undertext-group--sinai {
   margin-bottom: 2rem;
 
