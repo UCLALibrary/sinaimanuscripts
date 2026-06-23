@@ -102,7 +102,9 @@
       the nav server-side, then emit the augmented HTML with the rail. %>
   <% tab_definitions.drop(1).each do |tab| %>
     <% panel_html = capture do %>
-      <% if tab[:id] == 'undertexts' %>
+      <% if tab[:id] == 'contents' %>
+        <%= render 'catalog/work_record--sinai/content_metadata', document: document %>
+      <% elsif tab[:id] == 'undertexts' %>
         <%= render 'catalog/work_record--sinai/undertexts_metadata', document: document %>
       <% elsif tab[:id] == 'related-manuscripts' %>
         <%= render 'catalog/work_record--sinai/related_manuscripts_metadata', document: document %>

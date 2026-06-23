@@ -45,7 +45,16 @@
       "Read(//Users/ayem/**)",
       "Bash(curl -s \"http://localhost:8983/solr/ursus/select?q=id:%22ark:/21198/tedesc01%22&rows=1&fl=manuscript_json_ts\")",
       "Bash(curl -s \"http://localhost:8983/solr/ursus/select?q=id:%22ark:/21198/z1vx215c%22&rows=1&fl=id,shelfmark_ssi\")",
-      "Bash(curl -s 'http://localhost:8983/solr/ursus/select?q=id:%22ark:/21198/__TRACKED_VAR__%22&rows=1&fl=id,shelfmark_ssi')"
+      "Bash(curl -s 'http://localhost:8983/solr/ursus/select?q=id:%22ark:/21198/__TRACKED_VAR__%22&rows=1&fl=id,shelfmark_ssi')",
+      "Bash(curl -sI http://localhost:3004/ -m 3)",
+      "Bash(docker-compose ps *)",
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_wait_for",
+      "Bash(curl -s \"http://localhost:3004/assets/application.self-debug.js\")",
+      "Bash(curl -s \"http://localhost:3004/assets/application.js\")",
+      "Bash(curl -sI \"http://localhost:3004/assets/right_rail_nav.js\")",
+      "Bash(curl -sS -o /dev/null -w \"%{http_code}\" http://localhost:3004/)",
+      "Bash(curl -sS \"http://localhost:8983/solr/sinaiportal_data/select?q=id:tedesc01&rows=1&fl=id,ark_ssi,shelfmark_ssi&wt=json\")"
     ]
   },
   "hooks": {

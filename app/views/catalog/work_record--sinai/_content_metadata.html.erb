@@ -1,17 +1,48 @@
-<% doc_presenter = show_presenter(document) %>
-<% works = Sinai::ContentsWorksMetadataPresenter.new(document: doc_presenter).contents_terms %>
-<% contents = Sinai::ContentsMetadataPresenter.new(document: doc_presenter).contents_terms %>
+<%# Contents tab (NOP-159). For each part: top-level header + summary, then items. %>
+<%# Items reuse the shared _item_entry partial (same as the Full Description tab). %>
+<% ms_json = begin JSON.parse(document['manuscript_json_ts'] || '{}') rescue {} end %>
+<% parts = Array(ms_json['part']) %>
 
-<% if contents.length > 0 || works.length > 0 %>
-  <input type="radio" name="tabs" id="tabone" checked="checked">
-  <label for="tabone">Content</label>
-  <div class="primary-metadata_tab-box--sinai">
-  <%= render 'catalog/work_record--sinai/content_work_metadata', document: document %>
-  <% contents.each do |field_name, field| %>
-      <div class="metadata-block--sinai">
-          <span class="metadata-block_title--sinai"> <%= (render_document_show_field_label document, field: field_name).tr(':', '') %></span>
-          <span class="metadata-block_value--sinai"><%= doc_presenter.field_value field %></span>
-      </div>
-  <% end %>
+<% parts.each_with_index do |part, part_idx| %>
+  <%
+    part_label   = part['label'].to_s
+    part_locus   = part['locus'].to_s
+    part_summary = part['summary'].to_s
+    header_date  = first_origin_date(part)
+
+    # Part header: [label] ([origin date]), [locus] — optional pieces omitted
+    # gracefully so no orphaned separators/parens are left behind.
+    header_parts  = [part_label]
+    header_parts << "(#{header_date})" if header_date.present?
+    header_suffix = part_locus.present? ? ", #{part_locus}" : ""
+
+    # Items for this part: part.ot_layer[].layer_record.text_unit[]
+    part_items = []
+    Array(part['ot_layer']).each_with_index do |ot_layer, layer_idx|
+      Array(ot_layer.dig('layer_record', 'text_unit')).each_with_index do |tu, tu_idx|
+        part_items << { part_idx: part_idx, layer_idx: layer_idx, tu_idx: tu_idx, tu: tu }
+      end
+    end
+  %>
+
+  <!-- DATA SOURCE: ms_obj.part[<%= part_idx %>] -->
+  <div class="contents-part--sinai">
+    <%# === Part Header (top-level styling, distinct from Full Description) === %>
+    <!-- DATA SOURCE: ms_obj.part[<%= part_idx %>].label = <%= part_label.to_json %>, ms_obj.part[<%= part_idx %>].locus = <%= part_locus.to_json %>, header_date from first origin date in part / ot_layer / para -->
+    <h2 id="section-part-<%= part_idx %>" class="contents-part-heading--sinai"><%= header_parts.join(' ') %><%= header_suffix %></h2>
+
+    <%# === Summary (optional, italic) === %>
+    <% if part_summary.present? %>
+      <!-- DATA SOURCE: ms_obj.part[<%= part_idx %>].summary = <%= part_summary.to_json %> -->
+      <p class="part-summary--sinai"><%= part_summary %></p>
+    <% end %>
+
+    <%# === Items === %>
+    <% part_items.each_with_index do |item_data, idx| %>
+      <%= render 'catalog/work_record--sinai/item_entry',
+                 item_data: item_data,
+                 item_num: idx + 1,
+                 data_path: "ms_obj.part[#{item_data[:part_idx]}].ot_layer[#{item_data[:layer_idx]}].layer_record.text_unit[#{item_data[:tu_idx]}]" %>
+    <% end %>
   </div>
 <% end %>

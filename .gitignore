@@ -9,6 +9,8 @@
 .env.test
 .env.production
 
+graphify-out/
+.playwright-mcp/
 spec/examples.txt
 e2e/cypress/screenshots
 e2e/cypress/videos

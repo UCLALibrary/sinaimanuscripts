@@ -1,104 +1,103 @@
-# Graph Report - .  (2026-04-22)
+# Graph Report - sinaimanuscripts  (2026-06-15)
 
 ## Corpus Check
-- 111 files · ~41,580 words
+- 167 files · ~1,816,076 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 532 nodes · 538 edges · 65 communities detected
-- Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 33 edges (avg confidence: 0.8)
+- 890 nodes · 3196 edges · 64 communities detected
+- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 110 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
-- [[_COMMUNITY_SMDL Data Model|SMDL Data Model]]
-- [[_COMMUNITY_Blacklight Helpers|Blacklight Helpers]]
-- [[_COMMUNITY_ApplicationController|ApplicationController]]
-- [[_COMMUNITY_Full Description Screenshot|Full Description Screenshot]]
-- [[_COMMUNITY_Dynamic Sitemap|Dynamic Sitemap]]
-- [[_COMMUNITY_Stakeholders & Rebuild Scope|Stakeholders & Rebuild Scope]]
-- [[_COMMUNITY_Range-Limit Distro Facets (JS)|Range-Limit Distro Facets (JS)]]
-- [[_COMMUNITY_Blacklight Helper (Sinai)|Blacklight Helper (Sinai)]]
-- [[_COMMUNITY_OAI DPLA Library|OAI DPLA Library]]
-- [[_COMMUNITY_SolrDocument|SolrDocument]]
-- [[_COMMUNITY_Metadata Presenters|Metadata Presenters]]
-- [[_COMMUNITY_StaticController|StaticController]]
-- [[_COMMUNITY_ThumbnailPresenter|ThumbnailPresenter]]
-- [[_COMMUNITY_IIIF Service|IIIF Service]]
-- [[_COMMUNITY_CanonLawController|CanonLawController]]
-- [[_COMMUNITY_Layout Helpers|Layout Helpers]]
-- [[_COMMUNITY_CollectionBlockPresenter|CollectionBlockPresenter]]
-- [[_COMMUNITY_CatalogController|CatalogController]]
-- [[_COMMUNITY_SolrDocumentWrapper (OAI)|SolrDocumentWrapper (OAI)]]
-- [[_COMMUNITY_AutoLink Processor|AutoLink Processor]]
-- [[_COMMUNITY_OAI DPLA Metadata|OAI DPLA Metadata]]
-- [[_COMMUNITY_HistoryMetadataPresenter|HistoryMetadataPresenter]]
-- [[_COMMUNITY_ContentsWorksMetadataPresenter|ContentsWorksMetadataPresenter]]
-- [[_COMMUNITY_ReferencesMetadataPresenter|ReferencesMetadataPresenter]]
-- [[_COMMUNITY_CodicologyMetadataPresenter|CodicologyMetadataPresenter]]
-- [[_COMMUNITY_Keywords Metadata Presenter|Keywords Metadata Presenter]]
-- [[_COMMUNITY_Decoration Metadata Presenter|Decoration Metadata Presenter]]
-- [[_COMMUNITY_Overview Metadata Presenter|Overview Metadata Presenter]]
-- [[_COMMUNITY_Contents Metadata Presenter|Contents Metadata Presenter]]
-- [[_COMMUNITY_Find This Item Metadata Presenter|Find This Item Metadata Presenter]]
-- [[_COMMUNITY_Sinai Index Date Presenter|Sinai Index Date Presenter]]
-- [[_COMMUNITY_Tagline Metadata Presenter|Tagline Metadata Presenter]]
-- [[_COMMUNITY_Contact Collection Metadata Presenter|Contact Collection Metadata Presenter]]
-- [[_COMMUNITY_Keyword Metadata Presenter|Keyword Metadata Presenter]]
-- [[_COMMUNITY_Note Collection Metadata Presenter|Note Collection Metadata Presenter]]
-- [[_COMMUNITY_Sinai Index Name Metadata Presenter|Sinai Index Name Metadata Presenter]]
-- [[_COMMUNITY_Sinai Index Collection Presenter|Sinai Index Collection Presenter]]
-- [[_COMMUNITY_Find Collection Metadata Presenter|Find Collection Metadata Presenter]]
-- [[_COMMUNITY_Item Overview Metadata Presenter|Item Overview Metadata Presenter]]
-- [[_COMMUNITY_Access Condition Metadata Presenter|Access Condition Metadata Presenter]]
-- [[_COMMUNITY_Sinai Index Text Unit Labels Presenter|Sinai Index Text Unit Labels Presenter]]
-- [[_COMMUNITY_Note Metadata Presenter|Note Metadata Presenter]]
-- [[_COMMUNITY_Sinai Index Language Presenter|Sinai Index Language Presenter]]
-- [[_COMMUNITY_Sinai Index Title Metadata Presenter|Sinai Index Title Metadata Presenter]]
-- [[_COMMUNITY_Physical Description Metadata Presenter|Physical Description Metadata Presenter]]
-- [[_COMMUNITY_Blacklight|Blacklight]]
-- [[_COMMUNITY_Range Limit Slider|Range Limit Slider]]
-- [[_COMMUNITY_Search Field Service|Search Field Service]]
-- [[_COMMUNITY_Login Service|Login Service]]
-- [[_COMMUNITY_Solr Document Provider|Solr Document Provider]]
-- [[_COMMUNITY_Application Mailer|Application Mailer]]
-- [[_COMMUNITY_Ability|Ability]]
-- [[_COMMUNITY_Search Builder|Search Builder]]
-- [[_COMMUNITY_Application Record|Application Record]]
-- [[_COMMUNITY_Application Job|Application Job]]
-- [[_COMMUNITY_Search History Controller|Search History Controller]]
-- [[_COMMUNITY_Scrollable Tabs|Scrollable Tabs]]
-- [[_COMMUNITY_Work Show More|Work Show More]]
-- [[_COMMUNITY_Range Limit Shared|Range Limit Shared]]
-- [[_COMMUNITY_Facet Label Button Behavior|Facet Label Button Behavior]]
-- [[_COMMUNITY_Channel|Channel]]
-- [[_COMMUNITY_Onboarding Transcript|Onboarding Transcript]]
-- [[_COMMUNITY_Onboarding Transcript|Onboarding Transcript]]
-- [[_COMMUNITY_Smdl Field Reference|Smdl Field Reference]]
-- [[_COMMUNITY_Smdl Overview|Smdl Overview]]
+- [[_COMMUNITY_Community 0|Community 0]]
+- [[_COMMUNITY_Community 1|Community 1]]
+- [[_COMMUNITY_Community 2|Community 2]]
+- [[_COMMUNITY_Community 3|Community 3]]
+- [[_COMMUNITY_Community 4|Community 4]]
+- [[_COMMUNITY_Community 5|Community 5]]
+- [[_COMMUNITY_Community 6|Community 6]]
+- [[_COMMUNITY_Community 7|Community 7]]
+- [[_COMMUNITY_Community 8|Community 8]]
+- [[_COMMUNITY_Community 9|Community 9]]
+- [[_COMMUNITY_Community 10|Community 10]]
+- [[_COMMUNITY_Community 11|Community 11]]
+- [[_COMMUNITY_Community 12|Community 12]]
+- [[_COMMUNITY_Community 13|Community 13]]
+- [[_COMMUNITY_Community 14|Community 14]]
+- [[_COMMUNITY_Community 15|Community 15]]
+- [[_COMMUNITY_Community 16|Community 16]]
+- [[_COMMUNITY_Community 17|Community 17]]
+- [[_COMMUNITY_Community 19|Community 19]]
+- [[_COMMUNITY_Community 20|Community 20]]
+- [[_COMMUNITY_Community 21|Community 21]]
+- [[_COMMUNITY_Community 23|Community 23]]
+- [[_COMMUNITY_Community 24|Community 24]]
+- [[_COMMUNITY_Community 25|Community 25]]
+- [[_COMMUNITY_Community 26|Community 26]]
+- [[_COMMUNITY_Community 27|Community 27]]
+- [[_COMMUNITY_Community 28|Community 28]]
+- [[_COMMUNITY_Community 29|Community 29]]
+- [[_COMMUNITY_Community 30|Community 30]]
+- [[_COMMUNITY_Community 31|Community 31]]
+- [[_COMMUNITY_Community 32|Community 32]]
+- [[_COMMUNITY_Community 33|Community 33]]
+- [[_COMMUNITY_Community 34|Community 34]]
+- [[_COMMUNITY_Community 35|Community 35]]
+- [[_COMMUNITY_Community 36|Community 36]]
+- [[_COMMUNITY_Community 37|Community 37]]
+- [[_COMMUNITY_Community 38|Community 38]]
+- [[_COMMUNITY_Community 39|Community 39]]
+- [[_COMMUNITY_Community 40|Community 40]]
+- [[_COMMUNITY_Community 41|Community 41]]
+- [[_COMMUNITY_Community 42|Community 42]]
+- [[_COMMUNITY_Community 43|Community 43]]
+- [[_COMMUNITY_Community 44|Community 44]]
+- [[_COMMUNITY_Community 45|Community 45]]
+- [[_COMMUNITY_Community 46|Community 46]]
+- [[_COMMUNITY_Community 47|Community 47]]
+- [[_COMMUNITY_Community 48|Community 48]]
+- [[_COMMUNITY_Community 49|Community 49]]
+- [[_COMMUNITY_Community 52|Community 52]]
+- [[_COMMUNITY_Community 53|Community 53]]
+- [[_COMMUNITY_Community 54|Community 54]]
+- [[_COMMUNITY_Community 55|Community 55]]
+- [[_COMMUNITY_Community 56|Community 56]]
+- [[_COMMUNITY_Community 57|Community 57]]
+- [[_COMMUNITY_Community 58|Community 58]]
+- [[_COMMUNITY_Community 59|Community 59]]
+- [[_COMMUNITY_Community 60|Community 60]]
+- [[_COMMUNITY_Community 61|Community 61]]
+- [[_COMMUNITY_Community 62|Community 62]]
+- [[_COMMUNITY_Community 66|Community 66]]
+- [[_COMMUNITY_Community 69|Community 69]]
+- [[_COMMUNITY_Community 70|Community 70]]
+- [[_COMMUNITY_Community 155|Community 155]]
+- [[_COMMUNITY_Community 156|Community 156]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `ApplicationController` - 21 edges
-2. `Manuscript Object (ms_obj)` - 14 edges
-3. `Overview Section` - 14 edges
-4. `Inscribed Layer` - 11 edges
-5. `Sitemap` - 10 edges
-6. `StaticController` - 9 edges
-7. `areaChart()` - 8 edges
-8. `SolrDocument` - 7 edges
-9. `CanonLawController` - 7 edges
-10. `presenter()` - 7 edges
+1. `call()` - 125 edges
+2. `o()` - 99 edges
+3. `E()` - 91 edges
+4. `a()` - 85 edges
+5. `s()` - 82 edges
+6. `t()` - 74 edges
+7. `r()` - 65 edges
+8. `i()` - 60 edges
+9. `n()` - 56 edges
+10. `C()` - 48 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `render_thumbnail_tag()` --calls--> `index_presenter()`  [INFERRED]
-  /Users/ayem/workspace/ucla/sinaimanuscripts/app/helpers/ursus/catalog_helper.rb → /Users/ayem/workspace/ucla/sinaimanuscripts/app/helpers/blacklight/blacklight_helper_behavior.rb
-- `Sample JSON fixtures (5 fake-data records)` --shares_data_with--> `Manuscript Object (ms_obj)`  [INFERRED]
-  code_docs/onboarding/onboarding_transcript.txt → code_docs/SMDL_FIELD_REFERENCE.md
-- `Rationale: Reusable paracontent template ticket mirrors Blacklight partial reuse` --semantically_similar_to--> `Rationale: Reusable Rails view partials mirror reusable JSON sub-objects`  [INFERRED] [semantically similar]
-  code_docs/onboarding/onboarding_transcript.txt → code_docs/SMDL_FIELD_REFERENCE.md
-- `areaChart()` --calls--> `Plot()`  [INFERRED]
-  /Users/ayem/workspace/ucla/sinaimanuscripts/app/assets/javascripts/blacklight_range_limit/range_limit_distro_facets.js → /Users/ayem/workspace/ucla/sinaimanuscripts/app/assets/javascripts/flot/jquery.flot.js
-- `link_to_featured_work()` --calls--> `Connection`  [INFERRED]
-  /Users/ayem/workspace/ucla/sinaimanuscripts/app/helpers/home_page_helper.rb → /Users/ayem/workspace/ucla/sinaimanuscripts/app/channels/application_cable/connection.rb
+- `B()` --calls--> `clamp()`  [INFERRED]
+  public/mirador3.min.js → app/assets/javascripts/flot/jquery.flot.js
+- `application_name()` --calls--> `t()`  [INFERRED]
+  app/helpers/blacklight/blacklight_helper_behavior.rb → public/mirador3.min.js
+- `render_document_show_field_label()` --calls--> `t()`  [INFERRED]
+  app/helpers/blacklight/blacklight_helper_behavior.rb → public/mirador3.min.js
+- `sinai_application_name()` --calls--> `t()`  [INFERRED]
+  app/helpers/blacklight/blacklight_helper_behavior.rb → public/mirador3.min.js
+- `setupModalLazyLoad()` --calls--> `On()`  [INFERRED]
+  app/assets/javascripts/right_rail_nav.js → public/mirador3.min.js
 
 ## Hyperedges (group relationships)
 - **JSON to HTML rendering pipeline** — smdl_field_reference_feed_ursus, smdl_field_reference_solr_index, smdl_field_reference_catalog_controller, smdl_field_reference_base_metadata_presenter, smdl_field_reference_yaml_configs, smdl_field_reference_view_templates [EXTRACTED 1.00]
@@ -107,392 +106,380 @@
 
 ## Communities
 
-### Community 0 - "SMDL Data Model"
+### Community 0 - "Community 0"
+Cohesion: 0.04
+Nodes (171): aa(), ac(), Ai(), al(), ao(), as(), Au(), Ba() (+163 more)
+
+### Community 1 - "Community 1"
+Cohesion: 0.21
+Nodes (83): _(), a(), ae(), ar(), B(), Be(), br(), C() (+75 more)
+
+### Community 2 - "Community 2"
+Cohesion: 0.04
+Nodes (29): ApplicationController, iconify_auto_link(), application_name(), blacklight_path(), document_has_value?(), document_heading(), document_presenter(), document_presenter_class() (+21 more)
+
+### Community 3 - "Community 3"
+Cohesion: 0.05
+Nodes (26): AddPolymorphicTypeToBookmarks, schema_org_markup(), Connection, link_to_featured_work(), included_in_solr_lookup(), manuscripts_including_in_reconstruction(), render_reconstructed_from_link(), render_related_mss_link() (+18 more)
+
+### Community 4 - "Community 4"
+Cohesion: 0.21
+Nodes (45): Af(), At(), Bs(), bt(), call(), ct(), df(), ds() (+37 more)
+
+### Community 5 - "Community 5"
 Cohesion: 0.09
 Nodes (36): Dawn Childress (domain/notation owner), Figma Designs (front end layouts), Rationale: Granular JSON data model (Dawn: 'probably made it too granular but awesome'), Rationale: Reusable paracontent template ticket mirrors Blacklight partial reuse, Sample JSON fixtures (5 fake-data records), Rationale: SMDL combines ms_obj/layer/text_unit into one JSON record (Data Portal keeps them separate), SMDL JIRA Ticket Prefix, Rationale: Notation solves communication wall between domain expert and devs (+28 more)
 
-### Community 1 - "Blacklight Helpers"
-Cohesion: 0.14
-Nodes (32): application_name(), blacklight_path(), document_has_value?(), document_heading(), document_index_view_type(), document_presenter(), document_presenter_class(), document_show_html_title() (+24 more)
+### Community 6 - "Community 6"
+Cohesion: 0.13
+Nodes (10): build_xml_tag(), dc_field_name?(), dcterms_field_name?(), dpla_field_name?(), edm_field_name?(), export_as_oai_dpla_xml(), extended(), field_prefix() (+2 more)
 
-### Community 2 - "ApplicationController"
-Cohesion: 0.08
-Nodes (5): ApplicationController, iconify_auto_link(), render_index_field_label(), render_opensearch_response_metadata(), CustomJoin
-
-### Community 3 - "Full Description Screenshot"
+### Community 7 - "Community 7"
 Cohesion: 0.13
 Nodes (19): Collation field (coll, note where type.id=collation, viscodex), Current state field (state_ssi), Extent field (extent, dim, weight), Figma layout (referenced), Foliation field (fol, note where type.id=foliation), Full Description Tab, JSON Blob (data source), Keywords field (features_ssim, ot_genre_ssim) (+11 more)
 
-### Community 4 - "Dynamic Sitemap"
-Cohesion: 0.14
-Nodes (5): Connection, blank_search_path(), create_representative_image(), link_to_featured_work(), Sitemap
-
-### Community 5 - "Stakeholders & Rebuild Scope"
+### Community 8 - "Community 8"
 Cohesion: 0.13
 Nodes (18): Data Structure Migration (backend), Lisa McAulay (Project Manager), Monica (frontend dev, Piotr's collaborator), Piotr Nowak (Nopio frontend dev), Sinai Data Portal (sinai.library.ucla.edu), SMDL Frontend Rebuild (epic), Tatiana (backend dev; data structure migration), Rationale: Tatiana finishes backend before Piotr takes over frontend (avoid mid-task handoff) (+10 more)
 
-### Community 6 - "Range-Limit Distro Facets (JS)"
-Cohesion: 0.28
-Nodes (11): Canvas(), clamp(), floorInBase(), Plot(), areaChart(), domDependenciesMet(), form_selection(), function_for_find_segment() (+3 more)
-
-### Community 7 - "Blacklight Helper (Sinai)"
-Cohesion: 0.25
-Nodes (13): license_markup(), other_versions_markup(), overtext_manuscript_markup(), render_license(), render_opac_link(), render_other_versions_link(), render_overtext_manuscript_links(), render_table_of_contents_key() (+5 more)
-
-### Community 8 - "OAI DPLA Library"
-Cohesion: 0.31
-Nodes (13): build_xml_tag(), dc_field_name?(), dc_field_names(), dcterms_field_name?(), dcterms_field_names(), dpla_field_name?(), dpla_field_names(), edm_field_name?() (+5 more)
-
-### Community 9 - "SolrDocument"
+### Community 9 - "Community 9"
 Cohesion: 0.14
-Nodes (2): SolrDocument, User
+Nodes (17): Bf(), cf(), ef(), Ff(), jf(), Jl(), kf(), Of() (+9 more)
 
-### Community 10 - "Metadata Presenters"
-Cohesion: 0.2
+### Community 10 - "Community 10"
+Cohesion: 0.17
+Nodes (9): DeviseCreateUsers, clamp(), Plot(), areaChart(), domDependenciesMet(), form_selection(), function_for_find_segment(), normalized_selection() (+1 more)
+
+### Community 11 - "Community 11"
+Cohesion: 0.28
+Nodes (15): An(), Bn(), Dn(), fn(), gn(), In(), ln(), mn() (+7 more)
+
+### Community 12 - "Community 12"
+Cohesion: 0.35
+Nodes (11): activateRail(), collectEntries(), computeActiveId(), getActiveRail(), init(), setActive(), setupClickHandling(), setupModalLazyLoad() (+3 more)
+
+### Community 13 - "Community 13"
+Cohesion: 0.24
+Nodes (5): b(), c(), d(), f(), CatalogController
+
+### Community 14 - "Community 14"
+Cohesion: 0.25
 Nodes (2): BaseMetadataPresenter, CollectionOverviewMetadataPresenter
 
-### Community 11 - "StaticController"
-Cohesion: 0.2
+### Community 15 - "Community 15"
+Cohesion: 0.22
 Nodes (1): StaticController
 
-### Community 12 - "ThumbnailPresenter"
-Cohesion: 0.25
-Nodes (3): render_thumbnail_tag(), render_truncated_description(), ThumbnailPresenter
-
-### Community 13 - "IIIF Service"
-Cohesion: 0.28
-Nodes (2): Application, IiifService
-
-### Community 14 - "CanonLawController"
-Cohesion: 0.25
+### Community 16 - "Community 16"
+Cohesion: 0.29
 Nodes (1): CanonLawController
 
-### Community 15 - "Layout Helpers"
-Cohesion: 0.48
-Nodes (5): container_classes(), main_content_classes(), show_content_classes(), show_sidebar_classes(), sidebar_classes()
+### Community 17 - "Community 17"
+Cohesion: 0.38
+Nodes (2): Application, IiifService
 
-### Community 16 - "CollectionBlockPresenter"
-Cohesion: 0.33
+### Community 19 - "Community 19"
+Cohesion: 0.4
 Nodes (1): CollectionBlockPresenter
 
-### Community 17 - "CatalogController"
-Cohesion: 0.33
-Nodes (1): CatalogController
-
-### Community 18 - "SolrDocumentWrapper (OAI)"
-Cohesion: 0.33
+### Community 20 - "Community 20"
+Cohesion: 0.4
 Nodes (1): SolrDocumentWrapper
 
-### Community 19 - "AutoLink Processor"
-Cohesion: 0.5
+### Community 21 - "Community 21"
+Cohesion: 0.67
 Nodes (1): AutoLink
 
-### Community 20 - "OAI DPLA Metadata"
-Cohesion: 0.4
+### Community 23 - "Community 23"
+Cohesion: 0.5
 Nodes (1): Dpla
 
-### Community 21 - "HistoryMetadataPresenter"
+### Community 24 - "Community 24"
 Cohesion: 0.5
+Nodes (1): CreateBookmarks
+
+### Community 25 - "Community 25"
+Cohesion: 0.5
+Nodes (1): CreateSearches
+
+### Community 26 - "Community 26"
+Cohesion: 0.67
 Nodes (1): HistoryMetadataPresenter
 
-### Community 22 - "ContentsWorksMetadataPresenter"
-Cohesion: 0.5
+### Community 27 - "Community 27"
+Cohesion: 0.67
 Nodes (1): ContentsWorksMetadataPresenter
 
-### Community 23 - "ReferencesMetadataPresenter"
-Cohesion: 0.5
+### Community 28 - "Community 28"
+Cohesion: 0.67
 Nodes (1): ReferencesMetadataPresenter
 
-### Community 24 - "CodicologyMetadataPresenter"
-Cohesion: 0.5
+### Community 29 - "Community 29"
+Cohesion: 0.67
 Nodes (1): CodicologyMetadataPresenter
 
-### Community 25 - "Keywords Metadata Presenter"
-Cohesion: 0.5
+### Community 30 - "Community 30"
+Cohesion: 0.67
 Nodes (1): KeywordsMetadataPresenter
 
-### Community 26 - "Decoration Metadata Presenter"
-Cohesion: 0.5
+### Community 31 - "Community 31"
+Cohesion: 0.67
 Nodes (1): DecorationMetadataPresenter
 
-### Community 27 - "Overview Metadata Presenter"
-Cohesion: 0.5
+### Community 32 - "Community 32"
+Cohesion: 0.67
 Nodes (1): OverviewMetadataPresenter
 
-### Community 28 - "Contents Metadata Presenter"
-Cohesion: 0.5
+### Community 33 - "Community 33"
+Cohesion: 0.67
 Nodes (1): ContentsMetadataPresenter
 
-### Community 29 - "Find This Item Metadata Presenter"
-Cohesion: 0.5
+### Community 34 - "Community 34"
+Cohesion: 0.67
 Nodes (1): FindThisItemMetadataPresenter
 
-### Community 30 - "Sinai Index Date Presenter"
-Cohesion: 0.5
+### Community 35 - "Community 35"
+Cohesion: 0.67
 Nodes (1): SinaiIndexDatePresenter
 
-### Community 31 - "Tagline Metadata Presenter"
-Cohesion: 0.5
+### Community 36 - "Community 36"
+Cohesion: 0.67
 Nodes (1): TaglineMetadataPresenter
 
-### Community 32 - "Contact Collection Metadata Presenter"
-Cohesion: 0.5
+### Community 37 - "Community 37"
+Cohesion: 0.67
 Nodes (1): ContactCollectionMetadataPresenter
 
-### Community 33 - "Keyword Metadata Presenter"
-Cohesion: 0.5
+### Community 38 - "Community 38"
+Cohesion: 0.67
 Nodes (1): KeywordMetadataPresenter
 
-### Community 34 - "Note Collection Metadata Presenter"
-Cohesion: 0.5
+### Community 39 - "Community 39"
+Cohesion: 0.67
 Nodes (1): NoteCollectionMetadataPresenter
 
-### Community 35 - "Sinai Index Name Metadata Presenter"
-Cohesion: 0.5
+### Community 40 - "Community 40"
+Cohesion: 0.67
 Nodes (1): SinaiIndexNameMetadataPresenter
 
-### Community 36 - "Sinai Index Collection Presenter"
-Cohesion: 0.5
+### Community 41 - "Community 41"
+Cohesion: 0.67
 Nodes (1): SinaiIndexCollectionPresenter
 
-### Community 37 - "Find Collection Metadata Presenter"
-Cohesion: 0.5
+### Community 42 - "Community 42"
+Cohesion: 0.67
 Nodes (1): FindCollectionMetadataPresenter
 
-### Community 38 - "Item Overview Metadata Presenter"
-Cohesion: 0.5
+### Community 43 - "Community 43"
+Cohesion: 0.67
 Nodes (1): ItemOverviewMetadataPresenter
 
-### Community 39 - "Access Condition Metadata Presenter"
-Cohesion: 0.5
+### Community 44 - "Community 44"
+Cohesion: 0.67
 Nodes (1): AccessConditionMetadataPresenter
 
-### Community 40 - "Sinai Index Text Unit Labels Presenter"
-Cohesion: 0.5
+### Community 45 - "Community 45"
+Cohesion: 0.67
 Nodes (1): SinaiIndexTextUnitLabelsPresenter
 
-### Community 41 - "Note Metadata Presenter"
-Cohesion: 0.5
+### Community 46 - "Community 46"
+Cohesion: 0.67
 Nodes (1): NoteMetadataPresenter
 
-### Community 42 - "Sinai Index Language Presenter"
-Cohesion: 0.5
+### Community 47 - "Community 47"
+Cohesion: 0.67
 Nodes (1): SinaiIndexLanguagePresenter
 
-### Community 43 - "Sinai Index Title Metadata Presenter"
-Cohesion: 0.5
+### Community 48 - "Community 48"
+Cohesion: 0.67
 Nodes (1): SinaiIndexTitleMetadataPresenter
 
-### Community 44 - "Physical Description Metadata Presenter"
-Cohesion: 0.5
+### Community 49 - "Community 49"
+Cohesion: 0.67
 Nodes (1): PhysicalDescriptionMetadataPresenter
 
-### Community 45 - "Blacklight"
+### Community 52 - "Community 52"
 Cohesion: 0.67
-Nodes (2): longer(), updateStateFor()
-
-### Community 46 - "Range Limit Slider"
-Cohesion: 0.67
-Nodes (2): isInt(), min_max()
-
-### Community 47 - "Search Field Service"
-Cohesion: 0.5
 Nodes (1): SearchFieldService
 
-### Community 48 - "Login Service"
-Cohesion: 0.5
+### Community 53 - "Community 53"
+Cohesion: 0.67
 Nodes (1): LoginService
 
-### Community 49 - "Solr Document Provider"
-Cohesion: 0.5
+### Community 54 - "Community 54"
+Cohesion: 0.67
 Nodes (1): SolrDocumentProvider
 
-### Community 50 - "Application Mailer"
+### Community 55 - "Community 55"
 Cohesion: 0.67
+Nodes (1): CreateFeatures
+
+### Community 56 - "Community 56"
+Cohesion: 0.67
+Nodes (1): AddDeviseGuestsToUsers
+
+### Community 57 - "Community 57"
+Cohesion: 1.0
 Nodes (1): ApplicationMailer
 
-### Community 51 - "Ability"
-Cohesion: 0.67
+### Community 58 - "Community 58"
+Cohesion: 1.0
 Nodes (1): Ability
 
-### Community 52 - "Search Builder"
-Cohesion: 0.67
+### Community 59 - "Community 59"
+Cohesion: 1.0
 Nodes (1): SearchBuilder
 
-### Community 53 - "Application Record"
-Cohesion: 0.67
+### Community 60 - "Community 60"
+Cohesion: 1.0
 Nodes (1): ApplicationRecord
 
-### Community 54 - "Application Job"
-Cohesion: 0.67
+### Community 61 - "Community 61"
+Cohesion: 1.0
 Nodes (1): ApplicationJob
 
-### Community 55 - "Search History Controller"
-Cohesion: 0.67
+### Community 62 - "Community 62"
+Cohesion: 1.0
 Nodes (1): SearchHistoryController
 
-### Community 56 - "Scrollable Tabs"
-Cohesion: 0.67
-Nodes (1): initScrollableTabs()
-
-### Community 57 - "Work Show More"
-Cohesion: 0.67
-Nodes (1): initWorkShowMore()
-
-### Community 58 - "Range Limit Shared"
-Cohesion: 0.67
-Nodes (1): BlacklightRangeLimit()
-
-### Community 59 - "Facet Label Button Behavior"
-Cohesion: 0.67
-Nodes (1): render_selected_facet_value()
-
-### Community 60 - "Channel"
-Cohesion: 0.67
+### Community 66 - "Community 66"
+Cohesion: 1.0
 Nodes (1): Channel
 
-### Community 61 - "Onboarding Transcript"
+### Community 69 - "Community 69"
 Cohesion: 1.0
 Nodes (2): Andy Wallace (DevOps / Blacklight auth), Blacklight 8 Authentication Regression
 
-### Community 62 - "Onboarding Transcript"
+### Community 70 - "Community 70"
 Cohesion: 1.0
 Nodes (2): Staging Regression (build rollback), Staging Site (stage.sinaimanuscripts.library.ucla.edu)
 
-### Community 143 - "Smdl Field Reference"
+### Community 155 - "Community 155"
 Cohesion: 1.0
 Nodes (1): Locus (folio reference)
 
-### Community 144 - "Smdl Overview"
+### Community 156 - "Community 156"
 Cohesion: 1.0
 Nodes (1): smdl_overview.md (empty file)
 
 ## Knowledge Gaps
-- **38 isolated node(s):** `Writing (writing[])`, `Palimpsest`, `Multispectral Imaging (MSI)`, `ARK (Archival Resource Key)`, `Shelfmark` (+33 more)
+- **45 isolated node(s):** `ApplicationMailer`, `Ability`, `SearchBuilder`, `ApplicationRecord`, `ApplicationJob` (+40 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **Thin community `SolrDocument`** (14 nodes): `solr_document.rb`, `user.rb`, `.set_default_sort()`, `.access_list()`, `SolrDocument`, `.add_field_semantics()`, `.export_as_ucla_citation_txt()`, `.permalink()`, `.root_url()`, `.to_semantic_values()`, `User`, `.to_s()`, `solr_document.rb`, `user.rb`
+- **Thin community `Community 14`** (9 nodes): `base_metadata_presenter.rb`, `collection_overview_metadata_presenter.rb`, `BaseMetadataPresenter`, `.fields_to_render_by_config_keys()`, `.fields_to_render_by_keys()`, `.initialize()`, `CollectionOverviewMetadataPresenter`, `.overview_labels()`, `.overview_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Metadata Presenters`** (11 nodes): `base_metadata_presenter.rb`, `collection_overview_metadata_presenter.rb`, `BaseMetadataPresenter`, `.fields_to_render_by_config_keys()`, `.fields_to_render_by_keys()`, `.initialize()`, `CollectionOverviewMetadataPresenter`, `.overview_labels()`, `.overview_terms()`, `base_metadata_presenter.rb`, `collection_overview_metadata_presenter.rb`
+- **Thin community `Community 15`** (9 nodes): `static_controller.rb`, `StaticController`, `.about()`, `.contact()`, `.contributors_credits()`, `.manuscript_descriptions()`, `.references()`, `.terms_of_use()`, `.version()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `StaticController`** (10 nodes): `static_controller.rb`, `StaticController`, `.about()`, `.contact()`, `.contributors_credits()`, `.manuscript_descriptions()`, `.references()`, `.terms_of_use()`, `.version()`, `static_controller.rb`
+- **Thin community `Community 16`** (7 nodes): `canon_law_controller.rb`, `CanonLawController`, `.index()`, `.introduction()`, `.margarita()`, `.materiae()`, `.table_of_contents()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `IIIF Service`** (9 nodes): `iiif_service.rb`, `Application`, `application.rb`, `IiifService`, `.iiif_manifest_url()`, `.media_viewer_url()`, `.src()`, `iiif_service.rb`, `application.rb`
+- **Thin community `Community 17`** (7 nodes): `iiif_service.rb`, `Application`, `application.rb`, `IiifService`, `.iiif_manifest_url()`, `.media_viewer_url()`, `.src()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `CanonLawController`** (8 nodes): `canon_law_controller.rb`, `CanonLawController`, `.index()`, `.introduction()`, `.margarita()`, `.materiae()`, `.table_of_contents()`, `canon_law_controller.rb`
+- **Thin community `Community 19`** (5 nodes): `collection_block_presenter.rb`, `CollectionBlockPresenter`, `.collection_document()`, `.collection_selected?()`, `.initialize()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `CollectionBlockPresenter`** (6 nodes): `collection_block_presenter.rb`, `CollectionBlockPresenter`, `.collection_document()`, `.collection_selected?()`, `.initialize()`, `collection_block_presenter.rb`
+- **Thin community `Community 20`** (5 nodes): `solr_document_wrapper.rb`, `SolrDocumentWrapper`, `.conditions()`, `.earliest()`, `.latest()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `CatalogController`** (6 nodes): `catalog_controller.rb`, `CatalogController`, `.enforce_show_permissions()`, `.oai_provider()`, `.show()`, `catalog_controller.rb`
+- **Thin community `Community 21`** (4 nodes): `auto_link.rb`, `AutoLink`, `.html_escape()`, `.render()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `SolrDocumentWrapper (OAI)`** (6 nodes): `solr_document_wrapper.rb`, `SolrDocumentWrapper`, `.conditions()`, `.earliest()`, `.latest()`, `solr_document_wrapper.rb`
+- **Thin community `Community 23`** (4 nodes): `Dpla`, `.header_specification()`, `.initialize()`, `dpla.rb`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `AutoLink Processor`** (5 nodes): `auto_link.rb`, `AutoLink`, `.html_escape()`, `.render()`, `auto_link.rb`
+- **Thin community `Community 24`** (4 nodes): `CreateBookmarks`, `.down()`, `.up()`, `20180918212217_create_bookmarks.blacklight.rb`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `OAI DPLA Metadata`** (5 nodes): `Dpla`, `.header_specification()`, `.initialize()`, `dpla.rb`, `dpla.rb`
+- **Thin community `Community 25`** (4 nodes): `CreateSearches`, `.down()`, `.up()`, `20180918212216_create_searches.blacklight.rb`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `HistoryMetadataPresenter`** (4 nodes): `history_metadata_presenter.rb`, `HistoryMetadataPresenter`, `.history_terms()`, `history_metadata_presenter.rb`
+- **Thin community `Community 26`** (3 nodes): `history_metadata_presenter.rb`, `HistoryMetadataPresenter`, `.history_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `ContentsWorksMetadataPresenter`** (4 nodes): `contents_works_metadata_presenter.rb`, `ContentsWorksMetadataPresenter`, `.contents_terms()`, `contents_works_metadata_presenter.rb`
+- **Thin community `Community 27`** (3 nodes): `contents_works_metadata_presenter.rb`, `ContentsWorksMetadataPresenter`, `.contents_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `ReferencesMetadataPresenter`** (4 nodes): `references_metadata_presenter.rb`, `ReferencesMetadataPresenter`, `.references_terms()`, `references_metadata_presenter.rb`
+- **Thin community `Community 28`** (3 nodes): `references_metadata_presenter.rb`, `ReferencesMetadataPresenter`, `.references_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `CodicologyMetadataPresenter`** (4 nodes): `codicology_metadata_presenter.rb`, `CodicologyMetadataPresenter`, `.codicology_terms()`, `codicology_metadata_presenter.rb`
+- **Thin community `Community 29`** (3 nodes): `codicology_metadata_presenter.rb`, `CodicologyMetadataPresenter`, `.codicology_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Keywords Metadata Presenter`** (4 nodes): `keywords_metadata_presenter.rb`, `KeywordsMetadataPresenter`, `.keywords_terms()`, `keywords_metadata_presenter.rb`
+- **Thin community `Community 30`** (3 nodes): `keywords_metadata_presenter.rb`, `KeywordsMetadataPresenter`, `.keywords_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Decoration Metadata Presenter`** (4 nodes): `decoration_metadata_presenter.rb`, `DecorationMetadataPresenter`, `.decoration_terms()`, `decoration_metadata_presenter.rb`
+- **Thin community `Community 31`** (3 nodes): `decoration_metadata_presenter.rb`, `DecorationMetadataPresenter`, `.decoration_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Overview Metadata Presenter`** (4 nodes): `overview_metadata_presenter.rb`, `OverviewMetadataPresenter`, `.overview_terms()`, `overview_metadata_presenter.rb`
+- **Thin community `Community 32`** (3 nodes): `overview_metadata_presenter.rb`, `OverviewMetadataPresenter`, `.overview_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Contents Metadata Presenter`** (4 nodes): `contents_metadata_presenter.rb`, `ContentsMetadataPresenter`, `.contents_terms()`, `contents_metadata_presenter.rb`
+- **Thin community `Community 33`** (3 nodes): `contents_metadata_presenter.rb`, `ContentsMetadataPresenter`, `.contents_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Find This Item Metadata Presenter`** (4 nodes): `find_this_item_metadata_presenter.rb`, `FindThisItemMetadataPresenter`, `.find_this_item_terms()`, `find_this_item_metadata_presenter.rb`
+- **Thin community `Community 34`** (3 nodes): `find_this_item_metadata_presenter.rb`, `FindThisItemMetadataPresenter`, `.find_this_item_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Sinai Index Date Presenter`** (4 nodes): `sinai_index_date_presenter.rb`, `SinaiIndexDatePresenter`, `.sinai_index_date_terms()`, `sinai_index_date_presenter.rb`
+- **Thin community `Community 35`** (3 nodes): `sinai_index_date_presenter.rb`, `SinaiIndexDatePresenter`, `.sinai_index_date_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Tagline Metadata Presenter`** (4 nodes): `tagline_metadata_presenter.rb`, `TaglineMetadataPresenter`, `.tagline_terms()`, `tagline_metadata_presenter.rb`
+- **Thin community `Community 36`** (3 nodes): `tagline_metadata_presenter.rb`, `TaglineMetadataPresenter`, `.tagline_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Contact Collection Metadata Presenter`** (4 nodes): `contact_collection_metadata_presenter.rb`, `ContactCollectionMetadataPresenter`, `.contact_collection_terms()`, `contact_collection_metadata_presenter.rb`
+- **Thin community `Community 37`** (3 nodes): `contact_collection_metadata_presenter.rb`, `ContactCollectionMetadataPresenter`, `.contact_collection_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Keyword Metadata Presenter`** (4 nodes): `keyword_metadata_presenter.rb`, `KeywordMetadataPresenter`, `.keyword_terms()`, `keyword_metadata_presenter.rb`
+- **Thin community `Community 38`** (3 nodes): `keyword_metadata_presenter.rb`, `KeywordMetadataPresenter`, `.keyword_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Note Collection Metadata Presenter`** (4 nodes): `note_collection_metadata_presenter.rb`, `NoteCollectionMetadataPresenter`, `.note_collection_terms()`, `note_collection_metadata_presenter.rb`
+- **Thin community `Community 39`** (3 nodes): `note_collection_metadata_presenter.rb`, `NoteCollectionMetadataPresenter`, `.note_collection_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Sinai Index Name Metadata Presenter`** (4 nodes): `sinai_index_name_metadata_presenter.rb`, `SinaiIndexNameMetadataPresenter`, `.sinai_index_name_terms()`, `sinai_index_name_metadata_presenter.rb`
+- **Thin community `Community 40`** (3 nodes): `sinai_index_name_metadata_presenter.rb`, `SinaiIndexNameMetadataPresenter`, `.sinai_index_name_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Sinai Index Collection Presenter`** (4 nodes): `sinai_index_collection_presenter.rb`, `SinaiIndexCollectionPresenter`, `.sinai_index_collection_terms()`, `sinai_index_collection_presenter.rb`
+- **Thin community `Community 41`** (3 nodes): `sinai_index_collection_presenter.rb`, `SinaiIndexCollectionPresenter`, `.sinai_index_collection_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Find Collection Metadata Presenter`** (4 nodes): `find_collection_metadata_presenter.rb`, `FindCollectionMetadataPresenter`, `.find_collection_terms()`, `find_collection_metadata_presenter.rb`
+- **Thin community `Community 42`** (3 nodes): `find_collection_metadata_presenter.rb`, `FindCollectionMetadataPresenter`, `.find_collection_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Item Overview Metadata Presenter`** (4 nodes): `item_overview_metadata_presenter.rb`, `ItemOverviewMetadataPresenter`, `.overview_terms()`, `item_overview_metadata_presenter.rb`
+- **Thin community `Community 43`** (3 nodes): `item_overview_metadata_presenter.rb`, `ItemOverviewMetadataPresenter`, `.overview_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Access Condition Metadata Presenter`** (4 nodes): `AccessConditionMetadataPresenter`, `.access_condition_terms()`, `access_condition_metadata_presenter.rb`, `access_condition_metadata_presenter.rb`
+- **Thin community `Community 44`** (3 nodes): `AccessConditionMetadataPresenter`, `.access_condition_terms()`, `access_condition_metadata_presenter.rb`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Sinai Index Text Unit Labels Presenter`** (4 nodes): `sinai_index_text_unit_labels_presenter.rb`, `SinaiIndexTextUnitLabelsPresenter`, `.sinai_index_text_unit_labels_terms()`, `sinai_index_text_unit_labels_presenter.rb`
+- **Thin community `Community 45`** (3 nodes): `sinai_index_text_unit_labels_presenter.rb`, `SinaiIndexTextUnitLabelsPresenter`, `.sinai_index_text_unit_labels_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Note Metadata Presenter`** (4 nodes): `note_metadata_presenter.rb`, `NoteMetadataPresenter`, `.note_terms()`, `note_metadata_presenter.rb`
+- **Thin community `Community 46`** (3 nodes): `note_metadata_presenter.rb`, `NoteMetadataPresenter`, `.note_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Sinai Index Language Presenter`** (4 nodes): `sinai_index_language_presenter.rb`, `SinaiIndexLanguagePresenter`, `.sinai_index_language_terms()`, `sinai_index_language_presenter.rb`
+- **Thin community `Community 47`** (3 nodes): `sinai_index_language_presenter.rb`, `SinaiIndexLanguagePresenter`, `.sinai_index_language_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Sinai Index Title Metadata Presenter`** (4 nodes): `sinai_index_title_metadata_presenter.rb`, `SinaiIndexTitleMetadataPresenter`, `.sinai_index_title_terms()`, `sinai_index_title_metadata_presenter.rb`
+- **Thin community `Community 48`** (3 nodes): `sinai_index_title_metadata_presenter.rb`, `SinaiIndexTitleMetadataPresenter`, `.sinai_index_title_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Physical Description Metadata Presenter`** (4 nodes): `physical_description_metadata_presenter.rb`, `PhysicalDescriptionMetadataPresenter`, `.physical_description_terms()`, `physical_description_metadata_presenter.rb`
+- **Thin community `Community 49`** (3 nodes): `physical_description_metadata_presenter.rb`, `PhysicalDescriptionMetadataPresenter`, `.physical_description_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Blacklight`** (4 nodes): `blacklight.js`, `longer()`, `updateStateFor()`, `blacklight.js`
+- **Thin community `Community 52`** (3 nodes): `search_field_service.rb`, `SearchFieldService`, `.search_fields()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Range Limit Slider`** (4 nodes): `range_limit_slider.js`, `isInt()`, `min_max()`, `range_limit_slider.js`
+- **Thin community `Community 53`** (3 nodes): `login_service.rb`, `LoginService`, `.create_token()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Search Field Service`** (4 nodes): `search_field_service.rb`, `SearchFieldService`, `.search_fields()`, `search_field_service.rb`
+- **Thin community `Community 54`** (3 nodes): `solr_document_provider.rb`, `SolrDocumentProvider`, `.initialize()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Login Service`** (4 nodes): `login_service.rb`, `LoginService`, `.create_token()`, `login_service.rb`
+- **Thin community `Community 55`** (3 nodes): `CreateFeatures`, `.change()`, `20190830185129_create_features.rb`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Solr Document Provider`** (4 nodes): `solr_document_provider.rb`, `SolrDocumentProvider`, `.initialize()`, `solr_document_provider.rb`
+- **Thin community `Community 56`** (3 nodes): `AddDeviseGuestsToUsers`, `.down()`, `20180918212347_add_devise_guests_to_users.rb`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Application Mailer`** (3 nodes): `application_mailer.rb`, `ApplicationMailer`, `application_mailer.rb`
+- **Thin community `Community 57`** (2 nodes): `application_mailer.rb`, `ApplicationMailer`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Ability`** (3 nodes): `Ability`, `ability.rb`, `ability.rb`
+- **Thin community `Community 58`** (2 nodes): `Ability`, `ability.rb`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Search Builder`** (3 nodes): `search_builder.rb`, `SearchBuilder`, `search_builder.rb`
+- **Thin community `Community 59`** (2 nodes): `search_builder.rb`, `SearchBuilder`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Application Record`** (3 nodes): `application_record.rb`, `ApplicationRecord`, `application_record.rb`
+- **Thin community `Community 60`** (2 nodes): `application_record.rb`, `ApplicationRecord`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Application Job`** (3 nodes): `application_job.rb`, `ApplicationJob`, `application_job.rb`
+- **Thin community `Community 61`** (2 nodes): `application_job.rb`, `ApplicationJob`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Search History Controller`** (3 nodes): `search_history_controller.rb`, `SearchHistoryController`, `search_history_controller.rb`
+- **Thin community `Community 62`** (2 nodes): `search_history_controller.rb`, `SearchHistoryController`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Scrollable Tabs`** (3 nodes): `scrollable_tabs.js`, `initScrollableTabs()`, `scrollable_tabs.js`
+- **Thin community `Community 66`** (2 nodes): `channel.rb`, `Channel`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Work Show More`** (3 nodes): `work_show_more.js`, `work_show_more.js`, `initWorkShowMore()`
+- **Thin community `Community 69`** (2 nodes): `Andy Wallace (DevOps / Blacklight auth)`, `Blacklight 8 Authentication Regression`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Range Limit Shared`** (3 nodes): `range_limit_shared.js`, `BlacklightRangeLimit()`, `range_limit_shared.js`
+- **Thin community `Community 70`** (2 nodes): `Staging Regression (build rollback)`, `Staging Site (stage.sinaimanuscripts.library.ucla.edu)`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Facet Label Button Behavior`** (3 nodes): `facet_label_button_behavior.rb`, `render_selected_facet_value()`, `facet_label_button_behavior.rb`
+- **Thin community `Community 155`** (1 nodes): `Locus (folio reference)`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Channel`** (3 nodes): `channel.rb`, `Channel`, `channel.rb`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Onboarding Transcript`** (2 nodes): `Andy Wallace (DevOps / Blacklight auth)`, `Blacklight 8 Authentication Regression`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Onboarding Transcript`** (2 nodes): `Staging Regression (build rollback)`, `Staging Site (stage.sinaimanuscripts.library.ucla.edu)`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Smdl Field Reference`** (1 nodes): `Locus (folio reference)`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Smdl Overview`** (1 nodes): `smdl_overview.md (empty file)`
+- **Thin community `Community 156`** (1 nodes): `smdl_overview.md (empty file)`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `ApplicationController` connect `ApplicationController` to `SolrDocument`?**
-  _High betweenness centrality (0.040) - this node is a cross-community bridge._
-- **Why does `Sitemap` connect `Dynamic Sitemap` to `SolrDocument`?**
-  _High betweenness centrality (0.015) - this node is a cross-community bridge._
-- **Why does `render_search_bar()` connect `Blacklight Helpers` to `ApplicationController`?**
-  _High betweenness centrality (0.013) - this node is a cross-community bridge._
-- **What connects `Writing (writing[])`, `Palimpsest`, `Multispectral Imaging (MSI)` to the rest of the system?**
-  _38 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `SMDL Data Model` be split into smaller, more focused modules?**
-  _Cohesion score 0.09 - nodes in this community are weakly interconnected._
-- **Should `Blacklight Helpers` be split into smaller, more focused modules?**
-  _Cohesion score 0.14 - nodes in this community are weakly interconnected._
-- **Should `ApplicationController` be split into smaller, more focused modules?**
-  _Cohesion score 0.08 - nodes in this community are weakly interconnected._
+- **Why does `h()` connect `Community 1` to `Community 0`, `Community 2`, `Community 3`, `Community 4`, `Community 11`?**
+  _High betweenness centrality (0.073) - this node is a cross-community bridge._
+- **Why does `t()` connect `Community 1` to `Community 0`, `Community 2`, `Community 4`, `Community 11`, `Community 12`?**
+  _High betweenness centrality (0.065) - this node is a cross-community bridge._
+- **Why does `render_related_mss_link()` connect `Community 3` to `Community 1`?**
+  _High betweenness centrality (0.033) - this node is a cross-community bridge._
+- **Are the 2 inferred relationships involving `call()` (e.g. with `b()` and `d()`) actually correct?**
+  _`call()` has 2 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 3 inferred relationships involving `E()` (e.g. with `.get()` and `init()`) actually correct?**
+  _`E()` has 3 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 4 inferred relationships involving `a()` (e.g. with `.get()` and `b()`) actually correct?**
+  _`a()` has 4 INFERRED edges - model-reasoned connections that need verification._
+- **What connects `ApplicationMailer`, `Ability`, `SearchBuilder` to the rest of the system?**
+  _45 weakly-connected nodes found - possible documentation gaps or missing edges._

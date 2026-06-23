@@ -345,6 +345,24 @@
   line-height: 1.5;
 }
 
+// Contents tab — parts render at the top level, so the part header is styled
+// distinctly (larger) from the Full Description part heading (NOP-159).
+.contents-part--sinai {
+  margin-top: 2rem;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.contents-part-heading--sinai {
+  color: $sinai-primary;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
 // Expandable fields (Support, Writing, Ink) using <details>
 .part-expandable--sinai {
   width: 100%;
