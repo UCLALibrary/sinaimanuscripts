@@ -46,9 +46,7 @@
       </div>
 
       <%# ROW 4: DATE - LANGUAGE %>
-      <div class='metadata-block-index--sinai'>
-        <%= image_tag('sinai-icons/calendar-icon.png', class: 'icon-calendar-index--sinai') %><%= render 'catalog/index_results/date', document: document %>&nbsp;&nbsp;<%= image_tag('sinai-icons/world-icon.png', class: 'icon-world-index-sinai') %><%= render 'catalog/index_results/language', document: document %>
-      </div>
+      <%= render 'catalog/index_results/date_language', document: document %>
 
       <%# ROW 5: REPOSITORY | COLLECTION %>
       <%= render 'catalog/index_results/collection', document: document %>
@@ -78,9 +76,7 @@
       </div>
 
       <%# ROW 4: DATE - LANGUAGE %>
-      <div class='metadata-block-index--sinai'>
-        <%= image_tag('sinai-icons/calendar-icon.png', class: 'icon-calendar-index--sinai') %><%= render 'catalog/index_results/date', document: document %>&nbsp;&nbsp;<%= image_tag('sinai-icons/world-icon.png', class: 'icon-world-index-sinai') %><%= render 'catalog/index_results/language', document: document %>
-      </div>
+      <%= render 'catalog/index_results/date_language', document: document %>
 
       <%# ROW 5: REPOSITORY | COLLECTION %>
       <%= render 'catalog/index_results/collection', document: document %>

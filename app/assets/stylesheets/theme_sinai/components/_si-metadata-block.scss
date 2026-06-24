@@ -63,6 +63,15 @@
 
 .metadata-block-index--sinai {
   display: flex;
+  flex-wrap: wrap;
+}
+
+// Forces the language group onto its own line when the date text is long
+// (NOP-125): a zero-height, full-width flex line break.
+.metadata-block-index__break--sinai {
+  flex-basis: 100%;
+  width: 100%;
+  height: 0;
 }
 
 .metadata-block-gallery--sinai {
@@ -111,7 +120,10 @@
   display: inline;
   margin-top: 2px;
   margin-right: 3px;
-  margin-left: 3px;
+  // No left margin: when the language drops to its own line (long dates) or is
+  // alone (no dates), it should align with the content edge, not be indented.
+  // Inline spacing after the date is provided by the separator (NOP-125).
+  margin-left: 0;
   width: $text-14;
   height: $text-14;
 }

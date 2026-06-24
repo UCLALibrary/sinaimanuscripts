@@ -1,0 +1,18 @@
+<%# ROW 4: DATE | LANGUAGE
+    Origin dates come from the JSON blob (NOP-125). The calendar icon only
+    renders when origin dates exist; when the combined date text is long
+    (> 20 chars) the language drops onto its own line via a flex line break. %>
+<% origin_dates = sinai_index_origin_dates(document) %>
+<% dates_long = origin_dates.first(3).join(' | ').length > 20 %>
+
+<div class='metadata-block-index--sinai'>
+  <% if origin_dates.any? %>
+    <%= image_tag('sinai-icons/calendar-icon.png', class: 'icon-calendar-index--sinai') %><%= render 'catalog/index_results/date', document: document %>
+    <% if dates_long %>
+      <div class='metadata-block-index__break--sinai'></div>
+    <% else %>
+      &nbsp;&nbsp;
+    <% end %>
+  <% end %>
+  <%= image_tag('sinai-icons/world-icon.png', class: 'icon-world-index-sinai') %><%= render 'catalog/index_results/language', document: document %>
+</div>
