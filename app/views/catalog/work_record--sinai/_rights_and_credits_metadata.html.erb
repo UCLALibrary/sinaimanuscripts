@@ -21,9 +21,21 @@
                                  .uniq
   timestamps        = cataloguers.map { |c| c['timestamp'].to_s }.reject(&:empty?)
   most_recent_ts    = timestamps.max_by { |t| (Time.parse(t) rescue Time.at(0)) }
-  last_modified     = if most_recent_ts
-                        (Date.parse(most_recent_ts).strftime('%Y-%m-%d') rescue nil)
-                      end
+  # Format an ISO date string for display: year-month -> "December, 2025";
+  # full date / datetime -> "December 15, 2025". Falls back to the raw value
+  # if it can't be parsed.
+  format_smdl_date  = lambda do |raw|
+    ts = raw.to_s.strip
+    next ts if ts.empty?
+
+    if ts.match?(/\A\d{4}-\d{2}\z/)
+      (Date.strptime(ts, '%Y-%m').strftime('%B, %Y') rescue ts)
+    else
+      (Date.parse(ts).strftime('%B %-d, %Y') rescue ts)
+    end
+  end
+
+  last_modified     = (format_smdl_date.call(most_recent_ts) if most_recent_ts)
 
   has_description_section = desc_programs.any? || contributor_names.any? || last_modified.present?
 %>
@@ -114,7 +126,7 @@
                 <div class="related-mss-group__row--sinai">
                   <dt class="related-mss-group__row-label--sinai">Imaging Date</dt>
                   <dd class="related-mss-group__row-value--sinai">
-                    <div class="related-mss-group__line--sinai"><%= imaging_date %></div>
+                    <div class="related-mss-group__line--sinai"><%= format_smdl_date.call(imaging_date) %></div>
                   </dd>
                 </div>
               <% end %>
@@ -134,19 +146,19 @@
                   </dd>
                 </div>
               <% end %>
-              <% if imaging_system.present? %>
-                <div class="related-mss-group__row--sinai">
-                  <dt class="related-mss-group__row-label--sinai">Imaging Systems</dt>
-                  <dd class="related-mss-group__row-value--sinai">
-                    <div class="related-mss-group__line--sinai"><%= imaging_system %></div>
-                  </dd>
-                </div>
-              <% end %>
               <% if msi_processing.any? %>
                 <div class="related-mss-group__row--sinai">
                   <dt class="related-mss-group__row-label--sinai">MSI Processing</dt>
                   <dd class="related-mss-group__row-value--sinai">
                     <div class="related-mss-group__line--sinai"><%= msi_processing.join(', ') %></div>
+                  </dd>
+                </div>
+              <% end %>
+              <% if imaging_system.present? %>
+                <div class="related-mss-group__row--sinai">
+                  <dt class="related-mss-group__row-label--sinai">Imaging Systems</dt>
+                  <dd class="related-mss-group__row-value--sinai">
+                    <div class="related-mss-group__line--sinai"><%= imaging_system %></div>
                   </dd>
                 </div>
               <% end %>
