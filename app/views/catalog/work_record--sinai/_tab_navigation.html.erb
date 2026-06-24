@@ -6,6 +6,18 @@
   has_undertexts = Array(ms_json_tabs['uto']).any? ||
                    Array(ms_json_tabs['part']).any? { |p| Array(p['uto']).any? }
 
+  # Guest Content tab is present when there is at least one guest_layer, or any
+  # guest-typed paracontent/note outside a guest layer (mirrors NOP-160 scope).
+  guest_type = ->(o) { o.dig('type', 'id') == 'guest' }
+  has_guest_content = Array(ms_json_tabs['guest_layer']).any? ||
+                      Array(ms_json_tabs['para']).any?(&guest_type) ||
+                      Array(ms_json_tabs['note']).any?(&guest_type) ||
+                      Array(ms_json_tabs['part']).any? { |p|
+                        Array(p['guest_layer']).any? ||
+                        Array(p['para']).any?(&guest_type) ||
+                        Array(p['note']).any?(&guest_type)
+                      }
+
   related_mss_tabs    = Array(ms_json_tabs['related_mss'])
   has_disjecta_tab    = related_mss_tabs.any? { |r| r.dig('type', 'id') == 'disjecta' }
   has_filiation_tab   = related_mss_tabs.any? { |r| r.dig('type', 'id') == 'filiation' }
@@ -21,7 +33,7 @@
     { id: 'full-description',        label: 'Full Description',          present: true,                    rail_nav: true,  rail_examine: true  },
     { id: 'contents',                 label: 'Contents',                   present: true,                    rail_nav: true,  rail_examine: true  },
     { id: 'undertexts',               label: 'Undertexts',                 present: has_undertexts,          rail_nav: false, rail_examine: true  },
-    { id: 'guest-content',            label: 'Guest Content',              present: true,                    rail_nav: true,  rail_examine: true  },
+    { id: 'guest-content',            label: 'Guest Content',              present: has_guest_content,       rail_nav: true,  rail_examine: true  },
     { id: 'related-manuscripts',      label: 'Related Manuscripts',        present: has_related_manuscripts, rail_nav: false, rail_examine: false },
     { id: 'references-bibliography',  label: 'References & Bibliography',  present: true,                    rail_nav: false, rail_examine: false },
     { id: 'names-dates-places',       label: 'Names, Dates, Places',       present: true,                    rail_nav: false, rail_examine: false },
@@ -106,6 +118,8 @@
         <%= render 'catalog/work_record--sinai/content_metadata', document: document %>
       <% elsif tab[:id] == 'undertexts' %>
         <%= render 'catalog/work_record--sinai/undertexts_metadata', document: document %>
+      <% elsif tab[:id] == 'guest-content' %>
+        <%= render 'catalog/work_record--sinai/guest_content_metadata', document: document %>
       <% elsif tab[:id] == 'related-manuscripts' %>
         <%= render 'catalog/work_record--sinai/related_manuscripts_metadata', document: document %>
       <% elsif tab[:id] == 'references-bibliography' %>

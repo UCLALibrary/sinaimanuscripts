@@ -1,0 +1,185 @@
+<%# Renders the Scribe / Writing / Ink / Layout dl rows for a single layer_record. %>
+<%# Shared between the Full Description Part section (ot_layer) and the Guest Content %>
+<%# tab (guest_layer). Emits <div class="overview-dl__row--sinai"> blocks meant to %>
+<%# live inside the caller's <dl class="overview-dl--sinai">. %>
+<%# Locals: layer_record (Hash), data_path (String, for DATA SOURCE debug comments). %>
+<%
+  # Scribe: assoc_name where role.id=scribe
+  scribes = Array(layer_record['assoc_name']).select { |n| n.dig('role', 'id') == 'scribe' }
+  scribe_names = scribes.map { |s| s['agent_record']&.dig('pref_name') || s['as_written'] || s['value'] }.compact
+
+  # Writing: from layer_record writing array
+  writings = Array(layer_record['writing'])
+  # Top-line scripts (collapsed summary)
+  all_scripts = []
+  writings.each do |w|
+    Array(w['script']).each do |s|
+      all_scripts << s['label'].to_s if s['label'].present?
+    end
+  end
+  all_scripts = all_scripts.uniq
+
+  # Ink: from layer_record ink array
+  inks = Array(layer_record['ink'])
+  # Top-line colors (collapsed summary) - deduplicated
+  all_colors = inks.flat_map { |ink| Array(ink['color']) }.uniq
+
+  # Layout: from layer_record layout array
+  layouts = Array(layer_record['layout'])
+%>
+
+<%# === Scribe === %>
+<% if scribe_names.any? %>
+  <!-- DATA SOURCE: <%= data_path %>.assoc_name[role.id=scribe] = <%= scribes.to_json %> -->
+  <div class="overview-dl__row--sinai">
+    <dt class="overview-dl__label--sinai">Scribe</dt>
+    <dd class="overview-dl__value--sinai">
+      <%= scribe_names.join(', ') %>
+    </dd>
+  </div>
+<% end %>
+
+<%# === Writing (expandable only when any sub-object has locus or notes) === %>
+<% if all_scripts.any? %>
+  <!-- DATA SOURCE: <%= data_path %>.writing = <%= writings.to_json %> -->
+  <% expandable_writings = writings.reject { |w| w['locus'].to_s.blank? && Array(w['note']).empty? } %>
+  <% writing_summary = "Scripts: " + all_scripts.join(' | ') %>
+  <div class="overview-dl__row--sinai">
+    <% if expandable_writings.any? %>
+      <details class="part-expandable--sinai">
+        <summary class="part-expandable__summary--sinai">
+          <dt class="overview-dl__label--sinai part-expandable__label--sinai">Writing</dt>
+          <dd class="overview-dl__value--sinai">
+            <%= writing_summary %>
+          </dd>
+        </summary>
+        <dd class="overview-dl__value--sinai part-expandable__details--sinai">
+          <% expandable_writings.each do |writing| %>
+            <div class="part-grouped-block--sinai">
+              <%
+                w_scripts = Array(writing['script']).map { |s|
+                  pair = s['label'].to_s
+                  pair = "#{pair} (#{s['writing_system']})" if s['writing_system'].present?
+                  pair
+                }
+                w_locus = writing['locus'].to_s
+                w_notes = Array(writing['note'])
+              %>
+              <% line_parts = [] %>
+              <% line_parts << h(w_locus) if w_locus.present? %>
+              <% line_parts << w_scripts.join('; ') if w_scripts.any? %>
+              <% if line_parts.any? %>
+                <div class="part-grouped-block__line--sinai">
+                  <%= w_locus.present? ? "#{h(w_locus)}: #{w_scripts.join('; ')}" : w_scripts.join('; ') %>
+                </div>
+              <% end %>
+              <% w_notes.each do |note| %>
+                <div class="part-grouped-block__note--sinai"><%= h(note) %></div>
+              <% end %>
+            </div>
+          <% end %>
+        </dd>
+      </details>
+    <% else %>
+      <dt class="overview-dl__label--sinai">Writing</dt>
+      <dd class="overview-dl__value--sinai">
+        <%= writing_summary %>
+      </dd>
+    <% end %>
+  </div>
+<% end %>
+
+<%# === Ink (expandable only when any sub-object has locus or notes) === %>
+<% if all_colors.any? %>
+  <!-- DATA SOURCE: <%= data_path %>.ink = <%= inks.to_json %> -->
+  <% expandable_inks = inks.reject { |i| i['locus'].to_s.blank? && Array(i['note']).empty? } %>
+  <% ink_summary = "Color: " + all_colors.join(', ') %>
+  <div class="overview-dl__row--sinai">
+    <% if expandable_inks.any? %>
+      <details class="part-expandable--sinai">
+        <summary class="part-expandable__summary--sinai">
+          <dt class="overview-dl__label--sinai part-expandable__label--sinai">Ink</dt>
+          <dd class="overview-dl__value--sinai">
+            <%= ink_summary %>
+          </dd>
+        </summary>
+        <dd class="overview-dl__value--sinai part-expandable__details--sinai">
+          <% expandable_inks.each do |ink| %>
+            <div class="part-grouped-block--sinai">
+              <%
+                ink_locus = ink['locus'].to_s
+                ink_colors = Array(ink['color'])
+                ink_notes = Array(ink['note'])
+              %>
+              <% if ink_locus.present? || ink_colors.any? %>
+                <div class="part-grouped-block__line--sinai">
+                  <% if ink_locus.present? && ink_colors.any? %>
+                    <%= "#{h(ink_locus)}: #{ink_colors.join(', ')}" %>
+                  <% elsif ink_locus.present? %>
+                    <%= h(ink_locus) %>
+                  <% else %>
+                    <%= ink_colors.join(', ') %>
+                  <% end %>
+                </div>
+              <% end %>
+              <% ink_notes.each do |note| %>
+                <div class="part-grouped-block__note--sinai"><%= h(note) %></div>
+              <% end %>
+            </div>
+          <% end %>
+        </dd>
+      </details>
+    <% else %>
+      <dt class="overview-dl__label--sinai">Ink</dt>
+      <dd class="overview-dl__value--sinai">
+        <%= ink_summary %>
+      </dd>
+    <% end %>
+  </div>
+<% end %>
+
+<%# === Layout === %>
+<% if layouts.any? %>
+  <!-- DATA SOURCE: <%= data_path %>.layout = <%= layouts.to_json %> -->
+  <div class="overview-dl__row--sinai">
+    <dt class="overview-dl__label--sinai">Layout</dt>
+    <dd class="overview-dl__value--sinai">
+      <% layouts.each_with_index do |layout, li| %>
+        <div class="part-grouped-block--sinai">
+          <%
+            l_locus = layout['locus'].to_s
+            l_columns = layout['columns'].to_s
+            l_lines = layout['lines'].to_s
+            l_dim = layout['dim'].to_s
+            l_notes = Array(layout['note'])
+
+            # Build: [locus]: Columns: [columns], Lines: [lines] | [dim]
+            col_line_parts = []
+            col_line_parts << "Columns: #{l_columns}" if l_columns.present?
+            col_line_parts << "Lines: #{l_lines}" if l_lines.present?
+            col_line_str = col_line_parts.join(', ')
+
+            main_parts = []
+            main_parts << col_line_str if col_line_str.present?
+            main_parts << l_dim if l_dim.present?
+            main_line = main_parts.join(' | ')
+          %>
+          <% if l_locus.present? || main_line.present? %>
+            <div class="part-grouped-block__line--sinai">
+              <% if l_locus.present? && main_line.present? %>
+                <%= "#{h(l_locus)}: #{main_line}" %>
+              <% elsif l_locus.present? %>
+                <%= h(l_locus) %>
+              <% else %>
+                <%= main_line %>
+              <% end %>
+            </div>
+          <% end %>
+          <% l_notes.each do |note| %>
+            <div class="part-grouped-block__note--sinai"><%= h(note) %></div>
+          <% end %>
+        </div>
+      <% end %>
+    </dd>
+  </div>
+<% end %>
