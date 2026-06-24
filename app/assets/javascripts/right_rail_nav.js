@@ -5,7 +5,8 @@
 //   2. Smooth-scrolls when a nav link is clicked.
 //   3. Shows/hides the Examine-manuscript card based on whether the inline
 //      Mirador iframe is in the viewport.
-//   4. Lazy-loads the Examine-manuscript modal iframe on first open.
+//   4. Promotes the inline viewer iframe into a full-screen Examine popup
+//      (no second instance, so the viewer keeps its live state).
 (function () {
   var scrollHandler = null;
   // How far below the viewport top a heading must cross to count as "current".
@@ -137,19 +138,70 @@
     observer.observe(iframe);
   }
 
-  function setupModalLazyLoad() {
-    var modal = document.getElementById('examine-manuscript-modal');
-    if (!modal || !window.jQuery) return;
-    var iframe = modal.querySelector('[data-examine-manuscript-iframe]');
-    if (!iframe) return;
-    var src = iframe.getAttribute('data-iframe-src') || '';
-    window.jQuery(modal).on('show.bs.modal', function () {
-      if (src && iframe.getAttribute('src') !== src) {
-        iframe.setAttribute('src', src);
+  // Examine-manuscript popup.
+  //
+  // Rather than spinning up a second Mirador instance, we "promote" the single
+  // inline viewer iframe into a full-screen overlay via CSS. The iframe element
+  // is never reparented and its src is never touched, so the viewer keeps its
+  // exact live state (folio, layer, zoom, open panels) when the popup opens.
+  // Document-level listeners are bound once; the DOM is re-queried per event so
+  // the handlers stay correct across Turbolinks navigations.
+  var examineOverlayBound = false;
+  var examineLastTrigger = null;
+
+  function getViewerContainer() {
+    return document.querySelector('.media-viewer-container');
+  }
+
+  function examineIsOpen() {
+    var container = getViewerContainer();
+    return !!container && container.classList.contains('media-viewer-container--promoted');
+  }
+
+  function openExamine(trigger) {
+    var container = getViewerContainer();
+    if (!container || examineIsOpen()) return;
+    examineLastTrigger = trigger || null;
+    container.classList.add('media-viewer-container--promoted');
+    document.body.classList.add('examine-active');
+    var backdrop = document.querySelector('.media-viewer-backdrop--sinai');
+    if (backdrop) backdrop.hidden = false;
+    var closeBtn = container.querySelector('[data-examine-close]');
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeExamine() {
+    var container = getViewerContainer();
+    if (!examineIsOpen()) return;
+    container.classList.remove('media-viewer-container--promoted');
+    document.body.classList.remove('examine-active');
+    var backdrop = document.querySelector('.media-viewer-backdrop--sinai');
+    if (backdrop) backdrop.hidden = true;
+    if (examineLastTrigger && typeof examineLastTrigger.focus === 'function') {
+      examineLastTrigger.focus();
+    }
+    examineLastTrigger = null;
+  }
+
+  function setupExamineOverlay() {
+    if (examineOverlayBound) return;
+    examineOverlayBound = true;
+
+    document.addEventListener('click', function (event) {
+      var trigger = event.target.closest('[data-examine-trigger]');
+      if (trigger) {
+        event.preventDefault();
+        openExamine(trigger);
+        return;
+      }
+      if (event.target.closest('[data-examine-close]')) {
+        event.preventDefault();
+        closeExamine();
       }
     });
-    window.jQuery(modal).on('hidden.bs.modal', function () {
-      iframe.setAttribute('src', '');
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && examineIsOpen()) closeExamine();
     });
   }
 
@@ -158,7 +210,7 @@
     activateRail();
     setupTabSwitchObserver();
     setupViewerVisibility();
-    setupModalLazyLoad();
+    setupExamineOverlay();
   }
 
   document.addEventListener('DOMContentLoaded', init);

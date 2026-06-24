@@ -15,8 +15,23 @@
     </div>
   <% else %>
   <%# --------- Sinai Logged in ----- %>
+    <%# Backdrop shown only while the viewer is promoted to the Examine popup.
+        Clicking it closes the popup. Inert/invisible otherwise. %>
+    <div class='media-viewer-backdrop--sinai' data-examine-close hidden></div>
     <div class='media-viewer-container media-viewer-container--sinai'>
       <% iiif_service = IiifService.new %>
+      <%# Popup chrome — only visible when the container has the promoted class.
+          Kept as a sibling of the iframe so the iframe is never reparented
+          (which would reload it and drop the viewer's state). %>
+      <div class='media-viewer-popup-header--sinai'>
+        <span class='media-viewer-popup-title--sinai'><%= document[:shelfmark_ssi] %></span>
+        <button type="button"
+                class="close media-viewer-popup-close--sinai"
+                data-examine-close
+                aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
       <iframe
         class='media-viewer-iframe'
         src="<%= iiif_service.src(request, document) %>"
