@@ -179,9 +179,10 @@ RSpec.describe 'catalog/work_record--sinai/_items_metadata.html.erb', type: :vie
         expect(rendered).to have_css('.part-expandable__label--sinai', text: 'Item Notes', visible: :all)
       end
 
-      it 'renders each typed note as "type label: value"' do
-        expect(rendered).to have_css('.part-grouped-block__line--sinai strong', text: 'Foliation:', visible: :all)
-        expect(rendered).to have_css('.part-grouped-block__line--sinai strong', text: 'Condition:', visible: :all)
+      it 'renders only the note value, without the type label' do
+        expect(rendered).not_to have_css('.part-grouped-block__line--sinai strong')
+        expect(rendered).not_to have_content('Foliation:')
+        expect(rendered).not_to have_content('Condition:')
         expect(rendered).to have_content('First note value.')
         expect(rendered).to have_content('Second note value.')
       end
