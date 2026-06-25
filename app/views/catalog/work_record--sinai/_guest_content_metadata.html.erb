@@ -1,7 +1,8 @@
 <%# === Guest Content tab (NOP-160) === %>
-<%# Renders guest_layer objects (ms_obj root + part-level), then guest-typed %>
-<%# paracontent and notes that live OUTSIDE any guest layer. Reuses the shared %>
-<%# _layer_fields, _item_entry, and _para_entry partials. %>
+<%# A single top-level "Guest Content" heading, then a list of collapsible guest %>
+<%# objects: guest_layer accordions first (via _guest_layer_entry), then guest-typed %>
+<%# paracontent and notes that live OUTSIDE any guest layer. No large red headings %>
+<%# on the objects themselves — they collapse from their first label line. %>
 
 <% ms_json = begin JSON.parse(document['manuscript_json_ts'] || '{}') rescue {} end %>
 
@@ -34,150 +35,38 @@
   Array(ms_json['part']).each do |part|
     Array(part['note']).each { |n| guest_notes << n if n.dig('type', 'id') == 'guest' }
   end
-
-  # Origin for a single layer_record: assoc_date (type.id=origin) ; assoc_place
-  # (event.id=origin), including paracontent-level dates/places. Semicolon only
-  # when both a date and a place are present; multiple pairs on new lines.
-  build_layer_origins = lambda do |layer_record|
-    origins = []
-    collect = lambda do |dates, places|
-      origin_dates  = Array(dates).select  { |d| d.dig('type',  'id') == 'origin' }
-      origin_places = Array(places).select { |p| p.dig('event', 'id') == 'origin' }
-      if origin_dates.any?
-        origin_dates.each_with_index do |date, di|
-          place     = origin_places[di] || origin_places.first
-          date_val  = date['value'].to_s
-          place_val = place ? (place['value'].to_s.presence || place.dig('place_record', 'pref_name').to_s) : ''
-          line = if date_val.present? && place_val.present?
-                   "#{date_val} ; #{place_val}"
-                 else
-                   date_val.presence || place_val
-                 end
-          origins << line if line.present?
-        end
-      elsif origin_places.any?
-        origin_places.each do |p|
-          val = p['value'].to_s.presence || p.dig('place_record', 'pref_name').to_s
-          origins << val if val.present?
-        end
-      end
-    end
-    collect.call(layer_record['assoc_date'], layer_record['assoc_place'])
-    Array(layer_record['para']).each { |pa| collect.call(pa['assoc_date'], pa['assoc_place']) }
-    origins.uniq
-  end
 %>
 
 <% if guest_layers.any? || guest_paras.any? || guest_notes.any? %>
-  <%# === Guest layers === %>
+  <h2 id="section-guest-content" class="overview-heading--sinai">Guest Content</h2>
+
+  <%# === Guest layers (collapsible accordions) === %>
   <% guest_layers.each_with_index do |entry, layer_i| %>
-    <%
-      gl = entry[:gl]
-      gl_path = entry[:path]
-      lr = gl['layer_record'] || {}
-
-      gl_label = gl['label'].to_s
-      gl_locus = gl['locus'].to_s.presence
-      gl_summary = lr['summary'].to_s
-
-      layer_origins = build_layer_origins.call(lr)
-      layer_extent_parts = [lr['extent'].to_s, lr['dim'].to_s].reject(&:blank?)
-
-      layer_text_units = Array(lr['text_unit'])
-      layer_paras = Array(lr['para'])
-    %>
-
-    <!-- DATA SOURCE: <%= gl_path %> -->
-    <div class="part-section--sinai guest-content-section--sinai">
-      <%# === Guest layer header: [label], [locus] === %>
-      <% header = gl_label %>
-      <% header = "#{header}, #{gl_locus}" if gl_locus.present? %>
-      <h3 id="section-guest-<%= layer_i %>" class="part-heading--sinai"><%= h(header) %></h3>
-
-      <%# === Summary (italic) === %>
-      <% if gl_summary.present? %>
-        <!-- DATA SOURCE: <%= gl_path %>.layer_record.summary -->
-        <p class="part-summary--sinai"><%= h(gl_summary) %></p>
-      <% end %>
-
-      <dl class="overview-dl--sinai">
-        <%# === Origin === %>
-        <% if layer_origins.any? %>
-          <!-- DATA SOURCE: <%= gl_path %>.layer_record..assoc_date[type.id=origin], ..assoc_place[event.id=origin] -->
-          <div class="overview-dl__row--sinai">
-            <dt class="overview-dl__label--sinai">Origin</dt>
-            <dd class="overview-dl__value--sinai">
-              <%= safe_join(layer_origins.map { |o| h(o) }, tag.br) %>
-            </dd>
-          </div>
-        <% end %>
-
-        <%# === Extent === %>
-        <% if layer_extent_parts.any? %>
-          <!-- DATA SOURCE: <%= gl_path %>.layer_record.extent, .dim -->
-          <div class="overview-dl__row--sinai">
-            <dt class="overview-dl__label--sinai">Extent</dt>
-            <dd class="overview-dl__value--sinai">
-              <%= layer_extent_parts.join(' | ') %>
-            </dd>
-          </div>
-        <% end %>
-
-        <%# === Scribe / Writing / Ink / Layout (shared with Full Description) === %>
-        <%= render 'catalog/work_record--sinai/layer_fields',
-                   layer_record: lr,
-                   data_path: "#{gl_path}.layer_record" %>
-      </dl>
-
-      <%# === Items (text_units within the guest layer) === %>
-      <% if layer_text_units.any? %>
-        <div class="items-section--sinai part-items-section--sinai">
-          <h4 class="items-subsection-heading--sinai">Contents</h4>
-          <% layer_text_units.each_with_index do |tu, tu_i| %>
-            <%= render 'catalog/work_record--sinai/item_entry',
-                       item_data: { tu: tu, part_idx: "guest-#{layer_i}", layer_idx: 0, tu_idx: tu_i },
-                       item_num: tu_i + 1,
-                       data_path: "#{gl_path}.layer_record.text_unit[#{tu_i}]" %>
-          <% end %>
-        </div>
-      <% end %>
-
-      <%# === Paracontents within the guest layer === %>
-      <% if layer_paras.any? %>
-        <div class="works-section--sinai item-subsection--sinai">
-          <div class="works-section__label--sinai">Paracontents</div>
-          <% layer_paras.each_with_index do |pa, pa_i| %>
-            <%= render 'catalog/work_record--sinai/para_entry',
-                       pa: pa,
-                       data_path: "#{gl_path}.layer_record.para[#{pa_i}]" %>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+    <%= render 'catalog/work_record--sinai/guest_layer_entry',
+               gl: entry[:gl],
+               index: layer_i,
+               data_path: entry[:path] %>
   <% end %>
 
-  <%# === Guest paracontent outside a guest layer === %>
+  <%# === Guest paracontent outside a guest layer (collapsible accordions) === %>
   <% if guest_paras.any? %>
-    <div class="items-section--sinai">
-      <h2 id="section-guest-paracontent" class="overview-heading--sinai">Guest Paracontent</h2>
-      <div class="works-section--sinai item-subsection--sinai">
-        <% guest_paras.each do |entry| %>
-          <%= render 'catalog/work_record--sinai/para_entry',
-                     pa: entry[:pa],
-                     data_path: entry[:path],
-                     fallback_header: 'Guest Paracontent' %>
-        <% end %>
-      </div>
+    <div class="works-section--sinai item-subsection--sinai guest-content__outside--sinai">
+      <div class="works-section__label--sinai">Paracontents</div>
+      <% guest_paras.each do |entry| %>
+        <%= render 'catalog/work_record--sinai/para_entry',
+                   pa: entry[:pa],
+                   data_path: entry[:path],
+                   fallback_header: 'Guest Paracontent' %>
+      <% end %>
     </div>
   <% end %>
 
   <%# === Guest notes outside a guest layer === %>
   <% if guest_notes.any? %>
-    <section class="notes-on-manuscript-section--sinai">
-      <h2 id="section-guest-notes" class="overview-heading--sinai">Guest Notes</h2>
+    <div class="works-section--sinai item-subsection--sinai guest-content__outside--sinai">
+      <div class="works-section__label--sinai">Notes</div>
       <dl class="overview-dl--sinai">
         <div class="notes-on-manuscript__row--sinai">
-          <dt class="overview-dl__label--sinai">Notes</dt>
           <dd class="notes-on-manuscript__value--sinai">
             <% guest_notes.each do |n| %>
               <div class="part-grouped-block__line--sinai"><%= h(n['value']) %></div>
@@ -185,6 +74,6 @@
           </dd>
         </div>
       </dl>
-    </section>
+    </div>
   <% end %>
 <% end %>

@@ -1,0 +1,121 @@
+<%# Renders a single guest_layer as a collapsible accordion (NOP-160 redesign). %>
+<%# Collapsible from the "[label], [locus]" line; no large red heading. The body %>
+<%# holds the summary, layer fields (via _layer_fields), de-emphasized items, and %>
+<%# in-layer paracontent (via _para_entry). %>
+<%# Locals: gl (guest_layer Hash), data_path (String), index (Integer, for anchor ids). %>
+<%
+  lr = gl['layer_record'] || {}
+
+  gl_label = gl['label'].to_s
+  gl_locus = gl['locus'].to_s.presence
+  header = gl_label
+  header = "#{header}, #{gl_locus}" if gl_locus.present?
+  header = 'Guest Layer' if header.blank?
+
+  gl_summary = lr['summary'].to_s
+
+  # Origin: assoc_date (type.id=origin) ; assoc_place (event.id=origin), including
+  # paracontent-level dates/places. Semicolon only when both are present; multiple
+  # pairs on new lines.
+  build_layer_origins = lambda do |layer_record|
+    origins = []
+    collect = lambda do |dates, places|
+      origin_dates  = Array(dates).select  { |d| d.dig('type',  'id') == 'origin' }
+      origin_places = Array(places).select { |p| p.dig('event', 'id') == 'origin' }
+      if origin_dates.any?
+        origin_dates.each_with_index do |date, di|
+          place     = origin_places[di] || origin_places.first
+          date_val  = date['value'].to_s
+          place_val = place ? (place['value'].to_s.presence || place.dig('place_record', 'pref_name').to_s) : ''
+          # Semicolon only appears when both a date and a place are present.
+          line = [date_val, place_val].reject(&:blank?).join(' ; ')
+          origins << line if line.present?
+        end
+      elsif origin_places.any?
+        origin_places.each do |p|
+          val = p['value'].to_s.presence || p.dig('place_record', 'pref_name').to_s
+          origins << val if val.present?
+        end
+      end
+    end
+    collect.call(layer_record['assoc_date'], layer_record['assoc_place'])
+    Array(layer_record['para']).each { |pa| collect.call(pa['assoc_date'], pa['assoc_place']) }
+    origins.uniq
+  end
+
+  layer_origins = build_layer_origins.call(lr)
+  layer_extent_parts = [lr['extent'].to_s, lr['dim'].to_s].reject(&:blank?)
+
+  layer_text_units = Array(lr['text_unit'])
+  layer_paras = Array(lr['para'])
+%>
+
+<!-- DATA SOURCE: <%= data_path %> -->
+<details class="work-accordion--sinai guest-layer--sinai">
+  <summary class="work-accordion__summary--sinai">
+    <span class="work-accordion__title--sinai"><%= h(header) %></span>
+  </summary>
+
+  <div class="work-accordion__body--sinai">
+    <%# === Summary (italic, optional) === %>
+    <% if gl_summary.present? %>
+      <!-- DATA SOURCE: <%= data_path %>.layer_record.summary -->
+      <p class="part-summary--sinai"><%= h(gl_summary) %></p>
+    <% end %>
+
+    <dl class="overview-dl--sinai">
+      <%# === Origin === %>
+      <% if layer_origins.any? %>
+        <!-- DATA SOURCE: <%= data_path %>.layer_record..assoc_date[type.id=origin], ..assoc_place[event.id=origin] -->
+        <div class="overview-dl__row--sinai">
+          <dt class="overview-dl__label--sinai">Origin</dt>
+          <dd class="overview-dl__value--sinai">
+            <%= safe_join(layer_origins.map { |o| h(o) }, tag.br) %>
+          </dd>
+        </div>
+      <% end %>
+
+      <%# === Extent === %>
+      <% if layer_extent_parts.any? %>
+        <!-- DATA SOURCE: <%= data_path %>.layer_record.extent, .dim -->
+        <div class="overview-dl__row--sinai">
+          <dt class="overview-dl__label--sinai">Extent</dt>
+          <dd class="overview-dl__value--sinai">
+            <%= layer_extent_parts.join(' | ') %>
+          </dd>
+        </div>
+      <% end %>
+
+      <%# === Scribe / Writing / Ink / Layout (shared with Full Description) === %>
+      <%= render 'catalog/work_record--sinai/layer_fields',
+                 layer_record: lr,
+                 data_path: "#{data_path}.layer_record" %>
+    </dl>
+
+    <%# === Items (text_units within the guest layer, de-emphasized) === %>
+    <% if layer_text_units.any? %>
+      <div class="works-section--sinai item-subsection--sinai">
+        <div class="works-section__label--sinai">Contents</div>
+        <% layer_text_units.each_with_index do |tu, tu_i| %>
+          <%= render 'catalog/work_record--sinai/item_entry',
+                     item_data: { tu: tu, part_idx: "guest-#{index}", layer_idx: 0, tu_idx: tu_i },
+                     item_num: tu_i + 1,
+                     compact: true,
+                     data_path: "#{data_path}.layer_record.text_unit[#{tu_i}]" %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%# === Paracontents within the guest layer === %>
+    <% if layer_paras.any? %>
+      <div class="works-section--sinai item-subsection--sinai">
+        <div class="works-section__label--sinai">Paracontents</div>
+        <% layer_paras.each_with_index do |pa, pa_i| %>
+          <%= render 'catalog/work_record--sinai/para_entry',
+                     pa: pa,
+                     data_path: "#{data_path}.layer_record.para[#{pa_i}]" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</details>

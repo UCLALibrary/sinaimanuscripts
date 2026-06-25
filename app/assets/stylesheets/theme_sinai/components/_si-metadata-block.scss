@@ -341,12 +341,24 @@
   border-top: 1px solid $sinai-secondary-dk;
 }
 
-// Guest Content tab (NOP-160) — guest layers reuse .part-section--sinai, but the
-// first one sits at the top of the panel, so drop its leading border/space.
-.guest-content-section--sinai:first-child {
-  margin-top: 0;
-  padding-top: 0;
-  border-top: none;
+// Guest Content tab (NOP-160) — top-level guest objects (the guest-layer
+// accordions and the out-of-layer paracontent accordions) sit flush at the
+// panel's left margin so the disclosure chevron aligns with the "Guest Content"
+// heading. .work-accordion--sinai is indented 150px to line up with field
+// values; these compound selectors out-specify it to reset that for top-level
+// guest objects. (Nested works/rubrics inside an item stay indented.)
+.work-accordion--sinai.guest-layer--sinai {
+  margin-left: 0;
+}
+
+// Out-of-layer guest paracontent / notes groups: give them breathing room below
+// the guest-layer accordions, and flush their accordions to the left margin.
+.guest-content__outside--sinai {
+  margin-top: 1.5rem;
+
+  > .work-accordion--sinai {
+    margin-left: 0;
+  }
 }
 
 .part-heading--sinai {
@@ -482,6 +494,17 @@
   color: $sinai-primary;
   font-family: 'Roboto', sans-serif;
   font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+// De-emphasized item header used inside guest-layer accordions (NOP-160): not red,
+// smaller, and a plain <div> (kept out of the right-rail nav). Sits inside the
+// collapsible layer body rather than acting as a section heading.
+.item-heading--compact--sinai {
+  color: $sinai-black;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.95rem;
   font-weight: 500;
   margin-bottom: 0.25rem;
 }

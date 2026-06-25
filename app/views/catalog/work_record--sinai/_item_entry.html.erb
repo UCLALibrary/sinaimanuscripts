@@ -1,5 +1,8 @@
 <%# Renders a single item (text_unit) block: works, rubrics, item notes, editions. %>
 <%# Locals: item_data (Hash with :tu), item_num (Integer), data_path (String) %>
+<%#   compact (Boolean, optional) — when true, the item header is de-emphasized %>
+<%#   (non-red, smaller, kept out of the right-rail nav). Used by the Guest tab. %>
+<% compact = local_assigns.fetch(:compact, false) %>
 <%
   tu = item_data[:tu]
   rec = tu['text_unit_record'] || {}
@@ -30,7 +33,11 @@
   <%# ITEM HEADER                                                  %>
   <%# ============================================================ %>
   <!-- DATA SOURCE: <%= data_path %>.locus = <%= tu_locus.to_s.to_json %>, <%= data_path %>.text_unit_record.lang = <%= Array(rec['lang']).to_json %> -->
-  <h3 id="section-part-<%= item_data[:part_idx] %>-item-<%= item_num %>" class="item-heading--sinai"><%= h(header) %></h3>
+  <% if compact %>
+    <div id="section-part-<%= item_data[:part_idx] %>-item-<%= item_num %>" class="item-heading--compact--sinai"><%= h(header) %></div>
+  <% else %>
+    <h3 id="section-part-<%= item_data[:part_idx] %>-item-<%= item_num %>" class="item-heading--sinai"><%= h(header) %></h3>
+  <% end %>
 
   <%# === Summary === %>
   <% if item_summary.present? %>
