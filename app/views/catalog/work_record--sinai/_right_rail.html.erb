@@ -9,10 +9,22 @@
   <div class="right-rail__sticky--sinai">
     <% if entries_local.present? %>
       <nav class="right-rail__nav-card--sinai" aria-label="Sections in this tab">
-        <div class="right-rail__nav-label--sinai">Navigation</div>
-        <%= render 'catalog/work_record--sinai/right_rail_nav_tree',
-                   entries: entries_local,
-                   depth: 0 %>
+        <%# Native <details> gives a zero-JS collapse. We omit `open` so it starts
+            collapsed on mobile with no JS; on desktop a min-width:768px rule in
+            _si-right-rail.scss forces the tree visible and the summary is
+            non-interactive, so it reads as a plain label + tree. On mobile
+            (≤767px) it is the tappable "NAVIGATION ▾" accordion. %>
+        <details class="right-rail__nav-details--sinai">
+          <summary class="right-rail__nav-summary--sinai">
+            <span class="right-rail__nav-label--sinai">Navigation</span>
+            <svg class="right-rail__nav-chevron--sinai" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M3 6L8 11L13 6" fill="none" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </summary>
+          <%= render 'catalog/work_record--sinai/right_rail_nav_tree',
+                     entries: entries_local,
+                     depth: 0 %>
+        </details>
       </nav>
     <% end %>
 

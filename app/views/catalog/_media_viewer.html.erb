@@ -1,4 +1,9 @@
 <% if can?(:read, document) %>
+<%# Mobile-only notice — the manuscript viewer is best used on a larger screen.
+    Hidden on desktop; shown ≤767px via _si-viewer.scss. %>
+<div class="media-viewer-mobile-notice--sinai" role="note">
+  For the best viewing experience, please open this site on a desktop or laptop computer.
+</div>
 <%# --------- Sinai Not Logged in ----- %>
   <% if !cookies[:sinai_authenticated_1year] %>
     <%

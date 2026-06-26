@@ -85,6 +85,13 @@
       var target = document.getElementById(id);
       if (!target) return;
       event.preventDefault();
+      // On phones the nav is a <details> accordion sitting ABOVE the content.
+      // Collapse it first so the smooth-scroll target position is computed
+      // against the collapsed layout (avoids overshoot from the height change).
+      if (window.matchMedia && window.matchMedia('(max-width: 767px)').matches) {
+        var details = link.closest('details.right-rail__nav-details--sinai');
+        if (details) details.open = false;
+      }
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       if (history.replaceState) {
         history.replaceState(null, '', '#' + id);
@@ -204,6 +211,10 @@
       if (event.key === 'Escape' && examineIsOpen()) closeExamine();
     });
   }
+
+  // The Navigation rail's collapsed-on-mobile / open-on-desktop state is handled
+  // entirely in CSS: the markup omits `open` (collapsed by default) and a
+  // min-width:768px rule forces the tree visible on desktop. No JS needed here.
 
   function init() {
     if (!document.querySelector('[data-right-rail]')) return;

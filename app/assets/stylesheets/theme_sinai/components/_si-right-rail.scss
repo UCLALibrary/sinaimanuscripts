@@ -53,13 +53,57 @@
   padding: 18px 18px 14px;
 }
 
+// Navigation accordion. The <details>/<summary> collapse is only used on mobile;
+// on desktop the summary is forced open and non-interactive so it reads exactly
+// like the old plain "NAVIGATION" label above the tree. The markup omits `open`
+// so the panel is collapsed by default on mobile with zero JS; this desktop rule
+// overrides the native <details> collapse so the tree always shows here.
+@media (min-width: 768px) {
+  // Older browsers collapse a closed <details> by setting display:none on its
+  // non-summary children — override that so the tree shows.
+  .right-rail__nav-details--sinai > .right-rail__nav-list--sinai {
+    display: block;
+  }
+
+  // Modern Chromium collapses via the ::details-content pseudo
+  // (content-visibility:hidden), which the child rule above can't reach. Reveal
+  // it here. Unknown pseudo is ignored by browsers that don't support it, where
+  // the child rule already does the job.
+  .right-rail__nav-details--sinai::details-content {
+    content-visibility: visible;
+    block-size: auto;
+  }
+}
+
+.right-rail__nav-summary--sinai {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  // Not collapsible on desktop — behaves like a static label.
+  pointer-events: none;
+  list-style: none;
+  cursor: default;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+
 .right-rail__nav-label--sinai {
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: $sinai-grey;
-  margin-bottom: 10px;
+}
+
+// Disclosure chevron — hidden on desktop, shown only in the mobile accordion.
+.right-rail__nav-chevron--sinai {
+  display: none;
+  flex-shrink: 0;
+  color: $sinai-grey;
+  transition: transform 150ms ease;
 }
 
 .right-rail__nav-list--sinai {
@@ -243,5 +287,72 @@ body.examine-active {
       color: $sinai-primary;
       outline: none;
     }
+  }
+}
+
+// ── Mobile (phones, ≤767px) ───────────────────────────────────────────────
+// The grid is already a single column at this width (the ≤1199.98px rule above).
+// Here we re-show the rail — which is otherwise display:none ≤1199.98px — but
+// only the Navigation card, lift it above the main content, and turn it into a
+// collapsible accordion. The Examine card is dropped (the viewer is inline at
+// the top of the page on mobile). This block is last in source order so it wins
+// over the ≤1199.98px rules at 767px.
+@media (max-width: 767px) {
+  // Figma: content sits ~16px from the viewport edge on mobile. Drop the 20px
+  // column inset and let .container-full's 16px provide the margin.
+  .tab-panel-grid__main--sinai {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .tab-panel-grid__rail--sinai {
+    display: block;
+    flex: initial;
+    width: auto;
+    order: -1; // move the rail above the main column
+    // Align the accordion with the main column, which now relies on
+    // .container-full's 16px inset (no extra side padding).
+    padding: 0;
+    margin-bottom: 16px;
+  }
+
+  .right-rail__sticky--sinai {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    gap: 0;
+    padding-right: 0;
+  }
+
+  // The viewer is already inline at the top of the page on mobile.
+  .right-rail__viewer-card--sinai {
+    display: none;
+  }
+
+  // Turn the Navigation card into a tappable accordion bar.
+  .right-rail__nav-summary--sinai {
+    pointer-events: auto;
+    cursor: pointer;
+    margin-bottom: 0;
+  }
+
+  // Drive the collapse explicitly rather than relying on the UA <details>
+  // behaviour, which doesn't reliably hide the <ul> here. Desktop keeps the
+  // details force-open (summary pointer-events:none), so this only matters on
+  // mobile.
+  .right-rail__nav-details--sinai:not([open]) > .right-rail__nav-list--sinai {
+    display: none;
+  }
+
+  .right-rail__nav-details--sinai[open] .right-rail__nav-summary--sinai {
+    margin-bottom: 10px;
+  }
+
+  .right-rail__nav-chevron--sinai {
+    display: block;
+  }
+
+  .right-rail__nav-details--sinai[open] .right-rail__nav-chevron--sinai {
+    transform: rotate(180deg);
   }
 }

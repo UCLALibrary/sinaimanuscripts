@@ -1,6 +1,13 @@
 .site-container {
   display: flex;
   flex-direction: column;
+  // As a grid item of <body> (display:grid), the default min-width:auto lets this
+  // column blow out to its widest content's min-content size — e.g. the
+  // horizontally-scrollable item-page tab bar (~1118px) — which stretches the
+  // whole page and breaks layout below ~1118px. min-width:0 keeps it within the
+  // grid track so wide children (the tab bar) scroll instead. Inert on desktop,
+  // where the track already exceeds content.
+  min-width: 0;
 }
 
 .container-full {

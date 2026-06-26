@@ -1,3 +1,32 @@
 .media-viewer-container--sinai {
   margin-bottom: 0;
 }
+
+// Mobile "best viewed on desktop" notice — hidden on desktop, shown only on
+// phones above the inline viewer.
+.media-viewer-mobile-notice--sinai {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  // Figma: a thin red-outlined pill (not a filled banner) above the viewer.
+  .media-viewer-mobile-notice--sinai {
+    display: block;
+    margin-bottom: 16px; // Figma: ~20px gap down to the viewport
+    padding: 20px 32px; // Figma: 20px / 32px
+    background-color: transparent; // Figma: no fill (white), just the outline
+    border: 1px solid $sinai-heading; // Figma: #920606 border
+    border-radius: 8px; // Figma: 8px corners
+    color: $sinai-heading; // Figma: #920606 text
+    text-align: center;
+    font-size: 0.875rem; // Figma: 14px Roboto Regular
+    line-height: 1.4;
+  }
+
+  // Keep the inline viewer from dominating a phone screen on first load.
+  // Width is already 100% (base/components/_viewer.scss); override the
+  // hardcoded 668px height attribute.
+  .media-viewer-iframe {
+    height: 60vh;
+  }
+}

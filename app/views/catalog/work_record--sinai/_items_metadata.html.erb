@@ -18,7 +18,7 @@
 
 <% if orphan_items.any? %>
   <div class="items-section--sinai">
-    <h2 class="overview-heading--sinai">Contents</h2>
+    <h2 class="items-subsection-heading--sinai">Contents</h2>
 
     <% orphan_items.each_with_index do |item_data, idx| %>
       <%= render 'catalog/work_record--sinai/item_entry',

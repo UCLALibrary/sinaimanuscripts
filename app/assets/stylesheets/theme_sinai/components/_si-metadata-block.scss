@@ -336,12 +336,21 @@
 @media (max-width: 576px) {
   .overview-dl__row--sinai {
     flex-direction: column;
+    gap: 0; // the 20px flex gap is horizontal on desktop; stacked it would balloon
+            // the label→value spacing to match the between-field gap. Bind them instead.
   }
 
+  // Stacked, but keep the 12px gutter on BOTH label and value (Figma): the
+  // section heading hangs at 0 while its fields indent 12px under it. Tighten
+  // the label→value gap so the label binds to its value (the 20px row gap still
+  // separates fields).
   .overview-dl__label--sinai {
     flex: none;
-    padding-left: 0; // stacked: drop the hanging gutter so label/value align
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.125rem; // ~2px to the value
+  }
+
+  .overview-dl__value--sinai {
+    padding-left: 12px; // align under the label's 12px gutter
   }
 }
 
@@ -756,6 +765,60 @@
   line-height: 1.5;
 }
 
+// Mobile: the side-by-side label/value patterns (Works, expandable Support /
+// Writing / Ink, work-body detail fields) stack vertically — the label sits on
+// its own line with its entries/value below, per the Figma mobile design. The
+// disclosure chevrons supply the left indent, so accordions reset to margin 0.
+@media (max-width: 576px) {
+  // Works / Paracontents / Rubrics inline group: label on its own row, accordions below.
+  .works-section--inline--sinai {
+    flex-direction: column;
+
+    .works-section__label--sinai {
+      flex: none;
+    }
+  }
+
+  // Static (non-inline) Works label column also goes full width when stacked.
+  .works-section__label--sinai {
+    flex: none;
+  }
+
+  // Drop the 150px desktop indent that aligned accordion titles with the value column.
+  .work-accordion--sinai {
+    margin-left: 0;
+  }
+
+  // Work-body detail rows (VARIANT TITLE, AS WRITTEN, AUTHOR, …) stack.
+  .work-field-row--sinai {
+    flex-direction: column;
+  }
+
+  .work-field-label--sinai {
+    flex: none;
+  }
+
+  // Expandable Support / Writing / Ink fields: keep the chevron + label on the
+  // first line (chevron is a summary ::before), wrap the collapsed value and the
+  // expanded details onto their own lines indented 12px under the label gutter.
+  .part-expandable--sinai summary {
+    flex-wrap: wrap;
+  }
+
+  .part-expandable__label--sinai {
+    flex: none; // shrink to content so the value can wrap below
+  }
+
+  .part-expandable--sinai summary > .overview-dl__value--sinai {
+    flex: 0 0 100%;
+    padding-left: 12px;
+  }
+
+  .part-expandable__details--sinai {
+    padding-left: 12px; // align under the label gutter instead of the 152px value column
+  }
+}
+
 // Table of Contents show-more
 .work-toc--sinai {
   // container for ToC entries + show-more button
@@ -931,6 +994,16 @@
   font-weight: 400;
   color: $sinai-black;
   line-height: 1.5;
+}
+
+// The stacked-mobile rule (≤576px) zeroes the label's 12px gutter so generic
+// label/value pairs line up. Notes values keep their 12px indent, though, so
+// without this the notes label would hang 12px to the left of its content.
+// Restore the gutter on the notes label to keep the block aligned on mobile.
+@media (max-width: 576px) {
+  .notes-on-manuscript__row--sinai > .overview-dl__label--sinai {
+    padding-left: 12px;
+  }
 }
 
 // Undertexts tab

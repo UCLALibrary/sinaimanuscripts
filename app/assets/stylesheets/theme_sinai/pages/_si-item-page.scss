@@ -65,10 +65,32 @@
   .right {
     justify-self: end;
   }
+
+  // On phones the three links collide in a 3-column grid — stack them centered.
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+    row-gap: 0.5rem;
+    text-align: center;
+
+    .left,
+    .center,
+    .right {
+      justify-self: center;
+    }
+  }
 }
 
 .container-constrained__item-page--sinai {
   margin-top: 1rem;
+
+  // .container-constrained clamps to calc(100vw - 100px) at ≥599px, which leaves
+  // ~50px of dead space on each side. The item page is single-column below 1200px
+  // (the right rail only appears at ≥1200px), so drop the clamp there and let the
+  // container's 1rem padding provide the ~16px Figma inset. The clamp resumes at
+  // ≥1200px for the desktop two-column framing.
+  @media (max-width: 1199.98px) {
+    max-width: none;
+  }
 }
 
 // SHELFMARK - Once the tabs are included on the item page, delete this
