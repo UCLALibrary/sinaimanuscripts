@@ -38,7 +38,9 @@
 %>
 
 <% if guest_layers.any? || guest_paras.any? || guest_notes.any? %>
-  <h2 id="section-guest-content" class="overview-heading--sinai">Guest Content</h2>
+  <%# data-nav-skip: the section title stays on the page but is not a nav node, so %>
+  <%# guest layers (and outside-layer paracontent) become the top-level nav entries. %>
+  <h2 id="section-guest-content" class="overview-heading--sinai" data-nav-skip>Guest Content</h2>
 
   <%# === Guest layers (collapsible accordions) === %>
   <% guest_layers.each_with_index do |entry, layer_i| %>
@@ -50,14 +52,18 @@
 
   <%# === Guest paracontent outside a guest layer (collapsible accordions) === %>
   <% if guest_paras.any? %>
-    <div class="works-section--sinai item-subsection--sinai guest-content__outside--sinai">
+    <div class="works-section--sinai works-section--inline--sinai item-subsection--sinai guest-content__outside--sinai">
       <div class="works-section__label--sinai">Paracontents</div>
-      <% guest_paras.each do |entry| %>
-        <%= render 'catalog/work_record--sinai/para_entry',
-                   pa: entry[:pa],
-                   data_path: entry[:path],
-                   fallback_header: 'Guest Paracontent' %>
-      <% end %>
+      <div class="works-section__items--sinai">
+        <% guest_paras.each do |entry| %>
+          <%# heading_level: :h3 makes each guest paracontent a top-level nav entry, parallel to layers. %>
+          <%= render 'catalog/work_record--sinai/para_entry',
+                     pa: entry[:pa],
+                     data_path: entry[:path],
+                     fallback_header: 'Guest Paracontent',
+                     heading_level: :h3 %>
+        <% end %>
+      </div>
     </div>
   <% end %>
 

@@ -34,7 +34,8 @@
   <%# ============================================================ %>
   <!-- DATA SOURCE: <%= data_path %>.locus = <%= tu_locus.to_s.to_json %>, <%= data_path %>.text_unit_record.lang = <%= Array(rec['lang']).to_json %> -->
   <% if compact %>
-    <div id="section-part-<%= item_data[:part_idx] %>-item-<%= item_num %>" class="item-heading--compact--sinai"><%= h(header) %></div>
+    <%# h4 (not div): nests this item under its guest layer (h3) in the nav. %>
+    <h4 id="section-part-<%= item_data[:part_idx] %>-item-<%= item_num %>" class="item-heading--compact--sinai"><%= h(header) %></h4>
   <% else %>
     <h3 id="section-part-<%= item_data[:part_idx] %>-item-<%= item_num %>" class="item-heading--sinai"><%= h(header) %></h3>
   <% end %>
@@ -50,9 +51,10 @@
   <%# ============================================================ %>
   <% if work_wits.any? %>
     <!-- DATA SOURCE: <%= data_path %>.text_unit_record.work_wit (count: <%= work_wits.size %>) -->
-    <div class="works-section--sinai item-subsection--sinai">
+    <div class="works-section--sinai works-section--inline--sinai item-subsection--sinai">
       <div class="works-section__label--sinai">Works</div>
 
+      <div class="works-section__items--sinai">
       <% work_wits.each_with_index do |ww, wi| %>
         <%
           work = ww['work'] || {}
@@ -264,6 +266,7 @@
           </div>
         <% end %>
       <% end %>
+      </div>
     </div>
   <% end %>
 
@@ -276,9 +279,11 @@
   %>
   <% if rubric_paras.any? %>
     <!-- DATA SOURCE: <%= data_path %>.text_unit_record.para[type.id=framing] (count: <%= rubric_paras.size %>) -->
-    <div class="works-section--sinai item-subsection--sinai">
+    <%# In the Guest tab (compact), rubrics are in-layer paracontent and must stay out of the nav. %>
+    <div class="works-section--sinai works-section--inline--sinai item-subsection--sinai"<%= ' data-nav-skip'.html_safe if compact %>>
       <div class="works-section__label--sinai">Rubrics, Etc.</div>
 
+      <div class="works-section__items--sinai">
       <% rubric_paras.each_with_index do |pa, pa_i| %>
         <%
           pa_data_path = "#{data_path}.text_unit_record.para[#{pa_i}]"
@@ -407,6 +412,7 @@
           </div>
         <% end %>
       <% end %>
+      </div>
     </div>
   <% end %>
 

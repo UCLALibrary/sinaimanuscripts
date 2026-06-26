@@ -75,8 +75,8 @@ RSpec.describe 'catalog/work_record--sinai/_guest_content_metadata.html.erb', ty
   end
 
   context 'with guest content present' do
-    it 'renders a single top-level "Guest Content" heading and no other red headings' do
-      expect(rendered).to have_css('h2.overview-heading--sinai', text: 'Guest Content', count: 1)
+    it 'renders a single top-level "Guest Content" heading, marked data-nav-skip so it is not a nav node' do
+      expect(rendered).to have_css('h2.overview-heading--sinai[data-nav-skip]', text: 'Guest Content', count: 1)
       expect(rendered).to have_css('.overview-heading--sinai', count: 1)
       expect(rendered).not_to have_css('.part-heading--sinai')
     end
@@ -85,8 +85,9 @@ RSpec.describe 'catalog/work_record--sinai/_guest_content_metadata.html.erb', ty
       expect(rendered).to have_css('details.work-accordion--sinai.guest-layer--sinai', count: 2)
     end
 
-    it 'shows the guest layer label and locus as the collapsible title' do
-      expect(rendered).to have_css('.work-accordion__title--sinai', text: 'Guest Content (Naskh), Front Board Inside')
+    it 'shows the guest layer label and locus as an h3 collapsible title (top-level nav node)' do
+      expect(rendered).to have_css('h3.work-accordion__title--sinai',
+                                   text: 'Guest Content (Naskh), Front Board Inside', visible: :all)
     end
 
     # Layer fields live inside the collapsed <details> body, so assert with
@@ -118,16 +119,27 @@ RSpec.describe 'catalog/work_record--sinai/_guest_content_metadata.html.erb', ty
       expect(rendered).to include('Lines: 12')
     end
 
-    it 'renders items de-emphasized (compact, not the red item heading)' do
-      expect(rendered).to have_css('.item-heading--compact--sinai', text: /Item 1/, visible: :all)
+    it 'renders items de-emphasized as an h4 (nested under the layer in the nav, not the red item heading)' do
+      expect(rendered).to have_css('h4.item-heading--compact--sinai', text: /Item 1/, visible: :all)
       expect(rendered).not_to have_css('.item-heading--sinai')
       expect(rendered).to include('(Arabic)')
       expect(rendered).to include('Unidentified text concerning Sundays.')
     end
 
-    it 'renders in-layer paracontent' do
-      expect(rendered).to have_css('.works-section__label--sinai', text: 'Paracontents', visible: :all)
-      expect(rendered).to have_css('.work-accordion__title--sinai', text: 'Ownership inscription, f. 1v', visible: :all)
+    it 'renders in-layer paracontent inside a data-nav-skip wrapper (kept out of the nav)' do
+      expect(rendered).to have_css('.works-section--sinai[data-nav-skip] .works-section__label--sinai',
+                                   text: 'Paracontents', visible: :all)
+      expect(rendered).to have_css('.works-section--sinai[data-nav-skip] .work-accordion__title--sinai',
+                                   text: 'Ownership inscription, f. 1v', visible: :all)
+    end
+
+    # Works / Rubrics / Paracontents use the inline layout (label + first openable element
+    # on one row): the accordions live in a .works-section__items--sinai column.
+    it 'wraps Works and in-layer Paracontents accordions in an inline items column' do
+      expect(rendered).to have_css('.works-section--inline--sinai > .works-section__items--sinai .work-accordion__title--sinai',
+                                   text: 'Unidentified text', visible: :all)
+      expect(rendered).to have_css('.works-section--inline--sinai > .works-section__items--sinai .work-accordion__title--sinai',
+                                   text: 'Ownership inscription, f. 1v', visible: :all)
     end
 
     it 'renders the part-level guest layer as an accordion' do
@@ -135,8 +147,8 @@ RSpec.describe 'catalog/work_record--sinai/_guest_content_metadata.html.erb', ty
       expect(rendered).to have_content('Part-level guest content.')
     end
 
-    it 'renders guest paracontent outside a guest layer without a red heading' do
-      expect(rendered).to have_css('.work-accordion__title--sinai', text: 'Guest marginal note, f. 5r')
+    it 'renders guest paracontent outside a guest layer as a top-level (h3) nav node' do
+      expect(rendered).to have_css('h3.work-accordion__title--sinai', text: 'Guest marginal note, f. 5r')
       expect(rendered).not_to have_css('h2', text: 'Guest Paracontent')
     end
 

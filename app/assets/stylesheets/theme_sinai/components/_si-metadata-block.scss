@@ -241,10 +241,10 @@
 
 // Overview section redesign
 .overview-heading--sinai {
-  color: $sinai-primary;
+  color: $sinai-primary; // Figma uses #920606; kept as the app brand red (close)
   font-family: 'Roboto', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 500;
+  font-size: 1.125rem; // Figma: 18px Roboto Regular
+  font-weight: 400;
   margin-bottom: 0.25rem;
 }
 
@@ -263,13 +263,13 @@
 
 .overview-dl__row--sinai {
   display: flex;
-  padding: 0.75rem 0;
+  padding: 0.375rem 0; // Figma: ~12px gap between rows
 }
 
 .overview-dl__label--sinai {
   flex: 0 0 150px;
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: 0.875rem; // Figma: 14px Roboto Medium, uppercase
+  font-weight: 500;
   text-transform: uppercase;
   color: $sinai-black;
   letter-spacing: 0.03em;
@@ -278,8 +278,8 @@
 
 .overview-dl__value--sinai {
   flex: 1;
-  font-size: 0.95rem;
-  font-weight: 400;
+  font-size: 1rem; // Figma: 16px Roboto Light
+  font-weight: 300;
   color: $sinai-black;
   margin: 0;
   line-height: 1.5;
@@ -349,16 +349,38 @@
 // guest objects. (Nested works/rubrics inside an item stay indented.)
 .work-accordion--sinai.guest-layer--sinai {
   margin-left: 0;
+  margin-bottom: 1.75rem; // Figma: ~28px between top-level guest sections
+}
+
+// Reusable "open main section" treatment (Figma Line 8): when a first-level section
+// accordion is open, a thin rule runs down the left edge of its body, marking the
+// section's vertical extent. The `>` keeps it off nested work/rubric bodies. To apply
+// this on another tab, add the same rule keyed on that section accordion's marker class.
+.work-accordion--sinai.guest-layer--sinai[open] > .work-accordion__body--sinai {
+  border-left: 1px solid $sinai-secondary-dk;
+  border-bottom: none;  // no closing horizontal rule — the line just marks vertical extent
+  margin-left: 3px;     // ~Figma left:3px inset from the panel edge
+  padding-bottom: 0;    // line ends at the last element, no overshoot below
+}
+
+// Guest Content tab (NOP-160): step-indent the hierarchy inside a guest layer so it
+// reads Layer > Item > Work(s), matching the Figma. The Contents label sits at the
+// layer-body margin; each Item block indents under it, and the Item's subsection
+// labels (Works, Rubrics, Item Notes, Editions) indent again under the Item heading.
+.guest-layer--sinai {
+  .item-block--sinai {
+    margin-left: 1.5rem;
+  }
+
+  .item-block--sinai .item-subsection--sinai {
+    margin-left: 1.25rem;
+  }
 }
 
 // Out-of-layer guest paracontent / notes groups: give them breathing room below
-// the guest-layer accordions, and flush their accordions to the left margin.
+// the guest-layer accordions. (Their accordions flush left via .works-section--inline--sinai.)
 .guest-content__outside--sinai {
   margin-top: 1.5rem;
-
-  > .work-accordion--sinai {
-    margin-left: 0;
-  }
 }
 
 .part-heading--sinai {
@@ -371,8 +393,9 @@
 
 .part-summary--sinai {
   font-style: italic;
-  font-size: 0.9rem;
-  color: $sinai-grey;
+  font-size: 0.875rem; // Figma: 14px Roboto Light Italic
+  font-weight: 300;
+  color: $sinai-black;
   margin-bottom: 1rem;
   line-height: 1.5;
 }
@@ -413,15 +436,17 @@
     }
 
     &::before {
-      content: '\203A'; // right-pointing angle bracket ›
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: $sinai-grey;
-      margin-right: 0.25rem;
-      margin-left: -0.75rem;
+      content: ''; // Figma: small filled triangle, right when closed / down when open
+      width: 0;
+      height: 0;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-left: 5px solid $sinai-grey;
+      margin-right: 0.45rem;
+      margin-left: -0.55rem;
+      margin-top: 0.35em;
       transition: transform 0.2s;
       display: inline-block;
-      width: 0.75rem;
       flex-shrink: 0;
     }
   }
@@ -434,6 +459,17 @@
 .part-expandable__label--sinai {
   flex: 0 0 150px;
   margin-left: -0.25rem;
+}
+
+// Item Notes / Editions labels read as subsection labels (like Works / Rubrics), not as
+// field labels. Scoped to item subsections so the field-level expandables (Writing / Ink /
+// Support) keep the field-label style. The .overview-dl__label--sinai class on the same
+// <dt> still supplies text-transform: uppercase; this out-specifies its font rules.
+.item-subsection--sinai .part-expandable__label--sinai {
+  font-size: 0.875rem; // matches .works-section__label--sinai (Figma 14px Medium)
+  font-weight: 500;
+  color: $sinai-black;
+  letter-spacing: 0.03em;
 }
 
 .part-expandable__details--sinai {
@@ -499,20 +535,22 @@
 }
 
 // De-emphasized item header used inside guest-layer accordions (NOP-160): not red,
-// smaller, and a plain <div> (kept out of the right-rail nav). Sits inside the
-// collapsible layer body rather than acting as a section heading.
+// smaller. Rendered as an <h4> so the right-rail nav nests it under its guest layer,
+// but styled to read as a de-emphasized label, not a section heading. Reset the
+// native <h4> margins so the heading-tag swap is visually identical to the old <div>.
 .item-heading--compact--sinai {
   color: $sinai-black;
   font-family: 'Roboto', sans-serif;
-  font-size: 0.95rem;
+  font-size: 1rem; // Figma: 16px Roboto Medium
   font-weight: 500;
-  margin-bottom: 0.25rem;
+  margin: 0 0 0.25rem;
 }
 
 .item-summary--sinai {
   font-style: italic;
-  font-size: 0.9rem;
-  color: $sinai-grey;
+  font-size: 0.875rem; // Figma: 14px Roboto Light Italic
+  font-weight: 300;
+  color: $sinai-black;
   margin-bottom: 1rem;
   line-height: 1.5;
 }
@@ -526,13 +564,35 @@
   padding: 0.4rem 0;
 }
 
+// Inline variant (Works / Paracontents / Rubrics, per Figma): the label and the first
+// openable element share a row. The accordions live in a right-hand column; the label
+// keeps its fixed-width column. (Contents stays the default stacked variant.)
+.works-section--inline--sinai {
+  display: flex;
+  align-items: baseline;
+
+  .works-section__label--sinai {
+    flex: 0 0 150px;
+  }
+
+  // The 150px left margin simulated the label column; the flex column now owns it.
+  .work-accordion--sinai {
+    margin-left: 0;
+  }
+}
+
+.works-section__items--sinai {
+  flex: 1;
+  min-width: 0;
+}
+
 .works-section__label--sinai {
   flex: 0 0 150px;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.875rem; // Figma: 14px Roboto Medium, uppercase (matches field labels)
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: $sinai-grey;
+  letter-spacing: 0.03em;
+  color: $sinai-black;
   padding-bottom: 0.25rem;
 }
 
@@ -552,14 +612,16 @@
     }
 
     &::before {
-      content: '\203A'; // ›
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: $sinai-grey;
+      content: ''; // Figma: small filled triangle, right when closed / down when open
+      width: 0;
+      height: 0;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-left: 5px solid $sinai-grey;
       margin-right: 0.5rem;
+      margin-top: 0.4em;
       transition: transform 0.2s;
       display: inline-block;
-      width: 0.75rem;
       flex-shrink: 0;
     }
   }
@@ -575,18 +637,28 @@
   padding: 0.35rem 0;
 
   &::before {
-    content: '';
+    content: ''; // spacer matching the triangle footprint, so titles align with expandable rows
     margin-right: 0.5rem;
-    width: 0.75rem;
+    width: 5px;
     flex-shrink: 0;
   }
 }
 
+// Accordion title. Rendered as a <span> by default, or as a heading (e.g. <h3> for
+// guest layers / guest paracontent) so the right-rail nav picks it up at the correct
+// level. Reset native heading margins so the tag does not change its appearance.
 .work-accordion__title--sinai {
-  font-size: 0.95rem;
-  font-weight: 500;
+  margin: 0;
+  font-size: 1rem; // Figma: 16px Roboto Regular (nested work/para titles)
+  font-weight: 400;
   color: $sinai-black;
   line-height: 1.5;
+}
+
+// Main section header (guest layer / colophon) — larger than nested work titles.
+.guest-layer--sinai > .work-accordion__summary--sinai > .work-accordion__title--sinai {
+  font-size: 1.125rem; // Figma: 18px Roboto Regular
+  font-weight: 400;
 }
 
 .work-accordion__body--sinai {
@@ -607,17 +679,18 @@
 
 .work-field-label--sinai {
   flex: 0 0 150px;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.75rem; // Figma: 12px Roboto Light, uppercase (work-body detail labels)
+  font-weight: 300;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: $sinai-grey;
+  letter-spacing: 0.03em;
+  color: $sinai-black;
   padding-top: 0.15rem;
 }
 
 .work-field-value--sinai {
   flex: 1;
-  font-size: 0.95rem;
+  font-size: 1rem; // Figma: 16px Roboto Light
+  font-weight: 300;
   color: $sinai-black;
   line-height: 1.5;
 }

@@ -33,29 +33,39 @@ module RightRailHelper
 
     fragment = Nokogiri::HTML.fragment(html.to_s)
     selectors = 'h2, h3, h4, .work-accordion__title--sinai'
-    headings = fragment.css(selectors)
+    # Nodes (or descendants of nodes) marked data-nav-skip render on the page but
+    # stay out of the nav: the section title, in-layer paracontent, item rubrics.
+    headings = fragment.css(selectors).reject { |node| nav_skipped?(node) }
     return [[], fragment.to_html] if headings.empty?
 
-    flat = headings.map.with_index do |node, idx|
-      anchor_host = node
-      # A work-accordion title's id belongs on its <details>/<div> wrapper.
-      if node['class'].to_s.include?('work-accordion__title--sinai')
-        anchor_host = node.ancestors('.work-accordion--sinai').first || node
-      end
-      anchor_host['id'] ||= "section-auto-#{idx}-#{node.text.to_s.parameterize.first(40).presence || 'section'}"
-      level = case node.name
-              when 'h2' then 1
-              when 'h3' then 2
-              when 'h4' then 3
-              else 4
-              end
-      { id: anchor_host['id'], label: node.text.to_s.strip, level: level, children: [] }
-    end
-
+    flat = headings.map.with_index { |node, idx| nav_entry_for(node, idx) }
     [nest_by_level(flat), fragment.to_html]
   end
 
   private
+
+  # A heading is kept out of the nav when it (or an ancestor) carries data-nav-skip.
+  def nav_skipped?(node)
+    node.key?('data-nav-skip') || node.ancestors('[data-nav-skip]').any?
+  end
+
+  # Builds one flat nav entry for a heading node, assigning a stable anchor id and
+  # a nesting level from the tag (h2 > h3 > h4 > accordion title).
+  def nav_entry_for(node, idx)
+    anchor_host = node
+    # A work-accordion title's id belongs on its <details>/<div> wrapper.
+    if node['class'].to_s.include?('work-accordion__title--sinai')
+      anchor_host = node.ancestors('.work-accordion--sinai').first || node
+    end
+    anchor_host['id'] ||= "section-auto-#{idx}-#{node.text.to_s.parameterize.first(40).presence || 'section'}"
+    level = case node.name
+            when 'h2' then 1
+            when 'h3' then 2
+            when 'h4' then 3
+            else 4
+            end
+    { id: anchor_host['id'], label: node.text.to_s.strip, level: level, children: [] }
+  end
 
   def nest_by_level(flat)
     root = []

@@ -1,7 +1,11 @@
 <%# Renders a single paracontent (para) object as an accordion row. %>
 <%# Shared between the Full Description Paracontents section and the Guest Content tab. %>
-<%# Locals: pa (Hash), data_path (String). Optional: fallback_header (String). %>
+<%# Locals: pa (Hash), data_path (String). Optional: fallback_header (String), %>
+<%#   heading_level (Symbol, e.g. :h3) — wraps the title in that heading tag so it %>
+<%#   becomes a nav node at the matching level; defaults to a plain <span>. %>
 <% fallback_header = local_assigns.fetch(:fallback_header, 'Paracontent') %>
+<% heading_level = local_assigns.fetch(:heading_level, nil) %>
+<% title_tag = heading_level.presence || :span %>
 <%
   # --- Header: [label], [locus] ---
   pa_label = pa['label'].to_s.presence ||
@@ -50,7 +54,7 @@
 <% if has_details %>
   <details class="work-accordion--sinai">
     <summary class="work-accordion__summary--sinai">
-      <span class="work-accordion__title--sinai"><%= h(pa_header) %></span>
+      <%= content_tag(title_tag, h(pa_header), class: 'work-accordion__title--sinai') %>
     </summary>
 
     <div class="work-accordion__body--sinai">
@@ -115,6 +119,6 @@
   </details>
 <% else %>
   <div class="work-accordion--sinai work-accordion--static--sinai">
-    <span class="work-accordion__title--sinai"><%= h(pa_header) %></span>
+    <%= content_tag(title_tag, h(pa_header), class: 'work-accordion__title--sinai') %>
   </div>
 <% end %>

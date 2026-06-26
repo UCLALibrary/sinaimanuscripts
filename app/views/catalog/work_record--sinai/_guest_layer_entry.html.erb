@@ -53,7 +53,9 @@
 <!-- DATA SOURCE: <%= data_path %> -->
 <details class="work-accordion--sinai guest-layer--sinai">
   <summary class="work-accordion__summary--sinai">
-    <span class="work-accordion__title--sinai"><%= h(header) %></span>
+    <%# h3 (not span): makes the guest layer a top-level nav entry. The anchor id is %>
+    <%# moved onto the <details> wrapper by extract_nav_entries_from_html. %>
+    <h3 class="work-accordion__title--sinai"><%= h(header) %></h3>
   </summary>
 
   <div class="work-accordion__body--sinai">
@@ -107,14 +109,17 @@
     <% end %>
 
     <%# === Paracontents within the guest layer === %>
+    <%# data-nav-skip: paracontent inside a guest layer must not appear in the nav. %>
     <% if layer_paras.any? %>
-      <div class="works-section--sinai item-subsection--sinai">
+      <div class="works-section--sinai works-section--inline--sinai item-subsection--sinai" data-nav-skip>
         <div class="works-section__label--sinai">Paracontents</div>
-        <% layer_paras.each_with_index do |pa, pa_i| %>
-          <%= render 'catalog/work_record--sinai/para_entry',
-                     pa: pa,
-                     data_path: "#{data_path}.layer_record.para[#{pa_i}]" %>
-        <% end %>
+        <div class="works-section__items--sinai">
+          <% layer_paras.each_with_index do |pa, pa_i| %>
+            <%= render 'catalog/work_record--sinai/para_entry',
+                       pa: pa,
+                       data_path: "#{data_path}.layer_record.para[#{pa_i}]" %>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>
