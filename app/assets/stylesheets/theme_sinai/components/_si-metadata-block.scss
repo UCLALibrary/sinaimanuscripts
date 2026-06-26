@@ -807,6 +807,7 @@
 
   .part-expandable__label--sinai {
     flex: none; // shrink to content so the value can wrap below
+    padding-left: 0; // the chevron already supplies the 12px gutter — don't double-indent
   }
 
   .part-expandable--sinai summary > .overview-dl__value--sinai {
