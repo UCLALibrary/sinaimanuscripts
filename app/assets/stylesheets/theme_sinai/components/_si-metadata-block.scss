@@ -926,6 +926,7 @@
 
 .notes-on-manuscript__value--sinai {
   margin: 0;
+  padding-left: 12px; // Figma: align value block with the 12px label/chevron gutter
   font-size: 0.95rem;
   font-weight: 400;
   color: $sinai-black;
