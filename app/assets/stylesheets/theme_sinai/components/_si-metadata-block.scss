@@ -349,7 +349,7 @@
 // guest objects. (Nested works/rubrics inside an item stay indented.)
 .work-accordion--sinai.guest-layer--sinai {
   margin-left: 0;
-  margin-bottom: 1.75rem; // Figma: ~28px between top-level guest sections
+  margin-bottom: 0.5rem; // Figma: 8px gap between stacked guest-section headers
 }
 
 // Reusable "open main section" treatment (Figma Line 8): when a first-level section
@@ -361,6 +361,17 @@
   border-bottom: none;  // no closing horizontal rule — the line just marks vertical extent
   margin-left: 3px;     // ~Figma left:3px inset from the panel edge
   padding-bottom: 0;    // line ends at the last element, no overshoot below
+
+  // Pull the rule up to the last visible line: strip trailing space from the
+  // final subsection and its last item so the border ends at content, not padding.
+  > .item-subsection--sinai:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .item-block--sinai:last-child {
+    margin-bottom: 0;
+  }
 }
 
 // Guest Content tab (NOP-160): step-indent the hierarchy inside a guest layer so it
@@ -436,15 +447,15 @@
     }
 
     &::before {
-      content: ''; // Figma: small filled triangle, right when closed / down when open
-      width: 0;
-      height: 0;
-      border-top: 4px solid transparent;
-      border-bottom: 4px solid transparent;
-      border-left: 5px solid $sinai-grey;
+      content: ''; // Figma "triangle": thin grey chevron >, right when closed / down when open
+      width: 8px;
+      height: 12px;
+      background-color: $sinai-grey-lt; // painted through the mask below
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 12' fill='none'%3E%3Cpath d='M1.5 1.5 6.5 6 1.5 10.5' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 12' fill='none'%3E%3Cpath d='M1.5 1.5 6.5 6 1.5 10.5' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;
       margin-right: 0.45rem;
       margin-left: -0.55rem;
-      margin-top: 0.35em;
+      margin-top: 0.3em;
       transition: transform 0.2s;
       display: inline-block;
       flex-shrink: 0;
@@ -612,14 +623,14 @@
     }
 
     &::before {
-      content: ''; // Figma: small filled triangle, right when closed / down when open
-      width: 0;
-      height: 0;
-      border-top: 4px solid transparent;
-      border-bottom: 4px solid transparent;
-      border-left: 5px solid $sinai-grey;
+      content: ''; // Figma "triangle": thin grey chevron >, right when closed / down when open
+      width: 8px;
+      height: 12px;
+      background-color: $sinai-grey-lt; // painted through the mask below
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 12' fill='none'%3E%3Cpath d='M1.5 1.5 6.5 6 1.5 10.5' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 12' fill='none'%3E%3Cpath d='M1.5 1.5 6.5 6 1.5 10.5' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;
       margin-right: 0.5rem;
-      margin-top: 0.4em;
+      margin-top: 0.3em;
       transition: transform 0.2s;
       display: inline-block;
       flex-shrink: 0;
@@ -637,9 +648,9 @@
   padding: 0.35rem 0;
 
   &::before {
-    content: ''; // spacer matching the triangle footprint, so titles align with expandable rows
+    content: ''; // spacer matching the chevron footprint, so titles align with expandable rows
     margin-right: 0.5rem;
-    width: 5px;
+    width: 8px;
     flex-shrink: 0;
   }
 }
