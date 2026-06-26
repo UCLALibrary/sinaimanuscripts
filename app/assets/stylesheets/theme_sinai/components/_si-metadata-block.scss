@@ -449,12 +449,15 @@
   }
 }
 
+// Contents tab part heading. Matches the Full Description part heading exactly
+// (Figma node 2875:1672: 18px Roboto Regular #920606) — the previously larger
+// treatment predates the Metadata Redesign 2025 comp.
 .contents-part-heading--sinai {
-  color: $sinai-primary;
+  color: $sinai-heading; // Figma: #920606
   font-family: 'Roboto', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 500;
-  margin-bottom: 0.25rem;
+  font-size: 1.125rem; // Figma: 18px Roboto Regular
+  font-weight: 400;
+  margin-bottom: 0.25rem; // Figma: 4px to the italic summary
 }
 
 // Expandable fields (Support, Writing, Ink) using <details>
@@ -481,8 +484,9 @@
       background-color: $sinai-grey-lt; // painted through the mask below
       mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 12' fill='none'%3E%3Cpath d='M1.5 1.5 6.5 6 1.5 10.5' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;
       -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 12' fill='none'%3E%3Cpath d='M1.5 1.5 6.5 6 1.5 10.5' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;
-      margin-right: 0.45rem;
-      margin-left: -0.55rem;
+      // Sit the chevron inside the 12px label gutter (chevron 8px + 4px gap),
+      // tight to the label and aligned with the static WORKS gutter above.
+      margin-right: 0.25rem;
       margin-top: 0.3em;
       transition: transform 0.2s;
       display: inline-block;
@@ -499,7 +503,6 @@
   // 132px label + 20px gap = value column at 152px (the expandable summary has no
   // row gap of its own, so the gap is folded into the label basis here).
   flex: 0 0 152px;
-  margin-left: -0.25rem;
 }
 
 // Item Notes / Editions labels read as subsection labels (like Works / Rubrics), not as
@@ -509,8 +512,11 @@
 .item-subsection--sinai .part-expandable__label--sinai {
   font-size: 0.875rem; // matches .works-section__label--sinai (Figma 14px Medium)
   font-weight: 500;
-  color: $sinai-black;
+  color: $sinai-label; // Figma: #333
   letter-spacing: 0.03em;
+  // The chevron already supplies the 12px gutter; cancel the .overview-dl__label--sinai
+  // padding so the label text aligns with the static WORKS label above it.
+  padding-left: 0;
 }
 
 .part-expandable__details--sinai {
@@ -577,7 +583,7 @@
 }
 
 .item-block--sinai {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem; // Figma: 20px between stacked items
 }
 
 .item-heading--sinai {
@@ -605,7 +611,7 @@
   font-size: 0.875rem; // Figma: 14px Roboto Light Italic
   font-weight: 300;
   color: $sinai-label; // Figma: #333
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem; // Figma: 20px down to the first WORKS row
   line-height: 1.5;
 }
 
@@ -647,7 +653,7 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  color: $sinai-black;
+  color: $sinai-label; // Figma: #333
   padding-bottom: 0.25rem;
 }
 
@@ -673,7 +679,7 @@
       background-color: $sinai-grey-lt; // painted through the mask below
       mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 12' fill='none'%3E%3Cpath d='M1.5 1.5 6.5 6 1.5 10.5' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;
       -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 12' fill='none'%3E%3Cpath d='M1.5 1.5 6.5 6 1.5 10.5' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;
-      margin-right: 0.5rem;
+      margin-right: 0.25rem; // Figma: chevron sits tight to the work title
       margin-top: 0.3em;
       transition: transform 0.2s;
       display: inline-block;
@@ -693,7 +699,7 @@
 
   &::before {
     content: ''; // spacer matching the chevron footprint, so titles align with expandable rows
-    margin-right: 0.5rem;
+    margin-right: 0.25rem;
     width: 8px;
     flex-shrink: 0;
   }
