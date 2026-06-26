@@ -3,15 +3,19 @@
   position: relative;
   display: flex;
   align-items: center;
-  border-bottom: 2px solid $sinai-secondary-dk;
+  border-bottom: 3px solid $sinai-tab-rule;
   margin-bottom: 1rem;
 }
 
 .scrollable-tabs__list {
   display: flex;
   list-style: none;
-  margin: 0;
-  padding: 0;
+  // overflow-x:auto forces overflow-y to auto, which would clip the active tab's
+  // 3px underline (pulled below the box by margin-bottom:-3px). Pad the bottom to
+  // grow the clip region, then cancel it with an equal negative margin so nothing
+  // shifts and the navy underline stays flush on the grey rule.
+  margin: 0 0 -8px;
+  padding: 0 0 8px;
   overflow-x: auto;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
@@ -25,27 +29,27 @@
 
 .scrollable-tabs__tab {
   flex-shrink: 0;
-  padding: 0.75rem 1.25rem;
+  padding: 0.5rem 1rem;
   border: none;
   background: none;
   font-family: 'Roboto', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: $sinai-grey;
+  font-size: 1rem;
+  font-weight: 400;
+  color: $sinai-value;
   cursor: pointer;
   white-space: nowrap;
   border-bottom: 3px solid transparent;
-  margin-bottom: -2px;
+  margin-bottom: -3px;
   transition: color 0.2s, border-color 0.2s;
 
   &:hover {
-    color: $sinai-black;
+    color: $sinai-tab-active;
   }
 
   &--active {
-    color: $sinai-black;
-    border-bottom-color: $sinai-black;
-    font-weight: 600;
+    color: $sinai-value;
+    border-bottom-color: $sinai-tab-active;
+    font-weight: 700;
   }
 }
 
@@ -68,9 +72,10 @@
     color: $sinai-grey;
   }
 
+  // display:none (not visibility:hidden) so a hidden arrow reserves no layout
+  // space — keeps the first tab flush to the nav's left edge at rest.
   &.scrollable-tabs__arrow--hidden {
-    visibility: hidden;
-    pointer-events: none;
+    display: none;
   }
 }
 

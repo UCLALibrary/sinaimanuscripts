@@ -11,3 +11,7 @@ $sinai-grey-lt: #979797; // Figma disclosure chevron / light UI grey
 $sinai-heading: #920606; // section headings (Overview, Part N) — deeper red than $sinai-primary
 $sinai-label: #333; // field labels (uppercase)
 $sinai-value: #222; // field values
+
+// Tabbed navigation (Figma "Metadata Redesign 2025" node 2875:2233)
+$sinai-tab-rule: #ddd; // continuous rule under the tab nav
+$sinai-tab-active: #0b3954; // active-tab underline (navy)
