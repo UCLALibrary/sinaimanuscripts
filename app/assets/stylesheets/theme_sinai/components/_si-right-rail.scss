@@ -16,6 +16,10 @@
 .tab-panel-grid__main--sinai {
   flex: 1 1 auto;
   min-width: 0;
+  // Figma: each section sits inside ~20px horizontal padding. Indent the whole
+  // column so the heading + all metadata stay left-aligned but inset from the edge.
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .tab-panel-grid__rail--sinai {

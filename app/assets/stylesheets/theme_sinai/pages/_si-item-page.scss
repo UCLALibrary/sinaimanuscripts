@@ -97,7 +97,10 @@
 }
 
 .secondary-metadata_container--sinai {
-  margin-top: 1.5rem;
+  // Figma: 4px from the "Overview" heading to the italic summary (the summary then
+  // adds 20px below itself; see .overview-summary--sinai). When there's no summary,
+  // .overview-dl--sinai:first-child restores the full 20px gap to the first row.
+  margin-top: 0.25rem;
 }
 @media (max-width: 900px) {
   .item-page__secondary-metadata--sinai {

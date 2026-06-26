@@ -241,18 +241,19 @@
 
 // Overview section redesign
 .overview-heading--sinai {
-  color: $sinai-primary; // Figma uses #920606; kept as the app brand red (close)
+  color: $sinai-heading; // Figma: #920606
   font-family: 'Roboto', sans-serif;
   font-size: 1.125rem; // Figma: 18px Roboto Regular
   font-weight: 400;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.25rem; // Figma: 4px to the italic summary
 }
 
 .overview-summary--sinai {
   font-style: italic;
-  font-size: 0.95rem;
-  color: $sinai-grey;
-  margin-bottom: 1.5rem;
+  font-size: 0.875rem; // Figma: 14px Roboto Light Italic
+  font-weight: 300;
+  color: $sinai-label; // Figma: #333
+  margin: 0 0 1.25rem; // Figma: 20px down to the first field row
   line-height: 1.5;
 }
 
@@ -261,26 +262,34 @@
   padding: 0;
 }
 
+// No-summary case: the overview dl sits directly under the heading. The container
+// only adds 4px, so restore the full ~20px heading→first-row gap here.
+.secondary-metadata_container--sinai > .overview-dl--sinai:first-child {
+  margin-top: 1rem;
+}
+
 .overview-dl__row--sinai {
   display: flex;
-  padding: 0.375rem 0; // Figma: ~12px gap between rows
+  gap: 20px; // Figma: 20px between the label column and the value
+  margin-bottom: 20px; // Figma: 20px between rows (also spaces the standalone keyword row)
 }
 
 .overview-dl__label--sinai {
-  flex: 0 0 150px;
+  flex: 0 0 132px; // Figma: 132px label column (keeps value column at +152px)
+  padding-left: 12px; // Figma: 12px chevron gutter; headings have none, so they hang 12px left
   font-size: 0.875rem; // Figma: 14px Roboto Medium, uppercase
   font-weight: 500;
   text-transform: uppercase;
-  color: $sinai-black;
-  letter-spacing: 0.03em;
-  padding-top: 2px;
+  color: $sinai-label; // Figma: #333
+  letter-spacing: 0.48px; // Figma tracking
+  padding-top: 2px; // optical alignment with the larger value text
 }
 
 .overview-dl__value--sinai {
   flex: 1;
   font-size: 1rem; // Figma: 16px Roboto Light
   font-weight: 300;
-  color: $sinai-black;
+  color: $sinai-value; // Figma: #222
   margin: 0;
   line-height: 1.5;
 
@@ -301,14 +310,15 @@
 .overview-dl__value-keywords--sinai {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 6px; // Figma: 6px between pills
 }
 
 .keyword-badge--sinai {
   display: inline-block;
-  padding: 3px 10px;
-  font-size: 0.85rem;
+  padding: 6px 10px; // Figma: 10×6px
+  font-size: 0.75rem; // Figma: 12px Roboto Regular
   font-weight: 400;
+  letter-spacing: 0.48px; // Figma tracking
   background-color: #0b3954;
   color: white;
   border-radius: 0.7rem;
@@ -330,15 +340,26 @@
 
   .overview-dl__label--sinai {
     flex: none;
+    padding-left: 0; // stacked: drop the hanging gutter so label/value align
     margin-bottom: 0.25rem;
   }
 }
 
-// Part sections within Full Description tab
+// Part sections within Full Description tab.
+// Sections are separated by a short, centered hairline (Figma "sep"), not a
+// full-bleed rule. The ::before sits above each part — including the first, which
+// separates it from the Overview/keywords block.
 .part-section--sinai {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid $sinai-secondary-dk;
+  &::before {
+    content: '';
+    display: block;
+    height: 1px;
+    // Figma "sep": inset 47.5px each side (= 67.5px from the card edge) → 745px at the
+    // 880px comp width. Side insets (not a fixed width) so the rule scales with the
+    // column and keeps its centered gaps instead of clamping to full-bleed when narrow.
+    margin: 1.75rem 47.5px;
+    background-color: $sinai-secondary-dk;
+  }
 }
 
 // Guest Content tab (NOP-160) — top-level guest objects (the guest-layer
@@ -394,21 +415,28 @@
   margin-top: 1.5rem;
 }
 
+// Part headings match the Overview heading exactly (Figma: 18px Roboto Regular #920606).
 .part-heading--sinai {
-  color: $sinai-primary;
+  color: $sinai-heading;
   font-family: 'Roboto', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin-bottom: 0.25rem;
+  font-size: 1.125rem; // Figma: 18px Roboto Regular
+  font-weight: 400;
+  margin-bottom: 0.25rem; // 4px to the italic summary
 }
 
 .part-summary--sinai {
   font-style: italic;
   font-size: 0.875rem; // Figma: 14px Roboto Light Italic
   font-weight: 300;
-  color: $sinai-black;
-  margin-bottom: 1rem;
+  color: $sinai-label; // Figma: #333
+  margin: 0 0 1.25rem; // Figma: 20px to the first field row
   line-height: 1.5;
+}
+
+// No-summary case for parts: restore the ~20px heading→first-row gap (heading
+// only contributes 4px). Adjacent-sibling so it does not fire when a summary sits between.
+.part-heading--sinai + .overview-dl--sinai {
+  margin-top: 1rem;
 }
 
 // Contents tab — parts render at the top level, so the part header is styled
@@ -468,7 +496,9 @@
 }
 
 .part-expandable__label--sinai {
-  flex: 0 0 150px;
+  // 132px label + 20px gap = value column at 152px (the expandable summary has no
+  // row gap of its own, so the gap is folded into the label basis here).
+  flex: 0 0 152px;
   margin-left: -0.25rem;
 }
 
@@ -485,7 +515,7 @@
 
 .part-expandable__details--sinai {
   margin: 0;
-  padding-left: 150px;
+  padding-left: 152px; // align expanded notes under the value column
   padding-top: 0.5rem;
   width: 100%;
 }
@@ -511,25 +541,38 @@
   line-height: 1.5;
 }
 
-// Items / Contents section within Full Description tab
+// Items / Contents section within Full Description tab.
+// Same short, centered hairline separator as parts (Figma "sep"). Used by the
+// top-level Contents and Paracontents sections.
 .items-section--sinai {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid $sinai-secondary-dk;
+  &::before {
+    content: '';
+    display: block;
+    height: 1px;
+    // Figma "sep": inset 47.5px each side (= 67.5px from the card edge) → 745px at the
+    // 880px comp width. Side insets (not a fixed width) so the rule scales with the
+    // column and keeps its centered gaps instead of clamping to full-bleed when narrow.
+    margin: 1.75rem 47.5px;
+    background-color: $sinai-secondary-dk;
+  }
 }
 
-// Contents sub-section nested inside a part — no top border, tighter spacing
+// Contents sub-section nested inside a part — no separator, tighter spacing.
 .part-items-section--sinai {
   margin-top: 1.25rem;
-  padding-top: 0;
-  border-top: 0;
+
+  &::before {
+    display: none;
+  }
 }
 
+// "Contents" heading (Figma: 16px Roboto bold #333). Roboto only loads up to 700,
+// so 700 stands in for the design's ExtraBold.
 .items-subsection-heading--sinai {
-  color: $sinai-primary;
+  color: $sinai-label;
   font-family: 'Roboto', sans-serif;
-  font-size: 1.05rem;
-  font-weight: 500;
+  font-size: 1rem; // 16px
+  font-weight: 700;
   margin: 0 0 0.5rem;
 }
 
@@ -538,9 +581,9 @@
 }
 
 .item-heading--sinai {
-  color: $sinai-primary;
+  color: $sinai-label; // Figma: #333
   font-family: 'Roboto', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1rem; // Figma: 16px Roboto Medium
   font-weight: 500;
   margin-bottom: 0.25rem;
 }
@@ -561,7 +604,7 @@
   font-style: italic;
   font-size: 0.875rem; // Figma: 14px Roboto Light Italic
   font-weight: 300;
-  color: $sinai-black;
+  color: $sinai-label; // Figma: #333
   margin-bottom: 1rem;
   line-height: 1.5;
 }
@@ -599,6 +642,7 @@
 
 .works-section__label--sinai {
   flex: 0 0 150px;
+  padding-left: 12px; // Figma: 12px chevron gutter, so labels hang 12px right of the item heading
   font-size: 0.875rem; // Figma: 14px Roboto Medium, uppercase (matches field labels)
   font-weight: 500;
   text-transform: uppercase;
@@ -848,11 +892,19 @@
   }
 }
 
-// Notes on the Manuscript section (Full Description tab)
+// Notes on the Manuscript section (Full Description tab) — short centered separator
+// to match the other Full Description sections (Figma "sep").
 .notes-on-manuscript-section--sinai {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid $sinai-secondary-dk;
+  &::before {
+    content: '';
+    display: block;
+    height: 1px;
+    // Figma "sep": inset 47.5px each side (= 67.5px from the card edge) → 745px at the
+    // 880px comp width. Side insets (not a fixed width) so the rule scales with the
+    // column and keeps its centered gaps instead of clamping to full-bleed when narrow.
+    margin: 1.75rem 47.5px;
+    background-color: $sinai-secondary-dk;
+  }
 }
 
 .notes-on-manuscript__row--sinai {
