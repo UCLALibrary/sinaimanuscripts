@@ -1149,8 +1149,8 @@
 }
 
 .related-mss-section--sinai {
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
+  margin-bottom: 2.25rem; // Figma: ~36px (ov pb) below the section rule
+  padding-bottom: 1.75rem; // Figma: ~28px breathing above the separator
   border-bottom: 1px solid $sinai-secondary-dk;
 
   &:last-child {
@@ -1160,52 +1160,62 @@
   }
 }
 
+// One related_mss group (relationship entry). Figma: indented one level under
+// the section heading, 20px between groups, 12px between its label and rows.
 .related-mss-group--sinai {
-  margin-top: 1.75rem;
-  padding-left: 1.5rem;
+  margin-top: 20px; // Figma: 20px group-to-group gap (ov gap-20)
+  padding-left: 20px; // Figma: 20px indent under the heading (group pl-20)
 
   &:first-of-type {
-    margin-top: 0.75rem;
+    margin-top: 16px; // + heading's 4px bottom margin = Figma's 20px heading→group gap
   }
 }
 
 .related-mss-group__label--sinai {
-  color: $sinai-black;
+  color: $sinai-value; // Figma: #222
   font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
+  font-size: 1rem; // Figma: 16px Roboto Regular
   font-weight: 400;
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.75rem; // Figma: 12px down to the first field row
 }
 
 .related-mss-group__dl--sinai {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; // Figma: 12px between field rows (group gap-12)
   margin: 0;
   padding: 0;
 }
 
+// Field row — mirrors the shared .overview-dl__row pattern (132px label
+// column, 20px gap, 12px chevron gutter) so Related reads like the other tabs.
 .related-mss-group__row--sinai {
   display: flex;
-  padding: 0.6rem 0;
-  padding-left: 0.5rem;
+  gap: 20px; // Figma: 20px between the label column and the value
   align-items: flex-start;
 }
 
 .related-mss-group__row-label--sinai {
-  flex: 0 0 150px;
-  font-size: 0.8rem;
-  font-weight: 700;
+  flex: 0 0 132px; // Figma: 132px label column
+  padding-left: 12px; // Figma: 12px chevron gutter (labels hang 12px left of it)
+  font-size: 0.875rem; // Figma: 14px Roboto Medium, uppercase
+  font-weight: 500;
   text-transform: uppercase;
-  color: $sinai-black;
-  letter-spacing: 0.03em;
-  padding-top: 2px;
+  color: $sinai-label; // Figma: #333
+  letter-spacing: 0.48px; // Figma tracking
+  padding-top: 2px; // optical alignment with the larger value text
 }
 
 .related-mss-group__row-value--sinai {
   flex: 1;
-  font-size: 0.95rem;
-  font-weight: 400;
-  color: $sinai-black;
+  display: flex;
+  flex-direction: column;
+  gap: 4px; // Figma: 4px between stacked value lines
+  font-size: 1rem; // Figma: 16px Roboto Light
+  font-weight: 300;
+  color: $sinai-value; // Figma: #222
   margin: 0;
-  line-height: 1.6;
+  line-height: 1.4;
 
   a {
     color: $sinai-primary;
@@ -1221,18 +1231,19 @@
   }
 }
 
-.related-mss-group__line--sinai {
-  padding: 0.25rem 0;
-}
-
 @media (max-width: 576px) {
+  .related-mss-group--sinai {
+    padding-left: 12px; // Figma mobile: 12px indent
+  }
+
   .related-mss-group__row--sinai {
     flex-direction: column;
+    gap: 4px;
   }
 
   .related-mss-group__row-label--sinai {
     flex: none;
-    margin-bottom: 0.25rem;
+    padding-left: 0;
   }
 }
 
