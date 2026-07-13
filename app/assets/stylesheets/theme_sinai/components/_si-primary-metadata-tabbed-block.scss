@@ -4,7 +4,9 @@
   display: flex;
   align-items: center;
   border-bottom: 3px solid $sinai-tab-rule;
-  margin-bottom: 1rem;
+  // NOP-166: no trailing margin — the nav is the last child of the sticky header,
+  // so the pinned white block ends flush on this grey rule. The tab→heading gap is
+  // owned by .tab-panels--sinai below (scrolling content), not by this rule.
 }
 
 .scrollable-tabs__list {
@@ -82,6 +84,11 @@
 // Tab panels
 .tab-panels--sinai {
   width: 100%;
+  // NOP-166: this 16px (was the nav's margin-bottom) + the active panel's 0.75rem
+  // top padding preserve the ~28px Figma gap from the tab bar to the section
+  // heading. Owning it here (not on the nav) keeps the sticky block bottom flush
+  // and lets the gap scroll behind the pinned header.
+  margin-top: 1rem;
 }
 
 .tab-panel--sinai {

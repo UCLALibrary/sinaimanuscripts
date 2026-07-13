@@ -1,8 +1,22 @@
 // Scrollable tab navigation for detail pages
 (function() {
+  // NOP-166: publish the pinned header's height so CSS can offset the right-rail
+  // sticky nav and anchor-scroll targets below it (see --sticky-header-height in
+  // _si-right-rail.scss). Re-measured on resize since a long title can wrap.
+  function publishStickyHeaderHeight() {
+    var header = document.querySelector('.item-page__sticky-header--sinai');
+    if (!header) return;
+    document.documentElement.style.setProperty(
+      '--sticky-header-height', header.offsetHeight + 'px'
+    );
+  }
+
   function initScrollableTabs() {
     var tabList = document.querySelector('.scrollable-tabs__list');
     if (!tabList) return;
+
+    publishStickyHeaderHeight();
+    window.addEventListener('resize', publishStickyHeaderHeight);
 
     var tabs = tabList.querySelectorAll('.scrollable-tabs__tab');
     var panels = document.querySelectorAll('.tab-panel--sinai');
@@ -46,6 +60,21 @@
       var panel = document.getElementById(panelId);
       if (panel) {
         panel.classList.add('tab-panel--active');
+      }
+
+      // Realign to the top of the newly shown tab's content so every tab opens at
+      // its beginning under the pinned header — regardless of how far the previous
+      // tab was scrolled. Pure window scroll; no inner scroll container/scrollbar.
+      // Target = the sticky header's natural top (the tab wrapper's content-box
+      // top), read from the NON-sticky wrapper so it's correct even when the header
+      // is currently pinned (a sticky element's rect.top reads 0 once pinned).
+      // Reflow first so the jump clamps against the newly shown panel's height.
+      var wrapper = document.querySelector('.item-page__tab-wrapper--sinai');
+      if (wrapper) {
+        var padTop = parseFloat(getComputedStyle(wrapper).paddingTop) || 0;
+        var contentTop = wrapper.getBoundingClientRect().top + window.scrollY + padTop;
+        void document.body.offsetHeight;
+        window.scrollTo(0, contentTop);
       }
 
       // Scroll toward hidden tabs if this tab is near that edge.

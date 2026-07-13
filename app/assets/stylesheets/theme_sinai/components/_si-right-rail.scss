@@ -20,6 +20,8 @@
   // column so the heading + all metadata stay left-aligned but inset from the edge.
   padding-left: 20px;
   padding-right: 20px;
+  // Anchor-jump offset for the sticky header lives on `.tab-panel--sinai
+  // [id^='section-']` below (the purpose-built anchor-target rule).
 }
 
 .tab-panel-grid__rail--sinai {
@@ -38,11 +40,14 @@
 
 .right-rail__sticky--sinai {
   position: sticky;
-  top: 24px;
+  // NOP-166: pin the rail below the sticky title+tabs header (Figma: ~40px below
+  // the menu bar), not behind it. --sticky-header-height is published by
+  // scrollable_tabs.js; 125px is the Figma desktop fallback when JS hasn't run.
+  top: calc(var(--sticky-header-height, 125px) + 16px);
   display: flex;
   flex-direction: column;
   gap: 16px;
-  max-height: calc(100vh - 48px);
+  max-height: calc(100vh - var(--sticky-header-height, 125px) - 40px);
   overflow-y: auto;
   padding-right: 4px;
 }
@@ -200,11 +205,13 @@
   margin: 8px 0 0;
 }
 
-// Anchor targets in the tab panels get scroll-margin so the page header
-// doesn't overlap when jumping to them.
+// Anchor targets in the tab panels get scroll-margin so the sticky title+tabs
+// header doesn't overlap them when a rail nav link jumps to them (NOP-166).
+// Every anchor host is assigned an id starting "section-" (see right_rail_helper),
+// so this covers them all; offset = header height + 16px (Figma: ~40px below the bar).
 .tab-panel--sinai {
   [id^='section-'] {
-    scroll-margin-top: 24px;
+    scroll-margin-top: calc(var(--sticky-header-height, 125px) + 16px);
   }
 }
 

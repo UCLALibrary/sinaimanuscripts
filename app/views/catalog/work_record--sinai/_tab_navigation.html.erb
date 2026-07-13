@@ -45,7 +45,14 @@
   ].select { |t| t[:present] }
 %>
 
-<nav class="scrollable-tabs--sinai" aria-label="Manuscript details">
+<%# --------- Sticky header: manuscript title + tab bar (NOP-166) --------- %>
+<%# Title + nav are wrapped together so they pin as one unit; .tab-panels--sinai
+    stays a following sibling so panel content scrolls underneath the pinned block. %>
+<div class="item-page__sticky-header--sinai">
+  <div class="title-row-show--siani">
+    <%= document[:shelfmark_ssi] %>
+  </div>
+  <nav class="scrollable-tabs--sinai" aria-label="Manuscript details">
   <button class="scrollable-tabs__arrow scrollable-tabs__arrow--left scrollable-tabs__arrow--hidden" aria-hidden="true" type="button">
     <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
       <path d="M10 3L5 8L10 13" fill="currentColor"/>
@@ -70,7 +77,8 @@
       <path d="M6 3L11 8L6 13" fill="currentColor"/>
     </svg>
   </button>
-</nav>
+  </nav>
+</div>
 
 <div class="tab-panels--sinai">
   <%# Full Description — content from current Overview sidebar %>

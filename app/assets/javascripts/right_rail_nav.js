@@ -10,7 +10,14 @@
 (function () {
   var scrollHandler = null;
   // How far below the viewport top a heading must cross to count as "current".
-  var ACTIVE_OFFSET = 120;
+  // NOP-166: this must clear the sticky title+tabs header, so a section is marked
+  // active once its heading passes just below the pinned block (header height +
+  // 16px). Measured live so it stays correct when a long title wraps. Falls back
+  // to 120 if the header isn't present.
+  function getActiveOffset() {
+    var header = document.querySelector('.item-page__sticky-header--sinai');
+    return (header ? header.offsetHeight : 120) + 16;
+  }
 
   function getActiveRail() {
     var activePanel = document.querySelector('.tab-panel--sinai.tab-panel--active');
@@ -20,11 +27,17 @@
 
   function collectEntries(rail) {
     if (!rail) return [];
+    // Resolve ids WITHIN the rail's own panel. The same section-* ids are emitted
+    // in more than one tab panel (e.g. Full Description and Contents both render the
+    // parts/items tree), and all panels stay in the DOM (inactive = display:none).
+    // document.getElementById would return the first match — a hidden panel's copy
+    // at rect top 0 — breaking scroll-spy and click-to-scroll on non-first tabs.
+    var scope = rail.closest('.tab-panel--sinai') || document;
     var links = rail.querySelectorAll('a[data-right-rail-link]');
     var entries = [];
     links.forEach(function (link) {
       var id = link.getAttribute('data-right-rail-link');
-      var target = id && document.getElementById(id);
+      var target = id && scope.querySelector('[id="' + id + '"]');
       if (target) entries.push({ id: id, link: link, target: target });
     });
     return entries;
@@ -41,12 +54,13 @@
   }
 
   function computeActiveId(entries) {
-    // Active = the last heading whose top edge is at or above ACTIVE_OFFSET.
+    // Active = the last heading whose top edge is at or above the active offset.
     // Falls back to the first heading if none have crossed yet.
+    var activeOffset = getActiveOffset();
     var currentId = entries[0] ? entries[0].id : null;
     for (var i = 0; i < entries.length; i++) {
       var top = entries[i].target.getBoundingClientRect().top;
-      if (top - ACTIVE_OFFSET <= 0) {
+      if (top - activeOffset <= 0) {
         currentId = entries[i].id;
       } else {
         break;
@@ -82,7 +96,13 @@
       var link = event.target.closest('a[data-right-rail-link]');
       if (!link) return;
       var id = link.getAttribute('data-right-rail-link');
-      var target = document.getElementById(id);
+      // Use the panel-scoped target resolved in collectEntries (not
+      // document.getElementById, which can hit a duplicate id in a hidden panel).
+      var entry = null;
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].link === link) { entry = entries[i]; break; }
+      }
+      var target = entry && entry.target;
       if (!target) return;
       event.preventDefault();
       // On phones the nav is a <details> accordion sitting ABOVE the content.

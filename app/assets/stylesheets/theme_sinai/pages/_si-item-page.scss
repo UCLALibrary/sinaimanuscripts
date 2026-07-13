@@ -21,6 +21,20 @@
   padding-top: 1rem;
 }
 
+// NOP-166: the manuscript title + tab bar pin together as one white block the
+// moment they reach the top of the viewport. Its parent (.item-page__tab-wrapper)
+// spans the tab panels, so the block stays pinned while panel content scrolls
+// underneath. The site header is not fixed, so it pins flush at top: 0.
+// JS publishes --sticky-header-height (see scrollable_tabs.js) so the right rail
+// and anchor targets can offset below it; 125px is the Figma desktop fallback.
+.item-page__sticky-header--sinai {
+  position: sticky;
+  top: 0;
+  z-index: 100; // above panel content + rail card; below Examine popup (1040/1050)
+  background: $white; // solid #FFFFFF so content scrolls cleanly underneath
+  padding-top: 36px; // Figma: 36px of white above the title inside the block
+}
+
 .item-page__pagination-widgets--sinai {
   .previous {
     color: $sinai-primary;
@@ -107,14 +121,17 @@
 } */
 
 // SHELFMARK - Once the tabs are included on the item page, uncomment this
+// NOP-166: Figma sticky-header title — Roboto Medium 32px, #333, with a 16px
+// gap (padding-bottom) down to the tab bar. Lives inside .item-page__sticky-header.
 .title-row-show--siani {
-  margin-top: 15px;
-  margin-left: 12px;
-  font-size: $text-20;
+  margin: 0;
+  padding: 0 4px 16px;
+  font-size: $text-32;
   font-weight: 500;
+  color: #333;
 
   @media (max-width: 767px) {
-    font-size: $text-18;
+    font-size: $text-24;
   }
 }
 

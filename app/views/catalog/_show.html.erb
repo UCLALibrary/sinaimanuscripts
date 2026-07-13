@@ -16,10 +16,7 @@
     </div>
   <% end %>
 </div>
-<%# ----------- Shelfmark --------------- %>
-<div class='title-row-show--siani'>
-  <%= @document[:shelfmark_ssi] %>
-</div>
+<%# Shelfmark title now renders inside the sticky header (see _tab_navigation, NOP-166). %>
 <div class='item-page__tab-wrapper--sinai'>
   <%= render 'catalog/work_record--sinai/tab_navigation', document: document %>
 </div>
