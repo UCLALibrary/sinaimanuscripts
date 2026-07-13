@@ -279,8 +279,9 @@
   %>
   <% if rubric_paras.any? %>
     <!-- DATA SOURCE: <%= data_path %>.text_unit_record.para[type.id=framing] (count: <%= rubric_paras.size %>) -->
-    <%# In the Guest tab (compact), rubrics are in-layer paracontent and must stay out of the nav. %>
-    <div class="works-section--sinai works-section--inline--sinai item-subsection--sinai"<%= ' data-nav-skip'.html_safe if compact %>>
+    <%# Rubrics are paracontent and must stay out of the right-rail nav on every tab
+        (Contents, Guest, Full Description), so this wrapper is always data-nav-skip. %>
+    <div class="works-section--sinai works-section--inline--sinai item-subsection--sinai" data-nav-skip>
       <div class="works-section__label--sinai">Rubrics, Etc.</div>
 
       <div class="works-section__items--sinai">

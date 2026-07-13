@@ -62,6 +62,41 @@ RSpec.describe 'catalog/work_record--sinai/_content_metadata.html.erb', type: :v
     end
   end
 
+  context 'with a text unit that has a Rubrics (framing paracontent) block' do
+    # Regression for NOP-159: rubrics render on the Contents tab but must stay out
+    # of the right-rail nav. The nav is scraped from panel HTML and drops anything
+    # under a data-nav-skip ancestor, so the Rubrics wrapper must carry data-nav-skip
+    # even in the non-compact (Contents) render.
+    let(:document) do
+      SolrDocument.new(
+        'id' => 'with-rubric',
+        'manuscript_json_ts' => {
+          'part' => [{
+            'label' => 'Part 1',
+            'ot_layer' => [{
+              'layer_record' => {
+                'text_unit' => [{
+                  'locus' => 'f. 1',
+                  'text_unit_record' => {
+                    'para' => [{ 'type' => { 'id' => 'framing' }, 'label' => 'A rubric' }]
+                  }
+                }]
+              }
+            }]
+          }]
+        }.to_json
+      )
+    end
+
+    it 'renders the Rubrics section' do
+      expect(rendered).to have_css('.works-section__label--sinai', text: 'Rubrics, Etc.')
+    end
+
+    it 'marks the Rubrics wrapper data-nav-skip so it stays out of the nav' do
+      expect(rendered).to have_css('.works-section--inline--sinai[data-nav-skip]', text: /Rubrics, Etc\./)
+    end
+  end
+
   context 'with empty manuscript JSON' do
     let(:document) { SolrDocument.new('id' => 'empty', 'manuscript_json_ts' => '{}') }
 
