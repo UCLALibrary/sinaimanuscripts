@@ -430,6 +430,17 @@
   }
 }
 
+// The layer summary belongs to the title, not the field column: pull it back out
+// of the body's left padding so it aligns flush under the layer title (Figma: the
+// summary sits at x=12, same as the title text — the fields stay indented at x=20).
+.guest-layer--sinai > .work-accordion__body--sinai > .part-summary--sinai {
+  margin-left: -0.75rem; // -12px: body content sits at x=24, title text at x=12
+  // Sit the summary just under the title (Figma: ~2px below the title row). Cancels
+  // the stacked <summary> padding-bottom (5.6px) + body padding-top (8px) and the
+  // title's 1.5 line-height leading, which otherwise pushed it ~14px down.
+  margin-top: -0.9rem;
+}
+
 // Out-of-layer guest paracontent / notes groups: give them breathing room below
 // the guest-layer accordions. (Their accordions flush left via .works-section--inline--sinai.)
 .guest-content__outside--sinai {
@@ -705,12 +716,15 @@
     &::before {
       content: ''; // Figma "triangle": thin grey chevron >, right when closed / down when open
       width: 8px;
-      height: 12px;
+      // Box spans the title's line box (line-height 1.5); the 8x12 glyph is painted
+      // centered inside it, so the chevron sits mid-line in BOTH the closed (>) and
+      // open (rotated v) states. Replaces the old fixed 12px height + margin-top nudge,
+      // which rode high (and higher again once rotated).
+      height: 1.5em;
       background-color: $sinai-grey-lt; // painted through the mask below
-      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 12' fill='none'%3E%3Cpath d='M1.5 1.5 6.5 6 1.5 10.5' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;
-      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 12' fill='none'%3E%3Cpath d='M1.5 1.5 6.5 6 1.5 10.5' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 12' fill='none'%3E%3Cpath d='M1.5 1.5 6.5 6 1.5 10.5' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / 8px 12px;
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 12' fill='none'%3E%3Cpath d='M1.5 1.5 6.5 6 1.5 10.5' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / 8px 12px;
       margin-right: 0.25rem; // Figma: chevron sits tight to the work title
-      margin-top: 0.3em;
       transition: transform 0.2s;
       display: inline-block;
       flex-shrink: 0;
@@ -747,6 +761,12 @@
 }
 
 // Main section header (guest layer / colophon) — larger than nested work titles.
+// Bump the summary's font-size to match the 18px title so the chevron ::before
+// (height:1.5em) spans this larger title's line box and stays vertically centered.
+.guest-layer--sinai > .work-accordion__summary--sinai {
+  font-size: 1.125rem; // Figma: 18px title line box — keeps the 1.5em chevron centered
+}
+
 .guest-layer--sinai > .work-accordion__summary--sinai > .work-accordion__title--sinai {
   font-size: 1.125rem; // Figma: 18px Roboto Regular
   font-weight: 400;
