@@ -1080,9 +1080,9 @@
 }
 
 // Undertexts tab
-.undertexts-section--sinai {
-  margin-top: 1rem;
-}
+// Top gap from the tab bar is owned centrally by `.tab-panel--sinai` padding
+// (see _si-primary-metadata-tabbed-block.scss) so every tab lines up — no
+// per-section margin-top here.
 
 // Consistent gap below the tab header whether or not Part groups precede the
 // flyleaves section. Scoped so the shared heading on other tabs is untouched.
@@ -1143,10 +1143,8 @@
   line-height: 1.4;
 }
 
-// Related Manuscripts tab
-.related-manuscripts-section--sinai {
-  margin-top: 1rem;
-}
+// Related Manuscripts tab — top gap from the tab bar is owned centrally by
+// `.tab-panel--sinai` padding, so no per-section margin-top here.
 
 .related-mss-section--sinai {
   margin-bottom: 2.25rem; // Figma: ~36px (ov pb) below the section rule
@@ -1249,8 +1247,6 @@
 
 // References & Bibliography tab
 .references-bibliography-section--sinai {
-  margin-top: 1rem;
-
   // Figma (ov 2685:480): the section is a 20px stack — 20px from the heading
   // to the first field row, and 20px between field rows. The shared heading/dl
   // carry Overview/Related values (4px / 12px), so re-space them here only.
@@ -1296,10 +1292,8 @@
   text-transform: none;
 }
 
-// Rights & Credits tab
-.rights-credits--sinai {
-  margin-top: 1rem;
-}
+// Rights & Credits tab — top gap from the tab bar is owned centrally by
+// `.tab-panel--sinai` padding, so no per-section margin-top here.
 
 // Figma (2821:234): 20px from the red heading to the first child — a paragraph
 // (Usage and Rights / Description) or an image-program wrapper (Images). Scoped
@@ -1345,12 +1339,6 @@
 // Figma node 2685:583: red section header, 12px-indented items, each an item
 // title (#333) with an optional "As Written:" line and note lines (#222 Light).
 .ndp-section--sinai {
-  // Figma (main 2685:587): the first section sits 28px below the tab bar (pt-28).
-  // Panel padding-top supplies 12px; add 16px so Names lines up with References.
-  &:first-of-type {
-    margin-top: 1rem;
-  }
-
   // Full-width hairline between sections (Figma "sep" spans the whole content
   // width, starting at the heading's left edge — not the inset used elsewhere).
   & + &::before {
