@@ -1,12 +1,12 @@
-# Graph Report - sinaimanuscripts  (2026-06-15)
+# Graph Report - sinaimanuscripts  (2026-07-13)
 
 ## Corpus Check
-- 167 files · ~1,816,076 words
+- 177 files · ~1,984,593 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 890 nodes · 3196 edges · 64 communities detected
-- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 110 edges (avg confidence: 0.8)
+- 926 nodes · 3261 edges · 64 communities detected
+- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 119 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -70,10 +70,10 @@
 - [[_COMMUNITY_Community 61|Community 61]]
 - [[_COMMUNITY_Community 62|Community 62]]
 - [[_COMMUNITY_Community 66|Community 66]]
-- [[_COMMUNITY_Community 69|Community 69]]
 - [[_COMMUNITY_Community 70|Community 70]]
-- [[_COMMUNITY_Community 155|Community 155]]
-- [[_COMMUNITY_Community 156|Community 156]]
+- [[_COMMUNITY_Community 71|Community 71]]
+- [[_COMMUNITY_Community 162|Community 162]]
+- [[_COMMUNITY_Community 163|Community 163]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `call()` - 125 edges
@@ -88,15 +88,15 @@
 10. `C()` - 48 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `B()` --calls--> `clamp()`  [INFERRED]
-  public/mirador3.min.js → app/assets/javascripts/flot/jquery.flot.js
+- `clamp()` --calls--> `B()`  [INFERRED]
+  app/assets/javascripts/flot/jquery.flot.js → public/mirador3.min.js
 - `application_name()` --calls--> `t()`  [INFERRED]
   app/helpers/blacklight/blacklight_helper_behavior.rb → public/mirador3.min.js
 - `render_document_show_field_label()` --calls--> `t()`  [INFERRED]
   app/helpers/blacklight/blacklight_helper_behavior.rb → public/mirador3.min.js
 - `sinai_application_name()` --calls--> `t()`  [INFERRED]
   app/helpers/blacklight/blacklight_helper_behavior.rb → public/mirador3.min.js
-- `setupModalLazyLoad()` --calls--> `On()`  [INFERRED]
+- `init()` --calls--> `E()`  [INFERRED]
   app/assets/javascripts/right_rail_nav.js → public/mirador3.min.js
 
 ## Hyperedges (group relationships)
@@ -107,56 +107,56 @@
 ## Communities
 
 ### Community 0 - "Community 0"
-Cohesion: 0.04
-Nodes (171): aa(), ac(), Ai(), al(), ao(), as(), Au(), Ba() (+163 more)
+Cohesion: 0.08
+Nodes (97): a(), aa(), ac(), ao(), as(), Ba(), bc(), bi() (+89 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.21
-Nodes (83): _(), a(), ae(), ar(), B(), Be(), br(), C() (+75 more)
+Cohesion: 0.05
+Nodes (79): Af(), al(), Au(), Bf(), bl(), bo(), Bs(), bu() (+71 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.04
-Nodes (29): ApplicationController, iconify_auto_link(), application_name(), blacklight_path(), document_has_value?(), document_heading(), document_presenter(), document_presenter_class() (+21 more)
+Nodes (46): AddPolymorphicTypeToBookmarks, schema_org_markup(), Connection, link_to_featured_work(), assoc_date_arrays(), parse_manuscript_json(), sinai_index_origin_dates(), build_names_dates_places() (+38 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.05
-Nodes (26): AddPolymorphicTypeToBookmarks, schema_org_markup(), Connection, link_to_featured_work(), included_in_solr_lookup(), manuscripts_including_in_reconstruction(), render_reconstructed_from_link(), render_related_mss_link() (+18 more)
+Cohesion: 0.04
+Nodes (30): ApplicationController, iconify_auto_link(), application_name(), blacklight_path(), document_has_value?(), document_heading(), document_presenter(), document_presenter_class() (+22 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.21
-Nodes (45): Af(), At(), Bs(), bt(), call(), ct(), df(), ds() (+37 more)
+Cohesion: 0.17
+Nodes (62): Ai(), At(), br(), bt(), call(), ct(), Di(), dt() (+54 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.09
-Nodes (36): Dawn Childress (domain/notation owner), Figma Designs (front end layouts), Rationale: Granular JSON data model (Dawn: 'probably made it too granular but awesome'), Rationale: Reusable paracontent template ticket mirrors Blacklight partial reuse, Sample JSON fixtures (5 fake-data records), Rationale: SMDL combines ms_obj/layer/text_unit into one JSON record (Data Portal keeps them separate), SMDL JIRA Ticket Prefix, Rationale: Notation solves communication wall between domain expert and devs (+28 more)
+Cohesion: 0.38
+Nodes (51): _(), ae(), B(), Be(), C(), ca(), ce(), create() (+43 more)
 
 ### Community 6 - "Community 6"
 Cohesion: 0.13
-Nodes (10): build_xml_tag(), dc_field_name?(), dcterms_field_name?(), dpla_field_name?(), edm_field_name?(), export_as_oai_dpla_xml(), extended(), field_prefix() (+2 more)
+Nodes (42): An(), ar(), Bn(), cn(), cr(), Dn(), dr(), ds() (+34 more)
 
 ### Community 7 - "Community 7"
-Cohesion: 0.13
-Nodes (19): Collation field (coll, note where type.id=collation, viscodex), Current state field (state_ssi), Extent field (extent, dim, weight), Figma layout (referenced), Foliation field (fol, note where type.id=foliation), Full Description Tab, JSON Blob (data source), Keywords field (features_ssim, ot_genre_ssim) (+11 more)
+Cohesion: 0.09
+Nodes (36): Dawn Childress (domain/notation owner), Figma Designs (front end layouts), Rationale: Granular JSON data model (Dawn: 'probably made it too granular but awesome'), Rationale: Reusable paracontent template ticket mirrors Blacklight partial reuse, Sample JSON fixtures (5 fake-data records), Rationale: SMDL combines ms_obj/layer/text_unit into one JSON record (Data Portal keeps them separate), SMDL JIRA Ticket Prefix, Rationale: Notation solves communication wall between domain expert and devs (+28 more)
 
 ### Community 8 - "Community 8"
 Cohesion: 0.13
-Nodes (18): Data Structure Migration (backend), Lisa McAulay (Project Manager), Monica (frontend dev, Piotr's collaborator), Piotr Nowak (Nopio frontend dev), Sinai Data Portal (sinai.library.ucla.edu), SMDL Frontend Rebuild (epic), Tatiana (backend dev; data structure migration), Rationale: Tatiana finishes backend before Piotr takes over frontend (avoid mid-task handoff) (+10 more)
+Nodes (10): build_xml_tag(), dc_field_name?(), dcterms_field_name?(), dpla_field_name?(), edm_field_name?(), export_as_oai_dpla_xml(), extended(), field_prefix() (+2 more)
 
 ### Community 9 - "Community 9"
-Cohesion: 0.14
-Nodes (17): Bf(), cf(), ef(), Ff(), jf(), Jl(), kf(), Of() (+9 more)
+Cohesion: 0.13
+Nodes (19): Collation field (coll, note where type.id=collation, viscodex), Current state field (state_ssi), Extent field (extent, dim, weight), Figma layout (referenced), Foliation field (fol, note where type.id=foliation), Full Description Tab, JSON Blob (data source), Keywords field (features_ssim, ot_genre_ssim) (+11 more)
 
 ### Community 10 - "Community 10"
-Cohesion: 0.17
-Nodes (9): DeviseCreateUsers, clamp(), Plot(), areaChart(), domDependenciesMet(), form_selection(), function_for_find_segment(), normalized_selection() (+1 more)
+Cohesion: 0.13
+Nodes (18): Data Structure Migration (backend), Lisa McAulay (Project Manager), Monica (frontend dev, Piotr's collaborator), Piotr Nowak (Nopio frontend dev), Sinai Data Portal (sinai.library.ucla.edu), SMDL Frontend Rebuild (epic), Tatiana (backend dev; data structure migration), Rationale: Tatiana finishes backend before Piotr takes over frontend (avoid mid-task handoff) (+10 more)
 
 ### Community 11 - "Community 11"
-Cohesion: 0.28
-Nodes (15): An(), Bn(), Dn(), fn(), gn(), In(), ln(), mn() (+7 more)
+Cohesion: 0.29
+Nodes (15): activateRail(), closeExamine(), collectEntries(), computeActiveId(), examineIsOpen(), getActiveRail(), getViewerContainer(), init() (+7 more)
 
 ### Community 12 - "Community 12"
-Cohesion: 0.35
-Nodes (11): activateRail(), collectEntries(), computeActiveId(), getActiveRail(), init(), setActive(), setupClickHandling(), setupModalLazyLoad() (+3 more)
+Cohesion: 0.17
+Nodes (9): DeviseCreateUsers, clamp(), Plot(), areaChart(), domDependenciesMet(), form_selection(), function_for_find_segment(), normalized_selection() (+1 more)
 
 ### Community 13 - "Community 13"
 Cohesion: 0.24
@@ -346,19 +346,19 @@ Nodes (1): SearchHistoryController
 Cohesion: 1.0
 Nodes (1): Channel
 
-### Community 69 - "Community 69"
+### Community 70 - "Community 70"
 Cohesion: 1.0
 Nodes (2): Andy Wallace (DevOps / Blacklight auth), Blacklight 8 Authentication Regression
 
-### Community 70 - "Community 70"
+### Community 71 - "Community 71"
 Cohesion: 1.0
 Nodes (2): Staging Regression (build rollback), Staging Site (stage.sinaimanuscripts.library.ucla.edu)
 
-### Community 155 - "Community 155"
+### Community 162 - "Community 162"
 Cohesion: 1.0
 Nodes (1): Locus (folio reference)
 
-### Community 156 - "Community 156"
+### Community 163 - "Community 163"
 Cohesion: 1.0
 Nodes (1): smdl_overview.md (empty file)
 
@@ -457,24 +457,24 @@ Nodes (1): smdl_overview.md (empty file)
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 66`** (2 nodes): `channel.rb`, `Channel`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 69`** (2 nodes): `Andy Wallace (DevOps / Blacklight auth)`, `Blacklight 8 Authentication Regression`
+- **Thin community `Community 70`** (2 nodes): `Andy Wallace (DevOps / Blacklight auth)`, `Blacklight 8 Authentication Regression`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 70`** (2 nodes): `Staging Regression (build rollback)`, `Staging Site (stage.sinaimanuscripts.library.ucla.edu)`
+- **Thin community `Community 71`** (2 nodes): `Staging Regression (build rollback)`, `Staging Site (stage.sinaimanuscripts.library.ucla.edu)`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 155`** (1 nodes): `Locus (folio reference)`
+- **Thin community `Community 162`** (1 nodes): `Locus (folio reference)`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 156`** (1 nodes): `smdl_overview.md (empty file)`
+- **Thin community `Community 163`** (1 nodes): `smdl_overview.md (empty file)`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `h()` connect `Community 1` to `Community 0`, `Community 2`, `Community 3`, `Community 4`, `Community 11`?**
-  _High betweenness centrality (0.073) - this node is a cross-community bridge._
-- **Why does `t()` connect `Community 1` to `Community 0`, `Community 2`, `Community 4`, `Community 11`, `Community 12`?**
-  _High betweenness centrality (0.065) - this node is a cross-community bridge._
-- **Why does `render_related_mss_link()` connect `Community 3` to `Community 1`?**
-  _High betweenness centrality (0.033) - this node is a cross-community bridge._
+- **Why does `h()` connect `Community 5` to `Community 0`, `Community 1`, `Community 2`, `Community 3`, `Community 4`, `Community 6`?**
+  _High betweenness centrality (0.092) - this node is a cross-community bridge._
+- **Why does `t()` connect `Community 5` to `Community 0`, `Community 1`, `Community 3`, `Community 4`, `Community 6`, `Community 11`?**
+  _High betweenness centrality (0.066) - this node is a cross-community bridge._
+- **Why does `render_related_mss_link()` connect `Community 2` to `Community 5`?**
+  _High betweenness centrality (0.043) - this node is a cross-community bridge._
 - **Are the 2 inferred relationships involving `call()` (e.g. with `b()` and `d()`) actually correct?**
   _`call()` has 2 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 3 inferred relationships involving `E()` (e.g. with `.get()` and `init()`) actually correct?**

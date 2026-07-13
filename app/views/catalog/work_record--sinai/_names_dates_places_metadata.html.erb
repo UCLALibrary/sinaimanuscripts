@@ -1,0 +1,32 @@
+<%# Names, Dates, Places tab (NOP-161). %>
+<%# Aggregates every assoc_name / assoc_date / assoc_place object from anywhere in %>
+<%# the manuscript JSON blob (see NamesDatesPlacesHelper) into three sorted sections. %>
+<%# Locals: document (SolrDocument). %>
+<% ndp = names_dates_places_for(document) %>
+<% if ndp.values.any?(&:present?) %>
+  <% sections = [['Names', ndp[:names], '.assoc_name'], ['Dates', ndp[:dates], '.assoc_date'], ['Places', ndp[:places], '.assoc_place']] %>
+  <% sections.each do |heading, items, source| %>
+    <% next if items.blank? %>
+    <!-- DATA SOURCE: aggregated <%= source %> from ms_obj, para, parts, layers, text_units -->
+    <section class="ndp-section--sinai">
+      <h2 class="overview-heading--sinai"><%= heading %></h2>
+      <div class="ndp-items--sinai">
+        <% items.each do |item| %>
+          <div class="ndp-item--sinai">
+            <div class="ndp-item__title--sinai"><%= item[:display] %></div>
+            <% if item[:as_written].present? || item[:notes].any? %>
+              <div class="ndp-item__details--sinai">
+                <% if item[:as_written].present? %>
+                  <div class="ndp-item__line--sinai">As Written: <bdi class="ndp-item__as-written-value--sinai"><%= item[:as_written] %></bdi></div>
+                <% end %>
+                <% item[:notes].each do |note| %>
+                  <div class="ndp-item__line--sinai"><%= note %></div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  <% end %>
+<% end %>

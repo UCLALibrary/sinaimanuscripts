@@ -26,6 +26,10 @@
   has_related_manuscripts = has_disjecta_tab || has_filiation_tab ||
                             has_recon_from_tab || has_included_in_tab
 
+  # Names, Dates, Places tab is present when the record has any aggregated
+  # assoc_name / assoc_date / assoc_place (NOP-161).
+  has_names_dates_places = names_dates_places_for(document).values.any?(&:present?)
+
   # rail_nav and rail_examine control whether each tab's right rail shows the
   # Navigation card and/or the Examine-manuscript card. Tabs with neither
   # render the main column at full width (no rail column).
@@ -36,7 +40,7 @@
     { id: 'guest-content',            label: 'Guest Content',              present: has_guest_content,       rail_nav: true,  rail_examine: true  },
     { id: 'related-manuscripts',      label: 'Related Manuscripts',        present: has_related_manuscripts, rail_nav: false, rail_examine: false },
     { id: 'references-bibliography',  label: 'References & Bibliography',  present: true,                    rail_nav: false, rail_examine: false },
-    { id: 'names-dates-places',       label: 'Names, Dates, Places',       present: true,                    rail_nav: false, rail_examine: false },
+    { id: 'names-dates-places',       label: 'Names, Dates, Places',       present: has_names_dates_places,  rail_nav: false, rail_examine: false },
     { id: 'rights-credits',           label: 'Rights & Credits',           present: true,                    rail_nav: false, rail_examine: false }
   ].select { |t| t[:present] }
 %>
@@ -124,6 +128,8 @@
         <%= render 'catalog/work_record--sinai/related_manuscripts_metadata', document: document %>
       <% elsif tab[:id] == 'references-bibliography' %>
         <%= render 'catalog/work_record--sinai/references_and_bibliography_metadata', document: document %>
+      <% elsif tab[:id] == 'names-dates-places' %>
+        <%= render 'catalog/work_record--sinai/names_dates_places_metadata', document: document %>
       <% elsif tab[:id] == 'rights-credits' %>
         <%= render 'catalog/work_record--sinai/rights_and_credits_metadata', document: document %>
       <% else %>

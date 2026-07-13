@@ -1214,3 +1214,66 @@
   font-weight: 700;
   margin: 0 0 0.5rem;
 }
+
+// Names, Dates, Places tab (NOP-161) — aggregated assoc_name/date/place.
+// Figma node 2685:583: red section header, 12px-indented items, each an item
+// title (#333) with an optional "As Written:" line and note lines (#222 Light).
+.ndp-section--sinai {
+  // Full-width hairline between sections (Figma "sep" spans the whole content
+  // width, starting at the heading's left edge — not the inset used elsewhere).
+  & + &::before {
+    content: '';
+    display: block;
+    height: 1px;
+    margin: 1.75rem 0;
+    background-color: $sinai-secondary-dk;
+  }
+
+  // Reset the Overview heading's 4px summary gap so heading -> items is exactly 20px.
+  .overview-heading--sinai {
+    margin-bottom: 0;
+  }
+}
+
+.ndp-items--sinai {
+  padding-left: 12px; // Figma: items indented 12px from the red header
+  margin-top: 1.25rem; // Figma: 20px heading -> first item
+}
+
+.ndp-item--sinai {
+  margin-bottom: 1.25rem; // Figma: 20px between items (description -> next title)
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.ndp-item__title--sinai {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem; // Figma: 16px Roboto Regular
+  font-weight: 400;
+  color: $sinai-label; // Figma: #333
+  line-height: normal; // Figma: leading-normal — keeps the 12px title->details gap honest
+}
+
+.ndp-item__details--sinai {
+  display: flex;
+  flex-direction: column;
+  gap: 2px; // Figma: 2px between detail lines
+  margin-top: 0.75rem; // Figma: 12px title -> details
+}
+
+.ndp-item__line--sinai {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem; // Figma: 16px Roboto Light
+  font-weight: 300;
+  color: $sinai-value; // Figma: #222
+  line-height: 1.4; // readable for wrapping notes while staying compact
+  word-break: break-word;
+}
+
+// Right-to-left script (Syriac/Arabic) in the "As Written" value; <bdi> isolates
+// it so it reads correctly inside the LTR "As Written:" label run.
+.ndp-item__as-written-value--sinai {
+  unicode-bidi: isolate;
+}
