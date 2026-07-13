@@ -1327,6 +1327,12 @@
 // Figma node 2685:583: red section header, 12px-indented items, each an item
 // title (#333) with an optional "As Written:" line and note lines (#222 Light).
 .ndp-section--sinai {
+  // Figma (main 2685:587): the first section sits 28px below the tab bar (pt-28).
+  // Panel padding-top supplies 12px; add 16px so Names lines up with References.
+  &:first-of-type {
+    margin-top: 1rem;
+  }
+
   // Full-width hairline between sections (Figma "sep" spans the whole content
   // width, starting at the heading's left edge — not the inset used elsewhere).
   & + &::before {
