@@ -521,9 +521,11 @@
 }
 
 .part-expandable__label--sinai {
-  // 132px label + 20px gap = value column at 152px (the expandable summary has no
-  // row gap of its own, so the gap is folded into the label basis here).
-  flex: 0 0 152px;
+  // chevron (::before, 8px + 0.25rem ≈ 12px gutter) + 140px = value column at 152px.
+  // The chevron occupies the 12px gutter, so the label text aligns at 12px with the
+  // plain rows (Scribe/Extent) and the value column lands at 152px like everywhere else.
+  flex: 0 0 140px;
+  padding-left: 0; // chevron supplies the gutter; don't double it with the inherited 12px
 }
 
 // Item Notes / Editions labels read as subsection labels (like Works / Rubrics), not as
@@ -549,22 +551,29 @@
 
 // Grouped blocks for writing/ink/layout entries
 .part-grouped-block--sinai {
-  margin-bottom: 0.75rem;
+  display: flex; // mirrors .metadata-value-stack--sinai (NOP-165): discrete stacked lines
+  flex-direction: column;
+  gap: 2px; // Figma: 2px between lines of the same section
+  margin-bottom: 12px; // Figma: 12px between sections
 
   &:last-child {
     margin-bottom: 0;
   }
 }
 
+// Nested lines/notes match the global field-value typography (.overview-dl__value--sinai:
+// Figma 16px Roboto Light, #222) rather than an ad-hoc smaller/greyer style.
 .part-grouped-block__line--sinai {
-  font-size: 0.95rem;
-  color: $sinai-black;
+  font-size: 1rem;
+  font-weight: 300;
+  color: $sinai-value;
   line-height: 1.5;
 }
 
 .part-grouped-block__note--sinai {
-  font-size: 0.9rem;
-  color: $sinai-grey;
+  font-size: 1rem;
+  font-weight: 300;
+  color: $sinai-value;
   line-height: 1.5;
 }
 
