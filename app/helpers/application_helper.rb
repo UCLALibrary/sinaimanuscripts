@@ -26,4 +26,23 @@ module ApplicationHelper
       "<span class='fa fa-external-link'></span>#{('&nbsp;' + value) if show_link}"
     end
   end
+
+  # Renders discrete metadata values one per line with vertical spacing between
+  # them (Figma NOP-165). Replaces bare `<br>` joins so separate DB values are
+  # visually distinct from wrapped text. `tight: true` -> 4px (origin dates); else 12px.
+  #
+  # Values are expected to be html-safe already (callers pass `h(...)` / `link_to`);
+  # `tag.div(v)` preserves `safe_join`'s escaping semantics.
+  #
+  # @param values [Array] pre-rendered value strings/links, one per line
+  # @param tight [Boolean] use the tighter 4px gap (origin/assoc_date stacks)
+  # @return [ActiveSupport::SafeBuffer, nil]
+  def stacked_metadata_values(values, tight: false)
+    values = Array(values).reject { |v| v.to_s.strip.empty? }
+    return if values.empty?
+
+    css = 'metadata-value-stack--sinai'
+    css += ' metadata-value-stack--tight--sinai' if tight
+    tag.div(class: css) { safe_join(values.map { |v| tag.div(v) }) }
+  end
 end

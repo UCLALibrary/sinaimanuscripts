@@ -313,6 +313,18 @@
   gap: 6px; // Figma: 6px between pills
 }
 
+// NOP-165: separate DB values stacked one-per-line get a real gap (Figma),
+// distinct from wrapped-text line-height. Default 12px; origin dates 4px.
+.metadata-value-stack--sinai {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; // Figma: 12px between discrete stacked values
+}
+
+.metadata-value-stack--tight--sinai {
+  gap: 4px; // Figma: 4px between origin date lines
+}
+
 .keyword-badge--sinai {
   display: inline-block;
   padding: 6px 10px; // Figma: 10×6px

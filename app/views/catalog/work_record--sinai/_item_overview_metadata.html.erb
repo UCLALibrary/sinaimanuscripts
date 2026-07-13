@@ -134,7 +134,7 @@
     <div class="overview-dl__row--sinai">
       <dt class="overview-dl__label--sinai">Origin</dt>
       <dd class="overview-dl__value--sinai">
-        <%= safe_join(json_origins.map { |o| h(o) }, tag.br) %>
+        <%= stacked_metadata_values(json_origins.map { |o| h(o) }, tight: true) %>
       </dd>
     </div>
   <% end %>
@@ -181,7 +181,7 @@
         <% lines = [] %>
         <% lines << h(fol_value) if fol_value.present? %>
         <% fol_notes.each { |n| lines << h(n) } %>
-        <%= safe_join(lines, tag.br) %>
+        <%= stacked_metadata_values(lines) %>
       </dd>
     </div>
   <% end %>
@@ -200,7 +200,7 @@
             <% lines << link_to(v['label'], v['url'], target: '_blank', rel: 'noopener noreferrer') %>
           <% end %>
         <% end %>
-        <%= safe_join(lines, tag.br) %>
+        <%= stacked_metadata_values(lines) %>
       </dd>
     </div>
   <% end %>

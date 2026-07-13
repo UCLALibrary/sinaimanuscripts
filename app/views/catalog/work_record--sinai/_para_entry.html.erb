@@ -89,7 +89,7 @@
           <div class="work-field-row--sinai">
             <dt class="work-field-label--sinai">Translation</dt>
             <dd class="work-field-value--sinai">
-              <%= safe_join(pa_translations.map { |t| h(t) }, tag.br) %>
+              <%= stacked_metadata_values(pa_translations.map { |t| h(t) }) %>
             </dd>
           </div>
         <% end %>

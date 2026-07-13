@@ -72,7 +72,7 @@
         <div class="overview-dl__row--sinai">
           <dt class="overview-dl__label--sinai">Origin</dt>
           <dd class="overview-dl__value--sinai">
-            <%= safe_join(layer_origins.map { |o| h(o) }, tag.br) %>
+            <%= stacked_metadata_values(layer_origins.map { |o| h(o) }, tight: true) %>
           </dd>
         </div>
       <% end %>
