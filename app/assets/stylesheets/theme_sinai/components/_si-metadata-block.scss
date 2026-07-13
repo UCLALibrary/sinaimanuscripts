@@ -1066,11 +1066,12 @@
 // Consistent gap below the tab header whether or not Part groups precede the
 // flyleaves section. Scoped so the shared heading on other tabs is untouched.
 .undertexts-section--sinai .overview-heading--sinai {
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem; // 20px — Figma gap from "Undertext Objects" heading to Part groups
 }
 
 .undertext-group--sinai {
-  margin-bottom: 2rem;
+  padding-left: 0.75rem; // 12px — Figma indents the Part groups beneath the heading
+  margin-bottom: 1.25rem; // 20px between Part groups (Figma)
 
   &:last-child {
     margin-bottom: 0;
@@ -1078,15 +1079,15 @@
 }
 
 .undertext-group__label--sinai {
-  color: $sinai-black;
+  color: $sinai-label; // #333
   font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  margin: 0 0 0.75rem;
+  font-size: 0.875rem; // 14px
+  font-weight: 500;
+  margin: 0 0 0.75rem; // 12px to first entry
 }
 
 .undertext-entry--sinai {
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.75rem; // 12px between UTOs within a Part
 
   &:last-child {
     margin-bottom: 0;
@@ -1095,11 +1096,11 @@
 
 .undertext-entry__title--sinai {
   display: inline-block;
-  color: $sinai-primary;
-  font-size: 0.95rem;
-  font-weight: 500;
-  line-height: 1.5;
-  margin-bottom: 0.25rem;
+  color: $sinai-heading; // #920606
+  font-size: 1rem; // 16px
+  font-weight: 300;
+  line-height: 1.4;
+  margin-bottom: 0.125rem; // 2px to first meta line
   text-decoration: none;
 
   &:hover:not(.undertext-entry__title--plain--sinai) {
@@ -1112,13 +1113,13 @@
 }
 
 .undertext-entry__meta--sinai {
-  font-size: 0.95rem;
-  color: $sinai-black;
-  line-height: 1.5;
-
-  > div {
-    padding: 0.1rem 0;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem; // 2px between Locus / Origin / Languages lines
+  font-size: 1rem; // 16px
+  font-weight: 300;
+  color: $sinai-value; // #222
+  line-height: 1.4;
 }
 
 // Related Manuscripts tab
