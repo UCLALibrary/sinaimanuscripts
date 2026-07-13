@@ -629,7 +629,7 @@
 // but styled to read as a de-emphasized label, not a section heading. Reset the
 // native <h4> margins so the heading-tag swap is visually identical to the old <div>.
 .item-heading--compact--sinai {
-  color: $sinai-black;
+  color: $sinai-label; // Figma: #333
   font-family: 'Roboto', sans-serif;
   font-size: 1rem; // Figma: 16px Roboto Medium
   font-weight: 500;
@@ -750,6 +750,7 @@
 .guest-layer--sinai > .work-accordion__summary--sinai > .work-accordion__title--sinai {
   font-size: 1.125rem; // Figma: 18px Roboto Regular
   font-weight: 400;
+  color: $sinai-label; // Figma: #333 (distinct from the red "Guest Content" tab heading)
 }
 
 .work-accordion__body--sinai {

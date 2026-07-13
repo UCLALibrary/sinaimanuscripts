@@ -8,13 +8,23 @@
 
 <%
   # Collect guest layers in document order: ms_obj root first, then per-part.
+  # A guest layer is denormalized to BOTH the ms_obj root and its owning
+  # part[].guest_layer[] (same layer_record.ark), so dedupe by ark to render each
+  # layer once. Root occurrence wins; ark-less layers are never collapsed.
   guest_layers = []
+  seen_layer_arks = []
+  add_guest_layer = lambda do |gl, path|
+    ark = gl.dig('layer_record', 'ark').to_s
+    return if ark.present? && seen_layer_arks.include?(ark)
+    seen_layer_arks << ark if ark.present?
+    guest_layers << { gl: gl, path: path }
+  end
   Array(ms_json['guest_layer']).each_with_index do |gl, i|
-    guest_layers << { gl: gl, path: "ms_obj.guest_layer[#{i}]" }
+    add_guest_layer.call(gl, "ms_obj.guest_layer[#{i}]")
   end
   Array(ms_json['part']).each_with_index do |part, pi|
     Array(part['guest_layer']).each_with_index do |gl, gi|
-      guest_layers << { gl: gl, path: "ms_obj.part[#{pi}].guest_layer[#{gi}]" }
+      add_guest_layer.call(gl, "ms_obj.part[#{pi}].guest_layer[#{gi}]")
     end
   end
 
