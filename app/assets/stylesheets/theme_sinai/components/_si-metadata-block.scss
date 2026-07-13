@@ -1301,25 +1301,43 @@
   margin-top: 1rem;
 }
 
-// Match the 24px H2 -> first-child gap that Full Description gets from
-// `.secondary-metadata_container--sinai { margin-top: 24px }`. Applies whether
-// the first child is a paragraph (Usage and Rights / Description) or an image-
-// program wrapper (Images). Scoped to this tab so Full Description is untouched.
+// Figma (2821:234): 20px from the red heading to the first child — a paragraph
+// (Usage and Rights / Description) or an image-program wrapper (Images). Scoped
+// to this tab so Full Description is untouched.
 .rights-credits--sinai .overview-heading--sinai + * {
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
+}
+
+// Figma (2821:325 / 2824:332): the Usage/Description/Images paragraphs are body
+// text — non-italic 16px #222, indented 12px to line up with the field-row
+// labels — NOT the italic 14px #333 summary the Overview tab uses. Scoped so
+// Overview keeps its italic summary.
+.rights-credits--sinai .overview-summary--sinai {
+  font-style: normal;
+  font-size: 1rem; // Figma: 16px
+  color: $sinai-value; // Figma: #222
+  padding-left: 12px; // Figma: items indented 12px
 }
 
 .rights-credits__image-program--sinai {
   & + & {
     margin-top: 2rem;
   }
+
+  // Figma (2824:439): inside an image program the description sits flush with the
+  // program label (no 12px indent), unlike the Usage/Description paragraphs.
+  .overview-summary--sinai {
+    padding-left: 0;
+  }
 }
 
+// Figma (2875:2308): the per-program label is Roboto Medium #333, 16px — a light
+// sub-heading, not a heavy bold one.
 .rights-credits__image-program-label--sinai {
-  color: $sinai-black;
+  color: $sinai-label; // Figma: #333
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 500; // Figma: Medium (was 700 bold)
   margin: 0 0 0.5rem;
 }
 
