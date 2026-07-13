@@ -1250,17 +1250,41 @@
 // References & Bibliography tab
 .references-bibliography-section--sinai {
   margin-top: 1rem;
+
+  // Figma (ov 2685:480): the section is a 20px stack — 20px from the heading
+  // to the first field row, and 20px between field rows. The shared heading/dl
+  // carry Overview/Related values (4px / 12px), so re-space them here only.
+  .overview-heading--sinai {
+    margin-bottom: 20px; // Figma: 20px heading → first field row
+  }
+
+  .related-mss-group__dl--sinai {
+    gap: 20px; // Figma: 20px between field rows (Related Manuscripts uses 12px)
+  }
+
+  // Figma (2685:498/511): value lines sit 12px apart across the Citations,
+  // Editions, and external-link lists.
+  .related-mss-group__row-value--sinai {
+    gap: 12px;
+  }
+
+  // Figma (2685:488): the plain References list stacks tight (2px), unlike the
+  // roomier lists above. Placed after the rule above so it wins on source order.
+  .references-bibliography__row-value--tight--sinai {
+    gap: 2px;
+  }
 }
 
 .references-bibliography__link--sinai {
   white-space: nowrap;
 }
 
+// Figma (2821:187): ~19px external-link glyph set 2px after the link text.
 .references-bibliography__icon--sinai {
-  width: 0.85em;
-  height: 0.85em;
-  margin-left: 0.3em;
-  vertical-align: -0.05em;
+  width: 1.05em;
+  height: 1.05em;
+  margin-left: 0.15em;
+  vertical-align: -0.15em;
   display: inline-block;
 }
 
