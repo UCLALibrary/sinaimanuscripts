@@ -774,7 +774,11 @@
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  color: $sinai-black;
+  // Figma work-body detail labels (VARIANT TITLE, AS WRITTEN, LANGUAGE, SCRIPT,
+  // TABLE OF CONTENTS …) are #333 Roboto Light 12px — same colour as the field
+  // labels, distinguished only by the lighter weight. (Authoritative:
+  // get_design_context on Figma nodes 2685:10, 2669:400, 2734:6 → text-[#333].)
+  color: $sinai-label;
   padding-top: 0.15rem;
 }
 
@@ -782,7 +786,7 @@
   flex: 1;
   font-size: 1rem; // Figma: 16px Roboto Light
   font-weight: 300;
-  color: $sinai-black;
+  color: $sinai-value; // Figma node 2669:384 → text-[#222] (matches all other field values)
   line-height: 1.5;
 }
 
@@ -859,15 +863,17 @@
 }
 
 .work-toc-entry__line--sinai {
-  font-size: 0.95rem;
-  color: $sinai-black;
+  font-size: 1rem; // Figma node 2669:403 → 16px Roboto Light #222
+  color: $sinai-value;
   line-height: 1.5;
 }
 
 .work-toc-entry__note--sinai {
-  font-size: 0.9rem;
-  color: $sinai-grey;
-  padding-left: 1rem;
+  // Figma "note" component (node 2669:404): 15px Roboto Light #222, indented 20px.
+  // Not a de-emphasised grey — same colour as the entry, one step smaller + indented.
+  font-size: 0.9375rem; // 15px
+  color: $sinai-value;
+  padding-left: 1.25rem; // 20px
   line-height: 1.5;
 }
 
@@ -914,8 +920,8 @@
 }
 
 .work-excerpt__header--sinai {
-  font-size: 0.95rem;
-  color: $sinai-black;
+  font-size: 1rem; // Figma node 2669:421 → 16px, #333 (label-prefixed excerpt line)
+  color: $sinai-label;
   line-height: 1.5;
 }
 
@@ -924,16 +930,18 @@
 }
 
 .work-excerpt__translation--sinai {
-  font-size: 0.9rem;
-  color: $sinai-grey;
-  padding-left: 1rem;
+  // Figma node 2669:422 → 15px Roboto Light #222, indented 20px under the header.
+  font-size: 0.9375rem; // 15px
+  color: $sinai-value;
+  padding-left: 1.25rem; // 20px
   line-height: 1.5;
 }
 
 .work-excerpt__note--sinai {
-  font-size: 0.9rem;
-  color: $sinai-grey;
-  padding-left: 1rem;
+  // Figma "note" component (node 2669:423) → 15px Roboto Light #222, indented 20px.
+  font-size: 0.9375rem; // 15px
+  color: $sinai-value;
+  padding-left: 1.25rem; // 20px
   line-height: 1.5;
 }
 
@@ -947,15 +955,16 @@
 }
 
 .work-edition__citation--sinai {
-  font-size: 0.95rem;
-  color: $sinai-black;
+  font-size: 1rem; // Figma node 2685:30 → 16px Roboto Light #222
+  color: $sinai-value;
   line-height: 1.5;
 }
 
 .work-edition__note--sinai {
-  font-size: 0.9rem;
-  color: $sinai-grey;
-  padding-left: 1rem;
+  // Figma "note" component (node 2685:31) → 15px Roboto Light #222, indented 20px.
+  font-size: 0.9375rem; // 15px
+  color: $sinai-value;
+  padding-left: 1.25rem; // 20px
   line-height: 1.5;
 }
 
