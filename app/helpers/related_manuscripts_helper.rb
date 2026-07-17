@@ -40,7 +40,14 @@ module RelatedManuscriptsHelper
   private
 
     def included_in_solr_lookup(ark)
-      params = { q: %(reconstructed_from_ssim:"#{ark}"), fl: 'id,shelfmark_ssi', rows: 100 }
+      # Exclude UTO reconstruction records -- this section lists manuscript
+      # reconstructions only; UTOs live on the Undertexts tab (NOP-153).
+      params = {
+        q: %(reconstructed_from_ssim:"#{ark}"),
+        fq: '-ms_type_ssi:"Undertext Object"',
+        fl: 'id,shelfmark_ssi',
+        rows: 100
+      }
       response = Blacklight.default_index.connection.get('select', params: params)
       Array(response.dig('response', 'docs')).map do |doc|
         { id: doc['id'], shelfmark: Array(doc['shelfmark_ssi']).first.presence || doc['id'] }
