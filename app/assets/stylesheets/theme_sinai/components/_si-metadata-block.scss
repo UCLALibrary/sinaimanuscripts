@@ -245,6 +245,7 @@
   font-family: 'Roboto', sans-serif;
   font-size: 1.125rem; // Figma: 18px Roboto Regular
   font-weight: 400;
+  line-height: 21px; // Figma: line-height 21px
   margin-bottom: 0.25rem; // Figma: 4px to the italic summary
 }
 
@@ -254,7 +255,7 @@
   font-weight: 300;
   color: $sinai-label; // Figma: #333
   margin: 0 0 1.25rem; // Figma: 20px down to the first field row
-  line-height: 1.5;
+  line-height: 16px; // Figma: line-height 16px
 }
 
 .overview-dl--sinai {
@@ -279,6 +280,7 @@
   padding-left: 12px; // Figma: 12px chevron gutter; headings have none, so they hang 12px left
   font-size: 0.875rem; // Figma: 14px Roboto Medium, uppercase
   font-weight: 500;
+  line-height: 16px; // Figma: line-height 16px
   text-transform: uppercase;
   color: $sinai-label; // Figma: #333
   letter-spacing: 0.48px; // Figma tracking
@@ -291,7 +293,7 @@
   font-weight: 300;
   color: $sinai-value; // Figma: #222
   margin: 0;
-  line-height: 1.5;
+  line-height: 19px; // Figma: line-height 19px
 
   a {
     color: $sinai-primary;
@@ -330,6 +332,7 @@
   padding: 6px 10px; // Figma: 10×6px
   font-size: 0.75rem; // Figma: 12px Roboto Regular
   font-weight: 400;
+  line-height: 14px; // Figma: line-height 14px
   letter-spacing: 0.48px; // Figma tracking
   background-color: #0b3954;
   color: white;
@@ -453,6 +456,7 @@
   font-family: 'Roboto', sans-serif;
   font-size: 1.125rem; // Figma: 18px Roboto Regular
   font-weight: 400;
+  line-height: 21px; // Figma: line-height 21px
   margin-bottom: 0.25rem; // 4px to the italic summary
 }
 
@@ -462,7 +466,7 @@
   font-weight: 300;
   color: $sinai-label; // Figma: #333
   margin: 0 0 1.25rem; // Figma: 20px to the first field row
-  line-height: 1.5;
+  line-height: 16px; // Figma: line-height 16px
 }
 
 // No-summary case for parts: restore the ~20px heading→first-row gap (heading
@@ -489,6 +493,7 @@
   font-family: 'Roboto', sans-serif;
   font-size: 1.125rem; // Figma: 18px Roboto Regular
   font-weight: 400;
+  line-height: 21px; // Figma: line-height 21px
   margin-bottom: 0.25rem; // Figma: 4px to the italic summary
 }
 
@@ -578,14 +583,14 @@
   font-size: 1rem;
   font-weight: 300;
   color: $sinai-value;
-  line-height: 1.5;
+  line-height: 19px; // Figma: line-height 19px
 }
 
 .part-grouped-block__note--sinai {
   font-size: 1rem;
   font-weight: 300;
   color: $sinai-value;
-  line-height: 1.5;
+  line-height: 19px; // Figma: line-height 19px
 }
 
 // Items / Contents section within Full Description tab.
@@ -620,6 +625,7 @@
   font-family: 'Roboto', sans-serif;
   font-size: 1rem; // 16px
   font-weight: 700;
+  line-height: 19px; // Figma: line-height 19px
   margin: 0 0 0.5rem;
 }
 
@@ -653,7 +659,7 @@
   font-weight: 300;
   color: $sinai-label; // Figma: #333
   margin-bottom: 1.25rem; // Figma: 20px down to the first WORKS row
-  line-height: 1.5;
+  line-height: 16px; // Figma: line-height 16px
 }
 
 .item-subsection--sinai {
@@ -692,6 +698,7 @@
   padding-left: 12px; // Figma: 12px chevron gutter, so labels hang 12px right of the item heading
   font-size: 0.875rem; // Figma: 14px Roboto Medium, uppercase (matches field labels)
   font-weight: 500;
+  line-height: 16px; // Figma: line-height 16px
   text-transform: uppercase;
   letter-spacing: 0.03em;
   color: $sinai-label; // Figma: #333
@@ -814,6 +821,7 @@
   flex: 0 0 150px;
   font-size: 0.75rem; // Figma: 12px Roboto Light, uppercase (work-body detail labels)
   font-weight: 300;
+  line-height: 14px; // Figma: line-height 14px
   text-transform: uppercase;
   letter-spacing: 0.03em;
   // Figma work-body detail labels (VARIANT TITLE, AS WRITTEN, LANGUAGE, SCRIPT,
@@ -829,7 +837,7 @@
   font-size: 1rem; // Figma: 16px Roboto Light
   font-weight: 300;
   color: $sinai-value; // Figma node 2669:384 → text-[#222] (matches all other field values)
-  line-height: 1.5;
+  line-height: 19px; // Figma: line-height 19px
 }
 
 // Mobile: the side-by-side label/value patterns (Works, expandable Support /
@@ -1120,7 +1128,7 @@
   color: $sinai-heading; // #920606
   font-size: 1rem; // 16px
   font-weight: 300;
-  line-height: 1.4;
+  line-height: 19px; // Figma: line-height 19px
   margin-bottom: 0.125rem; // 2px to first meta line
   text-decoration: none;
 
@@ -1140,7 +1148,7 @@
   font-size: 1rem; // 16px
   font-weight: 300;
   color: $sinai-value; // #222
-  line-height: 1.4;
+  line-height: 19px; // Figma: line-height 19px
 }
 
 // Related Manuscripts tab — top gap from the tab bar is owned centrally by
@@ -1198,6 +1206,7 @@
   padding-left: 12px; // Figma: 12px chevron gutter (labels hang 12px left of it)
   font-size: 0.875rem; // Figma: 14px Roboto Medium, uppercase
   font-weight: 500;
+  line-height: 16px; // Figma: line-height 16px
   text-transform: uppercase;
   color: $sinai-label; // Figma: #333
   letter-spacing: 0.48px; // Figma tracking
@@ -1213,7 +1222,7 @@
   font-weight: 300;
   color: $sinai-value; // Figma: #222
   margin: 0;
-  line-height: 1.4;
+  line-height: 19px; // Figma: line-height 19px
 
   a {
     color: $sinai-primary;
@@ -1309,6 +1318,7 @@
 .rights-credits--sinai .overview-summary--sinai {
   font-style: normal;
   font-size: 1rem; // Figma: 16px
+  line-height: 19px; // Figma: line-height 19px (16px/300 body text, not the 14px summary leading)
   color: $sinai-value; // Figma: #222
   padding-left: 12px; // Figma: items indented 12px
 }
@@ -1388,7 +1398,7 @@
   font-size: 1rem; // Figma: 16px Roboto Light
   font-weight: 300;
   color: $sinai-value; // Figma: #222
-  line-height: 1.4; // readable for wrapping notes while staying compact
+  line-height: 19px; // Figma: line-height 19px
   word-break: break-word;
 }
 
