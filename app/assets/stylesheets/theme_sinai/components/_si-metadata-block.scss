@@ -283,7 +283,7 @@
   line-height: 16px; // Figma: line-height 16px
   text-transform: uppercase;
   color: $sinai-label; // Figma: #333
-  letter-spacing: 0.48px; // Figma tracking
+  letter-spacing: $sinai-label-tracking; // NOP-169: unified 14px/500 label tracking
   padding-top: 2px; // optical alignment with the larger value text
 }
 
@@ -552,7 +552,7 @@
   font-size: 0.875rem; // matches .works-section__label--sinai (Figma 14px Medium)
   font-weight: 500;
   color: $sinai-label; // Figma: #333
-  letter-spacing: 0.03em;
+  letter-spacing: $sinai-label-tracking; // NOP-169: unified 14px/500 label tracking (was 0.03em)
   // The chevron already supplies the 12px gutter; cancel the .overview-dl__label--sinai
   // padding so the label text aligns with the static WORKS label above it.
   padding-left: 0;
@@ -700,7 +700,7 @@
   font-weight: 500;
   line-height: 16px; // Figma: line-height 16px
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: $sinai-label-tracking; // NOP-169: unified 14px/500 label tracking (was 0.03em)
   color: $sinai-label; // Figma: #333
   padding-bottom: 0.25rem;
 }
@@ -1112,6 +1112,7 @@
   font-family: 'Roboto', sans-serif;
   font-size: 0.875rem; // 14px
   font-weight: 500;
+  letter-spacing: $sinai-label-tracking; // NOP-169: unified 14px/500 label tracking
   margin: 0 0 0.75rem; // 12px to first entry
 }
 
@@ -1209,7 +1210,7 @@
   line-height: 16px; // Figma: line-height 16px
   text-transform: uppercase;
   color: $sinai-label; // Figma: #333
-  letter-spacing: 0.48px; // Figma tracking
+  letter-spacing: $sinai-label-tracking; // NOP-169: unified 14px/500 label tracking
   padding-top: 2px; // optical alignment with the larger value text
 }
 
