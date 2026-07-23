@@ -18,7 +18,7 @@
                         Array(p['note']).any?(&guest_type)
                       }
 
-  related_mss_tabs    = Array(ms_json_tabs['related_mss'])
+  related_mss_tabs    = related_mss_entries(ms_json_tabs)
   has_disjecta_tab    = related_mss_tabs.any? { |r| r.dig('type', 'id') == 'disjecta' }
   has_filiation_tab   = related_mss_tabs.any? { |r| r.dig('type', 'id') == 'filiation' }
   has_recon_from_tab  = Array(ms_json_tabs['reconstructed_from']).any?

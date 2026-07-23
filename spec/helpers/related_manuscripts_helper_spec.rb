@@ -56,4 +56,38 @@ RSpec.describe RelatedManuscriptsHelper, type: :helper do
       end
     end
   end
+
+  describe '#related_mss_entries' do
+    subject(:entries) { helper.related_mss_entries(ms_json) }
+
+    let(:root_entry) { { 'type' => { 'id' => 'filiation' }, 'label' => 'Root filiation' } }
+    let(:part_entry) { { 'type' => { 'id' => 'disjecta' }, 'label' => 'Part disjecta' } }
+
+    context 'with related_mss only inside a part (as on z1dv21gp)' do
+      let(:ms_json) { { 'related_mss' => nil, 'part' => [{ 'related_mss' => [part_entry] }] } }
+
+      it 'surfaces the part-level entry' do
+        expect(entries).to eq([part_entry])
+      end
+    end
+
+    context 'with entries at both the manuscript level and parts' do
+      let(:ms_json) do
+        { 'related_mss' => [root_entry],
+          'part' => [{ 'related_mss' => [part_entry] }, { 'label' => 'no related mss' }] }
+      end
+
+      it 'concatenates root and part entries without deduping' do
+        expect(entries).to eq([root_entry, part_entry])
+      end
+    end
+
+    context 'with no related_mss anywhere' do
+      let(:ms_json) { { 'part' => [{ 'label' => 'Part 1' }] } }
+
+      it 'returns an empty array' do
+        expect(entries).to eq([])
+      end
+    end
+  end
 end

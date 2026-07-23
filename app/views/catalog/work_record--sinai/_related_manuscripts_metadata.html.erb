@@ -5,7 +5,7 @@
 <% ms_json_rel = begin JSON.parse(document['manuscript_json_ts'] || '{}') rescue {} end %>
 
 <%
-  related      = Array(ms_json_rel['related_mss'])
+  related      = related_mss_entries(ms_json_rel)
   disjecta     = related.select { |r| r.dig('type', 'id') == 'disjecta' }
   filiation    = related.select { |r| r.dig('type', 'id') == 'filiation' }
   recon_from   = Array(ms_json_rel['reconstructed_from'])

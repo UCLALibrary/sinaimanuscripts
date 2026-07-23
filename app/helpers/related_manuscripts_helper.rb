@@ -1,5 +1,14 @@
 # frozen_string_literal: true
 module RelatedManuscriptsHelper
+  # related_mss entries aggregated from the manuscript level and every part;
+  # the schema allows related_mss at both ms_obj and part level, and most
+  # records carry them only on the part (NOP-153). Root and part entries are
+  # distinct, so we concatenate without deduping.
+  def related_mss_entries(ms_json)
+    Array(ms_json['related_mss']) +
+      Array(ms_json['part']).flat_map { |p| Array(p['related_mss']) }
+  end
+
   # Renders a single related_mss[].mss[] entry. When the entry references a
   # SMDL record (`id` present), we look up the linked record's shelfmark in
   # Solr and use it as the link text -- the inline `label` in the source JSON
