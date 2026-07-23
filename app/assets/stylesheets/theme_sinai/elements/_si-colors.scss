@@ -12,6 +12,11 @@ $sinai-heading: #920606; // section headings (Overview, Part N) — deeper red t
 $sinai-label: #333; // field labels (uppercase)
 $sinai-value: #222; // field values
 
+// Content typography roles (NOP-170) — own tokens so a future retune of these
+// roles is one line, independent of the label/heading tokens they match today.
+$sinai-object-title: #333;    // expandable object titles (work/rubric/para/colophon); matches $sinai-label today
+$sinai-content-link: #920606; // links inside the manuscript metadata body; matches $sinai-heading today
+
 // Tabbed navigation (Figma "Metadata Redesign 2025" node 2875:2233)
 $sinai-tab-rule: #ddd; // continuous rule under the tab nav
 $sinai-tab-active: #0b3954; // active-tab underline (navy)

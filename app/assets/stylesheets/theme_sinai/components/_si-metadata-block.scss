@@ -220,22 +220,22 @@
 
   a {
     text-decoration: none;
-    color: $sinai-primary;
+    color: $sinai-content-link; // NOP-170: content links → #920606
   }
 
   a:hover {
     text-decoration: underline;
-    color: $sinai-primary;
+    color: $sinai-content-link; // NOP-170
   }
 
   a:visited {
     text-decoration: none;
-    color: #bb583a;
+    color: $sinai-content-link; // NOP-170 (was #bb583a)
   }
 
   a:active {
     text-decoration: none;
-    color: $sinai-primary;
+    color: $sinai-content-link; // NOP-170
   }
 }
 
@@ -296,7 +296,7 @@
   line-height: 19px; // Figma: line-height 19px
 
   a {
-    color: $sinai-primary;
+    color: $sinai-content-link; // NOP-170: content links → #920606
     text-decoration: none;
 
     &:hover {
@@ -304,7 +304,7 @@
     }
 
     &:visited {
-      color: $sinai-primary-lt;
+      color: $sinai-content-link; // NOP-170 (was $sinai-primary-lt)
     }
   }
 }
@@ -763,7 +763,7 @@
   margin: 0;
   font-size: 1rem; // Figma: 16px Roboto Regular (nested work/para titles)
   font-weight: 400;
-  color: $sinai-black;
+  color: $sinai-object-title; // NOP-170: object titles → #333 (was $sinai-black #2a2a2a)
   line-height: 1.5;
 }
 
@@ -777,7 +777,7 @@
 .guest-layer--sinai > .work-accordion__summary--sinai > .work-accordion__title--sinai {
   font-size: 1.125rem; // Figma: 18px Roboto Regular
   font-weight: 400;
-  color: $sinai-label; // Figma: #333 (distinct from the red "Guest Content" tab heading)
+  color: $sinai-object-title; // NOP-170: #333, shared object-title token (distinct from the red "Guest Content" tab heading)
 }
 
 .work-accordion__body--sinai {
@@ -1226,7 +1226,7 @@
   line-height: 19px; // Figma: line-height 19px
 
   a {
-    color: $sinai-primary;
+    color: $sinai-content-link; // NOP-170: content links → #920606 (manuscript links, Data Portal, IIIF, VisCodex)
     text-decoration: none;
 
     &:hover {
@@ -1234,7 +1234,7 @@
     }
 
     &:visited {
-      color: $sinai-primary-lt;
+      color: $sinai-content-link; // NOP-170 (was $sinai-primary-lt)
     }
   }
 }
