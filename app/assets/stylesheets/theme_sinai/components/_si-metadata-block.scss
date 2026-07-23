@@ -278,12 +278,8 @@
 .overview-dl__label--sinai {
   flex: 0 0 132px; // Figma: 132px label column (keeps value column at +152px)
   padding-left: 12px; // Figma: 12px chevron gutter; headings have none, so they hang 12px left
-  font-size: 0.875rem; // Figma: 14px Roboto Medium, uppercase
-  font-weight: 500;
-  line-height: 16px; // Figma: line-height 16px
+  @include sinai-field-label; // NOP-171: 14px/500/#333/tracking (Figma 14px Roboto Medium)
   text-transform: uppercase;
-  color: $sinai-label; // Figma: #333
-  letter-spacing: $sinai-label-tracking; // NOP-169: unified 14px/500 label tracking
   padding-top: 2px; // optical alignment with the larger value text
 }
 
@@ -448,6 +444,31 @@
 // the guest-layer accordions. (Their accordions flush left via .works-section--inline--sinai.)
 .guest-content__outside--sinai {
   margin-top: 1.5rem;
+
+  // NOP-171: top-level guest paracontent sits side by side with the guest-layer
+  // accordions and must read identically — 18px title + 14px/500 field labels.
+  // Scoped here so the SAME para partial, when nested inside a guest layer
+  // (sub-paras / rubrics under .guest-layer--sinai), keeps its de-emphasised
+  // 12px/300 labels. Only the paracontent group carries these classes; the sibling
+  // Notes group has no accordion title / field labels, so it is unaffected.
+
+  // Title 16px → 18px (weight 400 & colour $sinai-object-title #333 already correct).
+  // Bump the summary too so the 1.5em chevron ::before spans the taller title line and
+  // stays vertically centred — mirrors the guest-layer treatment above.
+  .work-accordion__summary--sinai {
+    font-size: 1.125rem; // Figma: 18px title line box — keeps the chevron centred
+  }
+
+  .work-accordion__title--sinai {
+    font-size: 1.125rem; // Figma: 18px Roboto Regular (matches the guest-layer title)
+  }
+
+  // Field labels 12px/300 → the shared 14px/500 pattern. The base
+  // .work-field-label--sinai still supplies text-transform: uppercase; this
+  // out-specifies its font rules.
+  .work-field-label--sinai {
+    @include sinai-field-label;
+  }
 }
 
 // Part headings match the Overview heading exactly (Figma: 18px Roboto Regular #920606).
@@ -676,10 +697,18 @@
 // keeps its fixed-width column. (Contents stays the default stacked variant.)
 .works-section--inline--sinai {
   display: flex;
-  align-items: baseline;
+  align-items: flex-start; // top-align the label like every other label+value row
+                           // (baseline pinned the small label to the taller title's
+                           // baseline, dropping it ~11-14px — NOP-171 alignment fix)
 
   .works-section__label--sinai {
     flex: 0 0 150px;
+    // Optical: the smaller all-caps label is centered on the larger title's cap
+    // height (cap-top alignment leaves the label's baseline sitting high, so it
+    // reads as "too high"; baseline alignment reads as "too low"). 12px puts the
+    // label's optical centre on the title's for both 16px (Works) and 18px (guest
+    // paracontent) titles. Accounts for the accordion summary's 0.35rem top padding.
+    padding-top: 12px;
   }
 
   // The 150px left margin simulated the label column; the flex column now owns it.
@@ -696,12 +725,8 @@
 .works-section__label--sinai {
   flex: 0 0 150px;
   padding-left: 12px; // Figma: 12px chevron gutter, so labels hang 12px right of the item heading
-  font-size: 0.875rem; // Figma: 14px Roboto Medium, uppercase (matches field labels)
-  font-weight: 500;
-  line-height: 16px; // Figma: line-height 16px
+  @include sinai-field-label; // NOP-171: 14px/500/#333/tracking (was inline; matches field labels)
   text-transform: uppercase;
-  letter-spacing: $sinai-label-tracking; // NOP-169: unified 14px/500 label tracking (was 0.03em)
-  color: $sinai-label; // Figma: #333
   padding-bottom: 0.25rem;
 }
 
@@ -851,6 +876,7 @@
 
     .works-section__label--sinai {
       flex: none;
+      padding-top: 0; // desktop optical nudge off when the row stacks vertically
     }
   }
 
@@ -1107,6 +1133,10 @@
   }
 }
 
+// Not on the @mixin sinai-field-label (NOP-171): this label is the one 14px/500 label
+// that is NOT uppercase and sets no explicit line-height, so it stays inline to avoid
+// changing its rendering. (Reconciling it to the canonical uppercase label is a separate
+// design decision.)
 .undertext-group__label--sinai {
   color: $sinai-label; // #333
   font-family: 'Roboto', sans-serif;
@@ -1205,12 +1235,8 @@
 .related-mss-group__row-label--sinai {
   flex: 0 0 132px; // Figma: 132px label column
   padding-left: 12px; // Figma: 12px chevron gutter (labels hang 12px left of it)
-  font-size: 0.875rem; // Figma: 14px Roboto Medium, uppercase
-  font-weight: 500;
-  line-height: 16px; // Figma: line-height 16px
+  @include sinai-field-label; // NOP-171: 14px/500/#333/tracking (Figma 14px Roboto Medium)
   text-transform: uppercase;
-  color: $sinai-label; // Figma: #333
-  letter-spacing: $sinai-label-tracking; // NOP-169: unified 14px/500 label tracking
   padding-top: 2px; // optical alignment with the larger value text
 }
 

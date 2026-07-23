@@ -5,3 +5,17 @@ $text-sinai-16: 1.05rem;
 // 14px/500 field & section label tracking — unified per NOP-169.
 // Kept as a token so a future "retune all label tracking" is a one-line change.
 $sinai-label-tracking: 0.48px;
+
+// Canonical SMDL field/section label typography (14px / 500 / #333, Figma "Metadata
+// Redesign 2025"). Introduced in NOP-171 to fold the block that was copy-pasted across
+// .overview-dl__label--sinai, .works-section__label--sinai and
+// .related-mss-group__row-label--sinai, and now the top-level guest paracontent labels.
+// Typography only — callers keep their own layout (flex/padding) and text-transform, so
+// the one lowercase exception (.undertext-group__label--sinai) is not forced uppercase.
+@mixin sinai-field-label {
+  font-size: 0.875rem;                    // Figma: 14px Roboto Medium
+  font-weight: 500;
+  line-height: 16px;                      // Figma: line-height 16px
+  letter-spacing: $sinai-label-tracking;  // NOP-169 unified label tracking
+  color: $sinai-label;                    // #333
+}
