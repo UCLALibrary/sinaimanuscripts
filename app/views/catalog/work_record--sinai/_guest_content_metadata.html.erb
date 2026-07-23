@@ -79,17 +79,16 @@
 
   <%# === Guest notes outside a guest layer === %>
   <% if guest_notes.any? %>
-    <div class="works-section--sinai item-subsection--sinai guest-content__outside--sinai">
+    <%# Inline like the other guest rows, but the value is plain text (not an %>
+    <%# object header pushed down by summary padding), so the --plain modifier %>
+    <%# gives its label the plain-value nudge instead of the object-header one. %>
+    <div class="works-section--sinai works-section--inline--sinai works-section--inline--plain--sinai item-subsection--sinai guest-content__outside--sinai">
       <div class="works-section__label--sinai">Notes</div>
-      <dl class="overview-dl--sinai">
-        <div class="notes-on-manuscript__row--sinai">
-          <dd class="notes-on-manuscript__value--sinai">
-            <% guest_notes.each do |n| %>
-              <div class="part-grouped-block__line--sinai"><%= h(n['value']) %></div>
-            <% end %>
-          </dd>
-        </div>
-      </dl>
+      <div class="works-section__items--sinai">
+        <% guest_notes.each do |n| %>
+          <div class="part-grouped-block__line--sinai"><%= h(n['value']) %></div>
+        <% end %>
+      </div>
     </div>
   <% end %>
 <% end %>

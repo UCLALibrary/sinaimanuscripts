@@ -6,6 +6,14 @@ $text-sinai-16: 1.05rem;
 // Kept as a token so a future "retune all label tracking" is a one-line change.
 $sinai-label-tracking: 0.48px;
 
+// NOP-175: optical top-nudge that seats a 14px/500 uppercase field label against
+// an object-header title (accordion <summary> padding 0.35rem + line-height 1.5),
+// so the label's cap-height aligns with the title's — the way a plain value aligns
+// with its label on Overview. Two variants because Guest Content titles run 18px
+// vs the 16px titles elsewhere. Kept as tokens for a one-line retune.
+$sinai-obj-label-nudge-16: 12px; // 16px object-header titles (Works, Rubrics, Contents, Paracontents)
+$sinai-obj-label-nudge-18: 14px; // 18px object-header titles (Guest Content)
+
 // Canonical SMDL field/section label typography (14px / 500 / #333, Figma "Metadata
 // Redesign 2025"). Introduced in NOP-171 to fold the block that was copy-pasted across
 // .overview-dl__label--sinai, .works-section__label--sinai and

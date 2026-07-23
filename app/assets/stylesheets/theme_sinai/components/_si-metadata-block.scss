@@ -698,12 +698,12 @@
 
   .works-section__label--sinai {
     flex: 0 0 150px;
-    // Optical: the smaller all-caps label is centered on the larger title's cap
-    // height (cap-top alignment leaves the label's baseline sitting high, so it
-    // reads as "too high"; baseline alignment reads as "too low"). 12px puts the
-    // label's optical centre on the title's for both 16px (Works) and 18px (guest
-    // paracontent) titles. Accounts for the accordion summary's 0.35rem top padding.
-    padding-top: 12px;
+    // Optical: the smaller all-caps label is cap-aligned to the larger title
+    // (baseline alignment reads as "too low", raw cap-top as "too high"). The
+    // token seats the label's cap on a 16px object-header title, accounting for
+    // the accordion summary's 0.35rem top padding + 1.5 line-height. NOP-175.
+    // Guest Content (18px titles) and plain-value rows override below.
+    padding-top: $sinai-obj-label-nudge-16;
   }
 
   // The 150px left margin simulated the label column; the flex column now owns it.
@@ -715,6 +715,21 @@
 .works-section__items--sinai {
   flex: 1;
   min-width: 0;
+}
+
+// NOP-175: Guest Content object headers are 18px (bumped by .guest-content__outside--sinai),
+// so their field label needs the taller nudge to stay cap-aligned. After the base
+// .works-section--inline--sinai rule above so it wins on source order.
+.guest-content__outside--sinai .works-section__label--sinai {
+  padding-top: $sinai-obj-label-nudge-18;
+}
+
+// NOP-175: plain-value rows (e.g. guest Notes) — the value is body text, not an
+// object header pushed down by summary padding, so cap-align the label like an
+// Overview label/value row (2px), not the taller object-header nudge. After the
+// guest rule above so it wins for the Notes block (which carries both classes).
+.works-section--inline--plain--sinai .works-section__label--sinai {
+  padding-top: 2px; // matches .overview-dl__label--sinai plain label/value alignment
 }
 
 .works-section__label--sinai {

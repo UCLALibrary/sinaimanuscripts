@@ -50,14 +50,18 @@
       ].each do |group| %>
       <% next if group[:entries].empty? %>
 
-      <div class="works-section--sinai item-subsection--sinai">
+      <%# Inline pattern (like Works / guest paracontents): label and the first %>
+      <%# object header share a row; the accordions live in the items column. %>
+      <div class="works-section--sinai works-section--inline--sinai item-subsection--sinai">
         <div class="works-section__label--sinai"><%= group[:label] %></div>
 
-        <% group[:entries].each do |entry| %>
-          <%= render 'catalog/work_record--sinai/para_entry',
-                     pa: entry[:pa],
-                     data_path: entry[:path] %>
-        <% end %>
+        <div class="works-section__items--sinai">
+          <% group[:entries].each do |entry| %>
+            <%= render 'catalog/work_record--sinai/para_entry',
+                       pa: entry[:pa],
+                       data_path: entry[:path] %>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>
