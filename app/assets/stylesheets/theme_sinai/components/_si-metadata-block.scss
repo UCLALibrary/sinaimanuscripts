@@ -639,14 +639,9 @@
   }
 }
 
-// "Contents" heading (Figma: 16px Roboto bold #333). Roboto only loads up to 700,
-// so 700 stands in for the design's ExtraBold.
+// "Contents" heading — shared subsection-heading style (NOP-173).
 .items-subsection-heading--sinai {
-  color: $sinai-label;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1rem; // 16px
-  font-weight: 700;
-  line-height: 19px; // Figma: line-height 19px
+  @include sinai-subsection-heading;
   margin: 0 0 0.5rem;
 }
 
@@ -1133,16 +1128,11 @@
   }
 }
 
-// Not on the @mixin sinai-field-label (NOP-171): this label is the one 14px/500 label
-// that is NOT uppercase and sets no explicit line-height, so it stays inline to avoid
-// changing its rendering. (Reconciling it to the canonical uppercase label is a separate
-// design decision.)
+// Undertexts Part-group ("Part 1"/"Part 2") and flyleaves headers. Promoted from the
+// 14px/500 label to the 16px/700 subsection heading (NOP-173) to match the Contents
+// header — intentionally diverges from Figma for cross-tab consistency.
 .undertext-group__label--sinai {
-  color: $sinai-label; // #333
-  font-family: 'Roboto', sans-serif;
-  font-size: 0.875rem; // 14px
-  font-weight: 500;
-  letter-spacing: $sinai-label-tracking; // NOP-169: unified 14px/500 label tracking
+  @include sinai-subsection-heading;
   margin: 0 0 0.75rem; // 12px to first entry
 }
 

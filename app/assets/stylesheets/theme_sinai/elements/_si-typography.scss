@@ -11,11 +11,24 @@ $sinai-label-tracking: 0.48px;
 // .overview-dl__label--sinai, .works-section__label--sinai and
 // .related-mss-group__row-label--sinai, and now the top-level guest paracontent labels.
 // Typography only — callers keep their own layout (flex/padding) and text-transform, so
-// the one lowercase exception (.undertext-group__label--sinai) is not forced uppercase.
+// a caller is never forced uppercase.
 @mixin sinai-field-label {
   font-size: 0.875rem;                    // Figma: 14px Roboto Medium
   font-weight: 500;
   line-height: 16px;                      // Figma: line-height 16px
   letter-spacing: $sinai-label-tracking;  // NOP-169 unified label tracking
   color: $sinai-label;                    // #333
+}
+
+// Canonical SMDL subsection-heading typography (16px / 700 / #333, Figma "Metadata
+// Redesign 2025"). Extracted in NOP-173 to share the "Contents" heading style with
+// the Undertexts Part-group / flyleaves headers so they stay in lockstep — a future
+// retune is a one-line change. Roboto only loads up to 700, so 700 stands in for the
+// design's ExtraBold. Typography only — callers keep their own margin/layout.
+@mixin sinai-subsection-heading {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;     // Figma: 16px
+  font-weight: 700;
+  line-height: 19px;   // Figma: line-height 19px
+  color: $sinai-label; // #333
 }
