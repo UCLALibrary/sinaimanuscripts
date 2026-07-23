@@ -14152,8 +14152,8 @@
       "source_file": "spec/helpers/related_manuscripts_helper_spec.rb",
       "source_location": "L24",
       "weight": 1.0,
-      "_src": "related_manuscripts_helper_spec_index",
-      "_tgt": "connection_connection",
+      "_src": "connection_connection",
+      "_tgt": "related_manuscripts_helper_spec_index",
       "source": "connection_connection",
       "target": "related_manuscripts_helper_spec_index"
     },
