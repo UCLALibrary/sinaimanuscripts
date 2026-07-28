@@ -11,8 +11,14 @@ $sinai-label-tracking: 0.48px;
 // so the label's cap-height aligns with the title's — the way a plain value aligns
 // with its label on Overview. Two variants because Guest Content titles run 18px
 // vs the 16px titles elsewhere. Kept as tokens for a one-line retune.
-$sinai-obj-label-nudge-16: 12px; // 16px object-header titles (Works, Rubrics, Contents, Paracontents)
-$sinai-obj-label-nudge-18: 14px; // 18px object-header titles (Guest Content)
+//
+// Re-tuned -2.5px when the NOP-168 line-heights were rolled back: the label went
+// from line-height 16px to the inherited 1.5 (21px), adding 2.5px of half-leading
+// above its text, while the title's 1.5 line-height was never a NOP-168 value and
+// did not move. Plain label/value rows need no such correction — there both sides
+// gained the same 2.5px, so they stayed aligned on their own.
+$sinai-obj-label-nudge-16: 9.5px;  // 16px object-header titles (Works, Rubrics, Contents, Paracontents)
+$sinai-obj-label-nudge-18: 11.5px; // 18px object-header titles (Guest Content)
 
 // Canonical SMDL field/section label typography (14px / 500 / #333, Figma "Metadata
 // Redesign 2025"). Introduced in NOP-171 to fold the block that was copy-pasted across
