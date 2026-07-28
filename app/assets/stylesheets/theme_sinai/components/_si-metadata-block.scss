@@ -1294,16 +1294,19 @@
     gap: 20px; // Figma: 20px between field rows (Related Manuscripts uses 12px)
   }
 
-  // Figma (2685:498/511): value lines sit 12px apart across the Citations,
-  // Editions, and external-link lists.
+  // NOP-174: an entry groups with its own notes — 2px inside a group, 12px
+  // between groups — the same two-tier rhythm as the LAYOUT field in Full
+  // Description. Both values come from .part-grouped-block--sinai, which every
+  // direct child of a dd on this tab now uses, so the dd contributes no gap of
+  // its own: a gap here would stack on top of the wrapper's 12px margin-bottom.
+  //
+  // Supersedes the previous flat gaps (12px everywhere, 2px for References via
+  // .references-bibliography__row-value--tight--sinai, Figma 2685:488/498/511),
+  // which spaced an entry from its notes exactly like two unrelated entries.
+  // References deliberately loosens from 2px to 12px between entries — that is
+  // the ticket, confirmed with the client. Do not "fix" it back to the Figma 2px.
   .related-mss-group__row-value--sinai {
-    gap: 12px;
-  }
-
-  // Figma (2685:488): the plain References list stacks tight (2px), unlike the
-  // roomier lists above. Placed after the rule above so it wins on source order.
-  .references-bibliography__row-value--tight--sinai {
-    gap: 2px;
+    gap: 0;
   }
 }
 
