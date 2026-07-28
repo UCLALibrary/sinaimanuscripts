@@ -82,42 +82,57 @@
 
 <div class="tab-panels--sinai">
   <%# Full Description — content from current Overview sidebar %>
+  <%
+    # NOP-177: hoisted above the capture below so the JSON is parsed once and the
+    # capture block has no side effects beyond emitting markup.
+    ms_json_nav = begin JSON.parse(document['manuscript_json_ts'] || '{}') rescue {} end
+  %>
+  <%# Captured rather than emitted inline (as every other tab already is) so the
+      same panel_has_collapsibles? check drives the Expand-all control here too. %>
+  <% full_description_html = capture do %>
+    <h2 id="section-overview" class="overview-heading--sinai">Overview</h2>
+    <div class="secondary-metadata_container--sinai">
+      <% if ms_json_nav['summary'].present? %>
+        <!-- DATA SOURCE: ms_obj.summary = <%= ms_json_nav['summary'].to_json %> -->
+        <p class="overview-summary--sinai"><%= ms_json_nav['summary'] %></p>
+      <% end %>
+      <%= render 'catalog/work_record--sinai/item_overview_metadata', document: document %>
+      <%= render 'catalog/work_record--sinai/keyword_metadata', document: document %>
+
+      <%# === Parts Section === %>
+      <%= render 'catalog/work_record--sinai/parts_metadata', document: document %>
+
+      <%# === Items / Contents Section === %>
+      <%= render 'catalog/work_record--sinai/items_metadata', document: document %>
+
+      <%# === Paracontents Section === %>
+      <%= render 'catalog/work_record--sinai/paracontents_metadata', document: document %>
+
+      <%# === Notes on the Manuscript Section === %>
+      <%= render 'catalog/work_record--sinai/notes_on_manuscript_metadata', document: document %>
+
+      <%# === Full JSON debug viewer === %>
+      <%# Deliberately out of reach of Expand all: it carries no collapsible marker
+          class, so panel_has_collapsibles? ignores it and expand_collapse_all.js
+          never selects it. %>
+      <details class="overview-json-debug--sinai">
+        <summary>View raw manuscript JSON data</summary>
+        <pre><%= JSON.pretty_generate(ms_json_nav) %></pre>
+      </details>
+    </div>
+  <% end %>
   <div role="tabpanel" id="panel-full-description" aria-labelledby="tab-full-description" class="tab-panel--sinai tab-panel--active">
     <div class="tab-panel-grid--sinai">
       <div class="tab-panel-grid__main--sinai">
-        <h2 id="section-overview" class="overview-heading--sinai">Overview</h2>
-        <div class="secondary-metadata_container--sinai">
-          <% ms_json_nav = begin JSON.parse(document['manuscript_json_ts'] || '{}') rescue {} end %>
-          <% if ms_json_nav['summary'].present? %>
-            <!-- DATA SOURCE: ms_obj.summary = <%= ms_json_nav['summary'].to_json %> -->
-            <p class="overview-summary--sinai"><%= ms_json_nav['summary'] %></p>
-          <% end %>
-          <%= render 'catalog/work_record--sinai/item_overview_metadata', document: document %>
-          <%= render 'catalog/work_record--sinai/keyword_metadata', document: document %>
-
-          <%# === Parts Section === %>
-          <%= render 'catalog/work_record--sinai/parts_metadata', document: document %>
-
-          <%# === Items / Contents Section === %>
-          <%= render 'catalog/work_record--sinai/items_metadata', document: document %>
-
-          <%# === Paracontents Section === %>
-          <%= render 'catalog/work_record--sinai/paracontents_metadata', document: document %>
-
-          <%# === Notes on the Manuscript Section === %>
-          <%= render 'catalog/work_record--sinai/notes_on_manuscript_metadata', document: document %>
-
-          <%# === Full JSON debug viewer === %>
-          <details class="overview-json-debug--sinai">
-            <summary>View raw manuscript JSON data</summary>
-            <pre><%= JSON.pretty_generate(ms_json_nav) %></pre>
-          </details>
-        </div>
+        <%# capture returns a SafeBuffer, so this needs no html_safe (unlike the
+            plain String that comes back from Nokogiri for the other panels). %>
+        <%= full_description_html %>
       </div>
       <div class="tab-panel-grid__rail--sinai">
         <%= render 'catalog/work_record--sinai/right_rail',
                    document: document,
-                   entries: full_description_nav_entries(document) %>
+                   entries: full_description_nav_entries(document),
+                   show_expand_all: panel_has_collapsibles?(full_description_html) %>
       </div>
     </div>
   </div>
@@ -145,7 +160,12 @@
       <% end %>
     <% end %>
     <% panel_entries, panel_html_with_ids = extract_nav_entries_from_html(panel_html.to_s) %>
-    <% show_rail = tab[:rail_nav] || tab[:rail_examine] %>
+    <% has_collapsibles = panel_has_collapsibles?(panel_html_with_ids) %>
+    <%# NOP-177: the rail column also renders for a tab that has collapsible
+        content but neither a Navigation nor an Examine card — the Expand-all
+        control needs somewhere to live, and its presence must not depend on
+        either of those. %>
+    <% show_rail = tab[:rail_nav] || tab[:rail_examine] || has_collapsibles %>
     <div role="tabpanel" id="panel-<%= tab[:id] %>" aria-labelledby="tab-<%= tab[:id] %>" class="tab-panel--sinai">
       <div class="tab-panel-grid--sinai">
         <div class="tab-panel-grid__main--sinai">
@@ -156,7 +176,8 @@
             <%= render 'catalog/work_record--sinai/right_rail',
                        document: document,
                        entries: (tab[:rail_nav] ? panel_entries : nil),
-                       show_examine: tab[:rail_examine] %>
+                       show_examine: tab[:rail_examine],
+                       show_expand_all: has_collapsibles %>
           </div>
         <% end %>
       </div>

@@ -53,4 +53,47 @@ RSpec.describe RightRailHelper, type: :helper do
       expect(nav).to be_empty
     end
   end
+
+  describe '#panel_has_collapsibles?' do
+    it 'detects object accordions by their summary class' do
+      html = '<details class="work-accordion--sinai">' \
+             '<summary class="work-accordion__summary--sinai">Work A</summary></details>'
+      expect(helper.panel_has_collapsibles?(html)).to be true
+    end
+
+    it 'detects field-level expandables' do
+      html = '<details class="part-expandable--sinai">' \
+             '<summary class="part-expandable__summary--sinai">Ink</summary></details>'
+      expect(helper.panel_has_collapsibles?(html)).to be true
+    end
+
+    it 'detects the Table of Contents Show More button' do
+      html = '<div class="work-toc--sinai"><button class="work-show-more--sinai">Show More</button></div>'
+      expect(helper.panel_has_collapsibles?(html)).to be true
+    end
+
+    # The static twin shares .work-accordion--sinai but is a <div> with no summary,
+    # so it must not make a tab look collapsible.
+    it 'ignores the non-collapsible static work-accordion twin' do
+      html = '<div id="section-1" class="work-accordion--sinai work-accordion--static--sinai">' \
+             '<span class="work-accordion__title--sinai">Title only</span></div>'
+      expect(helper.panel_has_collapsibles?(html)).to be false
+    end
+
+    it 'ignores the raw-JSON debug details' do
+      html = '<details class="overview-json-debug--sinai"><summary>View raw manuscript JSON data</summary></details>'
+      expect(helper.panel_has_collapsibles?(html)).to be false
+    end
+
+    it 'ignores the rail Navigation details' do
+      html = '<details class="right-rail__nav-details--sinai">' \
+             '<summary class="right-rail__nav-summary--sinai">Navigation</summary></details>'
+      expect(helper.panel_has_collapsibles?(html)).to be false
+    end
+
+    it 'is false for blank and nil input' do
+      expect(helper.panel_has_collapsibles?('')).to be false
+      expect(helper.panel_has_collapsibles?(nil)).to be false
+    end
+  end
 end

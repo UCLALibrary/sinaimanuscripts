@@ -42,6 +42,42 @@ module RightRailHelper
     [nest_by_level(flat), fragment.to_html]
   end
 
+  # Exact class markers for the three collapsible families on the item page.
+  # Each marker appears ONLY on the collapsible element itself:
+  #
+  #   work-accordion__summary--sinai  : <details> object accordions (works,
+  #     rubrics, paracontent, guest layers). Matching the SUMMARY class rather
+  #     than .work-accordion--sinai skips the non-collapsible static twin
+  #     <div class="work-accordion--sinai work-accordion--static--sinai">, which
+  #     shares the block class but holds only a bare title span.
+  #   part-expandable__summary--sinai : <details> field rows (Support, Writing,
+  #     Ink, Item Notes, Editions).
+  #   work-show-more--sinai           : the Table of Contents "Show More" button.
+  #     Not a <details>; it toggles a class via work_show_more.js, and renders
+  #     only when a work has more than three ToC entries.
+  #
+  # Neither <details> that must stay out of "Expand all" carries any of these:
+  # the rail's own Navigation accordion (.right-rail__nav-details--sinai) is not
+  # part of a captured panel body at all, and the raw-JSON debug dump
+  # (.overview-json-debug--sinai) has no marker class.
+  COLLAPSIBLE_MARKERS = %w[
+    work-accordion__summary--sinai
+    part-expandable__summary--sinai
+    work-show-more--sinai
+  ].freeze
+
+  # True when a rendered tab panel holds anything the "Expand all / Collapse all"
+  # control can act on (NOP-177). Drives BOTH whether the control renders and
+  # whether the rail column renders at all, so a tab with collapsible content but
+  # no Navigation/Examine card still gets a rail to put the control in.
+  #
+  # A substring scan rather than an HTML parse: the markers are exact class names
+  # and every caller already holds the panel HTML as a string.
+  def panel_has_collapsibles?(html)
+    str = html.to_s
+    COLLAPSIBLE_MARKERS.any? { |marker| str.include?(marker) }
+  end
+
   private
 
   # A heading is kept out of the nav when it (or an ancestor) carries data-nav-skip.

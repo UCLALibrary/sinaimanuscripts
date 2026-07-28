@@ -205,6 +205,67 @@
   margin: 8px 0 0;
 }
 
+// ── Expand all / Collapse all (NOP-177) ─────────────────────────────────────
+// A page-level action over the current tab's collapsibles. It gets its own beige
+// card so it can stand alone on a tab that has neither the Navigation nor the
+// Examine card — its presence is driven by collapsible content, not by them.
+// Styled as a red LINK, deliberately not a filled button, so it never competes
+// with the navy "Examine manuscript" call to action below it.
+.right-rail__expand-card--sinai {
+  padding: 12px 18px;
+  background-color: $sinai-secondary;
+  border-radius: 6px;
+  // Never squash: .right-rail__sticky--sinai is a max-height flex column and the
+  // nav card's list resists shrinking, so this small card would be compressed first.
+  flex: 0 0 auto;
+}
+
+.right-rail__expand-btn--sinai {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  width: auto;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  color: $sinai-primary;
+  background: none;
+  border: 0;
+  outline: none;
+  transition: color 120ms ease;
+  cursor: pointer;
+  gap: 6px;
+  line-height: 1.3;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+    color: $sinai-primary-dk;
+  }
+
+  // Mouse users get no ring; keyboard users get a real one.
+  &:focus-visible {
+    text-decoration: none;
+    border-radius: 3px;
+    outline: 2px solid $sinai-primary;
+    outline-offset: 2px;
+  }
+}
+
+.right-rail__expand-icon--sinai {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+// Exactly one glyph shows, chosen from the state the JS writes — a single source
+// of truth. Chevrons apart = "expand", chevrons together = "collapse"; a 180°
+// rotation can't express that pair, so both paths ship and CSS hides one.
+.right-rail__expand-btn--sinai[data-state='collapsed'] .right-rail__expand-icon--collapse--sinai,
+.right-rail__expand-btn--sinai[data-state='expanded'] .right-rail__expand-icon--expand--sinai {
+  display: none;
+}
+
 // Anchor targets in the tab panels get scroll-margin so the sticky title+tabs
 // header doesn't overlap them when a rail nav link jumps to them (NOP-166).
 // Every anchor host is assigned an id starting "section-" (see right_rail_helper),
@@ -297,6 +358,53 @@ body.examine-active {
   }
 }
 
+// ── Tablet / small laptop (768–1199.98px) ─────────────────────────────────
+// The rail column is display:none through this band (see .tab-panel-grid__rail
+// --sinai above; the ≤767px block re-shows it for phones). That would leave the
+// Expand-all control unreachable exactly where the page is longest, so re-show
+// the column here carrying only that card, pinned above the content. Navigation
+// and Examine stay suppressed — this band is deliberately single-column, and the
+// viewer is inline at these widths.
+// Placed after the base rule so it wins on source order at equal specificity.
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  // The COLUMN is the sticky element here, not .right-rail__sticky--sinai inside
+  // it. A sticky box can never leave its containing block, and in this band the
+  // rail column is only as tall as the one card it holds — so sticking the inner
+  // div would let it scroll away the moment the column left the viewport. The
+  // column itself is a flex item of .tab-panel-grid--sinai, which spans the whole
+  // panel, so it stays pinned for the full scroll.
+  .tab-panel-grid__rail--sinai {
+    position: sticky;
+    top: calc(var(--sticky-header-height, 125px) + 8px);
+    display: block;
+    width: auto;
+    flex: initial;
+    // .tab-panel-grid--sinai is a column here; lift the rail above the main column.
+    order: -1;
+    // Above the content it now overlaps while pinned, below the sticky header (100).
+    z-index: 3;
+  }
+
+  .right-rail__sticky--sinai {
+    position: static;
+    align-items: flex-end;
+    overflow: visible;
+    padding-right: 0;
+    max-height: none;
+    gap: 0;
+  }
+
+  .right-rail__nav-card--sinai,
+  .right-rail__viewer-card--sinai {
+    display: none;
+  }
+
+  .right-rail__expand-card--sinai {
+    margin-bottom: 12px;
+    padding: 8px 14px;
+  }
+}
+
 // ── Mobile (phones, ≤767px) ───────────────────────────────────────────────
 // The grid is already a single column at this width (the ≤1199.98px rule above).
 // Here we re-show the rail — which is otherwise display:none ≤1199.98px — but
@@ -334,6 +442,13 @@ body.examine-active {
   // The viewer is already inline at the top of the page on mobile.
   .right-rail__viewer-card--sinai {
     display: none;
+  }
+
+  // The sticky column drops its 16px gap here, so the Expand-all card supplies
+  // its own separation from the Navigation accordion below it.
+  .right-rail__expand-card--sinai {
+    margin-bottom: 16px;
+    padding: 12px 16px;
   }
 
   // Turn the Navigation card into a tappable accordion bar.

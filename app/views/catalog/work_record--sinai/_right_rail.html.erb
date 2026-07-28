@@ -1,12 +1,56 @@
 <%# Sticky right-side rail for a tab panel.
     Locals:
-      entries       — Array of nav nodes (id, label, children). Pass nil to hide the Navigation card.
-      document      — current SolrDocument (for Examine-manuscript card visibility)
-      show_examine  — when false, suppresses the Examine-manuscript card even if cookie/manifest allow it. %>
+      entries         — Array of nav nodes (id, label, children). Pass nil to hide the Navigation card.
+      document        — current SolrDocument (for Examine-manuscript card visibility)
+      show_examine    — when false, suppresses the Examine-manuscript card even if cookie/manifest allow it.
+      show_expand_all — when true, renders the Expand all / Collapse all control (NOP-177). %>
 <% entries_local = local_assigns.fetch(:entries, nil) %>
-<% show_examine  = local_assigns.fetch(:show_examine, true) %>
+<% show_examine = local_assigns.fetch(:show_examine, true) %>
+<%# Driven by whether the TAB has collapsible content, independently of whether it
+    has a Navigation or Examine card. Defaults false so other callers are unaffected. %>
+<% show_expand_all = local_assigns.fetch(:show_expand_all, false) %>
 <aside class="right-rail--sinai" data-right-rail aria-label="Manuscript navigation">
   <div class="right-rail__sticky--sinai">
+    <% if show_expand_all %>
+      <%# Expand all / Collapse all (NOP-177). One control that derives its label
+          from the CURRENT state of the panel, so it stays honest when the user
+          opens or closes an individual row by hand.
+
+          First in the column so it is always reachable: .right-rail__sticky--sinai
+          is a max-height scroller and a long nav tree can push later cards below
+          the internal fold.
+
+          A <button> styled as a link, not an <a>: it performs an action rather
+          than navigating. No aria-pressed — the accessible NAME changes, which is
+          the other half of the same APG toggle pattern; doing both makes screen
+          readers announce "Collapse all, pressed". No aria-expanded either: it
+          drives many disclosures, not one.
+
+          Both glyphs ship in the markup and CSS picks one off data-state, so the
+          JS never touches SVG path data. %>
+      <div class="right-rail__expand-card--sinai">
+        <button type="button"
+                class="right-rail__expand-btn--sinai"
+                data-expand-all-toggle
+                data-state="collapsed">
+          <%# Chevrons apart = expand, chevrons together = collapse. Kept shallow
+              (4 units tall) with a 5-unit gap down the middle: taller chevrons
+              closer together visually close into a diamond and an X at 16px. %>
+          <svg class="right-rail__expand-icon--sinai right-rail__expand-icon--expand--sinai"
+               viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+            <path d="M4 5.5L8 2.5L12 5.5M4 10.5L8 13.5L12 10.5" fill="none" stroke="currentColor"
+                  stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <svg class="right-rail__expand-icon--sinai right-rail__expand-icon--collapse--sinai"
+               viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+            <path d="M4 2.5L8 5.5L12 2.5M4 13.5L8 10.5L12 13.5" fill="none" stroke="currentColor"
+                  stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span class="right-rail__expand-label--sinai">Expand all</span>
+        </button>
+      </div>
+    <% end %>
+
     <% if entries_local.present? %>
       <nav class="right-rail__nav-card--sinai" aria-label="Sections in this tab">
         <%# Native <details> gives a zero-JS collapse. We omit `open` so it starts

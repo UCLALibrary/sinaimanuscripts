@@ -112,6 +112,18 @@
         var details = link.closest('details.right-rail__nav-details--sinai');
         if (details) details.open = false;
       }
+      // NOP-177: now that "Collapse all" exists, a nav target is routinely inside
+      // a closed <details>, where it isn't rendered and scrollIntoView lands on
+      // the closed ancestor instead. Open the whole ancestor chain first — and the
+      // target itself when it IS a <details>, since work accordions carry their
+      // section-* id on the <details> element (see _item_entry.html.erb). Only
+      // main-column <details> are reachable here, so the rail's own Navigation
+      // accordion is never touched.
+      var disclosure = target.closest('details');
+      while (disclosure) {
+        disclosure.open = true;
+        disclosure = disclosure.parentElement && disclosure.parentElement.closest('details');
+      }
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       if (history.replaceState) {
         history.replaceState(null, '', '#' + id);
