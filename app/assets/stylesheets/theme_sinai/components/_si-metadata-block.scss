@@ -1139,7 +1139,7 @@
 }
 
 // Undertexts Part-group ("Part 1"/"Part 2") and flyleaves headers. Promoted from the
-// 14px/500 label to the 16px/700 subsection heading (NOP-173) to match the Contents
+// 14px/500 label to the 16px/500 subsection heading (NOP-173) to match the Contents
 // header — intentionally diverges from Figma for cross-tab consistency.
 .undertext-group__label--sinai {
   @include sinai-subsection-heading;

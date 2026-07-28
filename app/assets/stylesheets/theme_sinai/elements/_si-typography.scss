@@ -34,16 +34,19 @@ $sinai-obj-label-nudge-18: 11.5px; // 18px object-header titles (Guest Content)
   color: $sinai-label;                    // #333
 }
 
-// Canonical SMDL subsection-heading typography (16px / 700 / #333, Figma "Metadata
-// Redesign 2025"). Extracted in NOP-173 to share the "Contents" heading style with
-// the Undertexts Part-group / flyleaves headers so they stay in lockstep — a future
-// retune is a one-line change. Roboto only loads up to 700, so 700 stands in for the
-// design's ExtraBold. Typography only — callers keep their own margin/layout. Sets no
-// line-height: NOP-168's 19px was rolled back after design review, so both callers take
-// the heading default (1.2) and stay in lockstep that way.
+// Canonical SMDL subsection-heading typography (16px / 500 / #333). Extracted in NOP-173
+// to share the "Contents" heading style with the Undertexts Part-group / flyleaves
+// headers so they stay in lockstep — a future retune is a one-line change.
+//
+// Weight is 500, not Figma's ExtraBold (which we approximated as 700, the heaviest
+// Roboto we load): 700 shipped, and design review found it too heavy in situ, so
+// NOP-173 was retuned down to 500 for both callers. Do not "fix" this back to match
+// Figma. Typography only — callers keep their own margin/layout. Sets no line-height:
+// NOP-168's 19px was rolled back after design review, so both callers take the heading
+// default (1.2) and stay in lockstep that way.
 @mixin sinai-subsection-heading {
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;     // Figma: 16px
-  font-weight: 700;
+  font-weight: 500;    // design review: 700 read too heavy — see note above
   color: $sinai-label; // #333
 }
