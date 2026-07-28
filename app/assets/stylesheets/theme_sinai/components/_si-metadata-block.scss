@@ -1377,6 +1377,13 @@
 // Names, Dates, Places tab (NOP-161) — aggregated assoc_name/date/place.
 // Figma node 2685:583: red section header, 12px-indented items, each an item
 // title (#333) with an optional "As Written:" line and note lines (#222 Light).
+//
+// NOP-176: entries now group and indent exactly like References & Bibliography
+// after NOP-174 — an item is a .part-grouped-block--sinai (2px inside an entry,
+// 12px between entries) and its sub-lines are indented 24px under the title.
+// This deliberately leaves Figma 2685:583, which spaces items a flat 20px apart
+// with no indent, so title/As Written/note all read as one uniform column. The
+// client asked for the grouped treatment; do not "fix" it back to the Figma 20px.
 .ndp-section--sinai {
   // Full-width hairline between sections (Figma "sep" spans the whole content
   // width, starting at the heading's left edge — not the inset used elsewhere).
@@ -1399,27 +1406,17 @@
   margin-top: 1.25rem; // Figma: 20px heading -> first item
 }
 
-.ndp-item--sinai {
-  margin-bottom: 1.25rem; // Figma: 20px between items (description -> next title)
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
+// NOP-176: .ndp-item--sinai carries no spacing of its own — the shared
+// .part-grouped-block--sinai owns both the 2px inner gap and the 12px margin
+// between entries. A margin-bottom here would win on source order (same
+// specificity, declared later) and silently restore the old 20px rhythm.
 
 .ndp-item__title--sinai {
   font-family: 'Roboto', sans-serif;
   font-size: 1rem; // Figma: 16px Roboto Regular
   font-weight: 400;
   color: $sinai-label; // Figma: #333
-  line-height: normal; // Figma: leading-normal — keeps the 12px title->details gap honest
-}
-
-.ndp-item__details--sinai {
-  display: flex;
-  flex-direction: column;
-  gap: 2px; // Figma: 2px between detail lines
-  margin-top: 0.75rem; // Figma: 12px title -> details
+  line-height: normal; // Figma: leading-normal — keeps the 2px title->sub-field gap honest
 }
 
 .ndp-item__line--sinai {
@@ -1429,6 +1426,9 @@
   color: $sinai-value; // Figma: #222
   line-height: 1.4; // readable for wrapping notes while staying compact
   word-break: break-word;
+  // NOP-176: every line here is sub-content of the title above it, so all of
+  // them indent — matching .references-bibliography__note--indented--sinai (24px).
+  padding-left: 1.5rem;
 }
 
 // Right-to-left script (Syriac/Arabic) in the "As Written" value; <bdi> isolates
