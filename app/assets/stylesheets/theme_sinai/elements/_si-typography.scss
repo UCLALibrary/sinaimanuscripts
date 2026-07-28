@@ -19,11 +19,11 @@ $sinai-obj-label-nudge-18: 14px; // 18px object-header titles (Guest Content)
 // .overview-dl__label--sinai, .works-section__label--sinai and
 // .related-mss-group__row-label--sinai, and now the top-level guest paracontent labels.
 // Typography only — callers keep their own layout (flex/padding) and text-transform, so
-// a caller is never forced uppercase.
+// a caller is never forced uppercase. Sets no line-height: NOP-168's 16px was rolled back
+// after design review, so labels inherit the global 1.5 like the rest of the page.
 @mixin sinai-field-label {
   font-size: 0.875rem;                    // Figma: 14px Roboto Medium
   font-weight: 500;
-  line-height: 16px;                      // Figma: line-height 16px
   letter-spacing: $sinai-label-tracking;  // NOP-169 unified label tracking
   color: $sinai-label;                    // #333
 }
@@ -32,11 +32,12 @@ $sinai-obj-label-nudge-18: 14px; // 18px object-header titles (Guest Content)
 // Redesign 2025"). Extracted in NOP-173 to share the "Contents" heading style with
 // the Undertexts Part-group / flyleaves headers so they stay in lockstep — a future
 // retune is a one-line change. Roboto only loads up to 700, so 700 stands in for the
-// design's ExtraBold. Typography only — callers keep their own margin/layout.
+// design's ExtraBold. Typography only — callers keep their own margin/layout. Sets no
+// line-height: NOP-168's 19px was rolled back after design review, so both callers take
+// the heading default (1.2) and stay in lockstep that way.
 @mixin sinai-subsection-heading {
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;     // Figma: 16px
   font-weight: 700;
-  line-height: 19px;   // Figma: line-height 19px
   color: $sinai-label; // #333
 }
