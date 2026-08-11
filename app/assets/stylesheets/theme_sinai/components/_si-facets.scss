@@ -129,9 +129,13 @@
 }
 
 .facet-field__body--sinai {
-  // overflow: scroll;
+  // NOP-162 - show 10 single-line values (10 * 32px row) plus vertical padding
+  // before scrolling. overflow-x is reset because the base rule sets
+  // `overflow: scroll`, which leaves an always-visible horizontal scrollbar.
+  overflow-x: hidden;
+  overflow-y: auto;
   padding: 0.25rem 1.25rem 1.25rem 1.75rem;
-  // max-height: 300px;
+  max-height: 344px;
   border: unset;
 
   .remove-icon {
@@ -175,4 +179,53 @@
   a:visited {
     color: $sinai-primary;
   }
+}
+
+// NOP-162 - expandable facet groups (Guest & Paracontent, Undertext Content)
+.facet-group {
+  margin-top: 1.25rem;
+  border-top: 1px solid $gray-10;
+}
+
+.facet-group__heading--sinai {
+  margin-bottom: 0;
+  padding: 0.75rem 0.25rem 0.75rem 0;
+  font-size: $text-18;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 400;
+  color: $sinai-primary;
+  line-height: 1.2;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  a,
+  a:active,
+  a:visited {
+    color: $sinai-primary;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    color: $sinai-primary;
+  }
+
+  &::after {
+    content: '❯';
+    float: right;
+    color: $sinai-primary;
+    transition: transform 0.1s ease;
+    transform: rotate(270deg);
+  }
+
+  &.collapsed::after {
+    transform: rotate(90deg);
+  }
+}
+
+.facet-group__description {
+  margin-bottom: 0.75rem;
+  padding-right: 1.25rem;
+  font-size: $text-14;
+  font-style: italic;
+  color: $gray-80;
 }

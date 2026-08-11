@@ -52,10 +52,10 @@ describe('Sinai Search', () => {
     cy.get('[id=q]').type('sinai');
     cy.get('.search-widget__dropdown').contains('Relevance');
   });
-  // <a data-turbolinks="false" href="#facet-script_sim">Script</a>
+  // <a data-turbolinks="false" href="#facet-ot_script_ssim">Script</a>
   it('Search Facet are visbile', () => {
     cy.get('[id=search]').click();
-    cy.get('a[href="#facet-script_sim"]').click();
+    cy.get('a[href="#facet-ot_script_ssim"]').click();
     cy.percySnapshot('Script facet open');
     cy.contains('a', 'Estrangela').click({ force: true });;
     cy.get('[title="Estrangela"]', { timeout: 100000 });

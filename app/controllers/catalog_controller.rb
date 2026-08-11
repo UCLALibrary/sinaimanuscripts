@@ -59,8 +59,12 @@ class CatalogController < ApplicationController
       mm: '100%',
       rows: 10,
       qf: 'title_tesim description_tesim creator_tesim keyword_tesim',
-      fq: '(((has_model_ssim:Work) OR (has_model_ssim:Collection)) AND !((visibility_ssi:restricted) OR (visibility_ssi:discovery) OR (visibility_ssi:sinai)))'
+      fq: '(((has_model_ssim:Work) OR (has_model_ssim:Collection)) AND !((visibility_ssi:restricted) OR (visibility_ssi:discovery) OR (visibility_ssi:sinai)))',
       ### we want to only return works where visibility_ssi == open (not restricted)
+
+      ### the "guest" para type is not a paracontent type; it is excluded from the
+      ### Paracontent Types facet while remaining searchable/indexed (NOP-162)
+      'f.para_type_ssim.facet.excludeTerms': 'Guest,guest'
     }
     config.default_solr_params[:fq] = '((has_model_ssim:Work) AND !(visibility_ssi:restricted))' if Flipflop.sinai?
 
@@ -105,43 +109,37 @@ class CatalogController < ApplicationController
     # solr fields that will be treated as facets by the blacklight application
     # The ordering of the field names is the order of the display
 
-    # FACETS - MAIN/ANY
-    config.add_facet_field 'ms_type_ssi', sort: 'index', label: 'Type'
+    # FACETS - PRIMARY (manuscript-level + overtext), rendered as a flat list
+    config.add_facet_field 'ms_type_ssi', sort: 'index', label: 'Object Type', collapse: false
     config.add_facet_field 'state_ssi', sort: 'index', label: 'State'
-    config.add_facet_field 'features_ssim', sort: 'index', label: 'Features'
+    config.add_facet_field 'ot_year_isim', range: true, label: 'Origin Date'
     config.add_facet_field 'support_ssim', sort: 'index', label: 'Support'
-    config.add_facet_field 'repository_ssim', sort: 'index', label: 'Repository'
-    config.add_facet_field 'collection_ssim', sort: 'index', label: 'Collection'
-    config.add_facet_field 'names_ssim', sort: 'index', label: 'Names'
-    config.add_facet_field 'places_ssim', sort: 'index', label: 'Places'
-    config.add_facet_field 'date_types_ssim', sort: 'index', label: 'Date Types'
-    config.add_facet_field 'program_ssim', sort: 'index', label: 'Program'
-    config.add_facet_field 'reconstructed_from_ssim', sort: 'index', label: 'Reconstructed From'
-
-    # FACETS – OT Only
     config.add_facet_field 'ot_script_ssim', sort: 'index', label: 'Script'
     config.add_facet_field 'ot_writing_system_ssim', sort: 'index', label: 'Writing System'
-    config.add_facet_field 'ot_genre_ssim', sort: 'index', label: 'Genre'
-    config.add_facet_field 'ot_year_isim', range: true, label: 'Date'
     config.add_facet_field 'ot_language_ssim', sort: 'index', label: 'Language'
+    config.add_facet_field 'features_ssim', sort: 'index', label: 'Features'
+    config.add_facet_field 'ot_genre_ssim', sort: 'index', label: 'Genre'
     config.add_facet_field 'ot_works_ssim', sort: 'index', label: 'Works'
+    config.add_facet_field 'names_ssim', sort: 'index', label: 'Names'
+    config.add_facet_field 'places_ssim', sort: 'index', label: 'Places'
+    config.add_facet_field 'date_types_ssim', sort: 'index', label: 'Dated Events'
+    config.add_facet_field 'collection_ssim', sort: 'index', label: 'Collection'
+    config.add_facet_field 'repository_ssim', sort: 'index', label: 'Repository'
 
-    # FACETS – Guest/Para only
-    config.add_facet_field 'para_script_ssim', sort: 'index', label: 'Guest/Para Script'
-    config.add_facet_field 'para_writing_system_ssim', sort: 'index', label: 'Guest/Para Writing System'
-    config.add_facet_field 'para_genre_ssim', sort: 'index', label: 'Guest/Para Genre'
-    config.add_facet_field 'para_year_isim', range: true, label: 'Guest/Para Date'
-    config.add_facet_field 'para_language_ssim', sort: 'index', label: 'Guest/Para Language'
-    config.add_facet_field 'para_works_ssim', sort: 'index', label: 'Guest/Para Works'
-    config.add_facet_field 'para_type_ssim', sort: 'index', label: 'Guest/Para Type'
-    config.add_facet_field 'para_names_ssim', sort: 'index', label: 'Guest/Para Names'
+    # FACETS - GUEST & PARACONTENT (expandable group, see catalog/_facet_group)
+    config.add_facet_field 'para_type_ssim', sort: 'index', label: 'Paracontent Types', group: 'guest'
+    config.add_facet_field 'para_script_ssim', sort: 'index', label: 'Script', group: 'guest'
+    config.add_facet_field 'para_writing_system_ssim', sort: 'index', label: 'Writing System', group: 'guest'
+    config.add_facet_field 'para_language_ssim', sort: 'index', label: 'Language', group: 'guest'
+    config.add_facet_field 'para_year_isim', range: true, label: 'Date', group: 'guest'
+    config.add_facet_field 'para_names_ssim', sort: 'index', label: 'Names', group: 'guest'
+    config.add_facet_field 'para_works_ssim', sort: 'index', label: 'Works', group: 'guest'
+    config.add_facet_field 'para_genre_ssim', sort: 'index', label: 'Genre', group: 'guest'
 
-    # FACETS – UTO only
-    config.add_facet_field 'uto_script_ssim', sort: 'index', label: 'UTO Script'
-    config.add_facet_field 'uto_writing_system_ssim', sort: 'index', label: 'UTO Writing System'
-    config.add_facet_field 'uto_year_isim', range: true, label: 'UTO Date'
-    config.add_facet_field 'uto_language_ssim', sort: 'index', label: 'UTO Language'
-
+    # FACETS - UNDERTEXT CONTENT (expandable group, see catalog/_facet_group)
+    config.add_facet_field 'uto_script_ssim', sort: 'index', label: 'Script', group: 'undertext'
+    config.add_facet_field 'uto_language_ssim', sort: 'index', label: 'Language', group: 'undertext'
+    config.add_facet_field 'uto_year_isim', range: true, label: 'Date', group: 'undertext'
 
     # The generic_type isn't displayed on the facet list
     # It's used to give a label to the filter that comes from the user profile

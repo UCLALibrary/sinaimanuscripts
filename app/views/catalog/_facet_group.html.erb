@@ -1,0 +1,18 @@
+<%# Expandable group of facets, keyed off `group:` on add_facet_field (NOP-162).
+    Renders nothing when none of the group's facets have values. %>
+<% fields = blacklight_config.facet_field_names(groupname) %>
+
+<% if has_facet_values?(fields) %>
+  <% collapsed = fields.none? { |field| facet_field_in_params?(field) } %>
+  <% panel_id = "facet-group-#{groupname}" %>
+
+  <div class="facet-group facet-group--<%= groupname %>">
+    <h3 class="<%= 'collapsed' if collapsed %> collapse-toggle facet-group__heading facet-group__heading--sinai" aria-expanded="<%= collapsed ? 'false' : 'true' %>" data-toggle="collapse" data-target="#<%= panel_id %>">
+      <%= link_to t("blacklight.search.facets-#{groupname}.title"), "##{panel_id}", "data-turbolinks": false %>
+    </h3>
+    <div id="<%= panel_id %>" class="panel-collapse facet-group__body facet-group__body--sinai <%= collapsed ? 'collapse' : 'show' %>">
+      <p class="facet-group__description"><%= t("blacklight.search.facets-#{groupname}.description") %></p>
+      <%= render_facet_partials fields %>
+    </div>
+  </div>
+<% end %>

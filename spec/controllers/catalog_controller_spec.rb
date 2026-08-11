@@ -20,8 +20,6 @@ RSpec.describe CatalogController, type: :controller do
         names_ssim
         places_ssim
         date_types_ssim
-        program_ssim
-        reconstructed_from_ssim
         ot_script_ssim
         ot_writing_system_ssim
         ot_genre_ssim
@@ -37,12 +35,36 @@ RSpec.describe CatalogController, type: :controller do
         para_type_ssim
         para_names_ssim
         uto_script_ssim
-        uto_writing_system_ssim
         uto_year_isim
         uto_language_ssim
         generic_type_sim
       ]
       expect(facet_keys).to contain_exactly(*expected_facets)
+    end
+
+    it 'expands the Object Type facet on load' do
+      expect(controller.blacklight_config.facet_fields['ms_type_ssi'].collapse).to be false
+    end
+
+    it 'groups the guest/paracontent facets in display order' do
+      expect(controller.blacklight_config.facet_field_names('guest')).to eq(
+        %w[
+          para_type_ssim
+          para_script_ssim
+          para_writing_system_ssim
+          para_language_ssim
+          para_year_isim
+          para_names_ssim
+          para_works_ssim
+          para_genre_ssim
+        ]
+      )
+    end
+
+    it 'groups the undertext facets in display order' do
+      expect(controller.blacklight_config.facet_field_names('undertext')).to eq(
+        %w[uto_script_ssim uto_language_ssim uto_year_isim]
+      )
     end
   end
 

@@ -28,7 +28,12 @@
       <%= render 'catalog/constraints' %>
 
       <div id="facet-panel-collapse" class="facets-collapse collapse facet-field__heading--sinai collapse-toggle--sinai .facet-field__heading--sinai.collapse-toggle[aria-expanded='true']">
-        <%= render_facet_partials %>
+        <%# primary facets - manuscript level + overtext, rendered flat %>
+        <%= render_facet_partials blacklight_config.facet_field_names(nil) %>
+
+        <%# layer-specific facets, each in its own expandable group %>
+        <%= render 'catalog/facet_group', groupname: 'guest' %>
+        <%= render 'catalog/facet_group', groupname: 'undertext' %>
       </div>
     </div>
   <% end %>

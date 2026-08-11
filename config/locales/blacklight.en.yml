@@ -6,6 +6,12 @@ en:
     search:
       facets:
         title: 'Browse items'
+      facets-guest:
+        title: 'Guest & Paracontent'
+        description: 'Browse manuscripts containing guest or paracontent matching the criteria below.'
+      facets-undertext:
+        title: 'Undertext Content'
+        description: 'Browse manuscripts containing undertexts matching the criteria below. To search Undertext Object records directly, use the primary facets above.'
       clear_all: 'Clear all'
       zero_results:
         title: 'No results found.'
