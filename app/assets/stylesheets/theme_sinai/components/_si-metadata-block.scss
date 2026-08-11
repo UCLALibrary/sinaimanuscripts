@@ -328,6 +328,7 @@
   font-size: 0.75rem; // Figma: 12px Roboto Regular
   font-weight: 400;
   letter-spacing: 0.48px; // Figma tracking
+  text-transform: uppercase; // NOP-180: pills read as uppercase per design
   background-color: #0b3954;
   color: white;
   border-radius: 0.7rem;
