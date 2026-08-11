@@ -21,11 +21,8 @@
 .site-footer__primary-wrapper--sinai {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-
-  @media (max-width: 991px) {
-    flex-wrap: wrap;
-  }
+  flex-wrap: wrap;
+  gap: 1.5rem 2rem;
 
   @media (max-width: 767px) {
     margin: 0 auto;
@@ -33,39 +30,35 @@
   }
 }
 
+// Equal flexible tracks. The calc() subtrahends below are
+// (items-per-row - 1) x the 2rem column gap - keep them in sync.
 .site-footer__logo-wrapper--sinai {
   display: flex;
   justify-content: center;
-  flex: 0 0 17%;
+  flex: 1 1 0;
+  min-width: 0;
 
-  @media (max-width: 767px) {
-    flex: 0 0 40%;
-    justify-content: flex-start;
-
-    &:nth-child(3),
-    &:nth-child(4) {
-      margin-top: 1rem;
-    }
-
-    &:nth-child(5) {
-      margin-top: 2rem;
-    }
+  // 3 per row
+  @media (max-width: 991px) {
+    flex: 0 0 calc((100% - 4rem) / 3);
   }
 
-  @media (max-width: 502px) {
-    &:nth-child(1),
-    &:nth-child(3) {
-      flex: 0 0 52%;
-    }
-
-    &:nth-child(4) {
-      flex: 0 0 35%;
-    }
+  // 2 per row
+  @media (max-width: 767px) {
+    flex: 0 0 calc((100% - 2rem) / 2);
+    justify-content: flex-start;
   }
 }
 
+// For marks far wider than they are tall (NEH is ~7.7:1), so the
+// wordmark stays legible instead of taking an equal share.
+.site-footer__logo-wrapper--wide {
+  flex-grow: 2;
+}
+
 .site-footer__logo--sinai {
-  height: 100px;
+  max-width: 100%;
+  max-height: 100px;
   object-fit: contain;
   object-position: center;
 }
