@@ -26,26 +26,35 @@
     <div class='media-viewer-container media-viewer-container--sinai'>
       <% iiif_service = IiifService.new %>
       <%# Popup chrome — only visible when the container has the promoted class.
-          Kept as a sibling of the iframe so the iframe is never reparented
-          (which would reload it and drop the viewer's state). %>
-      <div class='media-viewer-popup-header--sinai'>
-        <span class='media-viewer-popup-title--sinai'><%= document[:shelfmark_ssi] %></span>
-        <button type="button"
-                class="close media-viewer-popup-close--sinai"
-                data-examine-close
-                aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+          Sits outside the panel's top-right corner, over the backdrop. Labelled
+          "Close window" to distinguish it from Mirador's own ×, which closes the
+          item window INSIDE the viewer. Kept as a sibling of the iframe so the
+          iframe is never reparented (which would reload it and drop the viewer's
+          state). %>
+      <button type="button"
+              class="media-viewer-popup-close--sinai"
+              data-examine-close>
+        <svg class="media-viewer-popup-close-icon--sinai"
+             width="11" height="11" viewBox="0 0 12 12" aria-hidden="true" focusable="false">
+          <path d="M1 1L11 11M11 1L1 11" fill="none" stroke="currentColor"
+                stroke-width="1.6" stroke-linecap="round" />
+        </svg>
+        <span>Close window</span>
+      </button>
+      <%# Clipping frame — rounds the popup's corners and crops the grey gutter
+          Mirador paints inside its own document (see .media-viewer-iframe in
+          _si-right-rail.scss). Static markup, so the iframe is never moved. %>
+      <div class='media-viewer-frame--sinai'>
+        <iframe
+          class='media-viewer-iframe'
+          src="<%= iiif_service.src(request, document) %>"
+          width='924px'
+          height='668px'
+          id='media-viewer-iframe'
+          allowfullscreen
+          frameborder='0'>
+        </iframe>
       </div>
-      <iframe
-        class='media-viewer-iframe'
-        src="<%= iiif_service.src(request, document) %>"
-        width='924px'
-        height='668px'
-        id='media-viewer-iframe'
-        allowfullscreen
-        frameborder='0'>
-      </iframe>
       </div>
   <% end %>
 <% end %>

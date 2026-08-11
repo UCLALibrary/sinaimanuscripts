@@ -347,8 +347,8 @@ body.examine-active {
   overflow: hidden;
 }
 
-// Popup chrome (header + close) only renders once the container is promoted.
-.media-viewer-popup-header--sinai {
+// Popup chrome only renders once the container is promoted.
+.media-viewer-popup-close--sinai {
   display: none;
 }
 
@@ -358,63 +358,109 @@ body.examine-active {
   position: fixed;
   inset: 0;
   z-index: 1040;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(20, 16, 12, 0.62);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
 }
 
-// Promoted state: the inline container becomes a centered fixed panel sized to
-// match the previous modal (~85vw × 94vh).
+// Promoted state: the inline container becomes a centered fixed panel.
+// $popup-top reserves room above the panel for the floating close control and
+// keeps the popup clear of the browser chrome.
+$popup-top: 76px;
+
 .media-viewer-container--promoted {
   position: fixed;
-  top: 3vh;
+  top: $popup-top;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1050;
-  width: 85vw;
-  max-width: 85vw;
-  height: 94vh;
+  width: 86vw;
+  max-width: 1660px;
+  height: calc(100vh - #{$popup-top} - 28px);
   margin: 0;
   display: flex;
   flex-direction: column;
-  background: #fff;
-  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.4);
+  // No border, no white header: the panel IS the viewer.
+  background: #1b1b1b;
+  border-radius: 10px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5);
+  // Not hidden — the close control is positioned outside the panel.
+  overflow: visible;
 
-  .media-viewer-popup-header--sinai {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 16px;
-    border-bottom: 1px solid $sinai-secondary-dk;
-    flex: 0 0 auto;
-  }
-
-  .media-viewer-popup-title--sinai {
-    font-weight: 600;
-  }
-
-  .media-viewer-iframe {
-    display: block;
+  // Clips the iframe to the panel's radius and crops Mirador's own gutter.
+  .media-viewer-frame--sinai {
+    position: relative;
     flex: 1 1 auto;
-    width: 100%;
-    height: 100%;
     min-height: 0;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  // Mirador paints a 6px #707070 workspace gutter along the top/right/bottom of
+  // its own (cross-origin) document, plus a 2px teal window accent below the top
+  // gutter — neither is ours to restyle. Instead, oversize the iframe and let the
+  // frame above clip those bands off: 8px top (gutter + teal), 6px right and
+  // bottom. Left is untouched — Mirador's icon rail is already flush there, so
+  // cropping it would shave the rail's icons.
+  // The iframe is a REPLACED element: with width/height auto it falls back to its
+  // intrinsic 300×150 instead of stretching to the inset edges, so the size has
+  // to be stated explicitly rather than driven by `right`/`bottom`.
+  .media-viewer-iframe {
+    position: absolute;
+    top: -8px;
+    left: 0;
+    display: block;
+    width: calc(100% + 6px);
+    height: calc(100% + 14px);
     border: 0;
   }
 
+  // Floating "Close window" — outside the top-right corner, on the backdrop.
   .media-viewer-popup-close--sinai {
-    font-size: 2rem;
-    line-height: 1;
-    padding: 0.25rem 0.75rem;
-    margin: -0.25rem -0.5rem -0.25rem 0.5rem;
-    opacity: 0.75;
-    color: $sinai-black;
+    position: absolute;
+    right: 0;
+    bottom: 100%;
+    margin-bottom: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 7px 15px 7px 13px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    opacity: 1;
     text-shadow: none;
+    transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease;
 
-    &:hover,
+    // Deliberately not :focus — the popup focuses this button on open, and a
+    // bare :focus would make it open in the filled state rather than the
+    // outlined one. Keyboard users still get the fill via :focus-visible.
     &:focus {
-      opacity: 1;
-      color: $sinai-primary;
       outline: none;
     }
+
+    &:hover,
+    &:focus-visible {
+      background: #fff;
+      border-color: #fff;
+      color: $sinai-black;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+  }
+
+  .media-viewer-popup-close-icon--sinai {
+    flex-shrink: 0;
   }
 }
 
