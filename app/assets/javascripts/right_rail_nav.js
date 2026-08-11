@@ -7,8 +7,20 @@
 //      Mirador iframe is in the viewport.
 //   4. Promotes the inline viewer iframe into a full-screen Examine popup
 //      (no second instance, so the viewer keeps its live state).
+//   5. Expands a truncated work list in the nav tree, on click or when
+//      scroll-spy lands on one of its hidden rows (NOP-182).
 (function () {
   var scrollHandler = null;
+  var moreToggleBound = false;
+
+  // Reveals a truncated work list (NOP-182) and syncs its toggle label.
+  // No-op for links outside such a group.
+  function expandMoreGroup(group) {
+    if (!group || group.classList.contains('is-expanded')) return;
+    group.classList.add('is-expanded');
+    var btn = group.querySelector('.right-rail__nav-more--sinai');
+    if (btn) btn.textContent = 'Show Less';
+  }
   // How far below the viewport top a heading must cross to count as "current".
   // NOP-166: this must clear the sticky title+tabs header, so a section is marked
   // active once its heading passes just below the pinned block (header height +
@@ -43,13 +55,38 @@
     return entries;
   }
 
+  // The single choke point for .is-active — scroll-spy, the init run and the
+  // post-click update all route through here, as does the synthetic scroll event
+  // expand_collapse_all.js fires after a mass expand.
   function setActive(entries, activeId) {
     entries.forEach(function (entry) {
       if (entry.id === activeId) {
+        // A truncated work list keeps its overflow rows in the DOM, so scroll-spy
+        // can pick one as current. Reveal the group first: otherwise the class
+        // lands on a display:none link and the else-branch below has already
+        // cleared the previous highlight, leaving the rail with none at all.
+        expandMoreGroup(entry.link.closest('[data-rail-nav-more-group]'));
         entry.link.classList.add('is-active');
       } else {
         entry.link.classList.remove('is-active');
       }
+    });
+  }
+
+  // Show More / Show Less for a truncated work list.
+  //
+  // A document-level delegate bound once, NOT part of setupClickHandling: that
+  // re-binds on every activateRail() (DOMContentLoaded, turbolinks:load, and each
+  // tab-class mutation), so a toggle there would fire N times and cancel itself.
+  function setupNavMoreToggle() {
+    if (moreToggleBound) return;
+    moreToggleBound = true;
+    document.addEventListener('click', function (event) {
+      var btn = event.target.closest('.right-rail__nav-more--sinai');
+      if (!btn) return;
+      var group = btn.closest('[data-rail-nav-more-group]');
+      if (!group) return;
+      btn.textContent = group.classList.toggle('is-expanded') ? 'Show Less' : 'Show More';
     });
   }
 
@@ -252,6 +289,7 @@
     if (!document.querySelector('[data-right-rail]')) return;
     activateRail();
     setupTabSwitchObserver();
+    setupNavMoreToggle();
     setupViewerVisibility();
     setupExamineOverlay();
   }

@@ -3,9 +3,23 @@
       entries — Array of { id:, label:, children: }
       depth   — Integer (root call passes 0) %>
 <% depth_local = local_assigns.fetch(:depth, 0) %>
-<ul class="right-rail__nav-list--sinai<%= ' right-rail__nav-list--sub--sinai' if depth_local > 0 %>"<%= ' data-right-rail-nav-list'.html_safe if depth_local == 0 %>>
-  <% entries.each do |entry| %>
-    <li class="right-rail__nav-item--sinai right-rail__nav-item--lvl-<%= depth_local + 1 %>--sinai">
+<%# NOP-182: a long work list crowds the rail — .right-rail__sticky--sinai is a
+    max-height scroller, so it pushes the Examine card below the internal fold.
+    Show four and hide the rest behind a "Show More" toggle, the same affordance
+    the work Table of Contents uses.
+
+    Keyed on depth rather than on a flag from the helpers because works land at
+    nav level 3 (depth 2) on all three tabs that render the Navigation card, via
+    two different builders: full_description_nav_entries builds Part > Item >
+    work directly, while extract_nav_entries_from_html nests the Contents and
+    Guest Content trees to the same shape from h2/h3/h4/.work-accordion__title.
+    Items (depth 1) and top-level sections (depth 0) are never truncated. %>
+<% truncate_list = depth_local >= 2 && entries.size >= 5 %>
+<ul class="right-rail__nav-list--sinai<%= ' right-rail__nav-list--sub--sinai' if depth_local > 0 %><%= ' right-rail__nav-list--more--sinai' if truncate_list %>"<%= ' data-right-rail-nav-list'.html_safe if depth_local == 0 %><%= ' data-rail-nav-more-group'.html_safe if truncate_list %>>
+  <% entries.each_with_index do |entry, index| %>
+    <%# Overflow rows stay in the DOM: scroll-spy tracks every link, and
+        right_rail_nav.js reveals the group when a hidden one becomes current. %>
+    <li class="right-rail__nav-item--sinai right-rail__nav-item--lvl-<%= depth_local + 1 %>--sinai<%= ' right-rail__nav-item--hidden--sinai' if truncate_list && index >= 4 %>">
       <a href="#<%= entry[:id] %>"
          class="right-rail__nav-link--sinai right-rail__nav-link--lvl-<%= depth_local + 1 %>--sinai"
          data-right-rail-link="<%= entry[:id] %>">
@@ -16,6 +30,11 @@
                    entries: entry[:children],
                    depth: depth_local + 1 %>
       <% end %>
+    </li>
+  <% end %>
+  <% if truncate_list %>
+    <li class="right-rail__nav-more-item--sinai">
+      <button type="button" class="right-rail__nav-more--sinai">Show More</button>
     </li>
   <% end %>
 </ul>

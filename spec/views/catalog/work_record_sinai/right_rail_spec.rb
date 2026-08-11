@@ -55,4 +55,73 @@ RSpec.describe 'catalog/work_record--sinai/_right_rail.html.erb', type: :view do
         .to be < rendered.index('right-rail__nav-card--sinai')
     end
   end
+
+  # NOP-182. The nav tree is one recursive partial shared by Full Description,
+  # Contents and Guest Content; works land at level 3 (depth 2) on all three, so
+  # the truncation is keyed on depth rather than on which helper built the tree.
+  describe 'work list truncation' do
+    # Part > Item 1 > N works: the shape every tab's tree converges on.
+    def tree_with_works(count)
+      works = (1..count).map do |n|
+        { id: "section-part-0-item-1-work-#{n}", label: "Work #{n}", children: [] }
+      end
+      [{ id: 'section-part-0', label: 'Part 1', children: [
+        { id: 'section-part-0-item-1', label: 'Item 1', children: works }
+      ] }]
+    end
+
+    # visible: :all throughout, because the tree renders inside a <details> that omits
+    # `open` (collapsed by default on mobile, forced open by CSS on desktop), so
+    # Capybara's default visibility filter would report every row as hidden and
+    # make the negative assertions pass for the wrong reason.
+    def expect_rail_css(selector, **options)
+      expect(rendered).to have_css(selector, visible: :all, **options)
+    end
+
+    def expect_no_rail_css(selector)
+      expect(rendered).not_to have_css(selector, visible: :all)
+    end
+
+    it 'shows four of five works behind a Show More toggle' do
+      render_rail(entries: tree_with_works(5))
+
+      # All five still ship: scroll-spy tracks every link, and right_rail_nav.js
+      # reveals the group when a hidden one becomes current.
+      expect_rail_css('.right-rail__nav-link--lvl-3--sinai', count: 5)
+      expect_rail_css('.right-rail__nav-item--hidden--sinai', count: 1)
+      expect_rail_css('ul.right-rail__nav-list--more--sinai[data-rail-nav-more-group]', count: 1)
+      expect_rail_css('button.right-rail__nav-more--sinai', text: 'Show More', count: 1)
+    end
+
+    it 'leaves four works untruncated' do
+      render_rail(entries: tree_with_works(4))
+
+      expect_rail_css('.right-rail__nav-link--lvl-3--sinai', count: 4)
+      expect_no_rail_css('.right-rail__nav-item--hidden--sinai')
+      expect_no_rail_css('[data-rail-nav-more-group]')
+      expect_no_rail_css('.right-rail__nav-more--sinai')
+    end
+
+    # Guards the depth rule: a record with five parts must not collapse its
+    # top-level sections, only the work lists nested under an Item.
+    it 'never truncates the top-level section list' do
+      entries = (1..5).map { |n| { id: "section-part-#{n}", label: "Part #{n}", children: [] } }
+      render_rail(entries: entries)
+
+      expect_rail_css('.right-rail__nav-link--lvl-1--sinai', count: 5)
+      expect_no_rail_css('.right-rail__nav-item--hidden--sinai')
+      expect_no_rail_css('.right-rail__nav-more--sinai')
+    end
+
+    # Items are level 2; the ticket truncates works only.
+    it 'never truncates the item list under a part' do
+      items = (1..5).map do |n|
+        { id: "section-part-0-item-#{n}", label: "Item #{n}", children: [] }
+      end
+      render_rail(entries: [{ id: 'section-part-0', label: 'Part 1', children: items }])
+
+      expect_rail_css('.right-rail__nav-link--lvl-2--sinai', count: 5)
+      expect_no_rail_css('.right-rail__nav-more--sinai')
+    end
+  end
 end
