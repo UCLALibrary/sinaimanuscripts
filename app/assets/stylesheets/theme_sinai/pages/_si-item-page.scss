@@ -121,17 +121,21 @@
 } */
 
 // SHELFMARK - Once the tabs are included on the item page, uncomment this
-// NOP-166: Figma sticky-header title — Roboto Medium 32px, #333, with a 16px
+// NOP-166: Figma sticky-header title — Roboto Medium, #333, with a 16px
 // gap (padding-bottom) down to the tab bar. Lives inside .item-page__sticky-header.
+//
+// NOP-181: reduced from the Figma 32px to 25.6px at Dawn's request after design
+// review — do not restore to 32px. The ≤767px step keeps the original 0.75
+// desktop→mobile ratio (32→24 became 25.6→20).
 .title-row-show--siani {
   margin: 0;
   padding: 0 4px 16px;
-  font-size: $text-32;
+  font-size: $text-sinai-26;
   font-weight: 500;
   color: #333;
 
   @media (max-width: 767px) {
-    font-size: $text-24;
+    font-size: $text-20;
   }
 }
 
