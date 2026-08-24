@@ -4,61 +4,117 @@
 
 .site-footer__primary--sinai {
   background-color: $black-90;
+
+  // The element also carries `.container-full` (page gutter) and the base
+  // `.site-footer__primary` (2rem block padding). Stacked with the wrapper's
+  // own padding below that came to ~106px per side, which squeezed the logo
+  // row under the ~1150px the six marks need and wrapped NEH onto its own
+  // line at 1440. Zero it here so the wrapper is the single owner of the
+  // footer's padding.
+  padding: 0;
 }
 
-.site-footer__title--sinai {
-  padding: 1rem 0;
-  font-weight: 300;
-  color: $white;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-
-  @media (max-width: 767px) {
-    text-align: center;
-  }
-}
+// Sponsor logo sizing — NOP-183.
+//
+// The previous rule gave every logo an equal flex track and a shared
+// `max-height: 100px`. That is not equal *optical* weight: a mark's apparent
+// size on a dark band tracks the area of its ink, not its height. Under a
+// common height a 7.7:1 wordmark (NEH) renders roughly five times the area of
+// a 1.3:1 stacked lockup (EMEL), and St Catherine's read smaller still because
+// its source PNG carried ~30% transparent padding inside the box the height
+// cap was applied to.
+//
+// So: each logo is sized to a fixed width/height pair derived from its ink
+// aspect ratio, targeting a constant ink area A ~= 5900px^2 (h = sqrt(A / ar)).
+// The art itself must be trimmed of transparent padding for the math to hold —
+// logo-sinai-wht-hz.png, logo-ahmanson-wht.png and logo-emel-wht-txt.png were
+// re-exported tight. Re-derive these pairs if any logo is re-exported again.
+//
+// St Catherine's is the one deliberate exception: it sits ~25% above its
+// equal-area share as lead partner. That is an editorial decision, not a
+// miscalculation — do not "correct" it back to the formula.
 
 .site-footer__primary-wrapper--sinai {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 1.5rem 2rem;
+  gap: 3.5rem;
+  padding: 3rem 3.4rem 2.6rem;
 
-  @media (max-width: 767px) {
-    margin: 0 auto;
-    width: 95%;
+  @media (max-width: 991px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
   }
 }
 
-// Equal flexible tracks. The calc() subtrahends below are
-// (items-per-row - 1) x the 2rem column gap - keep them in sync.
-.site-footer__logo-wrapper--sinai {
+.site-footer__title--sinai {
+  flex: 0 0 auto;
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 300;
+  color: rgba($white, 0.6);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.site-footer__logos--sinai {
+  flex: 1;
   display: flex;
-  justify-content: center;
-  flex: 1 1 0;
-  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.75rem 2.75rem;
 
-  // 3 per row
   @media (max-width: 991px) {
-    flex: 0 0 calc((100% - 4rem) / 3);
-  }
-
-  // 2 per row
-  @media (max-width: 767px) {
-    flex: 0 0 calc((100% - 2rem) / 2);
     justify-content: flex-start;
   }
 }
 
-// For marks far wider than they are tall (NEH is ~7.7:1), so the
-// wordmark stays legible instead of taking an equal share.
-.site-footer__logo-wrapper--wide {
-  flex-grow: 2;
+// The six marks need ~1150px of track to sit on one line. Below that they
+// wrap, and left to wrap freely they break 5 + 1 — NEH orphaned on a row of
+// its own, which is the same imbalance this ticket is about, just at laptop
+// widths. Force an even 3 + 3 instead, then 2 + 2 + 2 on phones. The
+// subtrahend in each calc() is (items-per-row - 1) x the 2.75rem column gap.
+.site-footer__logo-wrapper--sinai {
+  display: flex;
+  justify-content: center;
+
+  // 3 per row
+  @media (max-width: 1419px) {
+    flex: 0 0 calc((100% - 5.5rem) / 3);
+  }
+
+  // 2 per row
+  @media (max-width: 767px) {
+    flex: 0 0 calc((100% - 2.75rem) / 2);
+  }
+
+  // 1 per row. A two-up track is narrower than the 224px lead mark below
+  // ~640px, which would clamp it against `max-width: 100%` and letterbox it
+  // inside its declared height — small, and off the equal-area footing the
+  // rest of the row sits on. One-up keeps every mark at its intended size.
+  @media (max-width: 639px) {
+    flex: 0 0 100%;
+  }
 }
 
 .site-footer__logo--sinai {
-  max-width: 100%;
-  max-height: 100px;
   object-fit: contain;
   object-position: center;
+  max-width: 100%;
+
+  // On very narrow phones even a full-width track is under 224px, so the
+  // width cap still bites. Let the height follow so the mark scales instead
+  // of sitting letterboxed in a fixed-height box.
+  @media (max-width: 639px) {
+    height: auto;
+  }
 }
+
+// Width/height pairs: equal ink area, per the note above.
+.site-footer__logo--sinai-lead     { width: 224px; height: 44px; } // lead partner, +25%
+.site-footer__logo--sinai-ucla     { width: 164px; height: 36px; }
+.site-footer__logo--sinai-arcadia  { width: 160px; height: 36px; }
+.site-footer__logo--sinai-ahmanson { width: 91px;  height: 58px; }
+.site-footer__logo--sinai-emel     { width: 84px;  height: 63px; }
+.site-footer__logo--sinai-neh      { width: 207px; height: 27px; }
