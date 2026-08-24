@@ -1160,7 +1160,7 @@
   color: $sinai-heading; // #920606
   font-size: 1rem; // 16px
   font-weight: 300;
-  line-height: 1.4;
+  line-height: 1.5; // 24px - NOP-168 follow-up: one leading for the 16px body value
   margin-bottom: 0.125rem; // 2px to first meta line
   text-decoration: none;
 
@@ -1180,7 +1180,7 @@
   font-size: 1rem; // 16px
   font-weight: 300;
   color: $sinai-value; // #222
-  line-height: 1.4;
+  line-height: 1.5; // 24px - NOP-168 follow-up: one leading for the 16px body value
 }
 
 // Related Manuscripts tab — top gap from the tab bar is owned centrally by
@@ -1250,7 +1250,7 @@
   font-weight: 300;
   color: $sinai-value; // Figma: #222
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.5; // 24px - NOP-168 follow-up: one leading for the 16px body value
 
   a {
     color: $sinai-content-link; // NOP-170: content links → #920606 (manuscript links, Data Portal, IIIF, VisCodex)
@@ -1425,7 +1425,7 @@
   font-size: 1rem; // Figma: 16px Roboto Light
   font-weight: 300;
   color: $sinai-value; // Figma: #222
-  line-height: 1.4; // readable for wrapping notes while staying compact
+  line-height: 1.5; // 24px - NOP-168 follow-up: one leading for the 16px body value
   word-break: break-word;
   // NOP-176: every line here is sub-content of the title above it, so all of
   // them indent — matching .references-bibliography__note--indented--sinai (24px).
