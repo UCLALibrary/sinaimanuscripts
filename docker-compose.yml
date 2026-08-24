@@ -6,8 +6,10 @@ services:
     tty: true
     command: "sh start-sinai.sh"
     depends_on:
-      - db
-      - solr
+      db:
+        condition: service_healthy
+      solr:
+        condition: service_started
     env_file:
       - ./default.env
       - ./docker.env
@@ -28,6 +30,12 @@ services:
       - "127.0.0.1:3306:3306"
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
 
   solr:
     image: uclalibrary/solr-ursus
