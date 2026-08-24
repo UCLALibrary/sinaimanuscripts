@@ -365,9 +365,9 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field('shelfmark_ssi', label: 'Shelfmark') do |field|
+    config.add_search_field('shelfmark_tsi', label: 'Shelfmark') do |field|
       field.solr_parameters = {
-        qf: 'shelfmark_ssi',
+        qf: 'shelfmark_tsi',
         pf: ''
       }
     end
@@ -386,9 +386,9 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field('exerpts_tesim', label: 'Exerpts') do |field|
+    config.add_search_field('exerpts_tesim', label: 'Excerpts') do |field|
       field.solr_parameters = {
-        qf: 'exerpts_tesim',
+        qf: 'exerpts_tesim', # solr field name is misspelled upstream
         pf: ''
       }
     end
@@ -413,13 +413,6 @@ class CatalogController < ApplicationController
         pf: ''
       }
     end
-   
-    config.add_search_field('cataloguer_tesim', label: 'Cataloguer') do |field|
-      field.solr_parameters = {
-        qf: 'cataloguer_tesim',
-        pf: ''
-      }
-    end
 
     # ------------------------------------------------------
     # CATALOG RESULTS 'SORT RESULTS BY' DROPDOWN
@@ -436,8 +429,8 @@ class CatalogController < ApplicationController
     # config.add_sort_field 'sort_title_ssort desc', label: 'Title (Z-A)'
 
     # set shelfmark A-Z as default so empty searches are ordered by Shelfmark
-    config.add_sort_field 'shelfmark_alpha_numeric_ssort asc', label: 'Shelfmark (A-Z)', default: true
-    config.add_sort_field 'shelfmark_alpha_numeric_ssort desc', label: 'Shelfmark (Z-A)'
+    config.add_sort_field 'shelfmark_tsort asc', label: 'Shelfmark (A-Z)', default: true
+    config.add_sort_field 'shelfmark_tsort desc', label: 'Shelfmark (Z-A)'
 
     config.add_sort_field 'date_dtsort desc', label: 'Date (newest)'
     config.add_sort_field 'date_dtsort asc', label: 'Date (oldest)'

@@ -95,8 +95,8 @@ RSpec.describe CatalogController, type: :controller do
     let(:expected_sort_fields) do
       [
         'score desc',
-        'shelfmark_alpha_numeric_ssort asc',
-        'shelfmark_alpha_numeric_ssort desc',
+        'shelfmark_tsort asc',
+        'shelfmark_tsort desc',
         'date_dtsort desc',
         'date_dtsort asc',
         'last_modified_dtsi desc',
@@ -115,14 +115,13 @@ RSpec.describe CatalogController, type: :controller do
     let(:expected_search_fields) do
       %w[
         full_text_tesim
-        shelfmark_ssi
+        shelfmark_tsi
         titles_tesim
         names_tesim
         exerpts_tesim
         places_tesim
         contents_tesim
         paracontent_tesim
-        cataloguer_tesim
       ]
     end
 
