@@ -1,5 +1,9 @@
 FROM python:3.14
 
-RUN pip install feed_ursus
+# Pinned deliberately: this repo ships no Solr schema, so the indexer decides which
+# fields exist. 2.6.6 is the floor that emits shelfmark_tsi / shelfmark_tsort, which
+# CatalogController uses for the Shelfmark search scope and the default sort (NOP-163).
+# An unpinned install let docker01 bake 2.6.4 and silently serve an index without them.
+RUN pip install feed_ursus==2.6.6
 
 CMD [ "sinai", "load", "/data", "http://solr:8983/solr/ursus" ]
