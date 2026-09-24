@@ -21,11 +21,27 @@ RSpec.describe StaticController, type: :controller do
       end
     end
 
-    context 'GET #contributors_credits' do
+    context 'GET #sinai_library_digitization_project' do
       it "returns http success" do
-        get :contributors_credits
+        get :sinai_library_digitization_project
         expect(response).to have_http_status(:success)
-        expect(response).to render_template(:contributors_credits)
+        expect(response).to render_template(:sinai_library_digitization_project)
+      end
+    end
+
+    context 'GET #syriac_parchment_description_project' do
+      it "returns http success" do
+        get :syriac_parchment_description_project
+        expect(response).to have_http_status(:success)
+        expect(response).to render_template(:syriac_parchment_description_project)
+      end
+    end
+
+    context 'GET #sinai_palimpsests_project' do
+      it "returns http success" do
+        get :sinai_palimpsests_project
+        expect(response).to have_http_status(:success)
+        expect(response).to render_template(:sinai_palimpsests_project)
       end
     end
 

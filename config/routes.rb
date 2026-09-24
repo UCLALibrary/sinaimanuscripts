@@ -7,8 +7,11 @@ Rails.application.routes.draw do
   # Sinai static pages
   # get '/login', to: 'login#new', as: 'login'
   get '/about', to: 'static#about'
+  get '/about/sinai-library-digitization-project', to: 'static#sinai_library_digitization_project', as: 'sinai_library_digitization_project'
+  get '/about/syriac-parchment-description-project', to: 'static#syriac_parchment_description_project', as: 'syriac_parchment_description_project'
+  get '/about/sinai-palimpsests-project', to: 'static#sinai_palimpsests_project', as: 'sinai_palimpsests_project'
+  get '/contributors_credits', to: redirect('/about/sinai-library-digitization-project', status: 301)
   get '/contact', to: 'static#contact'
-  get '/contributors_credits', to: 'static#contributors_credits'
   get '/manuscript_descriptions', to: 'static#manuscript_descriptions'
   get '/terms-of-use', to: 'static#terms_of_use'
   get '/references', to: 'static#references'

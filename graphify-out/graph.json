@@ -75,7 +75,7 @@
       "source_file": "app/models/solr_document.rb",
       "source_location": "L1",
       "id": "app_models_solr_document_rb",
-      "community": 7,
+      "community": 6,
       "norm_label": "solr_document.rb"
     },
     {
@@ -84,7 +84,7 @@
       "source_file": "app/models/solr_document.rb",
       "source_location": "L2",
       "id": "solr_document_solrdocument",
-      "community": 7,
+      "community": 6,
       "norm_label": "solrdocument"
     },
     {
@@ -93,7 +93,7 @@
       "source_file": "app/models/solr_document.rb",
       "source_location": "L6",
       "id": "solr_document_solrdocument_add_field_semantics",
-      "community": 7,
+      "community": 6,
       "norm_label": ".add_field_semantics()"
     },
     {
@@ -102,7 +102,7 @@
       "source_file": "app/models/solr_document.rb",
       "source_location": "L54",
       "id": "solr_document_solrdocument_to_semantic_values",
-      "community": 7,
+      "community": 6,
       "norm_label": ".to_semantic_values()"
     },
     {
@@ -111,7 +111,7 @@
       "source_file": "app/models/solr_document.rb",
       "source_location": "L76",
       "id": "solr_document_solrdocument_permalink",
-      "community": 7,
+      "community": 6,
       "norm_label": ".permalink()"
     },
     {
@@ -120,7 +120,7 @@
       "source_file": "app/models/solr_document.rb",
       "source_location": "L80",
       "id": "solr_document_solrdocument_root_url",
-      "community": 7,
+      "community": 6,
       "norm_label": ".root_url()"
     },
     {
@@ -129,7 +129,7 @@
       "source_file": "app/models/solr_document.rb",
       "source_location": "L84",
       "id": "solr_document_solrdocument_export_as_ucla_citation_txt",
-      "community": 7,
+      "community": 6,
       "norm_label": ".export_as_ucla_citation_txt()"
     },
     {
@@ -309,7 +309,7 @@
       "source_file": "app/presenters/base_metadata_presenter.rb",
       "source_location": "L1",
       "id": "app_presenters_base_metadata_presenter_rb",
-      "community": 14,
+      "community": 15,
       "norm_label": "base_metadata_presenter.rb"
     },
     {
@@ -318,7 +318,7 @@
       "source_file": "app/presenters/base_metadata_presenter.rb",
       "source_location": "L2",
       "id": "base_metadata_presenter_basemetadatapresenter",
-      "community": 14,
+      "community": 15,
       "norm_label": "basemetadatapresenter"
     },
     {
@@ -327,7 +327,7 @@
       "source_file": "app/presenters/base_metadata_presenter.rb",
       "source_location": "L9",
       "id": "base_metadata_presenter_basemetadatapresenter_initialize",
-      "community": 14,
+      "community": 15,
       "norm_label": ".initialize()"
     },
     {
@@ -336,7 +336,7 @@
       "source_file": "app/presenters/base_metadata_presenter.rb",
       "source_location": "L14",
       "id": "base_metadata_presenter_basemetadatapresenter_fields_to_render_by_config_keys",
-      "community": 14,
+      "community": 15,
       "norm_label": ".fields_to_render_by_config_keys()"
     },
     {
@@ -345,7 +345,7 @@
       "source_file": "app/presenters/base_metadata_presenter.rb",
       "source_location": "L24",
       "id": "base_metadata_presenter_basemetadatapresenter_fields_to_render_by_keys",
-      "community": 14,
+      "community": 15,
       "norm_label": ".fields_to_render_by_keys()"
     },
     {
@@ -867,7 +867,7 @@
       "source_file": "app/presenters/ursus/collection_overview_metadata_presenter.rb",
       "source_location": "L1",
       "id": "app_presenters_ursus_collection_overview_metadata_presenter_rb",
-      "community": 14,
+      "community": 15,
       "norm_label": "collection_overview_metadata_presenter.rb"
     },
     {
@@ -876,7 +876,7 @@
       "source_file": "app/presenters/ursus/collection_overview_metadata_presenter.rb",
       "source_location": "L3",
       "id": "collection_overview_metadata_presenter_collectionoverviewmetadatapresenter",
-      "community": 14,
+      "community": 15,
       "norm_label": "collectionoverviewmetadatapresenter"
     },
     {
@@ -885,7 +885,7 @@
       "source_file": "app/presenters/ursus/collection_overview_metadata_presenter.rb",
       "source_location": "L6",
       "id": "collection_overview_metadata_presenter_collectionoverviewmetadatapresenter_overview_terms",
-      "community": 14,
+      "community": 15,
       "norm_label": ".overview_terms()"
     },
     {
@@ -894,7 +894,7 @@
       "source_file": "app/presenters/ursus/collection_overview_metadata_presenter.rb",
       "source_location": "L10",
       "id": "collection_overview_metadata_presenter_collectionoverviewmetadatapresenter_overview_labels",
-      "community": 14,
+      "community": 15,
       "norm_label": ".overview_labels()"
     },
     {
@@ -1461,7 +1461,7 @@
       "source_file": "app/controllers/static_controller.rb",
       "source_location": "L1",
       "id": "app_controllers_static_controller_rb",
-      "community": 15,
+      "community": 12,
       "norm_label": "static_controller.rb"
     },
     {
@@ -1470,7 +1470,7 @@
       "source_file": "app/controllers/static_controller.rb",
       "source_location": "L2",
       "id": "static_controller_staticcontroller",
-      "community": 15,
+      "community": 12,
       "norm_label": "staticcontroller"
     },
     {
@@ -1479,7 +1479,7 @@
       "source_file": "app/controllers/static_controller.rb",
       "source_location": "L3",
       "id": "static_controller_staticcontroller_about",
-      "community": 15,
+      "community": 12,
       "norm_label": ".about()"
     },
     {
@@ -1488,52 +1488,70 @@
       "source_file": "app/controllers/static_controller.rb",
       "source_location": "L5",
       "id": "static_controller_staticcontroller_contact",
-      "community": 15,
+      "community": 12,
       "norm_label": ".contact()"
-    },
-    {
-      "label": ".contributors_credits()",
-      "file_type": "code",
-      "source_file": "app/controllers/static_controller.rb",
-      "source_location": "L7",
-      "id": "static_controller_staticcontroller_contributors_credits",
-      "community": 15,
-      "norm_label": ".contributors_credits()"
     },
     {
       "label": ".manuscript_descriptions()",
       "file_type": "code",
       "source_file": "app/controllers/static_controller.rb",
-      "source_location": "L9",
+      "source_location": "L7",
       "id": "static_controller_staticcontroller_manuscript_descriptions",
-      "community": 15,
+      "community": 12,
       "norm_label": ".manuscript_descriptions()"
     },
     {
       "label": ".references()",
       "file_type": "code",
       "source_file": "app/controllers/static_controller.rb",
-      "source_location": "L11",
+      "source_location": "L9",
       "id": "static_controller_staticcontroller_references",
-      "community": 15,
+      "community": 12,
       "norm_label": ".references()"
+    },
+    {
+      "label": ".sinai_library_digitization_project()",
+      "file_type": "code",
+      "source_file": "app/controllers/static_controller.rb",
+      "source_location": "L11",
+      "id": "static_controller_staticcontroller_sinai_library_digitization_project",
+      "community": 12,
+      "norm_label": ".sinai_library_digitization_project()"
+    },
+    {
+      "label": ".sinai_palimpsests_project()",
+      "file_type": "code",
+      "source_file": "app/controllers/static_controller.rb",
+      "source_location": "L13",
+      "id": "static_controller_staticcontroller_sinai_palimpsests_project",
+      "community": 12,
+      "norm_label": ".sinai_palimpsests_project()"
+    },
+    {
+      "label": ".syriac_parchment_description_project()",
+      "file_type": "code",
+      "source_file": "app/controllers/static_controller.rb",
+      "source_location": "L15",
+      "id": "static_controller_staticcontroller_syriac_parchment_description_project",
+      "community": 12,
+      "norm_label": ".syriac_parchment_description_project()"
     },
     {
       "label": ".terms_of_use()",
       "file_type": "code",
       "source_file": "app/controllers/static_controller.rb",
-      "source_location": "L13",
+      "source_location": "L17",
       "id": "static_controller_staticcontroller_terms_of_use",
-      "community": 15,
+      "community": 12,
       "norm_label": ".terms_of_use()"
     },
     {
       "label": ".version()",
       "file_type": "code",
       "source_file": "app/controllers/static_controller.rb",
-      "source_location": "L15",
+      "source_location": "L19",
       "id": "static_controller_staticcontroller_version",
-      "community": 15,
+      "community": 12,
       "norm_label": ".version()"
     },
     {
@@ -1576,7 +1594,7 @@
       "label": ".enforce_show_permissions()",
       "file_type": "code",
       "source_file": "app/controllers/catalog_controller.rb",
-      "source_location": "L482",
+      "source_location": "L473",
       "id": "catalog_controller_catalogcontroller_enforce_show_permissions",
       "community": 13,
       "norm_label": ".enforce_show_permissions()"
@@ -1585,7 +1603,7 @@
       "label": ".show()",
       "file_type": "code",
       "source_file": "app/controllers/catalog_controller.rb",
-      "source_location": "L495",
+      "source_location": "L486",
       "id": "catalog_controller_catalogcontroller_show",
       "community": 13,
       "norm_label": ".show()"
@@ -1594,7 +1612,7 @@
       "label": ".oai_provider()",
       "file_type": "code",
       "source_file": "app/controllers/catalog_controller.rb",
-      "source_location": "L515",
+      "source_location": "L506",
       "id": "catalog_controller_catalogcontroller_oai_provider",
       "community": 13,
       "norm_label": ".oai_provider()"
@@ -1645,6 +1663,114 @@
       "norm_label": "feedback.js"
     },
     {
+      "label": "expand_collapse_all.js",
+      "file_type": "code",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L1",
+      "id": "app_assets_javascripts_expand_collapse_all_js",
+      "community": 11,
+      "norm_label": "expand_collapse_all.js"
+    },
+    {
+      "label": "mainColumnFor()",
+      "file_type": "code",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L47",
+      "id": "expand_collapse_all_maincolumnfor",
+      "community": 11,
+      "norm_label": "maincolumnfor()"
+    },
+    {
+      "label": "tocButton()",
+      "file_type": "code",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L54",
+      "id": "expand_collapse_all_tocbutton",
+      "community": 11,
+      "norm_label": "tocbutton()"
+    },
+    {
+      "label": "isExpanded()",
+      "file_type": "code",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L58",
+      "id": "expand_collapse_all_isexpanded",
+      "community": 11,
+      "norm_label": "isexpanded()"
+    },
+    {
+      "label": "setAll()",
+      "file_type": "code",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L70",
+      "id": "expand_collapse_all_setall",
+      "community": 11,
+      "norm_label": "setall()"
+    },
+    {
+      "label": "syncControl()",
+      "file_type": "code",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L88",
+      "id": "expand_collapse_all_synccontrol",
+      "community": 11,
+      "norm_label": "synccontrol()"
+    },
+    {
+      "label": "syncAll()",
+      "file_type": "code",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L98",
+      "id": "expand_collapse_all_syncall",
+      "community": 11,
+      "norm_label": "syncall()"
+    },
+    {
+      "label": "scheduleSync()",
+      "file_type": "code",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L106",
+      "id": "expand_collapse_all_schedulesync",
+      "community": 11,
+      "norm_label": "schedulesync()"
+    },
+    {
+      "label": "onDocumentClick()",
+      "file_type": "code",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L115",
+      "id": "expand_collapse_all_ondocumentclick",
+      "community": 11,
+      "norm_label": "ondocumentclick()"
+    },
+    {
+      "label": "onPanelClick()",
+      "file_type": "code",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L134",
+      "id": "expand_collapse_all_onpanelclick",
+      "community": 11,
+      "norm_label": "onpanelclick()"
+    },
+    {
+      "label": "bindPanel()",
+      "file_type": "code",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L141",
+      "id": "expand_collapse_all_bindpanel",
+      "community": 11,
+      "norm_label": "bindpanel()"
+    },
+    {
+      "label": "init()",
+      "file_type": "code",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L153",
+      "id": "expand_collapse_all_init",
+      "community": 11,
+      "norm_label": "init()"
+    },
+    {
       "label": "truncate_description.js",
       "file_type": "code",
       "source_file": "app/assets/javascripts/truncate_description.js",
@@ -1659,151 +1785,169 @@
       "source_file": "app/assets/javascripts/right_rail_nav.js",
       "source_location": "L1",
       "id": "app_assets_javascripts_right_rail_nav_js",
-      "community": 10,
+      "community": 7,
       "norm_label": "right_rail_nav.js"
+    },
+    {
+      "label": "expandMoreGroup()",
+      "file_type": "code",
+      "source_file": "app/assets/javascripts/right_rail_nav.js",
+      "source_location": "L18",
+      "id": "right_rail_nav_expandmoregroup",
+      "community": 7,
+      "norm_label": "expandmoregroup()"
     },
     {
       "label": "getActiveOffset()",
       "file_type": "code",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L17",
+      "source_location": "L29",
       "id": "right_rail_nav_getactiveoffset",
-      "community": 10,
+      "community": 7,
       "norm_label": "getactiveoffset()"
     },
     {
       "label": "getActiveRail()",
       "file_type": "code",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L22",
+      "source_location": "L34",
       "id": "right_rail_nav_getactiverail",
-      "community": 10,
+      "community": 7,
       "norm_label": "getactiverail()"
     },
     {
       "label": "collectEntries()",
       "file_type": "code",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L28",
+      "source_location": "L40",
       "id": "right_rail_nav_collectentries",
-      "community": 10,
+      "community": 7,
       "norm_label": "collectentries()"
     },
     {
       "label": "setActive()",
       "file_type": "code",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L46",
+      "source_location": "L61",
       "id": "right_rail_nav_setactive",
-      "community": 10,
+      "community": 7,
       "norm_label": "setactive()"
+    },
+    {
+      "label": "setupNavMoreToggle()",
+      "file_type": "code",
+      "source_file": "app/assets/javascripts/right_rail_nav.js",
+      "source_location": "L81",
+      "id": "right_rail_nav_setupnavmoretoggle",
+      "community": 7,
+      "norm_label": "setupnavmoretoggle()"
     },
     {
       "label": "computeActiveId()",
       "file_type": "code",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L56",
+      "source_location": "L93",
       "id": "right_rail_nav_computeactiveid",
-      "community": 10,
+      "community": 7,
       "norm_label": "computeactiveid()"
     },
     {
       "label": "setupScrollSpy()",
       "file_type": "code",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L72",
+      "source_location": "L109",
       "id": "right_rail_nav_setupscrollspy",
-      "community": 10,
+      "community": 7,
       "norm_label": "setupscrollspy()"
     },
     {
       "label": "setupClickHandling()",
       "file_type": "code",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L93",
+      "source_location": "L130",
       "id": "right_rail_nav_setupclickhandling",
-      "community": 10,
+      "community": 7,
       "norm_label": "setupclickhandling()"
     },
     {
       "label": "activateRail()",
       "file_type": "code",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L123",
+      "source_location": "L172",
       "id": "right_rail_nav_activaterail",
-      "community": 10,
+      "community": 7,
       "norm_label": "activaterail()"
     },
     {
       "label": "setupTabSwitchObserver()",
       "file_type": "code",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L130",
+      "source_location": "L179",
       "id": "right_rail_nav_setuptabswitchobserver",
-      "community": 10,
+      "community": 7,
       "norm_label": "setuptabswitchobserver()"
     },
     {
       "label": "setupViewerVisibility()",
       "file_type": "code",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L146",
+      "source_location": "L195",
       "id": "right_rail_nav_setupviewervisibility",
-      "community": 10,
+      "community": 7,
       "norm_label": "setupviewervisibility()"
     },
     {
       "label": "getViewerContainer()",
       "file_type": "code",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L179",
+      "source_location": "L228",
       "id": "right_rail_nav_getviewercontainer",
-      "community": 10,
+      "community": 7,
       "norm_label": "getviewercontainer()"
     },
     {
       "label": "examineIsOpen()",
       "file_type": "code",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L183",
+      "source_location": "L232",
       "id": "right_rail_nav_examineisopen",
-      "community": 10,
+      "community": 7,
       "norm_label": "examineisopen()"
     },
     {
       "label": "openExamine()",
       "file_type": "code",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L188",
+      "source_location": "L237",
       "id": "right_rail_nav_openexamine",
-      "community": 10,
+      "community": 7,
       "norm_label": "openexamine()"
     },
     {
       "label": "closeExamine()",
       "file_type": "code",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L200",
+      "source_location": "L249",
       "id": "right_rail_nav_closeexamine",
-      "community": 10,
+      "community": 7,
       "norm_label": "closeexamine()"
     },
     {
       "label": "setupExamineOverlay()",
       "file_type": "code",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L213",
+      "source_location": "L262",
       "id": "right_rail_nav_setupexamineoverlay",
-      "community": 10,
+      "community": 7,
       "norm_label": "setupexamineoverlay()"
     },
     {
       "label": "init()",
       "file_type": "code",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L239",
+      "source_location": "L288",
       "id": "right_rail_nav_init",
-      "community": 10,
+      "community": 7,
       "norm_label": "init()"
     },
     {
@@ -1938,7 +2082,7 @@
       "source_file": "app/assets/javascripts/blacklight_range_limit/range_limit_distro_facets.js",
       "source_location": "L1",
       "id": "app_assets_javascripts_blacklight_range_limit_range_limit_distro_facets_js",
-      "community": 11,
+      "community": 10,
       "norm_label": "range_limit_distro_facets.js"
     },
     {
@@ -1947,7 +2091,7 @@
       "source_file": "app/assets/javascripts/blacklight_range_limit/range_limit_distro_facets.js",
       "source_location": "L64",
       "id": "range_limit_distro_facets_redrawplot",
-      "community": 11,
+      "community": 10,
       "norm_label": "redrawplot()"
     },
     {
@@ -1956,7 +2100,7 @@
       "source_file": "app/assets/javascripts/blacklight_range_limit/range_limit_distro_facets.js",
       "source_location": "L134",
       "id": "range_limit_distro_facets_turnintoplot",
-      "community": 11,
+      "community": 10,
       "norm_label": "turnintoplot()"
     },
     {
@@ -1965,7 +2109,7 @@
       "source_file": "app/assets/javascripts/blacklight_range_limit/range_limit_distro_facets.js",
       "source_location": "L167",
       "id": "range_limit_distro_facets_areachart",
-      "community": 11,
+      "community": 10,
       "norm_label": "areachart()"
     },
     {
@@ -1974,7 +2118,7 @@
       "source_file": "app/assets/javascripts/blacklight_range_limit/range_limit_distro_facets.js",
       "source_location": "L279",
       "id": "range_limit_distro_facets_normalized_selection",
-      "community": 11,
+      "community": 10,
       "norm_label": "normalized_selection()"
     },
     {
@@ -1983,7 +2127,7 @@
       "source_file": "app/assets/javascripts/blacklight_range_limit/range_limit_distro_facets.js",
       "source_location": "L285",
       "id": "range_limit_distro_facets_form_selection",
-      "community": 11,
+      "community": 10,
       "norm_label": "form_selection()"
     },
     {
@@ -1992,7 +2136,7 @@
       "source_file": "app/assets/javascripts/blacklight_range_limit/range_limit_distro_facets.js",
       "source_location": "L298",
       "id": "range_limit_distro_facets_function_for_find_segment",
-      "community": 11,
+      "community": 10,
       "norm_label": "function_for_find_segment()"
     },
     {
@@ -2001,7 +2145,7 @@
       "source_file": "app/assets/javascripts/blacklight_range_limit/range_limit_distro_facets.js",
       "source_location": "L311",
       "id": "range_limit_distro_facets_domdependenciesmet",
-      "community": 11,
+      "community": 10,
       "norm_label": "domdependenciesmet()"
     },
     {
@@ -2010,7 +2154,7 @@
       "source_file": "app/assets/javascripts/flot/jquery.flot.js",
       "source_location": "L1",
       "id": "app_assets_javascripts_flot_jquery_flot_js",
-      "community": 11,
+      "community": 10,
       "norm_label": "jquery.flot.js"
     },
     {
@@ -2019,7 +2163,7 @@
       "source_file": "app/assets/javascripts/flot/jquery.flot.js",
       "source_location": "L32",
       "id": "jquery_flot_clamp",
-      "community": 11,
+      "community": 10,
       "norm_label": "clamp()"
     },
     {
@@ -2028,7 +2172,7 @@
       "source_file": "app/assets/javascripts/flot/jquery.flot.js",
       "source_location": "L51",
       "id": "jquery_flot_canvas",
-      "community": 11,
+      "community": 10,
       "norm_label": "canvas()"
     },
     {
@@ -2037,7 +2181,7 @@
       "source_file": "app/assets/javascripts/flot/jquery.flot.js",
       "source_location": "L495",
       "id": "jquery_flot_plot",
-      "community": 11,
+      "community": 10,
       "norm_label": "plot()"
     },
     {
@@ -2046,7 +2190,7 @@
       "source_file": "app/assets/javascripts/flot/jquery.flot.js",
       "source_location": "L3138",
       "id": "jquery_flot_floorinbase",
-      "community": 11,
+      "community": 10,
       "norm_label": "floorinbase()"
     },
     {
@@ -2275,10 +2419,19 @@
       "norm_label": "extract_nav_entries_from_html()"
     },
     {
+      "label": "panel_has_collapsibles?()",
+      "file_type": "code",
+      "source_file": "app/helpers/right_rail_helper.rb",
+      "source_location": "L76",
+      "id": "right_rail_helper_panel_has_collapsibles",
+      "community": 2,
+      "norm_label": "panel_has_collapsibles?()"
+    },
+    {
       "label": "nav_skipped?()",
       "file_type": "code",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L48",
+      "source_location": "L84",
       "id": "right_rail_helper_nav_skipped",
       "community": 2,
       "norm_label": "nav_skipped?()"
@@ -2287,7 +2440,7 @@
       "label": "nav_entry_for()",
       "file_type": "code",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L54",
+      "source_location": "L90",
       "id": "right_rail_helper_nav_entry_for",
       "community": 2,
       "norm_label": "nav_entry_for()"
@@ -2296,7 +2449,7 @@
       "label": "nest_by_level()",
       "file_type": "code",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L70",
+      "source_location": "L106",
       "id": "right_rail_helper_nest_by_level",
       "community": 2,
       "norm_label": "nest_by_level()"
@@ -2305,7 +2458,7 @@
       "label": "strip_level_keys()",
       "file_type": "code",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L82",
+      "source_location": "L118",
       "id": "right_rail_helper_strip_level_keys",
       "community": 2,
       "norm_label": "strip_level_keys()"
@@ -2314,7 +2467,7 @@
       "label": "parse_manuscript_json()",
       "file_type": "code",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L88",
+      "source_location": "L124",
       "id": "right_rail_helper_parse_manuscript_json",
       "community": 2,
       "norm_label": "parse_manuscript_json()"
@@ -2323,7 +2476,7 @@
       "label": "build_part_entry()",
       "file_type": "code",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L97",
+      "source_location": "L133",
       "id": "right_rail_helper_build_part_entry",
       "community": 2,
       "norm_label": "build_part_entry()"
@@ -2332,7 +2485,7 @@
       "label": "part_header_label()",
       "file_type": "code",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L106",
+      "source_location": "L142",
       "id": "right_rail_helper_part_header_label",
       "community": 2,
       "norm_label": "part_header_label()"
@@ -2341,7 +2494,7 @@
       "label": "first_origin_date()",
       "file_type": "code",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L118",
+      "source_location": "L154",
       "id": "right_rail_helper_first_origin_date",
       "community": 2,
       "norm_label": "first_origin_date()"
@@ -2350,7 +2503,7 @@
       "label": "build_item_entries()",
       "file_type": "code",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L131",
+      "source_location": "L167",
       "id": "right_rail_helper_build_item_entries",
       "community": 2,
       "norm_label": "build_item_entries()"
@@ -2359,7 +2512,7 @@
       "label": "item_header_label()",
       "file_type": "code",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L150",
+      "source_location": "L186",
       "id": "right_rail_helper_item_header_label",
       "community": 2,
       "norm_label": "item_header_label()"
@@ -2368,7 +2521,7 @@
       "label": "build_work_entries()",
       "file_type": "code",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L162",
+      "source_location": "L198",
       "id": "right_rail_helper_build_work_entries",
       "community": 2,
       "norm_label": "build_work_entries()"
@@ -2377,7 +2530,7 @@
       "label": "work_header_label()",
       "file_type": "code",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L174",
+      "source_location": "L210",
       "id": "right_rail_helper_work_header_label",
       "community": 2,
       "norm_label": "work_header_label()"
@@ -2386,7 +2539,7 @@
       "label": "paracontents_present?()",
       "file_type": "code",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L188",
+      "source_location": "L224",
       "id": "right_rail_helper_paracontents_present",
       "community": 2,
       "norm_label": "paracontents_present?()"
@@ -2395,7 +2548,7 @@
       "label": "notes_on_manuscript_present?()",
       "file_type": "code",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L198",
+      "source_location": "L234",
       "id": "right_rail_helper_notes_on_manuscript_present",
       "community": 2,
       "norm_label": "notes_on_manuscript_present?()"
@@ -3715,12 +3868,21 @@
       "norm_label": "access_condition_metadata_presenter_spec.rb"
     },
     {
+      "label": "static_pages_spec.rb",
+      "file_type": "code",
+      "source_file": "spec/requests/static_pages_spec.rb",
+      "source_location": "L1",
+      "id": "spec_requests_static_pages_spec_rb",
+      "community": 135,
+      "norm_label": "static_pages_spec.rb"
+    },
+    {
       "label": "capybara.rb",
       "file_type": "code",
       "source_file": "spec/support/capybara.rb",
       "source_location": "L1",
       "id": "spec_support_capybara_rb",
-      "community": 135,
+      "community": 136,
       "norm_label": "capybara.rb"
     },
     {
@@ -3729,7 +3891,7 @@
       "source_file": "spec/support/response.rb",
       "source_location": "L1",
       "id": "spec_support_response_rb",
-      "community": 136,
+      "community": 137,
       "norm_label": "response.rb"
     },
     {
@@ -3756,7 +3918,7 @@
       "source_file": "spec/support/works.rb",
       "source_location": "L1",
       "id": "spec_support_works_rb",
-      "community": 137,
+      "community": 138,
       "norm_label": "works.rb"
     },
     {
@@ -3837,7 +3999,7 @@
       "source_file": "spec/controllers/static_controller_spec.rb",
       "source_location": "L1",
       "id": "spec_controllers_static_controller_spec_rb",
-      "community": 138,
+      "community": 139,
       "norm_label": "static_controller_spec.rb"
     },
     {
@@ -3846,7 +4008,7 @@
       "source_file": "spec/controllers/catalog_controller_spec.rb",
       "source_location": "L1",
       "id": "spec_controllers_catalog_controller_spec_rb",
-      "community": 139,
+      "community": 140,
       "norm_label": "catalog_controller_spec.rb"
     },
     {
@@ -3855,7 +4017,7 @@
       "source_file": "spec/controllers/application_controller_spec.rb",
       "source_location": "L1",
       "id": "spec_controllers_application_controller_spec_rb",
-      "community": 140,
+      "community": 141,
       "norm_label": "application_controller_spec.rb"
     },
     {
@@ -3864,7 +4026,7 @@
       "source_file": "spec/views/_user_util_links.html.erb_spec.rb",
       "source_location": "L1",
       "id": "spec_views_user_util_links_html_erb_spec_rb",
-      "community": 141,
+      "community": 142,
       "norm_label": "_user_util_links.html.erb_spec.rb"
     },
     {
@@ -3873,8 +4035,53 @@
       "source_file": "spec/views/catalog/_bookmark_control.html.erb_spec.rb",
       "source_location": "L1",
       "id": "spec_views_catalog_bookmark_control_html_erb_spec_rb",
-      "community": 142,
+      "community": 143,
       "norm_label": "_bookmark_control.html.erb_spec.rb"
+    },
+    {
+      "label": "right_rail_spec.rb",
+      "file_type": "code",
+      "source_file": "spec/views/catalog/work_record_sinai/right_rail_spec.rb",
+      "source_location": "L1",
+      "id": "spec_views_catalog_work_record_sinai_right_rail_spec_rb",
+      "community": 3,
+      "norm_label": "right_rail_spec.rb"
+    },
+    {
+      "label": "render_rail()",
+      "file_type": "code",
+      "source_file": "spec/views/catalog/work_record_sinai/right_rail_spec.rb",
+      "source_location": "L10",
+      "id": "right_rail_spec_render_rail",
+      "community": 3,
+      "norm_label": "render_rail()"
+    },
+    {
+      "label": "tree_with_works()",
+      "file_type": "code",
+      "source_file": "spec/views/catalog/work_record_sinai/right_rail_spec.rb",
+      "source_location": "L64",
+      "id": "right_rail_spec_tree_with_works",
+      "community": 3,
+      "norm_label": "tree_with_works()"
+    },
+    {
+      "label": "expect_rail_css()",
+      "file_type": "code",
+      "source_file": "spec/views/catalog/work_record_sinai/right_rail_spec.rb",
+      "source_location": "L77",
+      "id": "right_rail_spec_expect_rail_css",
+      "community": 3,
+      "norm_label": "expect_rail_css()"
+    },
+    {
+      "label": "expect_no_rail_css()",
+      "file_type": "code",
+      "source_file": "spec/views/catalog/work_record_sinai/right_rail_spec.rb",
+      "source_location": "L81",
+      "id": "right_rail_spec_expect_no_rail_css",
+      "community": 3,
+      "norm_label": "expect_no_rail_css()"
     },
     {
       "label": "names_dates_places_metadata_spec.rb",
@@ -3909,7 +4116,7 @@
       "source_file": "spec/views/catalog/work_record_sinai/items_metadata_spec.rb",
       "source_location": "L1",
       "id": "spec_views_catalog_work_record_sinai_items_metadata_spec_rb",
-      "community": 143,
+      "community": 144,
       "norm_label": "items_metadata_spec.rb"
     },
     {
@@ -3918,7 +4125,7 @@
       "source_file": "spec/views/catalog/work_record_sinai/content_metadata_spec.rb",
       "source_location": "L1",
       "id": "spec_views_catalog_work_record_sinai_content_metadata_spec_rb",
-      "community": 144,
+      "community": 145,
       "norm_label": "content_metadata_spec.rb"
     },
     {
@@ -3927,7 +4134,7 @@
       "source_file": "spec/views/catalog/work_record_sinai/undertexts_metadata_spec.rb",
       "source_location": "L1",
       "id": "spec_views_catalog_work_record_sinai_undertexts_metadata_spec_rb",
-      "community": 145,
+      "community": 146,
       "norm_label": "undertexts_metadata_spec.rb"
     },
     {
@@ -3936,7 +4143,7 @@
       "source_file": "spec/views/catalog/work_record_sinai/guest_content_metadata_spec.rb",
       "source_location": "L1",
       "id": "spec_views_catalog_work_record_sinai_guest_content_metadata_spec_rb",
-      "community": 146,
+      "community": 147,
       "norm_label": "guest_content_metadata_spec.rb"
     },
     {
@@ -3945,7 +4152,7 @@
       "source_file": "spec/views/catalog/work_record_sinai/parts_metadata_spec.rb",
       "source_location": "L1",
       "id": "spec_views_catalog_work_record_sinai_parts_metadata_spec_rb",
-      "community": 147,
+      "community": 148,
       "norm_label": "parts_metadata_spec.rb"
     },
     {
@@ -3954,7 +4161,7 @@
       "source_file": "spec/views/catalog/work_record_sinai/item_overview_metadata_spec.rb",
       "source_location": "L1",
       "id": "spec_views_catalog_work_record_sinai_item_overview_metadata_spec_rb",
-      "community": 148,
+      "community": 149,
       "norm_label": "item_overview_metadata_spec.rb"
     },
     {
@@ -3999,7 +4206,7 @@
       "source_file": "spec/helpers/names_dates_places_helper_spec.rb",
       "source_location": "L1",
       "id": "spec_helpers_names_dates_places_helper_spec_rb",
-      "community": 149,
+      "community": 150,
       "norm_label": "names_dates_places_helper_spec.rb"
     },
     {
@@ -4008,7 +4215,7 @@
       "source_file": "spec/helpers/home_page_helper_spec.rb",
       "source_location": "L1",
       "id": "spec_helpers_home_page_helper_spec_rb",
-      "community": 150,
+      "community": 151,
       "norm_label": "home_page_helper_spec.rb"
     },
     {
@@ -4017,7 +4224,7 @@
       "source_file": "spec/helpers/blacklight_helper_spec.rb",
       "source_location": "L1",
       "id": "spec_helpers_blacklight_helper_spec_rb",
-      "community": 151,
+      "community": 152,
       "norm_label": "blacklight_helper_spec.rb"
     },
     {
@@ -4026,7 +4233,7 @@
       "source_file": "spec/helpers/right_rail_helper_spec.rb",
       "source_location": "L1",
       "id": "spec_helpers_right_rail_helper_spec_rb",
-      "community": 152,
+      "community": 153,
       "norm_label": "right_rail_helper_spec.rb"
     },
     {
@@ -4053,7 +4260,7 @@
       "source_file": "spec/services/iiif_service_spec.rb",
       "source_location": "L1",
       "id": "spec_services_iiif_service_spec_rb",
-      "community": 153,
+      "community": 154,
       "norm_label": "iiif_service_spec.rb"
     },
     {
@@ -4800,7 +5007,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L6",
       "id": "mirador3_min_nn",
-      "community": 12,
+      "community": 14,
       "norm_label": "nn()"
     },
     {
@@ -4872,7 +5079,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L6",
       "id": "mirador3_min_vn",
-      "community": 12,
+      "community": 0,
       "norm_label": "vn()"
     },
     {
@@ -4881,7 +5088,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L6",
       "id": "mirador3_min_mn",
-      "community": 12,
+      "community": 14,
       "norm_label": "mn()"
     },
     {
@@ -4890,7 +5097,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L6",
       "id": "mirador3_min_on",
-      "community": 1,
+      "community": 0,
       "norm_label": "on()"
     },
     {
@@ -4935,7 +5142,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L6",
       "id": "mirador3_min_in",
-      "community": 12,
+      "community": 14,
       "norm_label": "in()"
     },
     {
@@ -4944,7 +5151,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L6",
       "id": "mirador3_min_rn",
-      "community": 12,
+      "community": 14,
       "norm_label": "rn()"
     },
     {
@@ -4953,7 +5160,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L6",
       "id": "mirador3_min_an",
-      "community": 12,
+      "community": 14,
       "norm_label": "an()"
     },
     {
@@ -4980,7 +5187,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_yn",
-      "community": 12,
+      "community": 0,
       "norm_label": "yn()"
     },
     {
@@ -4989,7 +5196,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_dn",
-      "community": 12,
+      "community": 14,
       "norm_label": "dn()"
     },
     {
@@ -5196,7 +5403,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_mi",
-      "community": 0,
+      "community": 4,
       "norm_label": "mi()"
     },
     {
@@ -5205,7 +5412,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_yi",
-      "community": 0,
+      "community": 4,
       "norm_label": "yi()"
     },
     {
@@ -5214,7 +5421,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_bi",
-      "community": 0,
+      "community": 4,
       "norm_label": "bi()"
     },
     {
@@ -5223,7 +5430,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_xi",
-      "community": 0,
+      "community": 4,
       "norm_label": "xi()"
     },
     {
@@ -5232,7 +5439,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_ei",
-      "community": 0,
+      "community": 4,
       "norm_label": "ei()"
     },
     {
@@ -5241,7 +5448,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_si",
-      "community": 0,
+      "community": 4,
       "norm_label": "si()"
     },
     {
@@ -5277,7 +5484,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_ji",
-      "community": 0,
+      "community": 4,
       "norm_label": "ji()"
     },
     {
@@ -5286,7 +5493,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_pi",
-      "community": 0,
+      "community": 4,
       "norm_label": "pi()"
     },
     {
@@ -5304,7 +5511,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_wi",
-      "community": 0,
+      "community": 4,
       "norm_label": "wi()"
     },
     {
@@ -5313,7 +5520,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_ui",
-      "community": 0,
+      "community": 4,
       "norm_label": "ui()"
     },
     {
@@ -5322,7 +5529,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_zi",
-      "community": 0,
+      "community": 4,
       "norm_label": "zi()"
     },
     {
@@ -5331,7 +5538,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_qi",
-      "community": 0,
+      "community": 4,
       "norm_label": "qi()"
     },
     {
@@ -5376,7 +5583,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_io",
-      "community": 0,
+      "community": 1,
       "norm_label": "io()"
     },
     {
@@ -5457,7 +5664,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_vo",
-      "community": 0,
+      "community": 4,
       "norm_label": "vo()"
     },
     {
@@ -5916,7 +6123,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_yl",
-      "community": 6,
+      "community": 0,
       "norm_label": "yl()"
     },
     {
@@ -5925,7 +6132,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_ql",
-      "community": 6,
+      "community": 0,
       "norm_label": "ql()"
     },
     {
@@ -5934,7 +6141,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_jl",
-      "community": 6,
+      "community": 0,
       "norm_label": "jl()"
     },
     {
@@ -5943,7 +6150,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_ef",
-      "community": 6,
+      "community": 0,
       "norm_label": "ef()"
     },
     {
@@ -5961,7 +6168,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_nf",
-      "community": 6,
+      "community": 0,
       "norm_label": "nf()"
     },
     {
@@ -5970,7 +6177,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_rf",
-      "community": 6,
+      "community": 0,
       "norm_label": "rf()"
     },
     {
@@ -5979,7 +6186,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_sf",
-      "community": 6,
+      "community": 0,
       "norm_label": "sf()"
     },
     {
@@ -5988,7 +6195,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_cf",
-      "community": 6,
+      "community": 0,
       "norm_label": "cf()"
     },
     {
@@ -5997,7 +6204,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_uf",
-      "community": 6,
+      "community": 0,
       "norm_label": "uf()"
     },
     {
@@ -6006,7 +6213,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_df",
-      "community": 6,
+      "community": 0,
       "norm_label": "df()"
     },
     {
@@ -6024,7 +6231,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_hf",
-      "community": 6,
+      "community": 0,
       "norm_label": "hf()"
     },
     {
@@ -6033,7 +6240,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_gf",
-      "community": 6,
+      "community": 0,
       "norm_label": "gf()"
     },
     {
@@ -6042,7 +6249,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_vf",
-      "community": 6,
+      "community": 0,
       "norm_label": "vf()"
     },
     {
@@ -6051,7 +6258,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_mf",
-      "community": 6,
+      "community": 0,
       "norm_label": "mf()"
     },
     {
@@ -6060,7 +6267,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_wf",
-      "community": 6,
+      "community": 0,
       "norm_label": "wf()"
     },
     {
@@ -6069,7 +6276,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_of",
-      "community": 6,
+      "community": 0,
       "norm_label": "of()"
     },
     {
@@ -6078,7 +6285,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_xf",
-      "community": 6,
+      "community": 0,
       "norm_label": "xf()"
     },
     {
@@ -6087,7 +6294,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_af",
-      "community": 6,
+      "community": 0,
       "norm_label": "af()"
     },
     {
@@ -6096,7 +6303,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_lf",
-      "community": 6,
+      "community": 0,
       "norm_label": "lf()"
     },
     {
@@ -6105,7 +6312,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_zf",
-      "community": 6,
+      "community": 0,
       "norm_label": "zf()"
     },
     {
@@ -6114,7 +6321,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_bf",
-      "community": 6,
+      "community": 0,
       "norm_label": "bf()"
     },
     {
@@ -6123,7 +6330,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L40",
       "id": "mirador3_min_ff",
-      "community": 6,
+      "community": 0,
       "norm_label": "ff()"
     },
     {
@@ -6177,7 +6384,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L67",
       "id": "mirador3_min_h_componentwillunmount",
-      "community": 1,
+      "community": 0,
       "norm_label": ".componentwillunmount()"
     },
     {
@@ -6213,7 +6420,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L91",
       "id": "mirador3_min_ir",
-      "community": 0,
+      "community": 4,
       "norm_label": "ir()"
     },
     {
@@ -6240,7 +6447,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L91",
       "id": "mirador3_min_fi",
-      "community": 0,
+      "community": 4,
       "norm_label": "fi()"
     },
     {
@@ -6339,7 +6546,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L91",
       "id": "mirador3_min_ca",
-      "community": 0,
+      "community": 1,
       "norm_label": "ca()"
     },
     {
@@ -6510,7 +6717,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L91",
       "id": "mirador3_min_fs",
-      "community": 0,
+      "community": 14,
       "norm_label": "fs()"
     },
     {
@@ -6519,7 +6726,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L91",
       "id": "mirador3_min_ds",
-      "community": 0,
+      "community": 14,
       "norm_label": "ds()"
     },
     {
@@ -6771,7 +6978,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L121",
       "id": "mirador3_min_zn",
-      "community": 12,
+      "community": 0,
       "norm_label": "zn()"
     },
     {
@@ -6780,7 +6987,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L121",
       "id": "mirador3_min_bn",
-      "community": 12,
+      "community": 0,
       "norm_label": "bn()"
     },
     {
@@ -6834,7 +7041,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L121",
       "id": "mirador3_min_ai",
-      "community": 0,
+      "community": 4,
       "norm_label": "ai()"
     },
     {
@@ -6843,7 +7050,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L121",
       "id": "mirador3_min_di",
-      "community": 0,
+      "community": 4,
       "norm_label": "di()"
     },
     {
@@ -6861,7 +7068,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L121",
       "id": "mirador3_min_li",
-      "community": 0,
+      "community": 4,
       "norm_label": "li()"
     },
     {
@@ -6978,7 +7185,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L129",
       "id": "mirador3_min_bs",
-      "community": 0,
+      "community": 14,
       "norm_label": "bs()"
     },
     {
@@ -6996,7 +7203,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L129",
       "id": "mirador3_min_ws",
-      "community": 0,
+      "community": 14,
       "norm_label": "ws()"
     },
     {
@@ -7185,7 +7392,7 @@
       "source_file": "public/mirador3.min.js",
       "source_location": "L129",
       "id": "mirador3_min_yf",
-      "community": 6,
+      "community": 0,
       "norm_label": "yf()"
     },
     {
@@ -7239,7 +7446,7 @@
       "source_file": "lib/ucla/blacklight/dpla.rb",
       "source_location": "L1",
       "id": "lib_ucla_blacklight_dpla_rb",
-      "community": 7,
+      "community": 6,
       "norm_label": "dpla.rb"
     },
     {
@@ -7248,7 +7455,7 @@
       "source_file": "lib/ucla/blacklight/dpla.rb",
       "source_location": "L6",
       "id": "dpla_extended",
-      "community": 7,
+      "community": 6,
       "norm_label": "extended()"
     },
     {
@@ -7257,7 +7464,7 @@
       "source_file": "lib/ucla/blacklight/dpla.rb",
       "source_location": "L11",
       "id": "dpla_register_export_formats",
-      "community": 7,
+      "community": 6,
       "norm_label": "register_export_formats()"
     },
     {
@@ -7266,7 +7473,7 @@
       "source_file": "lib/ucla/blacklight/dpla.rb",
       "source_location": "L17",
       "id": "dpla_dc_field_names",
-      "community": 7,
+      "community": 6,
       "norm_label": "dc_field_names()"
     },
     {
@@ -7275,7 +7482,7 @@
       "source_file": "lib/ucla/blacklight/dpla.rb",
       "source_location": "L21",
       "id": "dpla_dcterms_field_names",
-      "community": 7,
+      "community": 6,
       "norm_label": "dcterms_field_names()"
     },
     {
@@ -7284,7 +7491,7 @@
       "source_file": "lib/ucla/blacklight/dpla.rb",
       "source_location": "L25",
       "id": "dpla_edm_field_names",
-      "community": 7,
+      "community": 6,
       "norm_label": "edm_field_names()"
     },
     {
@@ -7293,7 +7500,7 @@
       "source_file": "lib/ucla/blacklight/dpla.rb",
       "source_location": "L29",
       "id": "dpla_dpla_field_names",
-      "community": 7,
+      "community": 6,
       "norm_label": "dpla_field_names()"
     },
     {
@@ -7302,7 +7509,7 @@
       "source_file": "lib/ucla/blacklight/dpla.rb",
       "source_location": "L34",
       "id": "dpla_export_as_oai_dpla_xml",
-      "community": 7,
+      "community": 6,
       "norm_label": "export_as_oai_dpla_xml()"
     },
     {
@@ -7311,7 +7518,7 @@
       "source_file": "lib/ucla/blacklight/dpla.rb",
       "source_location": "L46",
       "id": "dpla_build_xml_tag",
-      "community": 7,
+      "community": 6,
       "norm_label": "build_xml_tag()"
     },
     {
@@ -7320,7 +7527,7 @@
       "source_file": "lib/ucla/blacklight/dpla.rb",
       "source_location": "L63",
       "id": "dpla_field_prefix",
-      "community": 7,
+      "community": 6,
       "norm_label": "field_prefix()"
     },
     {
@@ -7329,7 +7536,7 @@
       "source_file": "lib/ucla/blacklight/dpla.rb",
       "source_location": "L70",
       "id": "dpla_dc_field_name",
-      "community": 7,
+      "community": 6,
       "norm_label": "dc_field_name?()"
     },
     {
@@ -7338,7 +7545,7 @@
       "source_file": "lib/ucla/blacklight/dpla.rb",
       "source_location": "L74",
       "id": "dpla_dcterms_field_name",
-      "community": 7,
+      "community": 6,
       "norm_label": "dcterms_field_name?()"
     },
     {
@@ -7347,7 +7554,7 @@
       "source_file": "lib/ucla/blacklight/dpla.rb",
       "source_location": "L78",
       "id": "dpla_edm_field_name",
-      "community": 7,
+      "community": 6,
       "norm_label": "edm_field_name?()"
     },
     {
@@ -7356,7 +7563,7 @@
       "source_file": "lib/ucla/blacklight/dpla.rb",
       "source_location": "L82",
       "id": "dpla_dpla_field_name",
-      "community": 7,
+      "community": 6,
       "norm_label": "dpla_field_name?()"
     },
     {
@@ -7473,7 +7680,7 @@
       "source_file": "db/schema.rb",
       "source_location": "L1",
       "id": "db_schema_rb",
-      "community": 154,
+      "community": 155,
       "norm_label": "schema.rb"
     },
     {
@@ -7482,7 +7689,7 @@
       "source_file": "db/seeds.rb",
       "source_location": "L1",
       "id": "db_seeds_rb",
-      "community": 155,
+      "community": 156,
       "norm_label": "seeds.rb"
     },
     {
@@ -7653,7 +7860,7 @@
       "source_file": "db/migrate/20180918212345_devise_create_users.rb",
       "source_location": "L1",
       "id": "db_migrate_20180918212345_devise_create_users_rb",
-      "community": 11,
+      "community": 10,
       "norm_label": "20180918212345_devise_create_users.rb"
     },
     {
@@ -7662,7 +7869,7 @@
       "source_file": "db/migrate/20180918212345_devise_create_users.rb",
       "source_location": "L3",
       "id": "20180918212345_devise_create_users_devisecreateusers",
-      "community": 11,
+      "community": 10,
       "norm_label": "devisecreateusers"
     },
     {
@@ -7671,7 +7878,7 @@
       "source_file": "db/migrate/20180918212345_devise_create_users.rb",
       "source_location": "L4",
       "id": "20180918212345_devise_create_users_devisecreateusers_change",
-      "community": 11,
+      "community": 10,
       "norm_label": ".change()"
     },
     {
@@ -7698,7 +7905,7 @@
       "source_file": "e2e/cypress/plugins/index.js",
       "source_location": "L1",
       "id": "e2e_cypress_plugins_index_js",
-      "community": 156,
+      "community": 157,
       "norm_label": "index.js"
     },
     {
@@ -7707,7 +7914,7 @@
       "source_file": "e2e/cypress/support/commands.js",
       "source_location": "L1",
       "id": "e2e_cypress_support_commands_js",
-      "community": 157,
+      "community": 158,
       "norm_label": "commands.js"
     },
     {
@@ -7716,7 +7923,7 @@
       "source_file": "e2e/cypress/support/e2e.js",
       "source_location": "L1",
       "id": "e2e_cypress_support_e2e_js",
-      "community": 158,
+      "community": 159,
       "norm_label": "e2e.js"
     },
     {
@@ -7725,7 +7932,7 @@
       "source_file": "e2e/cypress/e2e/sinai_homepage.cy.js",
       "source_location": "L1",
       "id": "e2e_cypress_e2e_sinai_homepage_cy_js",
-      "community": 159,
+      "community": 160,
       "norm_label": "sinai_homepage.cy.js"
     },
     {
@@ -7734,7 +7941,7 @@
       "source_file": "e2e/cypress/e2e/sinai_work_show.cy.js",
       "source_location": "L1",
       "id": "e2e_cypress_e2e_sinai_work_show_cy_js",
-      "community": 160,
+      "community": 161,
       "norm_label": "sinai_work_show.cy.js"
     },
     {
@@ -7743,7 +7950,7 @@
       "source_file": "e2e/cypress/e2e/sinai_search.cy.js",
       "source_location": "L1",
       "id": "e2e_cypress_e2e_sinai_search_cy_js",
-      "community": 161,
+      "community": 162,
       "norm_label": "sinai_search.cy.js"
     },
     {
@@ -7963,7 +8170,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 162,
+      "community": 163,
       "norm_label": "locus (folio reference)",
       "id": "smdl_field_reference_locus"
     },
@@ -8522,7 +8729,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 163,
+      "community": 164,
       "norm_label": "smdl_overview.md (empty file)",
       "id": "smdl_overview_empty"
     },
@@ -9002,6 +9209,18 @@
       "_tgt": "right_rail_helper_extract_nav_entries_from_html",
       "source": "user_user_to_s",
       "target": "right_rail_helper_extract_nav_entries_from_html"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/helpers/right_rail_helper.rb",
+      "source_location": "L77",
+      "weight": 1.0,
+      "_src": "user_user_to_s",
+      "_tgt": "right_rail_helper_panel_has_collapsibles",
+      "source": "user_user_to_s",
+      "target": "right_rail_helper_panel_has_collapsibles"
     },
     {
       "relation": "calls",
@@ -11134,18 +11353,6 @@
       "source_location": "L7",
       "weight": 1.0,
       "_src": "static_controller_staticcontroller",
-      "_tgt": "static_controller_staticcontroller_contributors_credits",
-      "source": "static_controller_staticcontroller",
-      "target": "static_controller_staticcontroller_contributors_credits",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "app/controllers/static_controller.rb",
-      "source_location": "L9",
-      "weight": 1.0,
-      "_src": "static_controller_staticcontroller",
       "_tgt": "static_controller_staticcontroller_manuscript_descriptions",
       "source": "static_controller_staticcontroller",
       "target": "static_controller_staticcontroller_manuscript_descriptions",
@@ -11155,7 +11362,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/controllers/static_controller.rb",
-      "source_location": "L11",
+      "source_location": "L9",
       "weight": 1.0,
       "_src": "static_controller_staticcontroller",
       "_tgt": "static_controller_staticcontroller_references",
@@ -11167,7 +11374,43 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/controllers/static_controller.rb",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "static_controller_staticcontroller",
+      "_tgt": "static_controller_staticcontroller_sinai_library_digitization_project",
+      "source": "static_controller_staticcontroller",
+      "target": "static_controller_staticcontroller_sinai_library_digitization_project",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/controllers/static_controller.rb",
       "source_location": "L13",
+      "weight": 1.0,
+      "_src": "static_controller_staticcontroller",
+      "_tgt": "static_controller_staticcontroller_sinai_palimpsests_project",
+      "source": "static_controller_staticcontroller",
+      "target": "static_controller_staticcontroller_sinai_palimpsests_project",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/controllers/static_controller.rb",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_src": "static_controller_staticcontroller",
+      "_tgt": "static_controller_staticcontroller_syriac_parchment_description_project",
+      "source": "static_controller_staticcontroller",
+      "target": "static_controller_staticcontroller_syriac_parchment_description_project",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/controllers/static_controller.rb",
+      "source_location": "L17",
       "weight": 1.0,
       "_src": "static_controller_staticcontroller",
       "_tgt": "static_controller_staticcontroller_terms_of_use",
@@ -11179,7 +11422,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/controllers/static_controller.rb",
-      "source_location": "L15",
+      "source_location": "L19",
       "weight": 1.0,
       "_src": "static_controller_staticcontroller",
       "_tgt": "static_controller_staticcontroller_version",
@@ -11215,7 +11458,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/controllers/catalog_controller.rb",
-      "source_location": "L482",
+      "source_location": "L473",
       "weight": 1.0,
       "_src": "catalog_controller_catalogcontroller",
       "_tgt": "catalog_controller_catalogcontroller_enforce_show_permissions",
@@ -11227,7 +11470,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/controllers/catalog_controller.rb",
-      "source_location": "L495",
+      "source_location": "L486",
       "weight": 1.0,
       "_src": "catalog_controller_catalogcontroller",
       "_tgt": "catalog_controller_catalogcontroller_show",
@@ -11239,7 +11482,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/controllers/catalog_controller.rb",
-      "source_location": "L515",
+      "source_location": "L506",
       "weight": 1.0,
       "_src": "catalog_controller_catalogcontroller",
       "_tgt": "catalog_controller_catalogcontroller_oai_provider",
@@ -11298,8 +11541,308 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L47",
+      "weight": 1.0,
+      "_src": "app_assets_javascripts_expand_collapse_all_js",
+      "_tgt": "expand_collapse_all_maincolumnfor",
+      "source": "app_assets_javascripts_expand_collapse_all_js",
+      "target": "expand_collapse_all_maincolumnfor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L54",
+      "weight": 1.0,
+      "_src": "app_assets_javascripts_expand_collapse_all_js",
+      "_tgt": "expand_collapse_all_tocbutton",
+      "source": "app_assets_javascripts_expand_collapse_all_js",
+      "target": "expand_collapse_all_tocbutton",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L58",
+      "weight": 1.0,
+      "_src": "app_assets_javascripts_expand_collapse_all_js",
+      "_tgt": "expand_collapse_all_isexpanded",
+      "source": "app_assets_javascripts_expand_collapse_all_js",
+      "target": "expand_collapse_all_isexpanded",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L70",
+      "weight": 1.0,
+      "_src": "app_assets_javascripts_expand_collapse_all_js",
+      "_tgt": "expand_collapse_all_setall",
+      "source": "app_assets_javascripts_expand_collapse_all_js",
+      "target": "expand_collapse_all_setall",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L88",
+      "weight": 1.0,
+      "_src": "app_assets_javascripts_expand_collapse_all_js",
+      "_tgt": "expand_collapse_all_synccontrol",
+      "source": "app_assets_javascripts_expand_collapse_all_js",
+      "target": "expand_collapse_all_synccontrol",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L98",
+      "weight": 1.0,
+      "_src": "app_assets_javascripts_expand_collapse_all_js",
+      "_tgt": "expand_collapse_all_syncall",
+      "source": "app_assets_javascripts_expand_collapse_all_js",
+      "target": "expand_collapse_all_syncall",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L106",
+      "weight": 1.0,
+      "_src": "app_assets_javascripts_expand_collapse_all_js",
+      "_tgt": "expand_collapse_all_schedulesync",
+      "source": "app_assets_javascripts_expand_collapse_all_js",
+      "target": "expand_collapse_all_schedulesync",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L115",
+      "weight": 1.0,
+      "_src": "app_assets_javascripts_expand_collapse_all_js",
+      "_tgt": "expand_collapse_all_ondocumentclick",
+      "source": "app_assets_javascripts_expand_collapse_all_js",
+      "target": "expand_collapse_all_ondocumentclick",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L134",
+      "weight": 1.0,
+      "_src": "app_assets_javascripts_expand_collapse_all_js",
+      "_tgt": "expand_collapse_all_onpanelclick",
+      "source": "app_assets_javascripts_expand_collapse_all_js",
+      "target": "expand_collapse_all_onpanelclick",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L141",
+      "weight": 1.0,
+      "_src": "app_assets_javascripts_expand_collapse_all_js",
+      "_tgt": "expand_collapse_all_bindpanel",
+      "source": "app_assets_javascripts_expand_collapse_all_js",
+      "target": "expand_collapse_all_bindpanel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L153",
+      "weight": 1.0,
+      "_src": "app_assets_javascripts_expand_collapse_all_js",
+      "_tgt": "expand_collapse_all_init",
+      "source": "app_assets_javascripts_expand_collapse_all_js",
+      "target": "expand_collapse_all_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L89",
+      "weight": 1.0,
+      "_src": "expand_collapse_all_synccontrol",
+      "_tgt": "expand_collapse_all_maincolumnfor",
+      "source": "expand_collapse_all_maincolumnfor",
+      "target": "expand_collapse_all_synccontrol",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L119",
+      "weight": 1.0,
+      "_src": "expand_collapse_all_ondocumentclick",
+      "_tgt": "expand_collapse_all_maincolumnfor",
+      "source": "expand_collapse_all_maincolumnfor",
+      "target": "expand_collapse_all_ondocumentclick",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L65",
+      "weight": 1.0,
+      "_src": "expand_collapse_all_isexpanded",
+      "_tgt": "expand_collapse_all_tocbutton",
+      "source": "expand_collapse_all_tocbutton",
+      "target": "expand_collapse_all_isexpanded",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L79",
+      "weight": 1.0,
+      "_src": "expand_collapse_all_setall",
+      "_tgt": "expand_collapse_all_tocbutton",
+      "source": "expand_collapse_all_tocbutton",
+      "target": "expand_collapse_all_setall",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L91",
+      "weight": 1.0,
+      "_src": "expand_collapse_all_synccontrol",
+      "_tgt": "expand_collapse_all_isexpanded",
+      "source": "expand_collapse_all_isexpanded",
+      "target": "expand_collapse_all_synccontrol",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L122",
+      "weight": 1.0,
+      "_src": "expand_collapse_all_ondocumentclick",
+      "_tgt": "expand_collapse_all_isexpanded",
+      "source": "expand_collapse_all_isexpanded",
+      "target": "expand_collapse_all_ondocumentclick",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L122",
+      "weight": 1.0,
+      "_src": "expand_collapse_all_ondocumentclick",
+      "_tgt": "expand_collapse_all_setall",
+      "source": "expand_collapse_all_setall",
+      "target": "expand_collapse_all_ondocumentclick",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L100",
+      "weight": 1.0,
+      "_src": "expand_collapse_all_syncall",
+      "_tgt": "expand_collapse_all_synccontrol",
+      "source": "expand_collapse_all_synccontrol",
+      "target": "expand_collapse_all_syncall",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L125",
+      "weight": 1.0,
+      "_src": "expand_collapse_all_ondocumentclick",
+      "_tgt": "expand_collapse_all_synccontrol",
+      "source": "expand_collapse_all_synccontrol",
+      "target": "expand_collapse_all_ondocumentclick",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L111",
+      "weight": 1.0,
+      "_src": "expand_collapse_all_schedulesync",
+      "_tgt": "expand_collapse_all_syncall",
+      "source": "expand_collapse_all_syncall",
+      "target": "expand_collapse_all_schedulesync",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L172",
+      "weight": 1.0,
+      "_src": "expand_collapse_all_init",
+      "_tgt": "expand_collapse_all_syncall",
+      "source": "expand_collapse_all_syncall",
+      "target": "expand_collapse_all_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L138",
+      "weight": 1.0,
+      "_src": "expand_collapse_all_onpanelclick",
+      "_tgt": "expand_collapse_all_schedulesync",
+      "source": "expand_collapse_all_schedulesync",
+      "target": "expand_collapse_all_onpanelclick",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/expand_collapse_all.js",
+      "source_location": "L169",
+      "weight": 1.0,
+      "_src": "expand_collapse_all_init",
+      "_tgt": "expand_collapse_all_bindpanel",
+      "source": "expand_collapse_all_bindpanel",
+      "target": "expand_collapse_all_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L17",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_src": "app_assets_javascripts_right_rail_nav_js",
+      "_tgt": "right_rail_nav_expandmoregroup",
+      "source": "app_assets_javascripts_right_rail_nav_js",
+      "target": "right_rail_nav_expandmoregroup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/right_rail_nav.js",
+      "source_location": "L29",
       "weight": 1.0,
       "_src": "app_assets_javascripts_right_rail_nav_js",
       "_tgt": "right_rail_nav_getactiveoffset",
@@ -11311,7 +11854,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L22",
+      "source_location": "L34",
       "weight": 1.0,
       "_src": "app_assets_javascripts_right_rail_nav_js",
       "_tgt": "right_rail_nav_getactiverail",
@@ -11323,7 +11866,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L28",
+      "source_location": "L40",
       "weight": 1.0,
       "_src": "app_assets_javascripts_right_rail_nav_js",
       "_tgt": "right_rail_nav_collectentries",
@@ -11335,7 +11878,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L46",
+      "source_location": "L61",
       "weight": 1.0,
       "_src": "app_assets_javascripts_right_rail_nav_js",
       "_tgt": "right_rail_nav_setactive",
@@ -11347,7 +11890,19 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L56",
+      "source_location": "L81",
+      "weight": 1.0,
+      "_src": "app_assets_javascripts_right_rail_nav_js",
+      "_tgt": "right_rail_nav_setupnavmoretoggle",
+      "source": "app_assets_javascripts_right_rail_nav_js",
+      "target": "right_rail_nav_setupnavmoretoggle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/right_rail_nav.js",
+      "source_location": "L93",
       "weight": 1.0,
       "_src": "app_assets_javascripts_right_rail_nav_js",
       "_tgt": "right_rail_nav_computeactiveid",
@@ -11359,7 +11914,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L72",
+      "source_location": "L109",
       "weight": 1.0,
       "_src": "app_assets_javascripts_right_rail_nav_js",
       "_tgt": "right_rail_nav_setupscrollspy",
@@ -11371,7 +11926,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L93",
+      "source_location": "L130",
       "weight": 1.0,
       "_src": "app_assets_javascripts_right_rail_nav_js",
       "_tgt": "right_rail_nav_setupclickhandling",
@@ -11383,7 +11938,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L123",
+      "source_location": "L172",
       "weight": 1.0,
       "_src": "app_assets_javascripts_right_rail_nav_js",
       "_tgt": "right_rail_nav_activaterail",
@@ -11395,7 +11950,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L130",
+      "source_location": "L179",
       "weight": 1.0,
       "_src": "app_assets_javascripts_right_rail_nav_js",
       "_tgt": "right_rail_nav_setuptabswitchobserver",
@@ -11407,7 +11962,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L146",
+      "source_location": "L195",
       "weight": 1.0,
       "_src": "app_assets_javascripts_right_rail_nav_js",
       "_tgt": "right_rail_nav_setupviewervisibility",
@@ -11419,7 +11974,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L179",
+      "source_location": "L228",
       "weight": 1.0,
       "_src": "app_assets_javascripts_right_rail_nav_js",
       "_tgt": "right_rail_nav_getviewercontainer",
@@ -11431,7 +11986,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L183",
+      "source_location": "L232",
       "weight": 1.0,
       "_src": "app_assets_javascripts_right_rail_nav_js",
       "_tgt": "right_rail_nav_examineisopen",
@@ -11443,7 +11998,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L188",
+      "source_location": "L237",
       "weight": 1.0,
       "_src": "app_assets_javascripts_right_rail_nav_js",
       "_tgt": "right_rail_nav_openexamine",
@@ -11455,7 +12010,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L200",
+      "source_location": "L249",
       "weight": 1.0,
       "_src": "app_assets_javascripts_right_rail_nav_js",
       "_tgt": "right_rail_nav_closeexamine",
@@ -11467,7 +12022,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L213",
+      "source_location": "L262",
       "weight": 1.0,
       "_src": "app_assets_javascripts_right_rail_nav_js",
       "_tgt": "right_rail_nav_setupexamineoverlay",
@@ -11479,7 +12034,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L239",
+      "source_location": "L288",
       "weight": 1.0,
       "_src": "app_assets_javascripts_right_rail_nav_js",
       "_tgt": "right_rail_nav_init",
@@ -11491,7 +12046,19 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L59",
+      "source_location": "L68",
+      "weight": 1.0,
+      "_src": "right_rail_nav_setactive",
+      "_tgt": "right_rail_nav_expandmoregroup",
+      "source": "right_rail_nav_expandmoregroup",
+      "target": "right_rail_nav_setactive",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/right_rail_nav.js",
+      "source_location": "L96",
       "weight": 1.0,
       "_src": "right_rail_nav_computeactiveid",
       "_tgt": "right_rail_nav_getactiveoffset",
@@ -11503,7 +12070,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L124",
+      "source_location": "L173",
       "weight": 1.0,
       "_src": "right_rail_nav_activaterail",
       "_tgt": "right_rail_nav_getactiverail",
@@ -11515,7 +12082,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L125",
+      "source_location": "L174",
       "weight": 1.0,
       "_src": "right_rail_nav_activaterail",
       "_tgt": "right_rail_nav_collectentries",
@@ -11527,7 +12094,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L84",
+      "source_location": "L121",
       "weight": 1.0,
       "_src": "right_rail_nav_setupscrollspy",
       "_tgt": "right_rail_nav_setactive",
@@ -11539,7 +12106,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L119",
+      "source_location": "L168",
       "weight": 1.0,
       "_src": "right_rail_nav_setupclickhandling",
       "_tgt": "right_rail_nav_setactive",
@@ -11551,7 +12118,19 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L84",
+      "source_location": "L292",
+      "weight": 1.0,
+      "_src": "right_rail_nav_init",
+      "_tgt": "right_rail_nav_setupnavmoretoggle",
+      "source": "right_rail_nav_setupnavmoretoggle",
+      "target": "right_rail_nav_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "app/assets/javascripts/right_rail_nav.js",
+      "source_location": "L121",
       "weight": 1.0,
       "_src": "right_rail_nav_setupscrollspy",
       "_tgt": "right_rail_nav_computeactiveid",
@@ -11563,7 +12142,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L127",
+      "source_location": "L176",
       "weight": 1.0,
       "_src": "right_rail_nav_activaterail",
       "_tgt": "right_rail_nav_setupscrollspy",
@@ -11575,7 +12154,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L126",
+      "source_location": "L175",
       "weight": 1.0,
       "_src": "right_rail_nav_activaterail",
       "_tgt": "right_rail_nav_setupclickhandling",
@@ -11587,7 +12166,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L136",
+      "source_location": "L185",
       "weight": 1.0,
       "_src": "right_rail_nav_setuptabswitchobserver",
       "_tgt": "right_rail_nav_activaterail",
@@ -11599,7 +12178,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L241",
+      "source_location": "L290",
       "weight": 1.0,
       "_src": "right_rail_nav_init",
       "_tgt": "right_rail_nav_activaterail",
@@ -11611,7 +12190,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L242",
+      "source_location": "L291",
       "weight": 1.0,
       "_src": "right_rail_nav_init",
       "_tgt": "right_rail_nav_setuptabswitchobserver",
@@ -11623,7 +12202,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L243",
+      "source_location": "L293",
       "weight": 1.0,
       "_src": "right_rail_nav_init",
       "_tgt": "right_rail_nav_setupviewervisibility",
@@ -11635,7 +12214,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L184",
+      "source_location": "L233",
       "weight": 1.0,
       "_src": "right_rail_nav_examineisopen",
       "_tgt": "right_rail_nav_getviewercontainer",
@@ -11647,7 +12226,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L189",
+      "source_location": "L238",
       "weight": 1.0,
       "_src": "right_rail_nav_openexamine",
       "_tgt": "right_rail_nav_getviewercontainer",
@@ -11659,7 +12238,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L201",
+      "source_location": "L250",
       "weight": 1.0,
       "_src": "right_rail_nav_closeexamine",
       "_tgt": "right_rail_nav_getviewercontainer",
@@ -11671,7 +12250,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L190",
+      "source_location": "L239",
       "weight": 1.0,
       "_src": "right_rail_nav_openexamine",
       "_tgt": "right_rail_nav_examineisopen",
@@ -11683,7 +12262,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L202",
+      "source_location": "L251",
       "weight": 1.0,
       "_src": "right_rail_nav_closeexamine",
       "_tgt": "right_rail_nav_examineisopen",
@@ -11695,7 +12274,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L231",
+      "source_location": "L280",
       "weight": 1.0,
       "_src": "right_rail_nav_setupexamineoverlay",
       "_tgt": "right_rail_nav_examineisopen",
@@ -11707,7 +12286,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L221",
+      "source_location": "L270",
       "weight": 1.0,
       "_src": "right_rail_nav_setupexamineoverlay",
       "_tgt": "right_rail_nav_openexamine",
@@ -11719,7 +12298,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L226",
+      "source_location": "L275",
       "weight": 1.0,
       "_src": "right_rail_nav_setupexamineoverlay",
       "_tgt": "right_rail_nav_closeexamine",
@@ -11731,7 +12310,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/assets/javascripts/right_rail_nav.js",
-      "source_location": "L244",
+      "source_location": "L294",
       "weight": 1.0,
       "_src": "right_rail_nav_init",
       "_tgt": "right_rail_nav_setupexamineoverlay",
@@ -12367,7 +12946,19 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L48",
+      "source_location": "L76",
+      "weight": 1.0,
+      "_src": "app_helpers_right_rail_helper_rb",
+      "_tgt": "right_rail_helper_panel_has_collapsibles",
+      "source": "app_helpers_right_rail_helper_rb",
+      "target": "right_rail_helper_panel_has_collapsibles",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/helpers/right_rail_helper.rb",
+      "source_location": "L84",
       "weight": 1.0,
       "_src": "app_helpers_right_rail_helper_rb",
       "_tgt": "right_rail_helper_nav_skipped",
@@ -12379,7 +12970,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L54",
+      "source_location": "L90",
       "weight": 1.0,
       "_src": "app_helpers_right_rail_helper_rb",
       "_tgt": "right_rail_helper_nav_entry_for",
@@ -12391,7 +12982,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L70",
+      "source_location": "L106",
       "weight": 1.0,
       "_src": "app_helpers_right_rail_helper_rb",
       "_tgt": "right_rail_helper_nest_by_level",
@@ -12403,7 +12994,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L82",
+      "source_location": "L118",
       "weight": 1.0,
       "_src": "app_helpers_right_rail_helper_rb",
       "_tgt": "right_rail_helper_strip_level_keys",
@@ -12415,7 +13006,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L88",
+      "source_location": "L124",
       "weight": 1.0,
       "_src": "app_helpers_right_rail_helper_rb",
       "_tgt": "right_rail_helper_parse_manuscript_json",
@@ -12427,7 +13018,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L97",
+      "source_location": "L133",
       "weight": 1.0,
       "_src": "app_helpers_right_rail_helper_rb",
       "_tgt": "right_rail_helper_build_part_entry",
@@ -12439,7 +13030,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L106",
+      "source_location": "L142",
       "weight": 1.0,
       "_src": "app_helpers_right_rail_helper_rb",
       "_tgt": "right_rail_helper_part_header_label",
@@ -12451,7 +13042,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L118",
+      "source_location": "L154",
       "weight": 1.0,
       "_src": "app_helpers_right_rail_helper_rb",
       "_tgt": "right_rail_helper_first_origin_date",
@@ -12463,7 +13054,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L131",
+      "source_location": "L167",
       "weight": 1.0,
       "_src": "app_helpers_right_rail_helper_rb",
       "_tgt": "right_rail_helper_build_item_entries",
@@ -12475,7 +13066,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L150",
+      "source_location": "L186",
       "weight": 1.0,
       "_src": "app_helpers_right_rail_helper_rb",
       "_tgt": "right_rail_helper_item_header_label",
@@ -12487,7 +13078,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L162",
+      "source_location": "L198",
       "weight": 1.0,
       "_src": "app_helpers_right_rail_helper_rb",
       "_tgt": "right_rail_helper_build_work_entries",
@@ -12499,7 +13090,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L174",
+      "source_location": "L210",
       "weight": 1.0,
       "_src": "app_helpers_right_rail_helper_rb",
       "_tgt": "right_rail_helper_work_header_label",
@@ -12511,7 +13102,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L188",
+      "source_location": "L224",
       "weight": 1.0,
       "_src": "app_helpers_right_rail_helper_rb",
       "_tgt": "right_rail_helper_paracontents_present",
@@ -12523,7 +13114,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L198",
+      "source_location": "L234",
       "weight": 1.0,
       "_src": "app_helpers_right_rail_helper_rb",
       "_tgt": "right_rail_helper_notes_on_manuscript_present",
@@ -12619,7 +13210,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L78",
+      "source_location": "L114",
       "weight": 1.0,
       "_src": "right_rail_helper_nest_by_level",
       "_tgt": "right_rail_helper_strip_level_keys",
@@ -12631,7 +13222,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L100",
+      "source_location": "L136",
       "weight": 1.0,
       "_src": "right_rail_helper_build_part_entry",
       "_tgt": "right_rail_helper_part_header_label",
@@ -12643,7 +13234,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L101",
+      "source_location": "L137",
       "weight": 1.0,
       "_src": "right_rail_helper_build_part_entry",
       "_tgt": "right_rail_helper_build_item_entries",
@@ -12655,7 +13246,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L109",
+      "source_location": "L145",
       "weight": 1.0,
       "_src": "right_rail_helper_part_header_label",
       "_tgt": "right_rail_helper_first_origin_date",
@@ -12667,7 +13258,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L143",
+      "source_location": "L179",
       "weight": 1.0,
       "_src": "right_rail_helper_build_item_entries",
       "_tgt": "right_rail_helper_item_header_label",
@@ -12679,7 +13270,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L144",
+      "source_location": "L180",
       "weight": 1.0,
       "_src": "right_rail_helper_build_item_entries",
       "_tgt": "right_rail_helper_build_work_entries",
@@ -12691,7 +13282,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/helpers/right_rail_helper.rb",
-      "source_location": "L167",
+      "source_location": "L203",
       "weight": 1.0,
       "_src": "right_rail_helper_build_work_entries",
       "_tgt": "right_rail_helper_work_header_label",
@@ -14390,6 +14981,78 @@
       "source": "spec_support_controller_level_helpers_rb",
       "target": "controller_level_helpers_initialize_controller_helpers",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "spec/views/catalog/work_record_sinai/right_rail_spec.rb",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_src": "spec_views_catalog_work_record_sinai_right_rail_spec_rb",
+      "_tgt": "right_rail_spec_render_rail",
+      "source": "spec_views_catalog_work_record_sinai_right_rail_spec_rb",
+      "target": "right_rail_spec_render_rail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "spec/views/catalog/work_record_sinai/right_rail_spec.rb",
+      "source_location": "L64",
+      "weight": 1.0,
+      "_src": "spec_views_catalog_work_record_sinai_right_rail_spec_rb",
+      "_tgt": "right_rail_spec_tree_with_works",
+      "source": "spec_views_catalog_work_record_sinai_right_rail_spec_rb",
+      "target": "right_rail_spec_tree_with_works",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "spec/views/catalog/work_record_sinai/right_rail_spec.rb",
+      "source_location": "L77",
+      "weight": 1.0,
+      "_src": "spec_views_catalog_work_record_sinai_right_rail_spec_rb",
+      "_tgt": "right_rail_spec_expect_rail_css",
+      "source": "spec_views_catalog_work_record_sinai_right_rail_spec_rb",
+      "target": "right_rail_spec_expect_rail_css",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "spec/views/catalog/work_record_sinai/right_rail_spec.rb",
+      "source_location": "L81",
+      "weight": 1.0,
+      "_src": "spec_views_catalog_work_record_sinai_right_rail_spec_rb",
+      "_tgt": "right_rail_spec_expect_no_rail_css",
+      "source": "spec_views_catalog_work_record_sinai_right_rail_spec_rb",
+      "target": "right_rail_spec_expect_no_rail_css",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "spec/views/catalog/work_record_sinai/right_rail_spec.rb",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "right_rail_spec_render_rail",
+      "_tgt": "mirador3_min_h_render",
+      "source": "right_rail_spec_render_rail",
+      "target": "mirador3_min_h_render"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "spec/views/catalog/work_record_sinai/right_rail_spec.rb",
+      "source_location": "L78",
+      "weight": 1.0,
+      "_src": "right_rail_spec_expect_rail_css",
+      "_tgt": "mirador3_min_to",
+      "source": "right_rail_spec_expect_rail_css",
+      "target": "mirador3_min_to"
     },
     {
       "relation": "contains",

@@ -4,11 +4,15 @@ class StaticController < ApplicationController
 
   def contact; end
 
-  def contributors_credits; end
-
   def manuscript_descriptions; end
 
   def references; end
+
+  def sinai_library_digitization_project; end
+
+  def sinai_palimpsests_project; end
+
+  def syriac_parchment_description_project; end
 
   def terms_of_use; end
 

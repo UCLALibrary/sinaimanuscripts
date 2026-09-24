@@ -107,6 +107,13 @@
   &:hover {
     transform: scale(1.01);
   }
+
+  // Show the whole photo on phones instead of a tall center crop
+  @media (max-width: 767px) {
+    height: auto;
+    // stylelint-disable-next-line property-no-unknown
+    aspect-ratio: 3 / 2;
+  }
 }
 
 .grid__img-wrapper--sinai-about2 {
@@ -121,6 +128,13 @@
   &:hover {
     transform: scale(1.01);
   }
+
+  // Show the whole photo on phones instead of a tall center crop
+  @media (max-width: 767px) {
+    height: auto;
+    // stylelint-disable-next-line property-no-unknown
+    aspect-ratio: 2 / 1;
+  }
 }
 
 .grid__img-wrapper--sinai-about3 {
@@ -134,5 +148,12 @@
 
   &:hover {
     transform: scale(1.01);
+  }
+
+  // Show the whole photo on phones instead of a tall center crop
+  @media (max-width: 767px) {
+    height: auto;
+    // stylelint-disable-next-line property-no-unknown
+    aspect-ratio: 3 / 2;
   }
 }

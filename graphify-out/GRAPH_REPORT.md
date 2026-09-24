@@ -1,12 +1,12 @@
-# Graph Report - sinaimanuscripts  (2026-07-28)
+# Graph Report - sinaimanuscripts  (2026-09-24)
 
 ## Corpus Check
-- 178 files · ~1,897,237 words
+- 181 files · ~1,897,787 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 934 nodes · 3272 edges · 65 communities detected
-- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 121 edges (avg confidence: 0.8)
+- 957 nodes · 3310 edges · 65 communities detected
+- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 124 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -73,8 +73,8 @@
 - [[_COMMUNITY_Community 66|Community 66]]
 - [[_COMMUNITY_Community 71|Community 71]]
 - [[_COMMUNITY_Community 72|Community 72]]
-- [[_COMMUNITY_Community 162|Community 162]]
 - [[_COMMUNITY_Community 163|Community 163]]
+- [[_COMMUNITY_Community 164|Community 164]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `call()` - 125 edges
@@ -97,8 +97,8 @@
   app/helpers/blacklight/blacklight_helper_behavior.rb → public/mirador3.min.js
 - `sinai_application_name()` --calls--> `t()`  [INFERRED]
   app/helpers/blacklight/blacklight_helper_behavior.rb → public/mirador3.min.js
-- `init()` --calls--> `E()`  [INFERRED]
-  app/assets/javascripts/right_rail_nav.js → public/mirador3.min.js
+- `expect_rail_css()` --calls--> `to()`  [INFERRED]
+  spec/views/catalog/work_record_sinai/right_rail_spec.rb → public/mirador3.min.js
 
 ## Hyperedges (group relationships)
 - **JSON to HTML rendering pipeline** — smdl_field_reference_feed_ursus, smdl_field_reference_solr_index, smdl_field_reference_catalog_controller, smdl_field_reference_base_metadata_presenter, smdl_field_reference_yaml_configs, smdl_field_reference_view_templates [EXTRACTED 1.00]
@@ -109,35 +109,35 @@
 
 ### Community 0 - "Community 0"
 Cohesion: 0.04
-Nodes (169): aa(), ac(), Ai(), al(), ao(), as(), Au(), Ba() (+161 more)
+Nodes (173): aa(), ac(), Af(), al(), ao(), as(), Au(), Ba() (+165 more)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.19
-Nodes (88): _(), a(), ae(), ar(), B(), Be(), br(), C() (+80 more)
+Nodes (89): _(), a(), ae(), ar(), B(), Be(), br(), C() (+81 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.04
-Nodes (47): AddPolymorphicTypeToBookmarks, schema_org_markup(), Connection, link_to_featured_work(), assoc_date_arrays(), parse_manuscript_json(), sinai_index_origin_dates(), build_names_dates_places() (+39 more)
+Nodes (48): AddPolymorphicTypeToBookmarks, schema_org_markup(), Connection, link_to_featured_work(), assoc_date_arrays(), parse_manuscript_json(), sinai_index_origin_dates(), build_names_dates_places() (+40 more)
 
 ### Community 3 - "Community 3"
 Cohesion: 0.03
-Nodes (31): ApplicationController, iconify_auto_link(), stacked_metadata_values(), application_name(), blacklight_path(), document_has_value?(), document_heading(), document_presenter() (+23 more)
+Nodes (33): ApplicationController, iconify_auto_link(), stacked_metadata_values(), application_name(), blacklight_path(), document_has_value?(), document_heading(), document_presenter() (+25 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.26
-Nodes (41): At(), bt(), call(), ct(), dt(), et(), Ft(), gt() (+33 more)
+Cohesion: 0.17
+Nodes (59): Ai(), At(), bi(), bt(), call(), ct(), Di(), dt() (+51 more)
 
 ### Community 5 - "Community 5"
 Cohesion: 0.09
 Nodes (36): Dawn Childress (domain/notation owner), Figma Designs (front end layouts), Rationale: Granular JSON data model (Dawn: 'probably made it too granular but awesome'), Rationale: Reusable paracontent template ticket mirrors Blacklight partial reuse, Sample JSON fixtures (5 fake-data records), Rationale: SMDL combines ms_obj/layer/text_unit into one JSON record (Data Portal keeps them separate), SMDL JIRA Ticket Prefix, Rationale: Notation solves communication wall between domain expert and devs (+28 more)
 
 ### Community 6 - "Community 6"
-Cohesion: 0.1
-Nodes (23): Af(), Bf(), cf(), df(), ef(), Ff(), gf(), hf() (+15 more)
-
-### Community 7 - "Community 7"
 Cohesion: 0.13
 Nodes (10): build_xml_tag(), dc_field_name?(), dcterms_field_name?(), dpla_field_name?(), edm_field_name?(), export_as_oai_dpla_xml(), extended(), field_prefix() (+2 more)
+
+### Community 7 - "Community 7"
+Cohesion: 0.24
+Nodes (18): activateRail(), closeExamine(), collectEntries(), computeActiveId(), examineIsOpen(), expandMoreGroup(), getActiveOffset(), getActiveRail() (+10 more)
 
 ### Community 8 - "Community 8"
 Cohesion: 0.13
@@ -148,28 +148,28 @@ Cohesion: 0.13
 Nodes (18): Data Structure Migration (backend), Lisa McAulay (Project Manager), Monica (frontend dev, Piotr's collaborator), Piotr Nowak (Nopio frontend dev), Sinai Data Portal (sinai.library.ucla.edu), SMDL Frontend Rebuild (epic), Tatiana (backend dev; data structure migration), Rationale: Tatiana finishes backend before Piotr takes over frontend (avoid mid-task handoff) (+10 more)
 
 ### Community 10 - "Community 10"
-Cohesion: 0.27
-Nodes (16): activateRail(), closeExamine(), collectEntries(), computeActiveId(), examineIsOpen(), getActiveOffset(), getActiveRail(), getViewerContainer() (+8 more)
-
-### Community 11 - "Community 11"
 Cohesion: 0.17
 Nodes (9): DeviseCreateUsers, clamp(), Plot(), areaChart(), domDependenciesMet(), form_selection(), function_for_find_segment(), normalized_selection() (+1 more)
 
-### Community 12 - "Community 12"
+### Community 11 - "Community 11"
 Cohesion: 0.36
-Nodes (10): An(), Bn(), Dn(), In(), mn(), nn(), Rn(), vn() (+2 more)
+Nodes (11): bindPanel(), init(), isExpanded(), mainColumnFor(), onDocumentClick(), onPanelClick(), scheduleSync(), setAll() (+3 more)
+
+### Community 12 - "Community 12"
+Cohesion: 0.18
+Nodes (1): StaticController
 
 ### Community 13 - "Community 13"
 Cohesion: 0.24
 Nodes (5): b(), c(), d(), f(), CatalogController
 
 ### Community 14 - "Community 14"
-Cohesion: 0.25
-Nodes (2): BaseMetadataPresenter, CollectionOverviewMetadataPresenter
+Cohesion: 0.31
+Nodes (10): An(), Bs(), Dn(), ds(), fs(), In(), mn(), nn() (+2 more)
 
 ### Community 15 - "Community 15"
-Cohesion: 0.22
-Nodes (1): StaticController
+Cohesion: 0.25
+Nodes (2): BaseMetadataPresenter, CollectionOverviewMetadataPresenter
 
 ### Community 16 - "Community 16"
 Cohesion: 0.29
@@ -359,20 +359,20 @@ Nodes (2): Andy Wallace (DevOps / Blacklight auth), Blacklight 8 Authentication 
 Cohesion: 1.0
 Nodes (2): Staging Regression (build rollback), Staging Site (stage.sinaimanuscripts.library.ucla.edu)
 
-### Community 162 - "Community 162"
+### Community 163 - "Community 163"
 Cohesion: 1.0
 Nodes (1): Locus (folio reference)
 
-### Community 163 - "Community 163"
+### Community 164 - "Community 164"
 Cohesion: 1.0
 Nodes (1): smdl_overview.md (empty file)
 
 ## Knowledge Gaps
 - **45 isolated node(s):** `ApplicationMailer`, `Ability`, `SearchBuilder`, `ApplicationRecord`, `ApplicationJob` (+40 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **Thin community `Community 14`** (9 nodes): `base_metadata_presenter.rb`, `collection_overview_metadata_presenter.rb`, `BaseMetadataPresenter`, `.fields_to_render_by_config_keys()`, `.fields_to_render_by_keys()`, `.initialize()`, `CollectionOverviewMetadataPresenter`, `.overview_labels()`, `.overview_terms()`
+- **Thin community `Community 12`** (11 nodes): `static_controller.rb`, `StaticController`, `.about()`, `.contact()`, `.manuscript_descriptions()`, `.references()`, `.sinai_library_digitization_project()`, `.sinai_palimpsests_project()`, `.syriac_parchment_description_project()`, `.terms_of_use()`, `.version()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 15`** (9 nodes): `static_controller.rb`, `StaticController`, `.about()`, `.contact()`, `.contributors_credits()`, `.manuscript_descriptions()`, `.references()`, `.terms_of_use()`, `.version()`
+- **Thin community `Community 15`** (9 nodes): `base_metadata_presenter.rb`, `collection_overview_metadata_presenter.rb`, `BaseMetadataPresenter`, `.fields_to_render_by_config_keys()`, `.fields_to_render_by_keys()`, `.initialize()`, `CollectionOverviewMetadataPresenter`, `.overview_labels()`, `.overview_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 16`** (7 nodes): `canon_law_controller.rb`, `CanonLawController`, `.index()`, `.introduction()`, `.margarita()`, `.materiae()`, `.table_of_contents()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
@@ -468,20 +468,20 @@ Nodes (1): smdl_overview.md (empty file)
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 72`** (2 nodes): `Staging Regression (build rollback)`, `Staging Site (stage.sinaimanuscripts.library.ucla.edu)`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 162`** (1 nodes): `Locus (folio reference)`
+- **Thin community `Community 163`** (1 nodes): `Locus (folio reference)`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 163`** (1 nodes): `smdl_overview.md (empty file)`
+- **Thin community `Community 164`** (1 nodes): `smdl_overview.md (empty file)`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `h()` connect `Community 1` to `Community 0`, `Community 2`, `Community 3`, `Community 4`, `Community 12`?**
-  _High betweenness centrality (0.093) - this node is a cross-community bridge._
-- **Why does `t()` connect `Community 1` to `Community 0`, `Community 3`, `Community 4`, `Community 10`, `Community 12`?**
-  _High betweenness centrality (0.065) - this node is a cross-community bridge._
+- **Why does `h()` connect `Community 1` to `Community 0`, `Community 2`, `Community 3`, `Community 4`, `Community 14`?**
+  _High betweenness centrality (0.092) - this node is a cross-community bridge._
+- **Why does `t()` connect `Community 1` to `Community 0`, `Community 3`, `Community 4`, `Community 7`?**
+  _High betweenness centrality (0.064) - this node is a cross-community bridge._
 - **Why does `render_related_mss_link()` connect `Community 2` to `Community 1`?**
-  _High betweenness centrality (0.044) - this node is a cross-community bridge._
+  _High betweenness centrality (0.043) - this node is a cross-community bridge._
 - **Are the 2 inferred relationships involving `call()` (e.g. with `b()` and `d()`) actually correct?**
   _`call()` has 2 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 3 inferred relationships involving `E()` (e.g. with `.get()` and `init()`) actually correct?**
