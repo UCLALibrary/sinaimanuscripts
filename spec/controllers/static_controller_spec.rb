@@ -29,11 +29,11 @@ RSpec.describe StaticController, type: :controller do
       end
     end
 
-    context 'GET #syriac_parchment_description_project' do
+    context 'GET #syriac_parchment_descriptions_project' do
       it "returns http success" do
-        get :syriac_parchment_description_project
+        get :syriac_parchment_descriptions_project
         expect(response).to have_http_status(:success)
-        expect(response).to render_template(:syriac_parchment_description_project)
+        expect(response).to render_template(:syriac_parchment_descriptions_project)
       end
     end
 

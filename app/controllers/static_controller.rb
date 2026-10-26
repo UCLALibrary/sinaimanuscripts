@@ -12,7 +12,7 @@ class StaticController < ApplicationController
 
   def sinai_palimpsests_project; end
 
-  def syriac_parchment_description_project; end
+  def syriac_parchment_descriptions_project; end
 
   def terms_of_use; end
 

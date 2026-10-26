@@ -1528,13 +1528,13 @@
       "norm_label": ".sinai_palimpsests_project()"
     },
     {
-      "label": ".syriac_parchment_description_project()",
+      "label": ".syriac_parchment_descriptions_project()",
       "file_type": "code",
       "source_file": "app/controllers/static_controller.rb",
       "source_location": "L15",
-      "id": "static_controller_staticcontroller_syriac_parchment_description_project",
+      "id": "static_controller_staticcontroller_syriac_parchment_descriptions_project",
       "community": 12,
-      "norm_label": ".syriac_parchment_description_project()"
+      "norm_label": ".syriac_parchment_descriptions_project()"
     },
     {
       "label": ".terms_of_use()",
@@ -11401,9 +11401,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "_src": "static_controller_staticcontroller",
-      "_tgt": "static_controller_staticcontroller_syriac_parchment_description_project",
+      "_tgt": "static_controller_staticcontroller_syriac_parchment_descriptions_project",
       "source": "static_controller_staticcontroller",
-      "target": "static_controller_staticcontroller_syriac_parchment_description_project",
+      "target": "static_controller_staticcontroller_syriac_parchment_descriptions_project",
       "confidence_score": 1.0
     },
     {

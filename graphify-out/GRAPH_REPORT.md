@@ -1,4 +1,4 @@
-# Graph Report - sinaimanuscripts  (2026-09-24)
+# Graph Report - sinaimanuscripts  (2026-10-26)
 
 ## Corpus Check
 - 181 files · ~1,897,787 words
@@ -370,7 +370,7 @@ Nodes (1): smdl_overview.md (empty file)
 ## Knowledge Gaps
 - **45 isolated node(s):** `ApplicationMailer`, `Ability`, `SearchBuilder`, `ApplicationRecord`, `ApplicationJob` (+40 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **Thin community `Community 12`** (11 nodes): `static_controller.rb`, `StaticController`, `.about()`, `.contact()`, `.manuscript_descriptions()`, `.references()`, `.sinai_library_digitization_project()`, `.sinai_palimpsests_project()`, `.syriac_parchment_description_project()`, `.terms_of_use()`, `.version()`
+- **Thin community `Community 12`** (11 nodes): `static_controller.rb`, `StaticController`, `.about()`, `.contact()`, `.manuscript_descriptions()`, `.references()`, `.sinai_library_digitization_project()`, `.sinai_palimpsests_project()`, `.syriac_parchment_descriptions_project()`, `.terms_of_use()`, `.version()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 15`** (9 nodes): `base_metadata_presenter.rb`, `collection_overview_metadata_presenter.rb`, `BaseMetadataPresenter`, `.fields_to_render_by_config_keys()`, `.fields_to_render_by_keys()`, `.initialize()`, `CollectionOverviewMetadataPresenter`, `.overview_labels()`, `.overview_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.

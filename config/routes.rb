@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # get '/login', to: 'login#new', as: 'login'
   get '/about', to: 'static#about'
   get '/about/sinai-library-digitization-project', to: 'static#sinai_library_digitization_project', as: 'sinai_library_digitization_project'
-  get '/about/syriac-parchment-description-project', to: 'static#syriac_parchment_description_project', as: 'syriac_parchment_description_project'
+  get '/about/syriac-parchment-descriptions-project', to: 'static#syriac_parchment_descriptions_project', as: 'syriac_parchment_descriptions_project'
   get '/about/sinai-palimpsests-project', to: 'static#sinai_palimpsests_project', as: 'sinai_palimpsests_project'
   get '/contributors_credits', to: redirect('/about/sinai-library-digitization-project', status: 301)
   get '/contact', to: 'static#contact'
