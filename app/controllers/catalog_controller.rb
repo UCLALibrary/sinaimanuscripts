@@ -374,7 +374,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field('titles_tesim', label: 'Titles') do |field|
       field.solr_parameters = {
-        qf: 'title_tesim descriptive_title_tesim contents_tesim contents_note_tesim alternative_title_tesim uniform_title_tesim',
+        qf: 'titles_tesim',
         pf: ''
       }
     end
