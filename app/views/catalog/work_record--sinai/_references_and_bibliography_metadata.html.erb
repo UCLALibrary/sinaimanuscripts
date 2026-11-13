@@ -22,7 +22,7 @@
     acc
   }
 
-  bib_entries      = collect_bib.call(ms_json_refs, [])
+  bib_entries      = collect_bib.call(ms_json_refs, []).uniq
   refs             = bib_entries.select { |b| b.dig('type', 'id') == 'ref' }
   citations        = bib_entries.select { |b| b.dig('type', 'id') == 'cite' }
   editions         = bib_entries.select { |b| b.dig('type', 'id') == 'edition' }

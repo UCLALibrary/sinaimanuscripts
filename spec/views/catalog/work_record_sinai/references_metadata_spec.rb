@@ -122,6 +122,52 @@ RSpec.describe 'catalog/work_record--sinai/_references_and_bibliography_metadata
     end
   end
 
+  # NOP-187: the same bib entry can sit at more than one level (ms_obj and a layer);
+  # exact repeats render once, while entries differing in any field stay separate.
+  context 'when bib entries repeat across levels' do
+    let(:lewis) { { 'type' => { 'id' => 'ref' }, 'shortcode' => 'Lewis 1894', 'range' => 'pp. 1-2' } }
+    let(:manuscript_json) do
+      {
+        'bib' => [
+          lewis,
+          { 'type' => { 'id' => 'ref' }, 'shortcode' => 'Kamil 1970', 'range' => 'p. 58' },
+          { 'type' => { 'id' => 'ref' }, 'shortcode' => 'Géhin 2017', 'range' => 'p. 10' }
+        ],
+        'part' => [
+          { 'ot_layer' => [{ 'layer_record' => { 'bib' => [
+            lewis.dup,
+            { 'type' => { 'id' => 'ref' }, 'shortcode' => 'Lewis 1894', 'range' => 'pp. 5-6' },
+            { 'type' => { 'id' => 'ref' }, 'shortcode' => 'Kamil 1970', 'range' => 'p. 58',
+              'note' => ['Layer-level note'] }
+          ] } }] }
+        ]
+      }
+    end
+
+    def reference_lines
+      section_groups('References').map { |g| g.text.squish }
+    end
+
+    it 'renders an exact repeat once' do
+      expect(reference_lines.count { |l| l.include?('Lewis 1894, pp. 1-2') }).to eq(1)
+    end
+
+    it 'keeps the same source with different pages as separate entries' do
+      expect(reference_lines.count { |l| l.include?('Lewis 1894, pp. 5-6') }).to eq(1)
+      expect(reference_lines.count { |l| l.include?('Lewis 1894') }).to eq(2)
+    end
+
+    it 'keeps the same source and pages as separate entries when only one has a note' do
+      kamil = reference_lines.select { |l| l.include?('Kamil 1970, p. 58') }
+      expect(kamil.size).to eq(2)
+      expect(kamil.count { |l| l.include?('Layer-level note') }).to eq(1)
+    end
+
+    it 'renders every remaining entry' do
+      expect(section_groups('References').size).to eq(5)
+    end
+  end
+
   context 'with no bibliography at all' do
     let(:manuscript_json) { {} }
 
