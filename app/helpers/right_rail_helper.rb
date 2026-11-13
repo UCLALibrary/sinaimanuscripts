@@ -206,19 +206,13 @@ module RightRailHelper
     end
   end
 
-  # Mirrors _item_entry.html.erb work header assembly.
+  # Mirrors _item_entry.html.erb work header assembly: descriptive title only,
+  # no pref_title fallback and no reference numbers (NOP-190).
   def work_header_label(ww)
     work = ww['work'] || {}
-    title = work['desc_title'].to_s.presence || work['pref_title'].to_s.presence || 'Untitled'
-    cpg = Array(work['refno']).find { |r| r['source'].to_s.downcase == 'cpg' }
-    refno_str = cpg ? "(#{cpg['source'].to_s.strip} #{cpg['idno']})".strip : nil
+    title = work['desc_title'].to_s.presence || 'Untitled'
     locus = ww['locus'].to_s.presence
-
-    parts = [title]
-    parts << refno_str if refno_str.present?
-    header = parts.join(' ')
-    header = "#{header}, #{locus}" if locus.present?
-    header
+    locus ? "#{title}, #{locus}" : title
   end
 
   def paracontents_present?(ms_json)

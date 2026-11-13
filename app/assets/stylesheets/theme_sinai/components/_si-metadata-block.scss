@@ -870,6 +870,19 @@
   line-height: 1.5;
 }
 
+// Uniform Title (NOP-190): only the title is a link (to a works_ssim search) and it
+// must read as one — primary red per Dawn's mock; the trailing refnos stay value-coloured.
+.work-uniform-title--sinai a {
+  text-decoration: none;
+  color: $sinai-primary;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+    color: $sinai-primary;
+  }
+}
+
 // Mobile: the side-by-side label/value patterns (Works, expandable Support /
 // Writing / Ink, work-body detail fields) stack vertically — the label sits on
 // its own line with its entries/value below, per the Figma mobile design. The

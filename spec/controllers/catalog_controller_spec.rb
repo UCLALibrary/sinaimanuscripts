@@ -26,6 +26,7 @@ RSpec.describe CatalogController, type: :controller do
         ot_year_isim
         ot_language_ssim
         ot_works_ssim
+        works_ssim
         para_script_ssim
         para_writing_system_ssim
         para_genre_ssim
@@ -40,6 +41,12 @@ RSpec.describe CatalogController, type: :controller do
         generic_type_sim
       ]
       expect(facet_keys).to contain_exactly(*expected_facets)
+    end
+
+    it 'registers works_ssim as a hidden Works facet (label only, for Uniform Title links)' do
+      works = controller.blacklight_config.facet_fields['works_ssim']
+      expect(works.label).to eq('Works')
+      expect(works.if).to be false
     end
 
     it 'expands the Object Type facet on load' do

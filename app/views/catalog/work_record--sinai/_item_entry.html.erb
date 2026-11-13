@@ -61,15 +61,24 @@
           ww_data_path = "#{data_path}.text_unit_record.work_wit[#{wi}]"
 
           # --- Work title line (shown in collapsed + expanded) ---
-          ww_title = work['desc_title'].to_s.presence || work['pref_title'].to_s.presence || 'Untitled'
-          cpg_refno = Array(work['refno']).find { |r| r['source'].to_s.downcase == 'cpg' }
-          refno_str = cpg_refno ? "(#{cpg_refno['source'].to_s.strip} #{cpg_refno['idno']})".strip : nil
+          # Descriptive title only (NOP-190): no pref_title fallback, no refno.
+          ww_title = work['desc_title'].to_s.presence || 'Untitled'
           ww_locus = ww['locus'].to_s.presence
 
-          work_header_parts = [ww_title]
-          work_header_parts << refno_str if refno_str.present?
-          work_header = work_header_parts.join(' ')
+          work_header = ww_title
           work_header = "#{work_header}, #{ww_locus}" if ww_locus.present?
+
+          # --- Uniform titles: one per linked work (work.id[]), each with its refnos ---
+          linked_works = Array(work['id']).select { |lw| lw.is_a?(Hash) }
+          uniform_titles = linked_works.filter_map do |lw|
+            pref_title = lw['pref_title'].to_s.strip
+            next if pref_title.blank?
+
+            refnos = Array(lw['refno']).filter_map do |r|
+              [r['source'], r['idno']].map { |x| x.to_s.strip }.reject(&:blank?).join(' ').presence
+            end
+            { title: pref_title, refnos: refnos }
+          end
 
           # --- Variant title ---
           alt_titles = Array(ww['alt_title'].is_a?(Array) ? ww['alt_title'] : [ww['alt_title']]).compact.reject(&:blank?)
@@ -77,10 +86,15 @@
           # --- As written ---
           as_written = ww['as_written'].to_s
 
-          # --- Contributors (work.creator), sorted: author → translator → rest ---
-          creators = Array(work['creator'])
+          # --- Contributors (work.creator + work.id[].creator), sorted: author -> translator -> rest ---
+          # Deduped where both agent and role match; stable sort keeps source order within a role.
+          creators = (Array(work['creator']) + linked_works.flat_map { |lw| Array(lw['creator']) })
+                     .select { |c| c.is_a?(Hash) }
+                     .uniq { |c| [c['id'].presence || c.dig('agent_record', 'ark'), c.dig('role', 'id')] }
           role_priority = { 'author' => 0, 'translator' => 1 }
-          sorted_creators = creators.sort_by { |c| role_priority[c.dig('role', 'id').to_s] || 99 }
+          sorted_creators = creators.each_with_index
+                                    .sort_by { |c, i| [role_priority[c.dig('role', 'id').to_s] || 99, i] }
+                                    .map(&:first)
 
           # --- Table of Contents (work_wit.contents) ---
           toc_entries = Array(ww['contents'])
@@ -95,7 +109,7 @@
           wit_editions = Array(ww['bib']).select { |b| b.dig('type', 'id') == 'edition' }
 
           # Does this work have any expanded content?
-          has_details = alt_titles.any? || as_written.present? || sorted_creators.any? ||
+          has_details = uniform_titles.any? || alt_titles.any? || as_written.present? || sorted_creators.any? ||
                         toc_entries.any? || excerpts.any? || wit_notes.any? || wit_editions.any?
         %>
 
@@ -110,6 +124,19 @@
 
             <div class="work-accordion__body--sinai">
               <dl class="work-fields--sinai">
+
+                <%# --- Uniform Title (work.id[].pref_title, linked to a works_ssim search; refnos unlinked) --- %>
+                <% if uniform_titles.any? %>
+                  <!-- DATA SOURCE: <%= ww_data_path %>.work.id[].pref_title, .refno -->
+                  <div class="work-field-row--sinai">
+                    <dt class="work-field-label--sinai">Uniform Title</dt>
+                    <dd class="work-field-value--sinai">
+                      <% uniform_titles.each do |ut| %>
+                        <div class="work-uniform-title--sinai"><%= link_to ut[:title], search_catalog_path(f: { works_ssim: [ut[:title]] }) %><% if ut[:refnos].any? %> (<%= ut[:refnos].join(', ') %>)<% end %></div>
+                      <% end %>
+                    </dd>
+                  </div>
+                <% end %>
 
                 <%# --- Variant Title --- %>
                 <% if alt_titles.any? %>

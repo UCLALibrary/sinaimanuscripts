@@ -34,7 +34,7 @@ RSpec.describe 'catalog/work_record--sinai/_guest_content_metadata.html.erb', ty
                 'text_unit_record' => {
                   'summary' => 'Unidentified text concerning Sundays.',
                   'lang' => [{ 'label' => 'Arabic' }],
-                  'work_wit' => [{ 'work' => { 'pref_title' => 'Unidentified text' } }]
+                  'work_wit' => [{ 'work' => { 'desc_title' => 'Unidentified text' } }]
                 }
               }
             ],

@@ -3,7 +3,24 @@
 require 'rails_helper'
 
 RSpec.describe 'catalog/work_record--sinai/_items_metadata.html.erb', type: :view do
-  let(:document) { build_manuscript_document('tetst02') }
+  # _items_metadata renders only ms_obj-level ot_layer text units (ones not attached
+  # to a part). The regenerated tetst fixtures keep every layer under part[], so hoist
+  # the part layers to the root to exercise this partial with real fixture data.
+  def hoisted_document(fixture_name)
+    ms_json = JSON.parse(File.read(Rails.root.join(ManuscriptFixtureHelper::EXPORT_TEST_PATH, "#{fixture_name}.json")))
+    ms_json['ot_layer'] = Array(ms_json['part']).flat_map { |part| Array(part.delete('ot_layer')) }
+    build_manuscript_document(fixture_name, 'manuscript_json_ts' => ms_json.to_json)
+  end
+
+  # Wraps work_wit entries in a single root-level text unit.
+  def work_wit_document(work_wits)
+    json = { 'ot_layer' => [{ 'layer_record' => { 'text_unit' => [
+      { 'locus' => 'ff. 1r-9v', 'text_unit_record' => { 'work_wit' => work_wits } }
+    ] } }] }
+    SolrDocument.new('id' => 'work-wit-test', 'manuscript_json_ts' => json.to_json)
+  end
+
+  let(:document) { hoisted_document('tetst02') }
 
   before do
     render partial: 'catalog/work_record--sinai/items_metadata', locals: { document: document }
@@ -29,8 +46,13 @@ RSpec.describe 'catalog/work_record--sinai/_items_metadata.html.erb', type: :vie
         expect(rendered).to have_css('.works-section__label--sinai', text: 'Works')
       end
 
-      it 'renders the work title from pref_title' do
-        expect(rendered).to have_css('.work-accordion__title--sinai', text: /Psalms/)
+      it 'renders the work title from desc_title' do
+        expect(rendered).to have_css('.work-accordion__title--sinai', text: /\ABook of Psalms, ff\. 1r-85v\z/)
+      end
+
+      it 'renders the Uniform Title as a works_ssim search link' do
+        expect(rendered).to have_css('.work-field-label--sinai', text: 'Uniform Title', visible: :all)
+        expect(rendered).to have_link('Psalms', href: '/catalog?f%5Bworks_ssim%5D%5B%5D=Psalms', visible: :all)
       end
 
       it 'renders work locus' do
@@ -100,15 +122,17 @@ RSpec.describe 'catalog/work_record--sinai/_items_metadata.html.erb', type: :vie
     end
 
     describe 'Item Notes' do
-      it 'renders item notes with type label' do
-        expect(rendered).to have_content('Other Notes')
+      # Note type labels are intentionally not rendered (see the inline-JSON Item Notes context below).
+      it 'renders item notes without the type label' do
+        expect(rendered).to have_css('.part-expandable__label--sinai', text: 'Item Notes', visible: :all)
         expect(rendered).to have_content('Peshitta version.')
+        expect(rendered).not_to have_content('Other Notes')
       end
     end
   end
 
   context 'with tetst01 (multiple text units across parts)' do
-    let(:document) { build_manuscript_document('tetst01') }
+    let(:document) { hoisted_document('tetst01') }
 
     it 'renders multiple items' do
       expect(rendered).to have_css('.item-block--sinai', minimum: 2)
@@ -219,6 +243,114 @@ RSpec.describe 'catalog/work_record--sinai/_items_metadata.html.erb', type: :vie
       it 'excludes non-edition bib entries' do
         expect(rendered).not_to have_content('Not an edition')
       end
+    end
+  end
+
+  # NOP-190: desc_title on the title line; each linked work (work.id[]) gets a
+  # Uniform Title link followed by its own reference numbers.
+  context 'with a witness linked to two works (inline JSON)' do
+    let(:document) do
+      ww = {
+        'locus' => 'ff. 2r-5v',
+        'work' => {
+          'desc_title' => 'Homily on Psalm 6',
+          'refno' => [{ 'source' => 'CPG', 'idno' => '0000' }],
+          'id' => [
+            { 'ark' => 'ark:/21198/w1', 'pref_title' => 'Homilia in Psalmum 6',
+              'refno' => [{ 'source' => 'CPG', 'idno' => '7751' }] },
+            { 'ark' => 'ark:/21198/w2', 'pref_title' => 'Life of a saint',
+              'refno' => [{ 'source' => 'BHG', 'idno' => '1234' }, { 'source' => 'CPG', 'idno' => '5678' }] }
+          ]
+        }
+      }
+      work_wit_document([ww])
+    end
+
+    it 'shows only desc_title and locus on the title line (no refnos)' do
+      expect(rendered).to have_css('.work-accordion__title--sinai', text: /\AHomily on Psalm 6, ff\. 2r-5v\z/)
+    end
+
+    it 'renders one Uniform Title line per linked work, each followed by its refnos' do
+      lines = Capybara.string(rendered).all('.work-uniform-title--sinai', visible: :all).map { |n| n.text(:all).strip }
+      expect(lines).to eq(['Homilia in Psalmum 6 (CPG 7751)', 'Life of a saint (BHG 1234, CPG 5678)'])
+    end
+
+    it 'links only the title, not the reference numbers' do
+      expect(rendered).to have_link('Homilia in Psalmum 6',
+                                    href: '/catalog?f%5Bworks_ssim%5D%5B%5D=Homilia+in+Psalmum+6', visible: :all)
+      expect(rendered).to have_link('Life of a saint',
+                                    href: '/catalog?f%5Bworks_ssim%5D%5B%5D=Life+of+a+saint', visible: :all)
+      link_texts = Capybara.string(rendered).all('.work-uniform-title--sinai a', visible: :all).map { |a| a.text(:all) }
+      expect(link_texts).to eq(['Homilia in Psalmum 6', 'Life of a saint'])
+    end
+
+    it 'places Uniform Title as the first field of the expanded entry' do
+      labels = Capybara.string(rendered).all('.work-field-label--sinai', visible: :all).map { |n| n.text(:all) }
+      expect(labels.first).to eq('Uniform Title')
+    end
+  end
+
+  context 'with contributors at both the work and linked-work level (inline JSON)' do
+    let(:author) { { 'id' => 'ark:/21198/a1', 'agent_record' => { 'pref_name' => 'John Chrysostom' }, 'role' => { 'id' => 'author', 'label' => 'Author' } } }
+
+    let(:document) do
+      ww = {
+        'work' => {
+          'desc_title' => 'Homily',
+          'creator' => [
+            { 'id' => 'ark:/21198/a2', 'agent_record' => { 'pref_name' => 'Ephrem' }, 'role' => { 'id' => 'translator', 'label' => 'Translator' } },
+            author
+          ],
+          'id' => [{
+            'pref_title' => 'Homilia',
+            'creator' => [
+              author,
+              { 'id' => 'ark:/21198/a1', 'agent_record' => { 'pref_name' => 'John Chrysostom' }, 'role' => { 'id' => 'attributed', 'label' => 'Attributed author' } }
+            ]
+          }]
+        }
+      }
+      work_wit_document([ww])
+    end
+
+    let(:contributor_lines) do
+      Capybara.string(rendered).all('.work-field-row--sinai', visible: :all)
+              .find { |row| row.first('.work-field-label--sinai', visible: :all).text(:all) == 'Contributors' }
+              .all('.work-field-value--sinai div', visible: :all).map { |n| n.text(:all).strip }
+    end
+
+    it 'merges both lists, drops exact agent+role duplicates, and keeps author → translator → rest order' do
+      expect(contributor_lines).to eq([
+                                        'John Chrysostom (Author)',
+                                        'Ephrem (Translator)',
+                                        'John Chrysostom (Attributed author)'
+                                      ])
+    end
+  end
+
+  context 'with a witness that has no linked works (inline JSON)' do
+    let(:document) do
+      work_wit_document([{ 'locus' => 'f. 10r', 'work' => { 'desc_title' => 'Unidentified liturgical text' } }])
+    end
+
+    it 'renders the desc_title as a static (non-expandable) title' do
+      expect(rendered).to have_css('.work-accordion--static--sinai .work-accordion__title--sinai',
+                                   text: 'Unidentified liturgical text, f. 10r')
+    end
+
+    it 'does not render a Uniform Title field' do
+      expect(rendered).not_to have_css('.work-field-label--sinai', text: 'Uniform Title', visible: :all)
+    end
+  end
+
+  context 'with a linked work but no desc_title (inline JSON)' do
+    let(:document) do
+      work_wit_document([{ 'work' => { 'id' => [{ 'pref_title' => 'Bible. Psalms' }] } }])
+    end
+
+    it 'shows Untitled rather than falling back to the uniform title' do
+      expect(rendered).to have_css('.work-accordion__title--sinai', text: /\AUntitled\z/)
+      expect(rendered).to have_link('Bible. Psalms', visible: :all)
     end
   end
 end

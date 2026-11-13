@@ -145,6 +145,10 @@ class CatalogController < ApplicationController
     # It's used to give a label to the filter that comes from the user profile
     config.add_facet_field 'generic_type_sim', if: false
 
+    # Hidden from the sidebar; registered so the "Works" filter label displays when a
+    # user follows a Uniform Title link on the item page (NOP-190).
+    config.add_facet_field 'works_ssim', label: 'Works', if: false
+
     # Have BL send all facet field names to Solr,
     # which has been the default previously.
     # Remove these lines if

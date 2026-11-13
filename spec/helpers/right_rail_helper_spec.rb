@@ -96,4 +96,24 @@ RSpec.describe RightRailHelper, type: :helper do
       expect(helper.panel_has_collapsibles?(nil)).to be false
     end
   end
+
+  describe '#work_header_label' do
+    # Private helper; exercised directly because it is the right-rail mirror of the work title line.
+    it 'uses desc_title and locus, without uniform titles or reference numbers' do
+      ww = { 'locus' => 'ff. 59r-60v',
+             'work' => { 'desc_title' => 'Memra on Divine Epiphany',
+                         'id' => [{ 'pref_title' => 'Memra (Chrysostom)', 'refno' => [{ 'source' => 'CPG', 'idno' => '4335' }] }] } }
+      expect(helper.send(:work_header_label, ww)).to eq('Memra on Divine Epiphany, ff. 59r-60v')
+    end
+
+    it 'omits the locus when absent' do
+      ww = { 'work' => { 'desc_title' => 'Ephesians' } }
+      expect(helper.send(:work_header_label, ww)).to eq('Ephesians')
+    end
+
+    it 'falls back to Untitled rather than the uniform title' do
+      ww = { 'work' => { 'id' => [{ 'pref_title' => 'Bible. Psalms' }] } }
+      expect(helper.send(:work_header_label, ww)).to eq('Untitled')
+    end
+  end
 end

@@ -1,12 +1,12 @@
-# Graph Report - sinaimanuscripts  (2026-10-26)
+# Graph Report - sinaimanuscripts  (2026-11-13)
 
 ## Corpus Check
-- 181 files · ~1,897,787 words
+- 181 files · ~1,898,768 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 957 nodes · 3310 edges · 65 communities detected
-- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 124 edges (avg confidence: 0.8)
+- 959 nodes · 3313 edges · 66 communities detected
+- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 125 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -31,7 +31,7 @@
 - [[_COMMUNITY_Community 19|Community 19]]
 - [[_COMMUNITY_Community 20|Community 20]]
 - [[_COMMUNITY_Community 21|Community 21]]
-- [[_COMMUNITY_Community 23|Community 23]]
+- [[_COMMUNITY_Community 22|Community 22]]
 - [[_COMMUNITY_Community 24|Community 24]]
 - [[_COMMUNITY_Community 25|Community 25]]
 - [[_COMMUNITY_Community 26|Community 26]]
@@ -59,7 +59,7 @@
 - [[_COMMUNITY_Community 48|Community 48]]
 - [[_COMMUNITY_Community 49|Community 49]]
 - [[_COMMUNITY_Community 50|Community 50]]
-- [[_COMMUNITY_Community 53|Community 53]]
+- [[_COMMUNITY_Community 51|Community 51]]
 - [[_COMMUNITY_Community 54|Community 54]]
 - [[_COMMUNITY_Community 55|Community 55]]
 - [[_COMMUNITY_Community 56|Community 56]]
@@ -70,11 +70,12 @@
 - [[_COMMUNITY_Community 61|Community 61]]
 - [[_COMMUNITY_Community 62|Community 62]]
 - [[_COMMUNITY_Community 63|Community 63]]
-- [[_COMMUNITY_Community 66|Community 66]]
+- [[_COMMUNITY_Community 64|Community 64]]
+- [[_COMMUNITY_Community 67|Community 67]]
 - [[_COMMUNITY_Community 71|Community 71]]
 - [[_COMMUNITY_Community 72|Community 72]]
+- [[_COMMUNITY_Community 162|Community 162]]
 - [[_COMMUNITY_Community 163|Community 163]]
-- [[_COMMUNITY_Community 164|Community 164]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `call()` - 125 edges
@@ -109,11 +110,11 @@
 
 ### Community 0 - "Community 0"
 Cohesion: 0.04
-Nodes (173): aa(), ac(), Af(), al(), ao(), as(), Au(), Ba() (+165 more)
+Nodes (176): aa(), ac(), Af(), al(), ao(), as(), Au(), Ba() (+168 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.19
-Nodes (89): _(), a(), ae(), ar(), B(), Be(), br(), C() (+81 more)
+Cohesion: 0.2
+Nodes (88): _(), a(), ae(), ar(), B(), Be(), br(), C() (+80 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.04
@@ -124,8 +125,8 @@ Cohesion: 0.03
 Nodes (33): ApplicationController, iconify_auto_link(), stacked_metadata_values(), application_name(), blacklight_path(), document_has_value?(), document_heading(), document_presenter() (+25 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.17
-Nodes (59): Ai(), At(), bi(), bt(), call(), ct(), Di(), dt() (+51 more)
+Cohesion: 0.18
+Nodes (55): Ai(), At(), bi(), bt(), call(), ct(), Di(), dt() (+47 more)
 
 ### Community 5 - "Community 5"
 Cohesion: 0.09
@@ -156,16 +157,16 @@ Cohesion: 0.36
 Nodes (11): bindPanel(), init(), isExpanded(), mainColumnFor(), onDocumentClick(), onPanelClick(), scheduleSync(), setAll() (+3 more)
 
 ### Community 12 - "Community 12"
+Cohesion: 0.32
+Nodes (12): An(), Bn(), Dn(), fn(), gn(), In(), mn(), nn() (+4 more)
+
+### Community 13 - "Community 13"
 Cohesion: 0.18
 Nodes (1): StaticController
 
-### Community 13 - "Community 13"
+### Community 14 - "Community 14"
 Cohesion: 0.24
 Nodes (5): b(), c(), d(), f(), CatalogController
-
-### Community 14 - "Community 14"
-Cohesion: 0.31
-Nodes (10): An(), Bs(), Dn(), ds(), fs(), In(), mn(), nn() (+2 more)
 
 ### Community 15 - "Community 15"
 Cohesion: 0.25
@@ -185,169 +186,173 @@ Nodes (1): CollectionBlockPresenter
 
 ### Community 20 - "Community 20"
 Cohesion: 0.4
-Nodes (1): SolrDocumentWrapper
+Nodes (2): hoisted_document(), build_manuscript_document()
 
 ### Community 21 - "Community 21"
+Cohesion: 0.4
+Nodes (1): SolrDocumentWrapper
+
+### Community 22 - "Community 22"
 Cohesion: 0.67
 Nodes (1): AutoLink
 
-### Community 23 - "Community 23"
+### Community 24 - "Community 24"
 Cohesion: 0.5
 Nodes (1): Dpla
 
-### Community 24 - "Community 24"
+### Community 25 - "Community 25"
 Cohesion: 0.5
 Nodes (1): CreateBookmarks
 
-### Community 25 - "Community 25"
+### Community 26 - "Community 26"
 Cohesion: 0.5
 Nodes (1): CreateSearches
 
-### Community 26 - "Community 26"
+### Community 27 - "Community 27"
 Cohesion: 0.67
 Nodes (1): HistoryMetadataPresenter
 
-### Community 27 - "Community 27"
+### Community 28 - "Community 28"
 Cohesion: 0.67
 Nodes (1): ContentsWorksMetadataPresenter
 
-### Community 28 - "Community 28"
+### Community 29 - "Community 29"
 Cohesion: 0.67
 Nodes (1): ReferencesMetadataPresenter
 
-### Community 29 - "Community 29"
+### Community 30 - "Community 30"
 Cohesion: 0.67
 Nodes (1): CodicologyMetadataPresenter
 
-### Community 30 - "Community 30"
+### Community 31 - "Community 31"
 Cohesion: 0.67
 Nodes (1): KeywordsMetadataPresenter
 
-### Community 31 - "Community 31"
+### Community 32 - "Community 32"
 Cohesion: 0.67
 Nodes (1): DecorationMetadataPresenter
 
-### Community 32 - "Community 32"
+### Community 33 - "Community 33"
 Cohesion: 0.67
 Nodes (1): OverviewMetadataPresenter
 
-### Community 33 - "Community 33"
+### Community 34 - "Community 34"
 Cohesion: 0.67
 Nodes (1): ContentsMetadataPresenter
 
-### Community 34 - "Community 34"
+### Community 35 - "Community 35"
 Cohesion: 0.67
 Nodes (1): FindThisItemMetadataPresenter
 
-### Community 35 - "Community 35"
+### Community 36 - "Community 36"
 Cohesion: 0.67
 Nodes (1): SinaiIndexDatePresenter
 
-### Community 36 - "Community 36"
+### Community 37 - "Community 37"
 Cohesion: 0.67
 Nodes (1): TaglineMetadataPresenter
 
-### Community 37 - "Community 37"
+### Community 38 - "Community 38"
 Cohesion: 0.67
 Nodes (1): ContactCollectionMetadataPresenter
 
-### Community 38 - "Community 38"
+### Community 39 - "Community 39"
 Cohesion: 0.67
 Nodes (1): KeywordMetadataPresenter
 
-### Community 39 - "Community 39"
+### Community 40 - "Community 40"
 Cohesion: 0.67
 Nodes (1): NoteCollectionMetadataPresenter
 
-### Community 40 - "Community 40"
+### Community 41 - "Community 41"
 Cohesion: 0.67
 Nodes (1): SinaiIndexNameMetadataPresenter
 
-### Community 41 - "Community 41"
+### Community 42 - "Community 42"
 Cohesion: 0.67
 Nodes (1): SinaiIndexCollectionPresenter
 
-### Community 42 - "Community 42"
+### Community 43 - "Community 43"
 Cohesion: 0.67
 Nodes (1): FindCollectionMetadataPresenter
 
-### Community 43 - "Community 43"
+### Community 44 - "Community 44"
 Cohesion: 0.67
 Nodes (1): ItemOverviewMetadataPresenter
 
-### Community 44 - "Community 44"
+### Community 45 - "Community 45"
 Cohesion: 0.67
 Nodes (1): AccessConditionMetadataPresenter
 
-### Community 45 - "Community 45"
+### Community 46 - "Community 46"
 Cohesion: 0.67
 Nodes (1): SinaiIndexTextUnitLabelsPresenter
 
-### Community 46 - "Community 46"
+### Community 47 - "Community 47"
 Cohesion: 0.67
 Nodes (1): NoteMetadataPresenter
 
-### Community 47 - "Community 47"
+### Community 48 - "Community 48"
 Cohesion: 0.67
 Nodes (1): SinaiIndexLanguagePresenter
 
-### Community 48 - "Community 48"
+### Community 49 - "Community 49"
 Cohesion: 0.67
 Nodes (1): SinaiIndexTitleMetadataPresenter
 
-### Community 49 - "Community 49"
+### Community 50 - "Community 50"
 Cohesion: 0.67
 Nodes (1): PhysicalDescriptionMetadataPresenter
 
-### Community 50 - "Community 50"
+### Community 51 - "Community 51"
 Cohesion: 1.0
 Nodes (2): initScrollableTabs(), publishStickyHeaderHeight()
 
-### Community 53 - "Community 53"
+### Community 54 - "Community 54"
 Cohesion: 0.67
 Nodes (1): SearchFieldService
 
-### Community 54 - "Community 54"
+### Community 55 - "Community 55"
 Cohesion: 0.67
 Nodes (1): LoginService
 
-### Community 55 - "Community 55"
+### Community 56 - "Community 56"
 Cohesion: 0.67
 Nodes (1): SolrDocumentProvider
 
-### Community 56 - "Community 56"
+### Community 57 - "Community 57"
 Cohesion: 0.67
 Nodes (1): CreateFeatures
 
-### Community 57 - "Community 57"
+### Community 58 - "Community 58"
 Cohesion: 0.67
 Nodes (1): AddDeviseGuestsToUsers
 
-### Community 58 - "Community 58"
+### Community 59 - "Community 59"
 Cohesion: 1.0
 Nodes (1): ApplicationMailer
 
-### Community 59 - "Community 59"
+### Community 60 - "Community 60"
 Cohesion: 1.0
 Nodes (1): Ability
 
-### Community 60 - "Community 60"
+### Community 61 - "Community 61"
 Cohesion: 1.0
 Nodes (1): SearchBuilder
 
-### Community 61 - "Community 61"
+### Community 62 - "Community 62"
 Cohesion: 1.0
 Nodes (1): ApplicationRecord
 
-### Community 62 - "Community 62"
+### Community 63 - "Community 63"
 Cohesion: 1.0
 Nodes (1): ApplicationJob
 
-### Community 63 - "Community 63"
+### Community 64 - "Community 64"
 Cohesion: 1.0
 Nodes (1): SearchHistoryController
 
-### Community 66 - "Community 66"
+### Community 67 - "Community 67"
 Cohesion: 1.0
 Nodes (1): Channel
 
@@ -359,18 +364,18 @@ Nodes (2): Andy Wallace (DevOps / Blacklight auth), Blacklight 8 Authentication 
 Cohesion: 1.0
 Nodes (2): Staging Regression (build rollback), Staging Site (stage.sinaimanuscripts.library.ucla.edu)
 
-### Community 163 - "Community 163"
+### Community 162 - "Community 162"
 Cohesion: 1.0
 Nodes (1): Locus (folio reference)
 
-### Community 164 - "Community 164"
+### Community 163 - "Community 163"
 Cohesion: 1.0
 Nodes (1): smdl_overview.md (empty file)
 
 ## Knowledge Gaps
 - **45 isolated node(s):** `ApplicationMailer`, `Ability`, `SearchBuilder`, `ApplicationRecord`, `ApplicationJob` (+40 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **Thin community `Community 12`** (11 nodes): `static_controller.rb`, `StaticController`, `.about()`, `.contact()`, `.manuscript_descriptions()`, `.references()`, `.sinai_library_digitization_project()`, `.sinai_palimpsests_project()`, `.syriac_parchment_descriptions_project()`, `.terms_of_use()`, `.version()`
+- **Thin community `Community 13`** (11 nodes): `static_controller.rb`, `StaticController`, `.about()`, `.contact()`, `.manuscript_descriptions()`, `.references()`, `.sinai_library_digitization_project()`, `.sinai_palimpsests_project()`, `.syriac_parchment_descriptions_project()`, `.terms_of_use()`, `.version()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 15`** (9 nodes): `base_metadata_presenter.rb`, `collection_overview_metadata_presenter.rb`, `BaseMetadataPresenter`, `.fields_to_render_by_config_keys()`, `.fields_to_render_by_keys()`, `.initialize()`, `CollectionOverviewMetadataPresenter`, `.overview_labels()`, `.overview_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
@@ -380,106 +385,108 @@ Nodes (1): smdl_overview.md (empty file)
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 19`** (5 nodes): `collection_block_presenter.rb`, `CollectionBlockPresenter`, `.collection_document()`, `.collection_selected?()`, `.initialize()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 20`** (5 nodes): `solr_document_wrapper.rb`, `SolrDocumentWrapper`, `.conditions()`, `.earliest()`, `.latest()`
+- **Thin community `Community 20`** (5 nodes): `hoisted_document()`, `work_wit_document()`, `build_manuscript_document()`, `manuscript_fixture_helper.rb`, `items_metadata_spec.rb`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 21`** (4 nodes): `auto_link.rb`, `AutoLink`, `.html_escape()`, `.render()`
+- **Thin community `Community 21`** (5 nodes): `solr_document_wrapper.rb`, `SolrDocumentWrapper`, `.conditions()`, `.earliest()`, `.latest()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 23`** (4 nodes): `Dpla`, `.header_specification()`, `.initialize()`, `dpla.rb`
+- **Thin community `Community 22`** (4 nodes): `auto_link.rb`, `AutoLink`, `.html_escape()`, `.render()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 24`** (4 nodes): `CreateBookmarks`, `.down()`, `.up()`, `20180918212217_create_bookmarks.blacklight.rb`
+- **Thin community `Community 24`** (4 nodes): `Dpla`, `.header_specification()`, `.initialize()`, `dpla.rb`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 25`** (4 nodes): `CreateSearches`, `.down()`, `.up()`, `20180918212216_create_searches.blacklight.rb`
+- **Thin community `Community 25`** (4 nodes): `CreateBookmarks`, `.down()`, `.up()`, `20180918212217_create_bookmarks.blacklight.rb`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 26`** (3 nodes): `history_metadata_presenter.rb`, `HistoryMetadataPresenter`, `.history_terms()`
+- **Thin community `Community 26`** (4 nodes): `CreateSearches`, `.down()`, `.up()`, `20180918212216_create_searches.blacklight.rb`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 27`** (3 nodes): `contents_works_metadata_presenter.rb`, `ContentsWorksMetadataPresenter`, `.contents_terms()`
+- **Thin community `Community 27`** (3 nodes): `history_metadata_presenter.rb`, `HistoryMetadataPresenter`, `.history_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 28`** (3 nodes): `references_metadata_presenter.rb`, `ReferencesMetadataPresenter`, `.references_terms()`
+- **Thin community `Community 28`** (3 nodes): `contents_works_metadata_presenter.rb`, `ContentsWorksMetadataPresenter`, `.contents_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 29`** (3 nodes): `codicology_metadata_presenter.rb`, `CodicologyMetadataPresenter`, `.codicology_terms()`
+- **Thin community `Community 29`** (3 nodes): `references_metadata_presenter.rb`, `ReferencesMetadataPresenter`, `.references_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 30`** (3 nodes): `keywords_metadata_presenter.rb`, `KeywordsMetadataPresenter`, `.keywords_terms()`
+- **Thin community `Community 30`** (3 nodes): `codicology_metadata_presenter.rb`, `CodicologyMetadataPresenter`, `.codicology_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 31`** (3 nodes): `decoration_metadata_presenter.rb`, `DecorationMetadataPresenter`, `.decoration_terms()`
+- **Thin community `Community 31`** (3 nodes): `keywords_metadata_presenter.rb`, `KeywordsMetadataPresenter`, `.keywords_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 32`** (3 nodes): `overview_metadata_presenter.rb`, `OverviewMetadataPresenter`, `.overview_terms()`
+- **Thin community `Community 32`** (3 nodes): `decoration_metadata_presenter.rb`, `DecorationMetadataPresenter`, `.decoration_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 33`** (3 nodes): `contents_metadata_presenter.rb`, `ContentsMetadataPresenter`, `.contents_terms()`
+- **Thin community `Community 33`** (3 nodes): `overview_metadata_presenter.rb`, `OverviewMetadataPresenter`, `.overview_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 34`** (3 nodes): `find_this_item_metadata_presenter.rb`, `FindThisItemMetadataPresenter`, `.find_this_item_terms()`
+- **Thin community `Community 34`** (3 nodes): `contents_metadata_presenter.rb`, `ContentsMetadataPresenter`, `.contents_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 35`** (3 nodes): `sinai_index_date_presenter.rb`, `SinaiIndexDatePresenter`, `.sinai_index_date_terms()`
+- **Thin community `Community 35`** (3 nodes): `find_this_item_metadata_presenter.rb`, `FindThisItemMetadataPresenter`, `.find_this_item_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 36`** (3 nodes): `tagline_metadata_presenter.rb`, `TaglineMetadataPresenter`, `.tagline_terms()`
+- **Thin community `Community 36`** (3 nodes): `sinai_index_date_presenter.rb`, `SinaiIndexDatePresenter`, `.sinai_index_date_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 37`** (3 nodes): `contact_collection_metadata_presenter.rb`, `ContactCollectionMetadataPresenter`, `.contact_collection_terms()`
+- **Thin community `Community 37`** (3 nodes): `tagline_metadata_presenter.rb`, `TaglineMetadataPresenter`, `.tagline_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 38`** (3 nodes): `keyword_metadata_presenter.rb`, `KeywordMetadataPresenter`, `.keyword_terms()`
+- **Thin community `Community 38`** (3 nodes): `contact_collection_metadata_presenter.rb`, `ContactCollectionMetadataPresenter`, `.contact_collection_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 39`** (3 nodes): `note_collection_metadata_presenter.rb`, `NoteCollectionMetadataPresenter`, `.note_collection_terms()`
+- **Thin community `Community 39`** (3 nodes): `keyword_metadata_presenter.rb`, `KeywordMetadataPresenter`, `.keyword_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 40`** (3 nodes): `sinai_index_name_metadata_presenter.rb`, `SinaiIndexNameMetadataPresenter`, `.sinai_index_name_terms()`
+- **Thin community `Community 40`** (3 nodes): `note_collection_metadata_presenter.rb`, `NoteCollectionMetadataPresenter`, `.note_collection_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 41`** (3 nodes): `sinai_index_collection_presenter.rb`, `SinaiIndexCollectionPresenter`, `.sinai_index_collection_terms()`
+- **Thin community `Community 41`** (3 nodes): `sinai_index_name_metadata_presenter.rb`, `SinaiIndexNameMetadataPresenter`, `.sinai_index_name_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 42`** (3 nodes): `find_collection_metadata_presenter.rb`, `FindCollectionMetadataPresenter`, `.find_collection_terms()`
+- **Thin community `Community 42`** (3 nodes): `sinai_index_collection_presenter.rb`, `SinaiIndexCollectionPresenter`, `.sinai_index_collection_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 43`** (3 nodes): `item_overview_metadata_presenter.rb`, `ItemOverviewMetadataPresenter`, `.overview_terms()`
+- **Thin community `Community 43`** (3 nodes): `find_collection_metadata_presenter.rb`, `FindCollectionMetadataPresenter`, `.find_collection_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 44`** (3 nodes): `AccessConditionMetadataPresenter`, `.access_condition_terms()`, `access_condition_metadata_presenter.rb`
+- **Thin community `Community 44`** (3 nodes): `item_overview_metadata_presenter.rb`, `ItemOverviewMetadataPresenter`, `.overview_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 45`** (3 nodes): `sinai_index_text_unit_labels_presenter.rb`, `SinaiIndexTextUnitLabelsPresenter`, `.sinai_index_text_unit_labels_terms()`
+- **Thin community `Community 45`** (3 nodes): `AccessConditionMetadataPresenter`, `.access_condition_terms()`, `access_condition_metadata_presenter.rb`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 46`** (3 nodes): `note_metadata_presenter.rb`, `NoteMetadataPresenter`, `.note_terms()`
+- **Thin community `Community 46`** (3 nodes): `sinai_index_text_unit_labels_presenter.rb`, `SinaiIndexTextUnitLabelsPresenter`, `.sinai_index_text_unit_labels_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 47`** (3 nodes): `sinai_index_language_presenter.rb`, `SinaiIndexLanguagePresenter`, `.sinai_index_language_terms()`
+- **Thin community `Community 47`** (3 nodes): `note_metadata_presenter.rb`, `NoteMetadataPresenter`, `.note_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 48`** (3 nodes): `sinai_index_title_metadata_presenter.rb`, `SinaiIndexTitleMetadataPresenter`, `.sinai_index_title_terms()`
+- **Thin community `Community 48`** (3 nodes): `sinai_index_language_presenter.rb`, `SinaiIndexLanguagePresenter`, `.sinai_index_language_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 49`** (3 nodes): `physical_description_metadata_presenter.rb`, `PhysicalDescriptionMetadataPresenter`, `.physical_description_terms()`
+- **Thin community `Community 49`** (3 nodes): `sinai_index_title_metadata_presenter.rb`, `SinaiIndexTitleMetadataPresenter`, `.sinai_index_title_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 50`** (3 nodes): `scrollable_tabs.js`, `initScrollableTabs()`, `publishStickyHeaderHeight()`
+- **Thin community `Community 50`** (3 nodes): `physical_description_metadata_presenter.rb`, `PhysicalDescriptionMetadataPresenter`, `.physical_description_terms()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 53`** (3 nodes): `search_field_service.rb`, `SearchFieldService`, `.search_fields()`
+- **Thin community `Community 51`** (3 nodes): `scrollable_tabs.js`, `initScrollableTabs()`, `publishStickyHeaderHeight()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 54`** (3 nodes): `login_service.rb`, `LoginService`, `.create_token()`
+- **Thin community `Community 54`** (3 nodes): `search_field_service.rb`, `SearchFieldService`, `.search_fields()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 55`** (3 nodes): `solr_document_provider.rb`, `SolrDocumentProvider`, `.initialize()`
+- **Thin community `Community 55`** (3 nodes): `login_service.rb`, `LoginService`, `.create_token()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 56`** (3 nodes): `CreateFeatures`, `.change()`, `20190830185129_create_features.rb`
+- **Thin community `Community 56`** (3 nodes): `solr_document_provider.rb`, `SolrDocumentProvider`, `.initialize()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 57`** (3 nodes): `AddDeviseGuestsToUsers`, `.down()`, `20180918212347_add_devise_guests_to_users.rb`
+- **Thin community `Community 57`** (3 nodes): `CreateFeatures`, `.change()`, `20190830185129_create_features.rb`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 58`** (2 nodes): `application_mailer.rb`, `ApplicationMailer`
+- **Thin community `Community 58`** (3 nodes): `AddDeviseGuestsToUsers`, `.down()`, `20180918212347_add_devise_guests_to_users.rb`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 59`** (2 nodes): `Ability`, `ability.rb`
+- **Thin community `Community 59`** (2 nodes): `application_mailer.rb`, `ApplicationMailer`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 60`** (2 nodes): `search_builder.rb`, `SearchBuilder`
+- **Thin community `Community 60`** (2 nodes): `Ability`, `ability.rb`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 61`** (2 nodes): `application_record.rb`, `ApplicationRecord`
+- **Thin community `Community 61`** (2 nodes): `search_builder.rb`, `SearchBuilder`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 62`** (2 nodes): `application_job.rb`, `ApplicationJob`
+- **Thin community `Community 62`** (2 nodes): `application_record.rb`, `ApplicationRecord`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 63`** (2 nodes): `search_history_controller.rb`, `SearchHistoryController`
+- **Thin community `Community 63`** (2 nodes): `application_job.rb`, `ApplicationJob`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 66`** (2 nodes): `channel.rb`, `Channel`
+- **Thin community `Community 64`** (2 nodes): `search_history_controller.rb`, `SearchHistoryController`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 67`** (2 nodes): `channel.rb`, `Channel`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 71`** (2 nodes): `Andy Wallace (DevOps / Blacklight auth)`, `Blacklight 8 Authentication Regression`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 72`** (2 nodes): `Staging Regression (build rollback)`, `Staging Site (stage.sinaimanuscripts.library.ucla.edu)`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 163`** (1 nodes): `Locus (folio reference)`
+- **Thin community `Community 162`** (1 nodes): `Locus (folio reference)`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 164`** (1 nodes): `smdl_overview.md (empty file)`
+- **Thin community `Community 163`** (1 nodes): `smdl_overview.md (empty file)`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `h()` connect `Community 1` to `Community 0`, `Community 2`, `Community 3`, `Community 4`, `Community 14`?**
-  _High betweenness centrality (0.092) - this node is a cross-community bridge._
-- **Why does `t()` connect `Community 1` to `Community 0`, `Community 3`, `Community 4`, `Community 7`?**
-  _High betweenness centrality (0.064) - this node is a cross-community bridge._
+- **Why does `h()` connect `Community 1` to `Community 0`, `Community 2`, `Community 3`, `Community 4`?**
+  _High betweenness centrality (0.091) - this node is a cross-community bridge._
+- **Why does `t()` connect `Community 1` to `Community 0`, `Community 3`, `Community 4`, `Community 7`, `Community 12`?**
+  _High betweenness centrality (0.063) - this node is a cross-community bridge._
 - **Why does `render_related_mss_link()` connect `Community 2` to `Community 1`?**
   _High betweenness centrality (0.043) - this node is a cross-community bridge._
 - **Are the 2 inferred relationships involving `call()` (e.g. with `b()` and `d()`) actually correct?**

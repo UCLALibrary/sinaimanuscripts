@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module ManuscriptFixtureHelper
-  EXPORT_TEST_PATH = 'solr/sinaiportal_data/export_test/merged'
+  EXPORT_TEST_PATH = 'solr/sinaiportal_data/merged'
 
   # Builds a SolrDocument from a JSON file in the sinaiportal export_test directory.
   # Uses the real test data files directly so that when upstream data changes,
