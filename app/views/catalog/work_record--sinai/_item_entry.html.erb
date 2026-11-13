@@ -178,21 +178,29 @@
 
                 <%# --- Table of Contents --- %>
                 <% if toc_entries.any? %>
-                  <!-- DATA SOURCE: <%= ww_data_path %>.contents (count: <%= toc_entries.size %>) -->
+                  <!-- DATA SOURCE: <%= ww_data_path %>.contents[].label, .pref_title, .locus (count: <%= toc_entries.size %>) -->
                   <div class="work-field-row--sinai">
                     <dt class="work-field-label--sinai">Table of Contents</dt>
                     <dd class="work-field-value--sinai">
                       <div class="work-toc--sinai">
                         <% toc_entries.each_with_index do |toc, toc_i| %>
                           <%
-                            toc_label = toc['label'].to_s
+                            # NOP-191: show the uniform title (pref_title), linked to a works_ssim search
+                            # like the Uniform Title field. No label -> it takes the label's place;
+                            # label + uniform title -> "Label (Uniform title)". Only the title is linked.
+                            toc_label = toc['label'].to_s.strip.presence
+                            toc_uniform = toc['pref_title'].to_s.strip.presence
+                            toc_uniform_link = toc_uniform && link_to(toc_uniform, search_catalog_path(f: { works_ssim: [toc_uniform] }))
+                            toc_title = if toc_label && toc_uniform_link
+                                          safe_join([toc_label, ' (', toc_uniform_link, ')'])
+                                        else
+                                          toc_label || toc_uniform_link
+                                        end
                             toc_locus = toc['locus'].to_s.presence
                             toc_notes = Array(toc['note'])
-                            toc_line = toc_label
-                            toc_line = "#{toc_line}, #{toc_locus}" if toc_locus.present?
                           %>
                           <div class="work-toc-entry--sinai<%= ' work-toc-entry--hidden--sinai' if toc_i >= 3 %>">
-                            <div class="work-toc-entry__line--sinai"><%= h(toc_line) %></div>
+                            <div class="work-toc-entry__line--sinai"><%= safe_join([toc_title, toc_locus].compact, ', ') %></div>
                             <% toc_notes.each do |tn| %>
                               <div class="work-toc-entry__note--sinai"><%= h(tn.is_a?(Hash) ? tn['value'].to_s : tn.to_s) %></div>
                             <% end %>

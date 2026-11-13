@@ -14947,8 +14947,8 @@
       "source_file": "spec/views/catalog/work_record_sinai/items_metadata_spec.rb",
       "source_location": "L12",
       "weight": 1.0,
-      "_src": "items_metadata_spec_hoisted_document",
-      "_tgt": "manuscript_fixture_helper_build_manuscript_document",
+      "_src": "manuscript_fixture_helper_build_manuscript_document",
+      "_tgt": "items_metadata_spec_hoisted_document",
       "source": "manuscript_fixture_helper_build_manuscript_document",
       "target": "items_metadata_spec_hoisted_document"
     },

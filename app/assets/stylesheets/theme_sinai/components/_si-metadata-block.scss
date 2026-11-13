@@ -872,7 +872,9 @@
 
 // Uniform Title (NOP-190): only the title is a link (to a works_ssim search) and it
 // must read as one — primary red per Dawn's mock; the trailing refnos stay value-coloured.
-.work-uniform-title--sinai a {
+// NOP-191: Table of Contents uniform titles link the same way (label and locus stay plain).
+.work-uniform-title--sinai a,
+.work-toc-entry__line--sinai a {
   text-decoration: none;
   color: $sinai-primary;
 

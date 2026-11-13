@@ -353,4 +353,40 @@ RSpec.describe 'catalog/work_record--sinai/_items_metadata.html.erb', type: :vie
       expect(rendered).to have_link('Bible. Psalms', visible: :all)
     end
   end
+
+  # NOP-191: ToC entries show their uniform title (contents[].pref_title) linked to a works_ssim search.
+  context 'with Table of Contents entries with and without uniform titles (inline JSON)' do
+    let(:document) do
+      work_wit_document([{
+                          'work' => { 'desc_title' => 'Gospel book' },
+                          'contents' => [
+                            { 'work_id' => 'ark:/21198/s12c7r', 'pref_title' => 'Bible. Matthew', 'locus' => 'ff. 1r–31v' },
+                            { 'work_id' => 'ark:/21198/s1abcd', 'label' => 'First Epistle to the Corinthians',
+                              'pref_title' => 'Bible. Corinthians', 'locus' => 'ff. 120v–138r' },
+                            { 'label' => 'Index of Gospel readings', 'locus' => 'ff. 153r–166v' }
+                          ]
+                        }])
+    end
+
+    let(:toc_lines) { Capybara.string(rendered).all('.work-toc-entry__line--sinai', visible: :all) }
+
+    it 'uses the uniform title in place of a missing label, adds it in parentheses after a label, and leaves label-only entries as they are' do
+      expected = [
+        'Bible. Matthew, ff. 1r–31v',
+        'First Epistle to the Corinthians (Bible. Corinthians), ff. 120v–138r',
+        'Index of Gospel readings, ff. 153r–166v'
+      ]
+      expect(toc_lines.map { |n| n.text(:all).strip }).to eq(expected)
+    end
+
+    it 'links each uniform title to a works_ssim search' do
+      expect(rendered).to have_link('Bible. Matthew', href: '/catalog?f%5Bworks_ssim%5D%5B%5D=Bible.+Matthew', visible: :all)
+      expect(rendered).to have_link('Bible. Corinthians', href: '/catalog?f%5Bworks_ssim%5D%5B%5D=Bible.+Corinthians', visible: :all)
+    end
+
+    it 'links only the uniform title, not the label or the locus' do
+      expect(toc_lines.map { |n| n.all('a', visible: :all).map { |a| a.text(:all) } })
+        .to eq([['Bible. Matthew'], ['Bible. Corinthians'], []])
+    end
+  end
 end
