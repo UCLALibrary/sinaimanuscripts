@@ -645,6 +645,13 @@
   margin-bottom: 1.25rem; // Figma: 20px between stacked items
 }
 
+// Full Description (NOP-188): indent items under their "Contents" heading so they
+// read as belonging to it. Only the Full Description emits this heading, so the
+// Contents tab and Guest Content are unaffected.
+.items-subsection-heading--sinai ~ .item-block--sinai {
+  margin-left: 1.25rem;
+}
+
 .item-heading--sinai {
   color: $sinai-label; // Figma: #333
   font-family: 'Roboto', sans-serif;
