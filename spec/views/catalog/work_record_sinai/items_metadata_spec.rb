@@ -389,4 +389,40 @@ RSpec.describe 'catalog/work_record--sinai/_items_metadata.html.erb', type: :vie
         .to eq([['Bible. Matthew'], ['Bible. Corinthians'], []])
     end
   end
+
+  # NOP-189: a rubric with several subtypes shows them all, in data order. With no
+  # label they stand in for one in the header; a Types row always lists them.
+  context 'with rubrics that have multiple subtypes (inline JSON)' do
+    let(:document) do
+      json = { 'ot_layer' => [{ 'layer_record' => { 'text_unit' => [
+        { 'locus' => 'ff. 1r-9v', 'text_unit_record' => { 'para' => [
+          { 'type' => { 'id' => 'framing' }, 'locus' => 'f. 1r',
+            'subtype' => [{ 'label' => 'Title' }, { 'label' => 'Incipit' }] },
+          { 'type' => { 'id' => 'framing' }, 'label' => 'Closing rubric', 'locus' => 'f. 9v',
+            'subtype' => [{ 'label' => 'Explicit' }, { 'label' => 'Colophon' }] }
+        ] } }
+      ] } }] }
+      SolrDocument.new('id' => 'rubric-subtype-test', 'manuscript_json_ts' => json.to_json)
+    end
+
+    def rubric(header)
+      page = Capybara.string(rendered)
+      page.find('details.work-accordion--sinai', text: header, visible: :all)
+    end
+
+    it 'joins all subtypes into the header when there is no label' do
+      expect(rendered).to have_css('.work-accordion__title--sinai', text: 'Title, Incipit, f. 1r')
+    end
+
+    it 'keeps the label in the header when one is present' do
+      expect(rendered).to have_css('.work-accordion__title--sinai', text: 'Closing rubric, f. 9v')
+    end
+
+    it 'shows every subtype in a Types row as the first expanded row' do
+      first_row = rubric('Closing rubric').first('.work-field-row--sinai', visible: :all)
+      expect(first_row).to have_css('dt', text: 'Types', visible: :all)
+      expect(first_row).to have_css('dd', text: 'Explicit, Colophon', visible: :all)
+      expect(rubric('Title, Incipit')).to have_css('dd', text: 'Title, Incipit', visible: :all)
+    end
+  end
 end

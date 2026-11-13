@@ -7,9 +7,12 @@
 <% heading_level = local_assigns.fetch(:heading_level, nil) %>
 <% title_tag = heading_level.presence || :span %>
 <%
-  # --- Header: [label], [locus] ---
+  # --- Subtypes (NOP-189): all of them, in data order ---
+  pa_subtypes = Array(pa['subtype']).map { |s| s['label'].to_s.presence }.compact
+
+  # --- Header: [label] or [all subtypes], [locus] ---
   pa_label = pa['label'].to_s.presence ||
-             Array(pa['subtype']).first&.dig('label').to_s.presence ||
+             pa_subtypes.join(', ').presence ||
              pa.dig('type', 'label').to_s.presence
   pa_locus = pa['locus'].to_s.presence
   pa_header = [pa_label, pa_locus].compact.join(', ')
@@ -46,7 +49,7 @@
   # --- Notes ---
   pa_notes = Array(pa['note'])
 
-  has_details = pa_langs.any? || pa_scripts.any? || pa_as_written.present? ||
+  has_details = pa_subtypes.any? || pa_langs.any? || pa_scripts.any? || pa_as_written.present? ||
                 pa_translations.any? || ndp_parts.any? || pa_notes.any?
 %>
 
@@ -59,6 +62,14 @@
 
     <div class="work-accordion__body--sinai">
       <dl class="work-fields--sinai">
+
+        <% if pa_subtypes.any? %>
+          <!-- DATA SOURCE: <%= data_path %>.subtype -->
+          <div class="work-field-row--sinai">
+            <dt class="work-field-label--sinai">Types</dt>
+            <dd class="work-field-value--sinai"><%= h(pa_subtypes.join(', ')) %></dd>
+          </div>
+        <% end %>
 
         <% if pa_langs.any? %>
           <!-- DATA SOURCE: <%= data_path %>.lang -->
