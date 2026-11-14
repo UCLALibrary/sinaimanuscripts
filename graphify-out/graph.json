@@ -4141,7 +4141,7 @@
       "label": "rubric()",
       "file_type": "code",
       "source_file": "spec/views/catalog/work_record_sinai/items_metadata_spec.rb",
-      "source_location": "L408",
+      "source_location": "L419",
       "id": "items_metadata_spec_rubric",
       "community": 20,
       "norm_label": "rubric()"
@@ -15175,7 +15175,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "spec/views/catalog/work_record_sinai/items_metadata_spec.rb",
-      "source_location": "L408",
+      "source_location": "L419",
       "weight": 1.0,
       "_src": "spec_views_catalog_work_record_sinai_items_metadata_spec_rb",
       "_tgt": "items_metadata_spec_rubric",

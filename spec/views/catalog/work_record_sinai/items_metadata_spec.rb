@@ -55,6 +55,11 @@ RSpec.describe 'catalog/work_record--sinai/_items_metadata.html.erb', type: :vie
         expect(rendered).to have_link('Psalms', href: '/catalog?f%5Bworks_ssim%5D%5B%5D=Psalms', visible: :all)
       end
 
+      it 'renders Uniform Title after Variant Title and As Written' do
+        labels = Capybara.string(rendered).all('.work-field-label--sinai', visible: :all).map { |n| n.text(:all) }
+        expect(labels.first(3)).to eq(['Variant Title', 'As Written', 'Uniform Title'])
+      end
+
       it 'renders work locus' do
         expect(rendered).to have_css('.work-accordion__title--sinai', text: /ff\. 1r-85v/)
       end
@@ -252,8 +257,12 @@ RSpec.describe 'catalog/work_record--sinai/_items_metadata.html.erb', type: :vie
     let(:document) do
       ww = {
         'locus' => 'ff. 2r-5v',
+        'alt_title' => ['Homily VI'],
+        'as_written' => 'Logos eis ton hekton psalmon',
         'work' => {
           'desc_title' => 'Homily on Psalm 6',
+          'creator' => [{ 'id' => 'ark:/21198/a1', 'agent_record' => { 'pref_name' => 'John Chrysostom' },
+                          'role' => { 'id' => 'author', 'label' => 'Author' } }],
           'refno' => [{ 'source' => 'CPG', 'idno' => '0000' }],
           'id' => [
             { 'ark' => 'ark:/21198/w1', 'pref_title' => 'Homilia in Psalmum 6',
@@ -284,9 +293,11 @@ RSpec.describe 'catalog/work_record--sinai/_items_metadata.html.erb', type: :vie
       expect(link_texts).to eq(['Homilia in Psalmum 6', 'Life of a saint'])
     end
 
-    it 'places Uniform Title as the first field of the expanded entry' do
+    # Dawn (NOP-190 follow-up): Uniform Title is the last of the title fields,
+    # directly above Contributors.
+    it 'orders the title fields Variant Title, As Written, Uniform Title, then Contributors' do
       labels = Capybara.string(rendered).all('.work-field-label--sinai', visible: :all).map { |n| n.text(:all) }
-      expect(labels.first).to eq('Uniform Title')
+      expect(labels).to eq(['Variant Title', 'As Written', 'Uniform Title', 'Contributors'])
     end
   end
 

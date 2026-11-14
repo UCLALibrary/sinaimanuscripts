@@ -125,19 +125,6 @@
             <div class="work-accordion__body--sinai">
               <dl class="work-fields--sinai">
 
-                <%# --- Uniform Title (work.id[].pref_title, linked to a works_ssim search; refnos unlinked) --- %>
-                <% if uniform_titles.any? %>
-                  <!-- DATA SOURCE: <%= ww_data_path %>.work.id[].pref_title, .refno -->
-                  <div class="work-field-row--sinai">
-                    <dt class="work-field-label--sinai">Uniform Title</dt>
-                    <dd class="work-field-value--sinai">
-                      <% uniform_titles.each do |ut| %>
-                        <div class="work-uniform-title--sinai"><%= link_to ut[:title], search_catalog_path(f: { works_ssim: [ut[:title]] }) %><% if ut[:refnos].any? %> (<%= ut[:refnos].join(', ') %>)<% end %></div>
-                      <% end %>
-                    </dd>
-                  </div>
-                <% end %>
-
                 <%# --- Variant Title --- %>
                 <% if alt_titles.any? %>
                   <!-- DATA SOURCE: <%= ww_data_path %>.alt_title -->
@@ -155,6 +142,20 @@
                   <div class="work-field-row--sinai">
                     <dt class="work-field-label--sinai">As Written</dt>
                     <dd class="work-field-value--sinai"><%= h(as_written) %></dd>
+                  </div>
+                <% end %>
+
+                <%# --- Uniform Title (work.id[].pref_title, linked to a works_ssim search; refnos unlinked) --- %>
+                <%# Last of the title fields, directly above Contributors (Dawn, NOP-190 follow-up). %>
+                <% if uniform_titles.any? %>
+                  <!-- DATA SOURCE: <%= ww_data_path %>.work.id[].pref_title, .refno -->
+                  <div class="work-field-row--sinai">
+                    <dt class="work-field-label--sinai">Uniform Title</dt>
+                    <dd class="work-field-value--sinai">
+                      <% uniform_titles.each do |ut| %>
+                        <div class="work-uniform-title--sinai"><%= link_to ut[:title], search_catalog_path(f: { works_ssim: [ut[:title]] }) %><% if ut[:refnos].any? %> (<%= ut[:refnos].join(', ') %>)<% end %></div>
+                      <% end %>
+                    </dd>
                   </div>
                 <% end %>
 
