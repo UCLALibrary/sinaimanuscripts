@@ -80,11 +80,6 @@ RSpec.describe RightRailHelper, type: :helper do
       expect(helper.panel_has_collapsibles?(html)).to be false
     end
 
-    it 'ignores the raw-JSON debug details' do
-      html = '<details class="overview-json-debug--sinai"><summary>View raw manuscript JSON data</summary></details>'
-      expect(helper.panel_has_collapsibles?(html)).to be false
-    end
-
     it 'ignores the rail Navigation details' do
       html = '<details class="right-rail__nav-details--sinai">' \
              '<summary class="right-rail__nav-summary--sinai">Navigation</summary></details>'

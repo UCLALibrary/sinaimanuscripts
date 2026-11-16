@@ -1071,30 +1071,6 @@
   line-height: 1.5;
 }
 
-.overview-json-debug--sinai {
-  margin-top: 2rem;
-  border-top: 1px solid $sinai-secondary-dk;
-  padding-top: 1rem;
-
-  summary {
-    cursor: pointer;
-    font-size: 0.85rem;
-    color: $sinai-grey;
-    font-style: italic;
-  }
-
-  pre {
-    max-height: 500px;
-    overflow: auto;
-    font-size: 0.75rem;
-    background: #f5f5f5;
-    padding: 1rem;
-    border-radius: 4px;
-    white-space: pre-wrap;
-    word-break: break-word;
-  }
-}
-
 // Notes on the Manuscript section (Full Description tab) — short centered separator
 // to match the other Full Description sections (Figma "sep").
 .notes-on-manuscript-section--sinai {
@@ -1347,10 +1323,6 @@
 
 .references-bibliography__note--indented--sinai {
   padding-left: 1.5rem;
-}
-
-.references-bibliography__row-label--mixedcase--sinai {
-  text-transform: none;
 }
 
 // Rights & Credits tab — top gap from the tab bar is owned centrally by

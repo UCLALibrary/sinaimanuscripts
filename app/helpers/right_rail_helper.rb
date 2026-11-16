@@ -56,10 +56,9 @@ module RightRailHelper
   #     Not a <details>; it toggles a class via work_show_more.js, and renders
   #     only when a work has more than three ToC entries.
   #
-  # Neither <details> that must stay out of "Expand all" carries any of these:
-  # the rail's own Navigation accordion (.right-rail__nav-details--sinai) is not
-  # part of a captured panel body at all, and the raw-JSON debug dump
-  # (.overview-json-debug--sinai) has no marker class.
+  # The one <details> that must stay out of "Expand all", the rail's own
+  # Navigation accordion (.right-rail__nav-details--sinai), carries none of
+  # these and is not part of a captured panel body at all.
   COLLAPSIBLE_MARKERS = %w[
     work-accordion__summary--sinai
     part-expandable__summary--sinai

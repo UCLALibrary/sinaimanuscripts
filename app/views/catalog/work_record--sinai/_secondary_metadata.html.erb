@@ -11,11 +11,5 @@
 
     <%# === Parts Section === %>
     <%= render 'catalog/work_record--sinai/parts_metadata', document: document %>
-
-    <%# === Full JSON debug viewer === %>
-    <details class="overview-json-debug--sinai">
-      <summary>View raw manuscript JSON data</summary>
-      <pre><%= JSON.pretty_generate(ms_json_sec) %></pre>
-    </details>
   </div>
 </div>

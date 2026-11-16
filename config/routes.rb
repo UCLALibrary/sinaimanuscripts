@@ -35,6 +35,11 @@ Rails.application.routes.draw do
     concerns :range_searchable
   end
 
+  # NOP-179: the record's source JSON, linked as "JSON Record" on References & Bibliography.
+  # A standalone named route rather than a solr_documents member route: the resource is
+  # declared twice below, and Rails silently drops a resource route name already in use.
+  get '/catalog/:id/manuscript_json', to: 'catalog#manuscript_json', as: 'manuscript_json'
+
   devise_for :users
   concern :exportable, Blacklight::Routes::Exportable.new
 

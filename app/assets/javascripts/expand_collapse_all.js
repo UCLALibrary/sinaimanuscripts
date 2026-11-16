@@ -22,8 +22,6 @@
 //     accordion (desktop CSS force-opens it; mobile uses it as a drawer).
 //     Excluded structurally: it lives in the rail column, and every query below
 //     is scoped to .tab-panel-grid__main--sinai.
-//   * details.overview-json-debug--sinai — the raw JSON debug dump. Excluded by
-//     class: it carries none of the selectors above.
 (function () {
   var PANEL_SELECTOR = '.tab-panel--sinai';
   var MAIN_SELECTOR = '.tab-panel-grid__main--sinai';

@@ -11,7 +11,7 @@ class CatalogController < ApplicationController
   include Blacklight::AccessControls::Catalog
 
   # Apply the blacklight-access_controls
-  before_action :enforce_show_permissions, only: :show
+  before_action :enforce_show_permissions, only: [:show, :manuscript_json]
 
   include BlacklightHelper
 
@@ -505,6 +505,26 @@ class CatalogController < ApplicationController
         end
       end
     end
+  end
+
+  # NOP-179: the manuscript's source JSON record (the manuscript_json_ts blob every
+  # item-page tab renders from), linked as "JSON Record" on References & Bibliography.
+  # The indexer stores it minified, so it is pretty-printed (as the old raw-JSON dump
+  # was) for reading in the browser and in the saved file; an unparseable blob is sent
+  # as stored. Served inline so the link's new tab shows it; the filename names it
+  # when saved.
+  def manuscript_json
+    _deprecated_response, document = search_service.fetch(params[:id])
+    json = document['manuscript_json_ts']
+    return head(:not_found) if json.blank?
+
+    body = begin
+      JSON.pretty_generate(JSON.parse(json))
+    rescue JSON::ParserError
+      json
+    end
+    filename = "#{document['shelfmark_ssi'].presence || document.id.to_s.split('/').last}.json"
+    send_data body, type: 'application/json', disposition: 'inline', filename: filename
   end
 
   def oai_provider

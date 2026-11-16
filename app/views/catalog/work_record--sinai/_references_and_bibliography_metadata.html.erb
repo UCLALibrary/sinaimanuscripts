@@ -6,6 +6,8 @@
 <%# grouping primitive the LAYOUT field uses — so an entry sits 2px from its own notes, and    %>
 <%# 12px from the next entry. The <dd> carries no gap itself (see _si-metadata-block.scss),    %>
 <%# so an unwrapped line here would collapse to 0px against its neighbour.                     %>
+<%# NOP-179: JSON Record links to CatalogController#manuscript_json — the same blob, served as  %>
+<%# a file — and replaces the raw-JSON dump that used to close the Full Description tab.       %>
 
 <% ms_json_refs = begin JSON.parse(document['manuscript_json_ts'] || '{}') rescue {} end %>
 
@@ -34,6 +36,8 @@
   shelfmark  = ms_json_refs['shelfmark'].to_s
   ark_seg    = ark_value.split('/').last.to_s
   data_portal_url = ark_seg.present? ? "https://sinaiportal.library.ucla.edu/manuscripts/#{ark_seg}" : nil
+  json_record_path = ms_json_refs.present? ? manuscript_json_path(document.id) : nil
+  json_record_label = ['View/download', shelfmark.presence, 'data'].compact.join(' ')
 
   format_bib_line = ->(b) {
     [b['shortcode'], b['alt_shelf'], b['range']].map { |v| v.to_s.strip }.reject(&:empty?).join(', ')
@@ -179,9 +183,24 @@
       </div>
     <% end %>
 
+    <% if json_record_path %>
+      <div class="related-mss-group__row--sinai">
+        <dt class="related-mss-group__row-label--sinai">JSON Record</dt>
+        <dd class="related-mss-group__row-value--sinai">
+          <div class="part-grouped-block--sinai">
+            <div class="related-mss-group__line--sinai">
+              <%= link_to json_record_path, target: '_blank', rel: 'noopener', class: 'references-bibliography__link--sinai' do %>
+                <%= json_record_label %><svg class="references-bibliography__icon--sinai" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M9 2h5v5M14 2L7 9M12 9.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3.5"/></svg>
+              <% end %>
+            </div>
+          </div>
+        </dd>
+      </div>
+    <% end %>
+
     <% if viscodex_entries.any? { |v| v['url'].present? && v['label'].present? } %>
       <div class="related-mss-group__row--sinai">
-        <dt class="related-mss-group__row-label--sinai references-bibliography__row-label--mixedcase--sinai">VisCodex</dt>
+        <dt class="related-mss-group__row-label--sinai">VisCodex</dt>
         <dd class="related-mss-group__row-value--sinai">
           <% viscodex_entries.each do |v| %>
             <% next unless v['url'].present? && v['label'].present? %>

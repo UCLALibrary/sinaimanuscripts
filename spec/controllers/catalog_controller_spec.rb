@@ -154,4 +154,59 @@ RSpec.describe CatalogController, type: :controller do
       get :show, params: { id: ark }
     end
   end
+
+  # NOP-179: the "JSON Record" link on References & Bibliography.
+  describe 'manuscript_json action' do
+    before do
+      allow(controller).to receive(:enforce_show_permissions).and_return(true)
+      allow(controller).to receive(:search_service).and_return(search_service)
+      allow(search_service).to receive(:fetch).and_return([mock_response, mock_document])
+    end
+    let(:ark) { 'ark:/21198/test' }
+    # Stored minified, as the indexer writes it.
+    let(:blob) { '{"ark":"ark:/21198/test","shelfmark":"Sinai Test 1"}' }
+    let(:mock_response) { instance_double(Blacklight::Solr::Response) }
+    let(:mock_document) { SolrDocument.new(id: ark, shelfmark_ssi: 'Sinai Test 1', manuscript_json_ts: blob) }
+    let(:search_service) { instance_double(Blacklight::SearchService) }
+
+    it 'serves the stored JSON pretty-printed, inline, named after the shelfmark' do
+      get :manuscript_json, params: { id: ark }
+
+      expect(response).to have_http_status(:ok)
+      expect(response.media_type).to eq('application/json')
+      expect(response.body).to eq("{\n  \"ark\": \"ark:/21198/test\",\n  \"shelfmark\": \"Sinai Test 1\"\n}")
+      expect(response.headers['Content-Disposition']).to start_with('inline')
+      expect(response.headers['Content-Disposition']).to include('filename="Sinai Test 1.json"')
+    end
+
+    it 'sends an unparseable blob as stored rather than failing' do
+      allow(search_service).to receive(:fetch)
+        .and_return([mock_response, SolrDocument.new(id: ark, manuscript_json_ts: '{not json')])
+      get :manuscript_json, params: { id: ark }
+
+      expect(response).to have_http_status(:ok)
+      expect(response.body).to eq('{not json')
+    end
+
+    it 'falls back to the ARK segment for the filename when there is no shelfmark' do
+      allow(search_service).to receive(:fetch)
+        .and_return([mock_response, SolrDocument.new(id: ark, manuscript_json_ts: blob)])
+      get :manuscript_json, params: { id: ark }
+
+      expect(response.headers['Content-Disposition']).to include('filename="test.json"')
+    end
+
+    it 'checks show permissions like the item page does' do
+      get :manuscript_json, params: { id: ark }
+
+      expect(controller).to have_received(:enforce_show_permissions)
+    end
+
+    it 'is a 404 when the record has no manuscript JSON' do
+      allow(search_service).to receive(:fetch).and_return([mock_response, SolrDocument.new(id: ark)])
+      get :manuscript_json, params: { id: ark }
+
+      expect(response).to have_http_status(:not_found)
+    end
+  end
 end

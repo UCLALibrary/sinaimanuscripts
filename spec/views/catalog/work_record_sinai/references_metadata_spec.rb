@@ -117,8 +117,38 @@ RSpec.describe 'catalog/work_record--sinai/_references_and_bibliography_metadata
     it 'gives each note-less link line its own group so the lists keep their 12px rhythm' do
       expect(section_groups('IIIF Manifests').size).to eq(2)
       expect(section_groups('VisCodex').size).to eq(1)
+      expect(section_groups('JSON Record').size).to eq(1)
       expect(section_groups('Item ARK').size).to eq(1)
       expect(section_groups('Data Portal').size).to eq(1)
+    end
+
+    # NOP-179: the raw-JSON dump left Full Description; the record's JSON is now a
+    # link here, styled and behaving like the tab's other external links.
+    describe 'JSON Record row' do
+      let(:json_link) { section_groups('JSON Record').first&.at_css('a') }
+
+      it 'links "View/download <shelfmark> data" to the manuscript_json endpoint' do
+        expect(json_link.text.squish).to eq('View/download Sinai Test 1 data')
+        expect(json_link['href']).to eq(manuscript_json_path('ark:/21198/test'))
+        expect(json_link['href']).to eq('/catalog/ark:%2F21198%2Ftest/manuscript_json')
+      end
+
+      it 'opens in a new tab with the external-link icon, like the other external links' do
+        expect(json_link['target']).to eq('_blank')
+        expect(json_link['rel']).to eq('noopener')
+        expect(json_link['class']).to eq('references-bibliography__link--sinai')
+        expect(json_link.at_css('svg.references-bibliography__icon--sinai')).to be_present
+      end
+
+      it 'sits directly above VisCodex' do
+        labels = Nokogiri::HTML.fragment(rendered).css('dt.related-mss-group__row-label--sinai').map { |dt| dt.text.strip }
+        expect(labels.index('VisCodex')).to eq(labels.index('JSON Record') + 1)
+      end
+    end
+
+    it 'leaves the VisCodex label to the shared uppercase label style (VISCODEX)' do
+      dt = Nokogiri::HTML.fragment(rendered).css('dt').find { |d| d.text.strip == 'VisCodex' }
+      expect(dt['class']).to eq('related-mss-group__row-label--sinai')
     end
   end
 
@@ -174,6 +204,18 @@ RSpec.describe 'catalog/work_record--sinai/_references_and_bibliography_metadata
     it 'renders no bibliography section rows' do
       expect(rendered).to have_no_css('dt.related-mss-group__row-label--sinai', text: 'References')
       expect(rendered).to have_no_css('dt.related-mss-group__row-label--sinai', text: 'Citations')
+    end
+
+    it 'renders no JSON Record row for an empty record' do
+      expect(rendered).to have_no_css('dt.related-mss-group__row-label--sinai', text: 'JSON Record')
+    end
+  end
+
+  context 'when the record has no shelfmark' do
+    let(:manuscript_json) { { 'ark' => 'ark:/21198/test' } }
+
+    it 'drops the shelfmark from the JSON Record link text' do
+      expect(section_groups('JSON Record').first.at_css('a').text.squish).to eq('View/download data')
     end
   end
 end
